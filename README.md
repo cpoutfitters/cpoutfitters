@@ -7,7 +7,7 @@ iOS App for group project
 
 The following user stories are non-negotiable
 - [-] Users can upload and browse their clothes (metadata could include color, event type, hot/warm/cool/cold usage, collar, sleeve length, etc.)
-- [-] App suggests what to wear based on coordination of color/pattern, warm/cold, formality
+- [-] App suggests what to wear based on coordination warm/cold, formality
 - [-] Facebook authentication
 
 The following should be clarified. Put your name in the appropriate box to indicate your support.
@@ -22,6 +22,7 @@ Please try to limit your votes to 8 or fewer items. In our first pass we may not
 - [E] User can build an outfit around an article or articles of clothing
 - [EC] Users can categorize their clothes by closets/wardrobes/etc. (same clothes can be in different groupings)
 - [C] App suggestion based on forecasted weather (as opposed to user-entered preference)
+- [ ] App suggestion based on color/pattern coordination
 - [ ] App suggestion based on article usage rate
 - [EC] App suggestion based on shared outfit (for coordination)
 - [E] User can accept/reject individual articles in suggestions, gets new recommendations
@@ -34,4 +35,4 @@ Please try to limit your votes to 8 or fewer items. In our first pass we may not
 - [ ] User can say where they bought their shirt, how much, etc.
 - [ ] Monetization through advertising and/or other methods
 - [ ] App can suggest clothes to buy based on lack of matches
-
+- [ ] User can change theming of UI
