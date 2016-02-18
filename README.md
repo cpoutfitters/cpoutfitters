@@ -1,7 +1,6 @@
 # cpoutfitters
 
-iOS App for group project
-
+An app that stores your wardrobe and suggests outfits to help you dress better.
 
 ## User stories
 
