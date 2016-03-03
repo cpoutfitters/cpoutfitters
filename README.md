@@ -2,6 +2,12 @@
 
 An app that stores your wardrobe and suggests outfits to help you dress better.
 
+## Members
+
+- Aditya Purandare
+- Eric Gonzalez
+- Cory Thompson
+
 ## User stories
 
 The following **required** functionality is completed:
@@ -20,3 +26,7 @@ The following **optional** features are implemented:
 - [ ] App suggestion based on forecasted weather (as opposed to user-entered preference)
 - [ ] User can accept/reject individual articles in suggestions, gets new recommendations
 - [ ] User can rate their clothes/outfits
+
+## Wireframe
+
+![Alt text](/wireframes.png?raw=true "Wireframe")
