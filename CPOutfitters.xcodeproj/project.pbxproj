@@ -19,6 +19,7 @@
 		81BA81791A49E0DB00E65899 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA81781A49E0DB00E65899 /* AudioToolbox.framework */; };
 		81BA817B1A49E0E500E65899 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817A1A49E0E500E65899 /* SystemConfiguration.framework */; };
 		81BA817F1A49E0F000E65899 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */; };
+		ACC8432D1C8E782900C2F81E /* Artifact.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC8432C1C8E782900C2F81E /* Artifact.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		81BA81801A49E10C00E65899 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		983C4A4F0E6B5C2D88C559FD /* Pods-CPOutfitters.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CPOutfitters.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CPOutfitters/Pods-CPOutfitters.debug.xcconfig"; sourceTree = "<group>"; };
+		ACC8432C1C8E782900C2F81E /* Artifact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Artifact.swift; sourceTree = "<group>"; };
 		CBC4224AA07ABDF4B24E0BB8 /* Pods_CPOutfitters.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CPOutfitters.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D83F539CA6BFA79F2B59D1B1 /* Pods-CPOutfitters.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CPOutfitters.release.xcconfig"; path = "Pods/Target Support Files/Pods-CPOutfitters/Pods-CPOutfitters.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,6 +102,7 @@
 		81BA81471A49DA1800E65899 /* CPOutfitters */ = {
 			isa = PBXGroup;
 			children = (
+				ACC8432B1C8E776E00C2F81E /* Models */,
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
 				81BA814C1A49DA1800E65899 /* ViewController.swift */,
 				814C3AC61B69877600E307BB /* Main.storyboard */,
@@ -130,6 +133,14 @@
 				81BA81761A49E0D500E65899 /* libsqlite3.dylib */,
 			);
 			name = "System Frameworks";
+			sourceTree = "<group>";
+		};
+		ACC8432B1C8E776E00C2F81E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				ACC8432C1C8E782900C2F81E /* Artifact.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */,
+				ACC8432D1C8E782900C2F81E /* Artifact.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
