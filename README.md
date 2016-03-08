@@ -33,4 +33,4 @@ The following **optional** features are implemented:
 
 Schema: 
 
-<img src='http://imgur.com/aiyACIH' title='Schema' width='' alt='Schema' />
+<img src='http://i.imgur.com/aiyACIH.png' title='Schema' width='' alt='Schema' />
