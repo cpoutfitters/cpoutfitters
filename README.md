@@ -30,3 +30,7 @@ The following **optional** features are implemented:
 ## Wireframe
 
 ![Alt text](/wireframes.png?raw=true "Wireframe")
+
+Schema: 
+
+<img src='http://imgur.com/aiyACIH' title='Schema' width='' alt='Schema' />
