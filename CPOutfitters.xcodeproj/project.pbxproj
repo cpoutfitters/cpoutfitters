@@ -64,6 +64,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07E35B511C8FE8480078B338 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
 		3494763A36772197B86DBB83 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +111,7 @@
 		81BA81471A49DA1800E65899 /* CPOutfitters */ = {
 			isa = PBXGroup;
 			children = (
+				07E35B511C8FE8480078B338 /* UI */,
 				ACC8432B1C8E776E00C2F81E /* Models */,
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
 				814C3AC61B69877600E307BB /* Main.storyboard */,
@@ -374,12 +382,13 @@
 			baseConfigurationReference = 983C4A4F0E6B5C2D88C559FD /* Pods-CPOutfitters.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.snazzylama.CPOutfitters;
 				PRODUCT_NAME = CPOutfitters;
@@ -392,12 +401,13 @@
 			baseConfigurationReference = D83F539CA6BFA79F2B59D1B1 /* Pods-CPOutfitters.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.snazzylama.CPOutfitters;
 				PRODUCT_NAME = CPOutfitters;
