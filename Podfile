@@ -5,5 +5,6 @@ target 'CPOutfitters' do
 
 pod 'Parse'
 pod 'ParseUI'
+pod 'FastttCamera'
 
 end
