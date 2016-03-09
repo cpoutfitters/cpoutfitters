@@ -18,8 +18,6 @@
 		81BA81791A49E0DB00E65899 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA81781A49E0DB00E65899 /* AudioToolbox.framework */; };
 		81BA817B1A49E0E500E65899 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817A1A49E0E500E65899 /* SystemConfiguration.framework */; };
 		81BA817F1A49E0F000E65899 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */; };
-		A49C2C961C8FF32F00779DA2 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49C2C951C8FF32F00779DA2 /* CameraViewController.swift */; };
-		A49C2C991C8FF57000779DA2 /* Camera.xib in Resources */ = {isa = PBXBuildFile; fileRef = A49C2C981C8FF57000779DA2 /* Camera.xib */; };
 		AC0DA81C1C8FC62E007B6723 /* Outfit.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0DA81B1C8FC62E007B6723 /* Outfit.swift */; };
 		AC0DA81E1C8FCE09007B6723 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0DA81D1C8FCE09007B6723 /* HomeViewController.swift */; };
 		ACC8432D1C8E782900C2F81E /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC8432C1C8E782900C2F81E /* Article.swift */; };
@@ -41,8 +39,6 @@
 		81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		81BA81801A49E10C00E65899 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		983C4A4F0E6B5C2D88C559FD /* Pods-CPOutfitters.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CPOutfitters.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CPOutfitters/Pods-CPOutfitters.debug.xcconfig"; sourceTree = "<group>"; };
-		A49C2C951C8FF32F00779DA2 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
-		A49C2C981C8FF57000779DA2 /* Camera.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Camera.xib; sourceTree = "<group>"; };
 		AC0DA81B1C8FC62E007B6723 /* Outfit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Outfit.swift; sourceTree = "<group>"; };
 		AC0DA81D1C8FCE09007B6723 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		ACC8432C1C8E782900C2F81E /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
@@ -68,6 +64,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07E35B511C8FE8480078B338 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
 		3494763A36772197B86DBB83 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -108,13 +111,12 @@
 		81BA81471A49DA1800E65899 /* CPOutfitters */ = {
 			isa = PBXGroup;
 			children = (
-				A49C2C971C8FF52D00779DA2 /* Views */,
+				07E35B511C8FE8480078B338 /* UI */,
 				ACC8432B1C8E776E00C2F81E /* Models */,
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
 				814C3AC61B69877600E307BB /* Main.storyboard */,
 				07237DE91C6D93300057FFF4 /* Launch Screen.storyboard */,
 				AC0DA81D1C8FCE09007B6723 /* HomeViewController.swift */,
-				A49C2C951C8FF32F00779DA2 /* CameraViewController.swift */,
 			);
 			path = CPOutfitters;
 			sourceTree = "<group>";
@@ -141,14 +143,6 @@
 				81BA81761A49E0D500E65899 /* libsqlite3.dylib */,
 			);
 			name = "System Frameworks";
-			sourceTree = "<group>";
-		};
-		A49C2C971C8FF52D00779DA2 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				A49C2C981C8FF57000779DA2 /* Camera.xib */,
-			);
-			name = Views;
 			sourceTree = "<group>";
 		};
 		ACC8432B1C8E776E00C2F81E /* Models */ = {
@@ -221,7 +215,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A49C2C991C8FF57000779DA2 /* Camera.xib in Resources */,
 				07237DEA1C6D93300057FFF4 /* Launch Screen.storyboard in Resources */,
 				814C3ACA1B69877600E307BB /* Main.storyboard in Resources */,
 				814C3ACB1B69877600E307BB /* Images.xcassets in Resources */,
@@ -284,7 +277,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACC8432D1C8E782900C2F81E /* Article.swift in Sources */,
-				A49C2C961C8FF32F00779DA2 /* CameraViewController.swift in Sources */,
 				AC0DA81C1C8FC62E007B6723 /* Outfit.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
 				AC0DA81E1C8FCE09007B6723 /* HomeViewController.swift in Sources */,
@@ -390,12 +382,13 @@
 			baseConfigurationReference = 983C4A4F0E6B5C2D88C559FD /* Pods-CPOutfitters.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.snazzylama.CPOutfitters;
 				PRODUCT_NAME = CPOutfitters;
@@ -408,12 +401,13 @@
 			baseConfigurationReference = D83F539CA6BFA79F2B59D1B1 /* Pods-CPOutfitters.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.snazzylama.CPOutfitters;
 				PRODUCT_NAME = CPOutfitters;
