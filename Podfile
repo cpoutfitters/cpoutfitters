@@ -4,6 +4,6 @@ use_frameworks!
 target 'CPOutfitters' do
 
 pod 'Parse'
+pod 'ParseUI'
 
 end
-
