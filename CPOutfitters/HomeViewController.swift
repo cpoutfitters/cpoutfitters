@@ -18,13 +18,32 @@ class HomeViewController: UIViewController, PFLogInViewControllerDelegate {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         print(PFUser.currentUser()?.username)
-        if (PFUser.currentUser()?.username == nil) {
-            let loginViewController = PFLogInViewController()
-            loginViewController.delegate = self
-            self.presentViewController(loginViewController, animated: false, completion: nil)
+        
+        if PFUser.currentUser() == nil {
+            if (PFUser.currentUser()?.username == nil) {
+                let loginViewController = PFLogInViewController()
+                loginViewController.delegate = self
+                self.presentViewController(loginViewController, animated: false, completion: nil)
+            } else {
+                print("User not logged in!")
+            }
         } else {
-            print("User not logged in!")
+            presentLoggedInAlert()
         }
+        
+    }
+    
+    func presentLoggedInAlert() {
+        let alertController = UIAlertController(title: "You're logged in", message: "Welcome!", preferredStyle: .Alert)
+        let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        alertController.addAction(OKAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func logInViewController(logInController: PFLogInViewController, didLogInUser user: PFUser) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+        presentLoggedInAlert()
     }
 
     override func didReceiveMemoryWarning() {

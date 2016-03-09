@@ -2,7 +2,7 @@
 //  CameraViewController.swift
 //  CPOutfitters
 //
-//  Created by Cory Thompson on 3/8/16.
+//  Created by Cory Thompson on 3/9/16.
 //  Copyright © 2016 SnazzyLLama. All rights reserved.
 //
 
@@ -17,9 +17,9 @@ class CameraViewController: UIViewController, FastttCameraDelegate {
         // Do any additional setup after loading the view.
         let fastCamera = FastttCamera()
         fastCamera.delegate = self
-        fastttAddChildViewController(fastCamera)
-        fastCamera.view.frame = self.view.frame
         
+        self.fastttAddChildViewController(fastCamera)
+        fastCamera.view.frame = self.view.frame
     }
 
     override func didReceiveMemoryWarning() {
