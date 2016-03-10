@@ -9,22 +9,31 @@
 import UIKit
 import ParseUI
 
-class HomeViewController: UIViewController, PFLogInViewControllerDelegate {
-
+class HomeViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        print(PFUser.currentUser()?.username)
-        if (PFUser.currentUser()?.username == nil) {
+        
+        let current_user = PFUser.currentUser()?.username
+        if (current_user == nil) {
             let loginViewController = PFLogInViewController()
             loginViewController.delegate = self
-            self.presentViewController(loginViewController, animated: false, completion: nil)
+            loginViewController.signUpController?.delegate = self
+            loginViewController.emailAsUsername = true
+            self.presentViewController(loginViewController, animated: true, completion: nil)
         } else {
-            print("User not logged in!")
+            print("User \(current_user) has logged in!")
         }
+    }
+    func logInViewController(logInController: PFLogInViewController, didLogInUser user: PFUser) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    func signUpViewController(signUpController: PFSignUpViewController, didSignUpUser user: PFUser) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
