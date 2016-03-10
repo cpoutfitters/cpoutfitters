@@ -20,6 +20,7 @@ class Article: PFObject {
     var image: PFFile?
     var last_worn: NSDate?
     var use_count: Int?
+    var rainy: Bool?
     
     init(object: PFObject) {
         super.init()

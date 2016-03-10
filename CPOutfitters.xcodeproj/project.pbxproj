@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		07237DEA1C6D93300057FFF4 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07237DE91C6D93300057FFF4 /* Launch Screen.storyboard */; };
 		076FF4F71C91101400265515 /* Wardrobe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076FF4F61C91101400265515 /* Wardrobe.swift */; };
+		07DC9BF31C922D750009AD2E /* WardrobeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DC9BF21C922D750009AD2E /* WardrobeViewController.swift */; };
+		07DC9BF51C922E9A0009AD2E /* WardrobeTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DC9BF41C922E9A0009AD2E /* WardrobeTypeCell.swift */; };
+		07DC9BF71C9231420009AD2E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DC9BF61C9231420009AD2E /* User.swift */; };
 		2812C75B04373082475B86B1 /* Pods_CPOutfitters.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBC4224AA07ABDF4B24E0BB8 /* Pods_CPOutfitters.framework */; };
 		814C3ACA1B69877600E307BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 814C3AC61B69877600E307BB /* Main.storyboard */; };
 		814C3ACB1B69877600E307BB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 814C3AC81B69877600E307BB /* Images.xcassets */; };
@@ -29,6 +32,9 @@
 /* Begin PBXFileReference section */
 		07237DE91C6D93300057FFF4 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		076FF4F61C91101400265515 /* Wardrobe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wardrobe.swift; sourceTree = "<group>"; };
+		07DC9BF21C922D750009AD2E /* WardrobeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WardrobeViewController.swift; sourceTree = "<group>"; };
+		07DC9BF41C922E9A0009AD2E /* WardrobeTypeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WardrobeTypeCell.swift; sourceTree = "<group>"; };
+		07DC9BF61C9231420009AD2E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		814C3AC71B69877600E307BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		814C3AC81B69877600E307BB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		814C3AC91B69877600E307BB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -73,6 +79,8 @@
 		07E35B511C8FE8480078B338 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				07DC9BF21C922D750009AD2E /* WardrobeViewController.swift */,
+				07DC9BF41C922E9A0009AD2E /* WardrobeTypeCell.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -159,6 +167,7 @@
 				ACC8432C1C8E782900C2F81E /* Article.swift */,
 				AC0DA81B1C8FC62E007B6723 /* Outfit.swift */,
 				076FF4F61C91101400265515 /* Wardrobe.swift */,
+				07DC9BF61C9231420009AD2E /* User.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -289,8 +298,11 @@
 				A420435F1C90BB820034D406 /* CameraViewController.swift in Sources */,
 				076FF4F71C91101400265515 /* Wardrobe.swift in Sources */,
 				AC0DA81C1C8FC62E007B6723 /* Outfit.swift in Sources */,
+				07DC9BF51C922E9A0009AD2E /* WardrobeTypeCell.swift in Sources */,
+				07DC9BF31C922D750009AD2E /* WardrobeViewController.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
 				AC0DA8201C8FD73B007B6723 /* LoginViewController.swift in Sources */,
+				07DC9BF71C9231420009AD2E /* User.swift in Sources */,
 				AC0DA81E1C8FCE09007B6723 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
