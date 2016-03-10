@@ -10,8 +10,6 @@ import UIKit
 import Parse
 
 class Article: PFObject {
-    
-    var wardrobe_id: String?
     var type: String?
     var short: Bool?
     var primary_color: String?
@@ -26,7 +24,6 @@ class Article: PFObject {
     init(object: PFObject) {
         super.init()
         
-        self.wardrobe_id = "\(object["wardrobe_id"])"
         self.type = object["type"] as? String
         self.short = object["short"] as? Bool
         self.primary_color = object["primary_color"] as? String
@@ -39,7 +36,7 @@ class Article: PFObject {
         self.use_count = object["user_count"] as? Int
     }
     
-    class func articleWithArray(array: [PFObject]) -> [Article] {
+    class func articlesWithArray(array: [PFObject]) -> [Article] {
         var articles = [Article]()
         for element in array {
             articles.append(Article(object: element))
@@ -55,11 +52,13 @@ class Article: PFObject {
         }
         return nil
     }
+    
     class func fetchArticlesWithCompletion(completion completion:([PFObject]?, NSError?) -> ()) {
         let query = PFQuery(className: "Article")
         query.limit = 40
         query.findObjectsInBackgroundWithBlock(completion)
     }
+    
     class func loadProfileImageWithCompletion(params: NSDictionary, completion:([PFObject]?, NSError?) -> ()) {
         let obj = params
         var userName: String?
@@ -72,6 +71,7 @@ class Article: PFObject {
         query.limit = 20
         query.findObjectsInBackgroundWithBlock(completion)
     }
+    
     class func searchPostsWithCompletion(params: NSDictionary, completion:([PFObject]?, NSError?) -> ()) {
         let obj = params
         var searchKey: String?

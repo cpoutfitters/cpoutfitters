@@ -10,5 +10,5 @@ import UIKit
 import Parse
 
 class Outfit: PFObject {
-
+    var components: [Article]!
 }
