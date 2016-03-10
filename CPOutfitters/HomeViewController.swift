@@ -9,41 +9,31 @@
 import UIKit
 import ParseUI
 
-class HomeViewController: UIViewController, PFLogInViewControllerDelegate {
-
+class HomeViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        print(PFUser.currentUser()?.username)
         
-        if PFUser.currentUser() == nil {
-            if (PFUser.currentUser()?.username == nil) {
-                let loginViewController = PFLogInViewController()
-                loginViewController.delegate = self
-                self.presentViewController(loginViewController, animated: false, completion: nil)
-            } else {
-                print("User not logged in!")
-            }
+        let current_user = PFUser.currentUser()?.username
+        if (current_user == nil) {
+            let loginViewController = PFLogInViewController()
+            loginViewController.delegate = self
+            loginViewController.signUpController?.delegate = self
+            loginViewController.emailAsUsername = true
+            self.presentViewController(loginViewController, animated: true, completion: nil)
         } else {
-            presentLoggedInAlert()
+            print("User \(current_user) has logged in!")
         }
-        
     }
-    
-    func presentLoggedInAlert() {
-        let alertController = UIAlertController(title: "You're logged in", message: "Welcome!", preferredStyle: .Alert)
-        let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in self.dismissViewControllerAnimated(true, completion: nil)
-        }
-        alertController.addAction(OKAction)
-        self.presentViewController(alertController, animated: true, completion: nil)
-    }
-    
     func logInViewController(logInController: PFLogInViewController, didLogInUser user: PFUser) {
         self.dismissViewControllerAnimated(true, completion: nil)
-        presentLoggedInAlert()
+    }
+    func signUpViewController(signUpController: PFSignUpViewController, didSignUpUser user: PFUser) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
