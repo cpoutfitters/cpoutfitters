@@ -18,6 +18,8 @@ class HomeViewController: UIViewController, PFLogInViewControllerDelegate, PFSig
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
+        
+        
         let current_user = PFUser.currentUser()?.username
         if (current_user == nil) {
             let loginViewController = PFLogInViewController()
