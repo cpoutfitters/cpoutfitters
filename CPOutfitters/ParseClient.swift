@@ -10,12 +10,12 @@ import UIKit
 import Parse
 
 class ParseClient: NSObject {
-    
+
     static let sharedInstance = ParseClient()
-    
+
     func fetchArticles(params: NSDictionary, completion:([Article]?, NSError?) -> ()) {
         let query = PFQuery(className: "Article")
-        
+
         //And of predicates
         query.whereKey("user_id", equalTo: "hr9PAFNpcg")
         query.limit = 40
@@ -25,11 +25,11 @@ class ParseClient: NSObject {
             completion(articleArray, nil)
         }
     }
-    
+
     func saveArticle(articleObject: Article, completion:(success: Bool?, error: NSError?) -> ()) {
-        
+
         let article = PFObject(className: "Article")
-        
+
         article["user_id"] = articleObject.userId
         article["type"] = articleObject.type
         article["short"] = articleObject.short
@@ -41,7 +41,7 @@ class ParseClient: NSObject {
         article["media_image"] = Article.getPFFileFromImage(UIImage(named: "event"))
         article["last_worn"] = articleObject.lastWorn
         article["use_count"] = articleObject.useCount
-        
+
         article.saveInBackgroundWithBlock {
             (success: Bool?, error: NSError?) -> Void in
             if (success == true ) {
@@ -53,13 +53,13 @@ class ParseClient: NSObject {
             }
         }
     }
-    
+
     func fetchOutfitsWithCompletion(completion completion:([PFObject]?, NSError?) -> ()) {
         let query = PFQuery(className: "Outfit")
         query.limit = 40
         query.findObjectsInBackgroundWithBlock(completion)
     }
-    
+
     // Function for deletion of article from server
     func deleteArticle(article: Article, completion:(success: Bool?, error: NSError?) -> ()) {
         article.deleteInBackgroundWithBlock({ (success: Bool?, error: NSError?) -> Void in
@@ -71,6 +71,7 @@ class ParseClient: NSObject {
         })
     }
     //Search with conjuctions across category, color and type
+
     func searchArticlesWithCompletion(searchString: String, completion:([PFObject]?, NSError?) -> ()) {
 
         let query = PFQuery(className: "Article")
@@ -79,5 +80,4 @@ class ParseClient: NSObject {
         query.limit = 20
         query.findObjectsInBackgroundWithBlock(completion)
     }
-
 }
