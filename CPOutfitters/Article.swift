@@ -34,7 +34,7 @@ class Article: PFObject {
         self.sharedWith = object["shared_with"] as? [PFUser]
         self.mediaImage = object["image"] as? PFFile
         self.lastWorn = object["last_worn"] as? NSDate
-        self.useCount = object["user_count"] as? Int
+        self.useCount = object["use_count"] as? Int
     }
     
     class func articlesWithArray(array: [PFObject]) -> [Article] {

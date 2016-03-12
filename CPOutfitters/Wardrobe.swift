@@ -15,5 +15,11 @@ class Wardrobe: PFObject {
     var savedOutfits: [Outfit]?
     var articles: [Article]?
     
-    
+    init(object: PFObject) {
+        super.init()
+
+        self.sharedWith = object["shared_with"] as? [PFUser]
+        self.savedOutfits = object["favorite_outfits"] as? [Outfit]
+        self.articles = object["articles"] as? [Article]
+    }
 }

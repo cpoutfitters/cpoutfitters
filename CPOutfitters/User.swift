@@ -17,4 +17,13 @@ class User: PFObject {
     var profileImage: PFFile?
     var bio: String?
     
+    init(object: PFObject) {
+        super.init()
+        
+        self.username = object["username"] as? String
+        self.email = object["email"] as? String
+        self.friends = object["friends"] as? [PFUser]
+        self.profileImage = object["profile_image"] as? PFFile
+        self.bio = object["bio"] as? String
+    }
 }

@@ -11,12 +11,25 @@ import Parse
 
 class Event: PFObject {
     
-    var host: User?
+    var host: PFUser?
     var details: String?
     var date: NSDate?
     var title: String?
     var invited: [PFUser]?
     var attending: [PFUser]?
-    var not_attending: [PFUser]?
-    var outfit: Outfit?
+    var notAttending: [PFUser]?
+    var outfits: NSDictionary?
+    
+    init(object: PFObject) {
+        super.init()
+        
+        self.host = object["host"] as? PFUser
+        self.details = object["details"] as? String
+        self.date = object["date"] as? NSDate
+        self.title = object["title"] as? String
+        self.invited = object["invited"] as? [PFUser]
+        self.attending = object["attending"] as? [PFUser]
+        self.notAttending = object["not_attending"] as? [PFUser]
+        self.outfits = object["outfit"] as? NSDictionary
+    }
 }
