@@ -11,12 +11,13 @@ import Parse
 
 class ParseClient: NSObject {
     
-    class var sharedInstance: ParseClient {
-        struct Static {
-            static let instance = ParseClient()
-        }
-        return Static.instance
-    }
+//    class var sharedInstance: ParseClient {
+//        struct Static {
+//            static let instance =  ParseClient()
+//        }
+//        return Static.instance
+//    }
+    static let sharedInstance = ParseClient()
     
     func fetchArticlesWithCompletion(completion completion:([PFObject]?, NSError?) -> ()) {
         let query = PFQuery(className: "Article")

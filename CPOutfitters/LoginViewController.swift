@@ -15,7 +15,7 @@ class LoginViewController: PFLogInViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+                
         backgroundImageView = UIImageView(image: UIImage(named: "LoginBackground"))
         backgroundImageView.contentMode = UIViewContentMode.ScaleAspectFill
         self.logInView!.insertSubview(backgroundImageView, atIndex: 0)
