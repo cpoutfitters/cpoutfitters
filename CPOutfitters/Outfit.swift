@@ -16,7 +16,7 @@ class Outfit: PFObject {
     var favoriteStatus: Bool?
     var sharedWith: [PFUser]?
     var lastWorn: NSDate?
-    var useCount: Int?
+    var useCount: Int = 0
     
     init(object: PFObject) {
         super.init()
@@ -26,7 +26,7 @@ class Outfit: PFObject {
         self.favoriteStatus = object["favorite"] as? Bool
         self.sharedWith = object["shared_with"] as? [PFUser]
         self.lastWorn = object["last_worn"] as? NSDate
-        self.useCount = object["use_count"] as? Int
+        self.useCount = (object["use_count"] as? Int) ?? 0
     }
 
 }

@@ -20,7 +20,7 @@ class Article: PFObject {
     var sharedWith: [PFUser]?
     var mediaImage: PFFile?
     var lastWorn: NSDate?
-    var useCount: Int?
+    var useCount: Int = 0
     
     init(object: PFObject) {
         super.init()
@@ -34,7 +34,7 @@ class Article: PFObject {
         self.sharedWith = object["shared_with"] as? [PFUser]
         self.mediaImage = object["image"] as? PFFile
         self.lastWorn = object["last_worn"] as? NSDate
-        self.useCount = object["use_count"] as? Int
+        self.useCount = (object["use_count"] as? Int) ?? 0
     }
     
     class func articlesWithArray(array: [PFObject]) -> [Article] {
@@ -53,40 +53,4 @@ class Article: PFObject {
         }
         return nil
     }
-    
-    class func fetchArticlesWithCompletion(completion completion:([PFObject]?, NSError?) -> ()) {
-        let query = PFQuery(className: "Article")
-        query.limit = 40
-        query.findObjectsInBackgroundWithBlock(completion)
-    }
-    
-    class func loadProfileImageWithCompletion(params: NSDictionary, completion:([PFObject]?, NSError?) -> ()) {
-        let obj = params
-        var userName: String?
-        for (key, value) in obj {
-            userName = value as? String
-        }
-        print(userName!)
-        let query = PFQuery(className: "_User")
-        query.whereKey("username", equalTo: userName!)
-        query.limit = 20
-        query.findObjectsInBackgroundWithBlock(completion)
-    }
-    
-    class func searchPostsWithCompletion(params: NSDictionary, completion:([PFObject]?, NSError?) -> ()) {
-        let obj = params
-        var searchKey: String?
-        var searchValue: String?
-        for (key, value) in obj {
-            searchKey = key as? String
-            searchValue = value as? String
-        }
-        print("Key: \(searchKey!), Value: \(searchValue!)")
-        let query = PFQuery(className: "Post")
-        query.whereKey(searchKey!, containsString: searchValue!)
-        query.orderByDescending("timestamp")
-        query.limit = 20
-        query.findObjectsInBackgroundWithBlock(completion)
-    }
-
 }

@@ -27,6 +27,7 @@
 		AC9F6EE61C93D23C00D6B9DE /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9F6EE51C93D23C00D6B9DE /* Feedback.swift */; };
 		AC9F6EE81C93D3A600D6B9DE /* ScheduledOutfit.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9F6EE71C93D3A600D6B9DE /* ScheduledOutfit.swift */; };
 		AC9F6EEA1C93D43300D6B9DE /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9F6EE91C93D43300D6B9DE /* Event.swift */; };
+		AC9F6EEC1C93F13500D6B9DE /* RestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9F6EEB1C93F13500D6B9DE /* RestClient.swift */; };
 		ACC8432D1C8E782900C2F81E /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC8432C1C8E782900C2F81E /* Article.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +56,7 @@
 		AC9F6EE51C93D23C00D6B9DE /* Feedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
 		AC9F6EE71C93D3A600D6B9DE /* ScheduledOutfit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduledOutfit.swift; sourceTree = "<group>"; };
 		AC9F6EE91C93D43300D6B9DE /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		AC9F6EEB1C93F13500D6B9DE /* RestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestClient.swift; sourceTree = "<group>"; };
 		ACC8432C1C8E782900C2F81E /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		CBC4224AA07ABDF4B24E0BB8 /* Pods_CPOutfitters.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CPOutfitters.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D83F539CA6BFA79F2B59D1B1 /* Pods-CPOutfitters.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CPOutfitters.release.xcconfig"; path = "Pods/Target Support Files/Pods-CPOutfitters/Pods-CPOutfitters.release.xcconfig"; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 		AC9F6EE11C93C79300D6B9DE /* API Client */ = {
 			isa = PBXGroup;
 			children = (
+				AC9F6EEB1C93F13500D6B9DE /* RestClient.swift */,
 			);
 			name = "API Client";
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				AC9F6EEA1C93D43300D6B9DE /* Event.swift in Sources */,
 				A420435F1C90BB820034D406 /* CameraViewController.swift in Sources */,
 				AC9F6EE81C93D3A600D6B9DE /* ScheduledOutfit.swift in Sources */,
+				AC9F6EEC1C93F13500D6B9DE /* RestClient.swift in Sources */,
 				AC9F6EE61C93D23C00D6B9DE /* Feedback.swift in Sources */,
 				076FF4F71C91101400265515 /* Wardrobe.swift in Sources */,
 				AC0DA81C1C8FC62E007B6723 /* Outfit.swift in Sources */,
