@@ -19,39 +19,52 @@ class ParseClient: NSObject {
 //    }
     static let sharedInstance = ParseClient()
     
-    func fetchArticlesWithCompletion(completion completion:([PFObject]?, NSError?) -> ()) {
+    func fetchArticlesWithCompletion(completion completion:([Article]?, NSError?) -> ()) {
         let query = PFQuery(className: "Article")
         query.limit = 40
         query.findObjectsInBackgroundWithBlock {
             (articles: [PFObject]?, error: NSError?) -> Void in
-            completion(articles, nil)
+            let articleArray = Article.articlesWithArray(articles!)
+            completion(articleArray, nil)
         }
     }
     
-    /* Reusable save with completion block */
-    func saveArticleWithCompletion(completion completion:(article: PFObject?, error: NSError?) -> ()) {
-        let article = PFObject(className: "Article")
-        article.saveInBackgroundWithBlock {
-            (success: Bool?, error: NSError?) -> Void in
-            if ((success) != nil) {
-                completion(article: article, error: nil)
+    func fetchArticles(success: ([Article]) -> (), failure: (NSError) -> ()) {
+        let query = PFQuery(className: "Article")
+        query.limit = 40
+        query.findObjectsInBackgroundWithBlock {
+            (articles: [PFObject]?, error: NSError?) -> Void in
+            if let articles = articles{
+                let articleArray = Article.articlesWithArray(articles)
+                success(articleArray)
             } else {
-                completion(article: nil, error: error)
+                failure(error!)
             }
         }
     }
     
-    /* Reusable save block without completion block */
-    func saveArticle(completion completion:(article: PFObject?, error: NSError?) -> ()) {
+    func saveArticleWithCompletion(articleObject: Article?, completion:(success: Bool?, error: NSError?) -> ()) {
         let article = PFObject(className: "Article")
-        article.saveInBackgroundWithBlock {
-            (success: Bool?, error: NSError?) -> Void in
-            if ((success) != nil) {
-                print("Saved article succesfully")
-            } else {
-                print("Error: \(error?.localizedDescription)")
-            }
-        }
+        
+        article["type"] = articleObject!.type!
+        article["short"] = articleObject!.short!
+        article["primary_color"] = articleObject!.primaryColor!
+        article["primary_color_categories"] = articleObject!.primaryColorCategories!
+        article["attire"] = articleObject!.attire!
+        article["favorite_status"] = articleObject!.favoriteStatus!
+        article["shared_with"] = articleObject!.sharedWith!
+        article["media_image"] = articleObject!.mediaImage!
+        article["last_worn"] = articleObject!.lastWorn!
+        article["use_count"] = articleObject!.useCount
+        
+//        article.saveInBackgroundWithBlock {
+//            (success: Bool?, error: NSError?) -> Void in
+//            if ((success) != nil) {
+//                completion(article: article, error: nil)
+//            } else {
+//                completion(article: nil, error: error)
+//            }
+//        }
     }
     
     func fetchOutfitsWithCompletion(completion completion:([PFObject]?, NSError?) -> ()) {

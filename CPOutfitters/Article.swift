@@ -16,7 +16,7 @@ class Article: PFObject {
     var primaryColor: String?
     var primaryColorCategories: [String]?
     var attire: [String]?
-    var favoriteStatus: Bool?
+    var favorite: Bool?
     var sharedWith: [PFUser]?
     var mediaImage: PFFile?
     var lastWorn: NSDate?
@@ -30,7 +30,7 @@ class Article: PFObject {
         self.primaryColor = object["primary_color"] as? String
         self.primaryColorCategories = object["primary_color_categories"] as? [String]
         self.attire = object["attire"] as? [String]
-        self.favoriteStatus = object["favorite"] as? Bool
+        self.favorite = object["favorite"] as? Bool
         self.sharedWith = object["shared_with"] as? [PFUser]
         self.mediaImage = object["image"] as? PFFile
         self.lastWorn = object["last_worn"] as? NSDate
