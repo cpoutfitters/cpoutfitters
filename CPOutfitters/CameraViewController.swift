@@ -7,19 +7,14 @@
 //
 
 import UIKit
-import FastttCamera
 
-class CameraViewController: UIViewController, FastttCameraDelegate {
+class CameraViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let fastCamera = FastttCamera()
-        fastCamera.delegate = self
         
-        self.fastttAddChildViewController(fastCamera)
-        fastCamera.view.frame = self.view.frame
     }
 
     override func didReceiveMemoryWarning() {
