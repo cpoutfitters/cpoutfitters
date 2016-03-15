@@ -10,9 +10,11 @@ import UIKit
 
 class CameraViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    @IBOutlet weak var tagsTextField: UITextField!
-    @IBOutlet weak var posterImageView: UIImageView!
+    @IBOutlet weak var longOrShortSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var pictureImageView: UIImageView!
+
     @IBOutlet weak var averageColorImageView: UIImageView!
+    
     var libraryHasBeenViewed: Bool!
     var vc: UIImagePickerController!
     
@@ -22,20 +24,14 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         // Do any additional setup after loading the view.
         libraryHasBeenViewed = false
         vc = UIImagePickerController()
+        vc.delegate = self
+        vc.allowsEditing = true
         
     }
     
     override func viewDidAppear(animated: Bool) {
         
-        if let _ = posterImageView.image {
-            posterImageView.hidden = false
-            averageColorImageView.hidden = false
-            tagsTextField.hidden = false
-        } else {
-            averageColorImageView.hidden = true
-            tagsTextField.hidden = true
-            posterImageView.hidden = true
-        }
+    
         
         
     }
@@ -46,31 +42,50 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
             let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
             
             // Do something with the images (based on your use case)
-            posterImageView.image = editedImage
+            pictureImageView.image = editedImage
             // Dismiss UIImagePickerController to go back to your original view controller
             dismissViewControllerAnimated(true, completion: nil)
     }
 
-    @IBAction func onCameraButton(sender: AnyObject) {
-        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
-            vc.sourceType = .Camera
-            self.presentViewController(vc, animated: true, completion: nil)
-        } else {
-            print("camera not available")
-        }
-        
-    }
-    
-    @IBAction func onLibraryButton(sender: AnyObject) {
-        vc.sourceType = .PhotoLibrary
-        self.presentViewController(vc, animated: true, completion: nil)
-    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func onAnOccasionButton(sender: AnyObject) {
+        let selected = sender as! UIButton
+        print(selected.currentTitle)
+    }
 
+    @IBAction func onActionCamera(sender: AnyObject) {
+        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
+            vc.sourceType = .Camera
+            self.presentViewController(vc, animated: true, completion: nil)
+        } else {
+            print("camera unavailable")
+        }
+    }
+    
+    @IBAction func onGetAverageColorFromPicture(sender: UITapGestureRecognizer) {
+        print("Tapped your picture")
+        let location = sender.locationInView(pictureImageView)
+        print(location)
+        let newSize = CGSizeMake(CGFloat(238), CGFloat(256))
+
+        if let image = pictureImageView.image {
+            let newImage = image.resize(newSize)
+            
+            let clip = CGRectMake(location.x, location.y, newSize.width, newSize.height)
+            let imageClip = CGImageCreateWithImageInRect(newImage.CGImage, clip)
+            averageColorImageView.image = UIImage(CGImage: imageClip!)
+            
+        }
+    }
+    
+    
+    
+    
     /*
     // MARK: - Navigation
 
