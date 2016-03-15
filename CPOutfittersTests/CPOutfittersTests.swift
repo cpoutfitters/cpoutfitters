@@ -36,6 +36,9 @@ class CPOutfittersTests: XCTestCase {
     
     func testArticles() {
         let article = Article()
-        XCTAssertEqual(article.type, "shirt", "Not equal")
+        article.type = "shirt"
+        
+        //create and populat, store, fetch and then compare
+        XCTAssertEqual(article.type!, "shirt", "Not equal")
     }
 }
