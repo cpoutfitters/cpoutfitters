@@ -10,12 +10,11 @@ import UIKit
 
 class WardrobeTypeCell: UITableViewCell {
 
-    @IBOutlet weak var pictureView: UIImageView!
-    @IBOutlet weak var labelView: UILabel!
+    @IBOutlet weak var containerView: ImageLabelView!
     
     var type: String! {
         didSet {
-            labelView.text = type
+            containerView.labelView.text = type
             
             switch(type) {
                 case "Tops": fallthrough

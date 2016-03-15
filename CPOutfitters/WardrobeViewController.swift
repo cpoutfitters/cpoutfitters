@@ -39,9 +39,17 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
         return 3
     }
     
-    func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
-        return ["Tops", "Bottoms", "Footwear"]
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0: return "Tops"
+        case 1: return "Bottoms"
+        default: return "Footwear"
+        }
     }
+//    
+//    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        
+//    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return typeListing[types[section]]!.count
