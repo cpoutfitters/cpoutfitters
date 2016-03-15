@@ -33,4 +33,4 @@ The following **optional** features are implemented:
 
 Schema: 
 
-![Alt text](/schema.png?raw=true "Schema")
+![Alt text](/Schema.png?raw=true "Schema")
