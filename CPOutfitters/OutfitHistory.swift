@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class ScheduledOutfit: PFObject {
+class OutfitHistory: PFObject {
     
     var date: NSDate?
     var outfit: Outfit?

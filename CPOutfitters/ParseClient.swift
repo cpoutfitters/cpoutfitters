@@ -11,16 +11,12 @@ import Parse
 
 class ParseClient: NSObject {
     
-//    class var sharedInstance: ParseClient {
-//        struct Static {
-//            static let instance =  ParseClient()
-//        }
-//        return Static.instance
-//    }
     static let sharedInstance = ParseClient()
     
-    func fetchArticles(completion completion:([Article]?, NSError?) -> ()) {
+    func fetchArticles(params: NSDictionary, completion:([Article]?, NSError?) -> ()) {
         let query = PFQuery(className: "Article")
+        
+        //And of predicates
         query.limit = 40
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
@@ -29,21 +25,7 @@ class ParseClient: NSObject {
         }
     }
     
-    func saveArticleWithCompletion(articleObject: Article?, completion:(success: Bool?, error: NSError?) -> ()) {
-        var article = PFObject(className: "Article")
-        
-        article = articleObject!
-        
-        article["type"] = articleObject!.type!
-        article["short"] = articleObject!.short!
-        article["primary_color"] = articleObject!.primaryColor!
-        article["primary_color_categories"] = articleObject!.primaryColorCategories!
-        article["attire"] = articleObject!.attire!
-        article["favorite_status"] = articleObject!.favorite!
-        article["shared_with"] = articleObject!.sharedWith!
-        article["media_image"] = articleObject!.mediaImage!
-        article["last_worn"] = articleObject!.lastWorn!
-        article["use_count"] = articleObject!.useCount
+    func saveArticleWithCompletion(article: Article, completion:(success: Bool?, error: NSError?) -> ()) {
         
         article.saveInBackgroundWithBlock {
             (success: Bool?, error: NSError?) -> Void in

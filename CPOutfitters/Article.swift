@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class Article: PFObject {
+class Article: PFObject, PFSubclassing {
     
     var type: String?
     var short: Bool?
@@ -21,6 +21,19 @@ class Article: PFObject {
     var mediaImage: PFFile?
     var lastWorn: NSDate?
     var useCount: Int = 0
+    
+    override class func initialize() {
+        struct Static {
+            static var onceToken : dispatch_once_t = 0;
+        }
+        dispatch_once(&Static.onceToken) {
+            self.registerSubclass()
+        }
+    }
+    
+    static func parseClassName() -> String {
+        return "Article"
+    }
     
     init(object: PFObject) {
         super.init()
