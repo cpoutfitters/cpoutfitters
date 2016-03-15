@@ -11,34 +11,19 @@ import Parse
 
 class OutfitHistory: PFObject {
     
-    var owner: User?
     var date: NSDate?
     var outfit: Outfit?
-    var sharedWith: [User]?
-    
-    override class func initialize() {
-        struct Static {
-            static var onceToken : dispatch_once_t = 0;
-        }
-        dispatch_once(&Static.onceToken) {
-            self.registerSubclass()
-        }
-    }
-    
-    static func parseClassName() -> String {
-        return "OutfitHistory"
-    }
-    
-    override init() {
-        super.init()
-    }
+    var owner: PFUser?
+    var sharedWith: [PFUser]?
+    var feedback: String?
     
     init(object: PFObject) {
         super.init()
         
-        self.owner = object["owner"] as? User
         self.date = object["date"] as? NSDate
         self.outfit = object["outfit"] as? Outfit
-        self.sharedWith = object["shared_with"] as? [User]
+        self.owner = object["owner"] as? PFUser
+        self.sharedWith = object["shared_with"] as? [PFUser]
+        self.feedback = object["feedback"] as? String
     }
 }
