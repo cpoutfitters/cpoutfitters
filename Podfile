@@ -7,4 +7,5 @@ pod 'Parse'
 pod 'ParseUI'
 pod 'FastttCamera'
 
+link_with 'CPOutfitters', 'CPOutfittersTests'
 end
