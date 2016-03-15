@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ChameleonFramework
 
 class CameraViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -63,23 +64,32 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
             vc.sourceType = .Camera
             self.presentViewController(vc, animated: true, completion: nil)
         } else {
-            print("camera unavailable")
+            print("camera unavailable so we are using the photo library")
+            vc.sourceType = .PhotoLibrary
+            self.presentViewController(vc, animated: true, completion: nil)            
         }
     }
     
     @IBAction func onGetAverageColorFromPicture(sender: UITapGestureRecognizer) {
-        print("Tapped your picture")
         let location = sender.locationInView(pictureImageView)
-        print(location)
-        let newSize = CGSizeMake(CGFloat(238), CGFloat(256))
+        print("Tapped your picture at location: \(location)")
 
+        let newSize = CGSize(width: 50, height: 50)
         if let image = pictureImageView.image {
-            let newImage = image.resize(newSize)
-            
-            let clip = CGRectMake(location.x, location.y, newSize.width, newSize.height)
+            let newImage = image.resize(pictureImageView.frame.size)
+            let clip = CGRectMake(location.x - (newSize.width/2), location.y - (newSize.height/2), newSize.width, newSize.height)
             let imageClip = CGImageCreateWithImageInRect(newImage.CGImage, clip)
-            averageColorImageView.image = UIImage(CGImage: imageClip!)
             
+
+            let viewAverageColor = true        // change this to view the image vs the average color
+            
+            if viewAverageColor {
+                let averageColor = UIColor(averageColorFromImage: UIImage(CGImage: imageClip!))
+                averageColorImageView.backgroundColor = averageColor
+                print("The color saved is \(averageColor)")
+            } else {
+                averageColorImageView.image = UIImage(CGImage: imageClip!)
+            }
         }
     }
     

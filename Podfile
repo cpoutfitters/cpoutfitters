@@ -7,6 +7,7 @@ target 'CPOutfitters' do
 
 pod 'Parse'
 pod 'ParseUI'
+pod 'ChameleonFramework/Swift'
 
 end
 
