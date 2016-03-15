@@ -14,21 +14,12 @@ class HomeViewController: UIViewController, PFLogInViewControllerDelegate, PFSig
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let client = ParseClient.sharedInstance
-//        
-//        ParseClient.sharedInstance.fetchArticlesWithCompletion(completion: {(articles, error) -> () in
-//            for article in articles! {
-//                print(article.type)
-//            }
-//        })
-
-        client.fetchArticles(success: { (articles: [Article]) -> () in
-            for article in articles{
+        ParseClient.sharedInstance.fetchArticles(completion: {(articles, error) -> () in
+            for article in articles! {
                 print(article.type)
             }
-            }, failure: {(error: NSError) -> () in
-                print(error.localizedDescription)
         })
+
     }
     
     override func viewDidAppear(animated: Bool) {

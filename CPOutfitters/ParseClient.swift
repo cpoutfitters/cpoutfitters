@@ -19,52 +19,40 @@ class ParseClient: NSObject {
 //    }
     static let sharedInstance = ParseClient()
     
-    func fetchArticlesWithCompletion(completion completion:([Article]?, NSError?) -> ()) {
+    func fetchArticles(completion completion:([Article]?, NSError?) -> ()) {
         let query = PFQuery(className: "Article")
         query.limit = 40
         query.findObjectsInBackgroundWithBlock {
-            (articles: [PFObject]?, error: NSError?) -> Void in
-            let articleArray = Article.articlesWithArray(articles!)
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            let articleArray = Article.articlesWithArray(objects!)
             completion(articleArray, nil)
         }
     }
     
-    func fetchArticles(success: ([Article]) -> (), failure: (NSError) -> ()) {
-        let query = PFQuery(className: "Article")
-        query.limit = 40
-        query.findObjectsInBackgroundWithBlock {
-            (articles: [PFObject]?, error: NSError?) -> Void in
-            if let articles = articles{
-                let articleArray = Article.articlesWithArray(articles)
-                success(articleArray)
-            } else {
-                failure(error!)
-            }
-        }
-    }
-    
     func saveArticleWithCompletion(articleObject: Article?, completion:(success: Bool?, error: NSError?) -> ()) {
-        let article = PFObject(className: "Article")
+        var article = PFObject(className: "Article")
+        
+        article = articleObject!
         
         article["type"] = articleObject!.type!
         article["short"] = articleObject!.short!
         article["primary_color"] = articleObject!.primaryColor!
         article["primary_color_categories"] = articleObject!.primaryColorCategories!
         article["attire"] = articleObject!.attire!
-        article["favorite_status"] = articleObject!.favoriteStatus!
+        article["favorite_status"] = articleObject!.favorite!
         article["shared_with"] = articleObject!.sharedWith!
         article["media_image"] = articleObject!.mediaImage!
         article["last_worn"] = articleObject!.lastWorn!
         article["use_count"] = articleObject!.useCount
         
-//        article.saveInBackgroundWithBlock {
-//            (success: Bool?, error: NSError?) -> Void in
-//            if ((success) != nil) {
-//                completion(article: article, error: nil)
-//            } else {
-//                completion(article: nil, error: error)
-//            }
-//        }
+        article.saveInBackgroundWithBlock {
+            (success: Bool?, error: NSError?) -> Void in
+            if ((success) != nil) {
+                completion(success: true, error: nil)
+            } else {
+                completion(success: false, error: error)
+            }
+        }
     }
     
     func fetchOutfitsWithCompletion(completion completion:([PFObject]?, NSError?) -> ()) {
