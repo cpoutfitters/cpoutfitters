@@ -81,4 +81,7 @@ class CPOutfittersTests: XCTestCase {
             }
         }
     }
+    func testArticleCreationDeletion() {
+    
+    }
 }
