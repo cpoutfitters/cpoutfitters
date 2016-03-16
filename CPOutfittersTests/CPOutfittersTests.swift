@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import Parse
 
 @testable import CPOutfitters
 
@@ -17,7 +18,6 @@ class CPOutfittersTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
         
         // Mockup for User class object
         user.friends = nil
@@ -52,12 +52,25 @@ class CPOutfittersTests: XCTestCase {
         }
     }
     
-    func testArticles() {
+    func testArticles_QueryToLoad_ArticleFetch() {
         
         //create and populate, store, fetch and then compare
-        XCTAssertEqual(article.type!, "shirt", "Not equal")
+        let query = PFQuery(className: "Article")
+        
+        query.findObjectsInBackgroundWithBlock { (object: [PFObject]?, error: NSError?) in
+            XCTAssertEqual(self.article.type!, "shirt", "Article fetch failure")
+        }
+        
+        article.deleteInBackground()
     }
-    func testArticleCreationDeletion() {
-    
+    func testArticle_SaveToLocal_ArticleStored() {
+        /*
+         Test article creation and save it in local data store
+         */
+        article.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) in
+            if (success == true) {
+            XCTAssertTrue(success, "Article save failure")
+            }
+        })
     }
 }
