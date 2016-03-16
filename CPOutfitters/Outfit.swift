@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class Outfit: PFObject {
+class Outfit: PFObject, PFSubclassing {
     
     var owner: User?
     var name: String?
@@ -17,6 +17,19 @@ class Outfit: PFObject {
     var favorite: Bool?
     var lastWorn: NSDate?
     var useCount: Int = 0
+    
+    override class func initialize() {
+        struct Static {
+            static var onceToken : dispatch_once_t = 0;
+        }
+        dispatch_once(&Static.onceToken) {
+            self.registerSubclass()
+        }
+    }
+    
+    static func parseClassName() -> String {
+        return "Outfit"
+    }
     
     override init() {
         super.init()

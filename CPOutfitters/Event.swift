@@ -11,7 +11,6 @@ import Parse
 
 class Event: PFObject {
     
-    //All pfusers will be user
     var host: User!
     var details: String?
     var date: NSDate?
@@ -20,6 +19,19 @@ class Event: PFObject {
     var attending: [User]?
     var notAttending: [User]?
     var outfits: [User: Outfit]?
+    
+    override class func initialize() {
+        struct Static {
+            static var onceToken : dispatch_once_t = 0;
+        }
+        dispatch_once(&Static.onceToken) {
+            self.registerSubclass()
+        }
+    }
+    
+    static func parseClassName() -> String {
+        return "Event"
+    }
     
     override init() {
         super.init()

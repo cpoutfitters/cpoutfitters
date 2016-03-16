@@ -12,9 +12,31 @@ import XCTest
 
 class CPOutfittersTests: XCTestCase {
     
+    let article = Article()
+    let user = User()
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        
+        // Mockup for User class object
+        user.friends = nil
+        user.profileImage = nil
+        user.bio = "Hello"
+        user.sharedWith = nil
+        
+        // Mockup for Article class object
+        article.owner = user
+        article.type = "shirt"
+        article.short = true
+        article.primaryColor = "blue"
+        article.primaryColorCategories = ["blue", "green"]
+        article.occasion = ["casual"]
+        article.favorite = false
+        article.sharedWith = nil
+        article.mediaImage = nil
+        article.lastWorn = NSDate()
+        article.useCount = 1
     }
     
     override func tearDown() {
@@ -22,10 +44,6 @@ class CPOutfittersTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
@@ -35,10 +53,8 @@ class CPOutfittersTests: XCTestCase {
     }
     
     func testArticles() {
-        let article = Article()
-        article.type = "shirt"
         
-        //create and populat, store, fetch and then compare
+        //create and populate, store, fetch and then compare
         XCTAssertEqual(article.type!, "shirt", "Not equal")
     }
     func testArticleCreationDeletion() {

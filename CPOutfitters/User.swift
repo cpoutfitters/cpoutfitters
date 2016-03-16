@@ -16,11 +16,20 @@ class User: PFUser {
     var bio: String?
     var sharedWith: [User]?
     
+    override class func initialize() {
+        struct Static {
+            static var onceToken : dispatch_once_t = 0;
+        }
+        dispatch_once(&Static.onceToken) {
+            self.registerSubclass()
+        }
+    }
+
     override init() {
         super.init()
     }
     
-    init(object: PFObject) {
+    init(object: PFUser) {
         super.init()
         
         self.friends = object["friends"] as? [User]
