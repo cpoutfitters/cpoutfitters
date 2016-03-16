@@ -41,4 +41,7 @@ class CPOutfittersTests: XCTestCase {
         //create and populat, store, fetch and then compare
         XCTAssertEqual(article.type!, "shirt", "Not equal")
     }
+    func testArticleCreationDeletion() {
+    
+    }
 }

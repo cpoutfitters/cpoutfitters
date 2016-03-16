@@ -21,6 +21,10 @@ class Event: PFObject {
     var notAttending: [User]?
     var outfits: [User: Outfit]?
     
+    override init() {
+        super.init()
+    }
+    
     init(object: PFObject) {
         super.init()
         

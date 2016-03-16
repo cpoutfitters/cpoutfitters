@@ -11,13 +11,14 @@ import Parse
 
 class Article: PFObject, PFSubclassing {
     
+    var owner: User?
     var type: String?
     var short: Bool?
     var primaryColor: String?
     var primaryColorCategories: [String]?
-    var attire: [String]?
+    var occasion: [String]?
     var favorite: Bool?
-    var sharedWith: [PFUser]?
+    var sharedWith: [User]?
     var mediaImage: PFFile?
     var lastWorn: NSDate?
     var useCount: Int = 0
@@ -35,27 +36,30 @@ class Article: PFObject, PFSubclassing {
         return "Article"
     }
     
-    class func createWithObject(object: PFObject) -> Article {
-        let article = Article()
+    override init() {
+        super.init()
+    }
+    
+    init(object: PFObject) {
+        super.init()
         
-        article.type = object["type"] as? String
-        article.short = object["short"] as? Bool
-        article.primaryColor = object["primary_color"] as? String
-        article.primaryColorCategories = object["primary_color_categories"] as? [String]
-        article.attire = object["attire"] as? [String]
-        article.favorite = object["favorite"] as? Bool
-        article.sharedWith = object["shared_with"] as? [PFUser]
-        article.mediaImage = object["image"] as? PFFile
-        article.lastWorn = object["last_worn"] as? NSDate
-        article.useCount = (object["use_count"] as? Int) ?? 0
-        
-        return article
+        self.owner = object["owner"] as? User
+        self.type = object["type"] as? String
+        self.short = object["short"] as? Bool
+        self.primaryColor = object["primary_color"] as? String
+        self.primaryColorCategories = object["primary_color_categories"] as? [String]
+        self.occasion = object["occasion"] as? [String]
+        self.favorite = object["favorite"] as? Bool
+        self.sharedWith = object["shared_with"] as? [User]
+        self.mediaImage = object["image"] as? PFFile
+        self.lastWorn = object["last_worn"] as? NSDate
+        self.useCount = (object["use_count"] as? Int) ?? 0
     }
     
     class func articlesWithArray(array: [PFObject]) -> [Article] {
         var articles = [Article]()
         for element in array {
-            articles.append(Article.createWithObject(element))
+            articles.append(Article(object: element))
         }
         return articles
     }

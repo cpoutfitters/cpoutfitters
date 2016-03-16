@@ -43,6 +43,9 @@ class ParseClient: NSObject {
         query.findObjectsInBackgroundWithBlock(completion)
     }
     
+    // Function for deletion of article from server
+    
+    //Search with conjuctions across category, color and type
     func searchArticlesWithCompletion(searchString: String, completion:([PFObject]?, NSError?) -> ()) {
 
         let query = PFQuery(className: "Article")

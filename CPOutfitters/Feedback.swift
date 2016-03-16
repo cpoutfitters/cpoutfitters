@@ -11,21 +11,23 @@ import Parse
 
 class Feedback: PFObject {
 
-    var user: PFUser?
-    var requestor: PFUser?
-    var outfit: Outfit?
+    var owner: User?
+    var requestors: [User]?
     var createdDate: NSDate?
     var lastModified: NSDate?
-    var comments: [String]?
+    var comments: [Message]?
+    
+    override init() {
+        super.init()
+    }
     
     init(object: PFObject) {
         super.init()
         
-        self.user = object["user"] as? PFUser
-        self.requestor = object["requestor"] as? PFUser
-        self.outfit = object["outfit"] as? Outfit
+        self.owner = object["owner"] as? User
+        self.requestors = object["requestors"] as? [User]
         self.createdDate = object.createdAt!
         self.lastModified = object.updatedAt!
-        self.comments = object["comments"] as? [String]
+        self.comments = object["comments"] as? [Message]
     }
 }

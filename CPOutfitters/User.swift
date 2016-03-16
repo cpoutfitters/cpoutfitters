@@ -9,21 +9,23 @@
 import UIKit
 import Parse
 
-class User: PFObject {
+class User: PFUser {
 
-    var username: String?
-    var email: String?
-    var friends: [PFUser]?
+    var friends: [User]?
     var profileImage: PFFile?
     var bio: String?
+    var sharedWith: [User]?
+    
+    override init() {
+        super.init()
+    }
     
     init(object: PFObject) {
         super.init()
         
-        self.username = object["username"] as? String
-        self.email = object["email"] as? String
-        self.friends = object["friends"] as? [PFUser]
+        self.friends = object["friends"] as? [User]
         self.profileImage = object["profile_image"] as? PFFile
         self.bio = object["bio"] as? String
+        self.sharedWith = object["shared_with"] as? [User]
     }
 }
