@@ -11,7 +11,7 @@ import Parse
 
 class Feedback: PFObject, PFSubclassing {
 
-    var owner: User?
+    var userId: String?
     var outfit: Outfit?
     var requestors: [User]?
     var createdDate: NSDate?
@@ -38,7 +38,7 @@ class Feedback: PFObject, PFSubclassing {
     init(object: PFObject) {
         super.init()
         
-        self.owner = object["owner"] as? User
+        self.userId = PFUser.currentUser()?.email
         self.outfit = object["outfit"] as? Outfit
         self.requestors = object["requestors"] as? [User]
         self.createdDate = object.createdAt!

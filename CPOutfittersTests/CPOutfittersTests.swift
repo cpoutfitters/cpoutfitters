@@ -26,15 +26,15 @@ class CPOutfittersTests: XCTestCase {
         user.sharedWith = nil
         
         // Mockup for Article class object
-        article.owner = user
+        article.userId = PFUser.currentUser()?.email
         article.type = "shirt"
         article.short = true
         article.primaryColor = "blue"
         article.primaryColorCategories = ["blue", "green"]
         article.occasion = ["casual"]
         article.favorite = false
-        article.sharedWith = nil
-        article.mediaImage = nil
+        article.sharedWith = ["aditya.p1993@hotmail.com"]
+//        article.mediaImage = UIImage(named: "event")
         article.lastWorn = NSDate()
         article.useCount = 1
     }
@@ -44,33 +44,41 @@ class CPOutfittersTests: XCTestCase {
         super.tearDown()
     }
     
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
     func testArticles_QueryToLoad_ArticleFetch() {
-        
-        //create and populate, store, fetch and then compare
-        let query = PFQuery(className: "Article")
-        
-        query.findObjectsInBackgroundWithBlock { (object: [PFObject]?, error: NSError?) in
-            XCTAssertEqual(self.article.type!, "shirt", "Article fetch failure")
-        }
-        
-        article.deleteInBackground()
-    }
-    func testArticle_SaveToLocal_ArticleStored() {
         /*
-         Test article creation and save it in local data store
+        Test article to fetch from Parse server, compare the values and delete it.
+        */
+        let query = PFQuery(className: "Article")
+        query.whereKey("user_id", equalTo: article.userId!)
+        query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) in
+            let articles = Article.articlesWithArray(objects!)
+            for element in articles {
+                XCTAssertEqual(element.type, "shirt", "Article fetch failure")
+            }
+        }
+    }
+    
+    func testArticle_SaveToServer_ArticleStored() {
+        /*
+         Test article creation and saving it in local data store.
          */
-        article.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) in
+        ParseClient.sharedInstance.saveArticle(self.article, completion: { (success, error) in
             if (success == true) {
-            XCTAssertTrue(success, "Article save failure")
+                XCTAssertTrue(success!, "Article save failure")
+            } else {
+                print(error?.localizedDescription)
             }
         })
+    }
+    
+    func testParseClient_DeletionOfArticle_ArticleRemoved() {
+       
+        ParseClient.sharedInstance.deleteArticle(self.article) { (success, error) in
+            if (success == true) {
+                XCTAssertTrue(success!, "Article delete failure")
+            } else {
+                print(error?.localizedDescription)
+            }
+        }
     }
 }

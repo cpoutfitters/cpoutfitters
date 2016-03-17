@@ -11,7 +11,7 @@ import Parse
 
 class Outfit: PFObject, PFSubclassing {
     
-    var owner: User?
+    var userId: String?
     var name: String?
     var components: [Article]?
     var favorite: Bool?
@@ -37,8 +37,8 @@ class Outfit: PFObject, PFSubclassing {
     
     init(object: PFObject) {
         super.init()
-
-        self.owner = object["owner"] as? User
+        
+        self.userId = PFUser.currentUser()?.email
         self.name = object["name"] as? String
         self.components = object["articles"] as? [Article]
         self.favorite = object["favorite"] as? Bool

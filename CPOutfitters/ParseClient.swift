@@ -17,6 +17,7 @@ class ParseClient: NSObject {
         let query = PFQuery(className: "Article")
         
         //And of predicates
+        query.whereKey("user_id", equalTo: "hr9PAFNpcg")
         query.limit = 40
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
@@ -25,13 +26,29 @@ class ParseClient: NSObject {
         }
     }
     
-    func saveArticleWithCompletion(article: Article, completion:(success: Bool?, error: NSError?) -> ()) {
+    func saveArticle(articleObject: Article, completion:(success: Bool?, error: NSError?) -> ()) {
+        
+        let article = PFObject(className: "Article")
+        
+        article["user_id"] = articleObject.userId
+        article["type"] = articleObject.type
+        article["short"] = articleObject.short
+        article["primary_color"] = articleObject.primaryColor
+        article["primary_color_categories"] = articleObject.primaryColorCategories
+        article["occasion"] = articleObject.occasion
+        article["favorite"] = articleObject.favorite
+        article["shared_with"] = articleObject.sharedWith
+        article["media_image"] = Article.getPFFileFromImage(UIImage(named: "event"))
+        article["last_worn"] = articleObject.lastWorn
+        article["use_count"] = articleObject.useCount
         
         article.saveInBackgroundWithBlock {
             (success: Bool?, error: NSError?) -> Void in
-            if ((success) != nil) {
+            if (success == true ) {
+                print("An article stored")
                 completion(success: true, error: nil)
             } else {
+                print(error?.localizedDescription)
                 completion(success: false, error: error)
             }
         }
@@ -44,7 +61,15 @@ class ParseClient: NSObject {
     }
     
     // Function for deletion of article from server
-    
+    func deleteArticle(article: Article, completion:(success: Bool?, error: NSError?) -> ()) {
+        article.deleteInBackgroundWithBlock({ (success: Bool?, error: NSError?) -> Void in
+            if ((success) != nil) {
+                completion(success: true, error: nil)
+            } else {
+                completion(success: false, error: error)
+            }
+        })
+    }
     //Search with conjuctions across category, color and type
     func searchArticlesWithCompletion(searchString: String, completion:([PFObject]?, NSError?) -> ()) {
 
@@ -54,6 +79,5 @@ class ParseClient: NSObject {
         query.limit = 20
         query.findObjectsInBackgroundWithBlock(completion)
     }
-
 
 }

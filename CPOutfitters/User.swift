@@ -11,10 +11,10 @@ import Parse
 
 class User: PFUser {
 
-    var friends: [User]?
+    var friends: [String]?
     var profileImage: PFFile?
     var bio: String?
-    var sharedWith: [User]?
+    var sharedWith: [String]?
     
     override class func initialize() {
         struct Static {
@@ -32,9 +32,9 @@ class User: PFUser {
     init(object: PFUser) {
         super.init()
         
-        self.friends = object["friends"] as? [User]
+        self.friends = object["friends"] as? [String]
         self.profileImage = object["profile_image"] as? PFFile
         self.bio = object["bio"] as? String
-        self.sharedWith = object["shared_with"] as? [User]
+        self.sharedWith = object["shared_with"] as? [String]
     }
 }

@@ -11,14 +11,14 @@ import Parse
 
 class Article: PFObject, PFSubclassing {
     
-    var owner: User?
+    var userId: String?
     var type: String?
     var short: Bool?
     var primaryColor: String?
     var primaryColorCategories: [String]?
     var occasion: [String]?
     var favorite: Bool?
-    var sharedWith: [User]?
+    var sharedWith: [String]?
     var mediaImage: PFFile?
     var lastWorn: NSDate?
     var useCount: Int = 0
@@ -43,14 +43,14 @@ class Article: PFObject, PFSubclassing {
     init(object: PFObject) {
         super.init()
         
-        self.owner = object["owner"] as? User
+        self.userId = PFUser.currentUser()?.email
         self.type = object["type"] as? String
         self.short = object["short"] as? Bool
         self.primaryColor = object["primary_color"] as? String
         self.primaryColorCategories = object["primary_color_categories"] as? [String]
         self.occasion = object["occasion"] as? [String]
         self.favorite = object["favorite"] as? Bool
-        self.sharedWith = object["shared_with"] as? [User]
+        self.sharedWith = object["shared_with"] as? [String]
         self.mediaImage = object["image"] as? PFFile
         self.lastWorn = object["last_worn"] as? NSDate
         self.useCount = (object["use_count"] as? Int) ?? 0
