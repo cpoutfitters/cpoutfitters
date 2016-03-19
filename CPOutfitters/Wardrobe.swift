@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class Wardrobe: PFObject {
     var sharedWith: [PFUser]?
