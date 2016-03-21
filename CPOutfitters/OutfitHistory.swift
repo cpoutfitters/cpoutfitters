@@ -11,7 +11,7 @@ import Parse
 
 class OutfitHistory: PFObject {
     
-    var owner: User?
+    var userId: String?
     var date: NSDate?
     var outfit: Outfit?
     var sharedWith: [User]?
@@ -23,7 +23,7 @@ class OutfitHistory: PFObject {
     init(object: PFObject) {
         super.init()
         
-        self.owner = object["owner"] as? User
+        self.userId = object["user_id"] as? String
         self.date = object["date"] as? NSDate
         self.outfit = object["outfit"] as? Outfit
         self.sharedWith = object["shared_with"] as? [User]

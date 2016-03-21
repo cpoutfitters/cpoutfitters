@@ -38,7 +38,7 @@ class Feedback: PFObject, PFSubclassing {
     init(object: PFObject) {
         super.init()
         
-        self.userId = PFUser.currentUser()?.email
+        self.userId = object["user_id"] as? String
         self.outfit = object["outfit"] as? Outfit
         self.requestors = object["requestors"] as? [User]
         self.createdDate = object.createdAt!

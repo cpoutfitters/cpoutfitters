@@ -38,7 +38,7 @@ class Outfit: PFObject, PFSubclassing {
     init(object: PFObject) {
         super.init()
         
-        self.userId = PFUser.currentUser()?.email
+        self.userId = object["user_id"] as? String
         self.name = object["name"] as? String
         self.components = object["articles"] as? [Article]
         self.favorite = object["favorite"] as? Bool

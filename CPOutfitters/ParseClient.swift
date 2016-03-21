@@ -17,7 +17,7 @@ class ParseClient: NSObject {
         let query = PFQuery(className: "Article")
 
         //And of predicates
-        query.whereKey("user_id", equalTo: "hr9PAFNpcg")
+        query.whereKey("user_id", equalTo: "aditya.p1993@hotmail.com")
         query.limit = 40
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
@@ -70,7 +70,25 @@ class ParseClient: NSObject {
             }
         })
     }
+    
     //Search with conjuctions across category, color and type
+    func searchArticlesWithParams(params: NSDictionary, completion:() ->()) {
+        
+        let searchValue: String?
+        searchValue = params["search"]
+        searchValue?.characters.split {$0 == " "}.map(String.init)
+        
+        let predicate = NSPredicate(format: " AND ")
+        let query = PFQuery(className: "Article", predicate: predicate)
+        query.whereKey("Search Key", containsString: searchString)
+        query.whereKey("Search Key", containsString: searchString)
+
+        query.whereKey("Search Key", containsString: searchString)
+
+        query.orderByDescending("timestamp")
+        query.limit = 20
+        query.findObjectsInBackgroundWithBlock(completion)
+    }
 
     func searchArticlesWithCompletion(searchString: String, completion:([PFObject]?, NSError?) -> ()) {
 

@@ -43,7 +43,7 @@ class Article: PFObject, PFSubclassing {
     init(object: PFObject) {
         super.init()
         
-        self.userId = PFUser.currentUser()?.email
+        self.userId = object["user_id"] as? String
         self.type = object["type"] as? String
         self.short = object["short"] as? Bool
         self.primaryColor = object["primary_color"] as? String
