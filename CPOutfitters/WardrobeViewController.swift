@@ -39,17 +39,34 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
         return 3
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 0: return "Tops"
-        case 1: return "Bottoms"
-        default: return "Footwear"
-        }
-    }
-//    
-//    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        
+//    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        switch section {
+//        case 0: return "Tops"
+//        case 1: return "Bottoms"
+//        default: return "Footwear"
+//        }
 //    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 100
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = ImageLabelView(frame: CGRectZero)//(origin: CGPointZero, size: CGSize(width: tableView.bounds.width, height: 100)))
+        
+        view.imageSide = .Right
+        
+        var title: String
+        switch section {
+        case 0: title = "Tops"
+        case 1: title = "Bottoms"
+        default: title = "Footwear"
+        }
+        
+        view.labelView.text = title
+
+        return view
+    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return typeListing[types[section]]!.count
@@ -59,6 +76,7 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
         let cell = tableView.dequeueReusableCellWithIdentifier("WardrobeTypeCell", forIndexPath: indexPath) as! WardrobeTypeCell
 
         cell.type = typeListing[types[indexPath.section]]![indexPath.row]
+        cell.containerView.imageSide = ImageLabelViewImageSide(rawValue: (indexPath.row % 2))!
         
         return cell
     }

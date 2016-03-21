@@ -8,23 +8,28 @@
 
 import UIKit
 
-enum ImageLabelViewImageSide {
+enum ImageLabelViewImageSide: Int {
     case Left, Right
 }
 
-@IBDesignable class ImageLabelView: UIStackView {
+@IBDesignable class ImageLabelView: UIView {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var labelView: UILabel!
+    @IBOutlet weak var stackView: UIStackView!
     
     var view: UIView!
     
     var imageSide = ImageLabelViewImageSide.Left {
         didSet {
-            if (imageSide == .Left) != (arrangedSubviews.indexOf(imageView) == 0) {
+            if (imageSide == .Left) != (stackView.arrangedSubviews.indexOf(imageView) == 0) {
                 if imageSide == .Left {
-                removeArrangedSubview(labelView)
-                addArrangedSubview(labelView)
+                    stackView.removeArrangedSubview(labelView)
+                    stackView.addArrangedSubview(labelView)
+                }
+                else {
+                    stackView.removeArrangedSubview(imageView)
+                    stackView.addArrangedSubview(imageView)
                 }
             }
         }

@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="imageView" destination="EaL-Rj-5nu" id="Z67-c0-I7j"/>
                 <outlet property="labelView" destination="mk4-58-Arz" id="mBL-9F-l4c"/>
+                <outlet property="stackView" destination="jsx-3n-7wN" id="YBK-Qz-Xf1"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -18,16 +19,17 @@
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jsx-3n-7wN">
                     <rect key="frame" x="0.0" y="0.0" width="340" height="197"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EaL-Rj-5nu">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EaL-Rj-5nu">
                             <rect key="frame" x="0.0" y="0.0" width="170" height="197"/>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Tops" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mk4-58-Arz">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tops" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mk4-58-Arz">
                             <rect key="frame" x="170" y="89" width="170" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
+                    <color key="backgroundColor" red="0.20000000000000001" green="0.80000000000000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="EaL-Rj-5nu" firstAttribute="top" secondItem="jsx-3n-7wN" secondAttribute="top" id="75T-Ds-LSx"/>
                         <constraint firstAttribute="bottom" secondItem="EaL-Rj-5nu" secondAttribute="bottom" id="K9F-NO-OHv"/>
