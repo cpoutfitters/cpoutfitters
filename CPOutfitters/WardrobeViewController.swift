@@ -13,12 +13,7 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var tableView: UITableView!
     
     var types = ["Tops", "Bottoms", "Footwear"]
-    
-    var typeListing = [
-        "Tops":["Shirts", "Dresses", "Blouses", "Jackets", "Coats", "Vests"],
-        "Bottoms":["Pants", "Shorts", "Skirts"],
-        "Footwear":["Shoes", "Boots"]
-    ]
+    var expanded = [true, true, true]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +21,6 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
         // Do any additional setup after loading the view.
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,14 +32,6 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
         return 3
     }
     
-//    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        switch section {
-//        case 0: return "Tops"
-//        case 1: return "Bottoms"
-//        default: return "Footwear"
-//        }
-//    }
-    
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 100
     }
@@ -54,31 +39,47 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = ImageLabelView(frame: CGRectZero)//(origin: CGPointZero, size: CGSize(width: tableView.bounds.width, height: 100)))
         
-        view.imageSide = .Right
+        view.imageSideLeft = false
+        view.labelView.text = types[section]
         
-        var title: String
-        switch section {
-        case 0: title = "Tops"
-        case 1: title = "Bottoms"
-        default: title = "Footwear"
-        }
+        let tapGesture = CPTapGestureRecognizer(target: self, action: "toggleSection:")
+        tapGesture.section = section
+        view.addGestureRecognizer(tapGesture)
         
-        view.labelView.text = title
+        let expandButton = UIImageView(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
+        expandButton.translatesAutoresizingMaskIntoConstraints = false
+        expandButton.image = UIImage(named: "arrow")
+        let isExpanded = expanded[section]
+        expandButton.layer.transform = CATransform3DMakeRotation(angleForArrow(isExpanded), 0, 0, 1.0)
+        
+        view.addSubview(expandButton)
+        view.addConstraint(NSLayoutConstraint(item: view, attribute: .CenterX, relatedBy: .Equal, toItem: expandButton, attribute: .CenterX, multiplier: 1, constant: 0))
+        view.addConstraint(NSLayoutConstraint(item: view, attribute: .Bottom, relatedBy: .Equal, toItem: expandButton, attribute: .Bottom, multiplier: 1.0, constant: 0))
 
         return view
     }
     
+    func toggleSection(sender: CPTapGestureRecognizer) {
+        let section = sender.section
+        expanded[section] = !expanded[section]
+        tableView.reloadSections(NSIndexSet(index: section), withRowAnimation: .Automatic)
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return typeListing[types[section]]!.count
+//        return typeListing[types[section]]!.count
+        return expanded[section] ? 2 : 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("WardrobeTypeCell", forIndexPath: indexPath) as! WardrobeTypeCell
 
-        cell.type = typeListing[types[indexPath.section]]![indexPath.row]
-        cell.containerView.imageSide = ImageLabelViewImageSide(rawValue: (indexPath.row % 2))!
+        cell.type = "Shirt"
         
         return cell
+    }
+    
+    func angleForArrow(expanded: Bool) -> CGFloat {
+        return CGFloat(expanded ? M_PI / 2.0 : M_PI * 1.5 )
     }
     
     /*

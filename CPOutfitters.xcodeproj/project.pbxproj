@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		070A26361C94DB33001ACF48 /* ImageLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070A26351C94DB33001ACF48 /* ImageLabelView.swift */; };
 		070A26381C94DB4A001ACF48 /* ImageLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 070A26371C94DB4A001ACF48 /* ImageLabelView.xib */; };
+		07236A151CA0CB18004715D6 /* CPTapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07236A141CA0CB18004715D6 /* CPTapGestureRecognizer.swift */; };
 		07237DEA1C6D93300057FFF4 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07237DE91C6D93300057FFF4 /* Launch Screen.storyboard */; };
 		076FF4F71C91101400265515 /* Wardrobe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076FF4F61C91101400265515 /* Wardrobe.swift */; };
 		07DC9BF31C922D750009AD2E /* WardrobeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DC9BF21C922D750009AD2E /* WardrobeViewController.swift */; };
@@ -34,6 +35,7 @@
 /* Begin PBXFileReference section */
 		070A26351C94DB33001ACF48 /* ImageLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLabelView.swift; sourceTree = "<group>"; };
 		070A26371C94DB4A001ACF48 /* ImageLabelView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageLabelView.xib; sourceTree = "<group>"; };
+		07236A141CA0CB18004715D6 /* CPTapGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPTapGestureRecognizer.swift; sourceTree = "<group>"; };
 		07237DE91C6D93300057FFF4 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		076FF4F61C91101400265515 /* Wardrobe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wardrobe.swift; sourceTree = "<group>"; };
 		07DC9BF21C922D750009AD2E /* WardrobeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WardrobeViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				07DC9BF41C922E9A0009AD2E /* WardrobeTypeCell.swift */,
 				070A26351C94DB33001ACF48 /* ImageLabelView.swift */,
 				070A26371C94DB4A001ACF48 /* ImageLabelView.xib */,
+				07236A141CA0CB18004715D6 /* CPTapGestureRecognizer.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
 				AC0DA8201C8FD73B007B6723 /* LoginViewController.swift in Sources */,
 				07DC9BF71C9231420009AD2E /* User.swift in Sources */,
+				07236A151CA0CB18004715D6 /* CPTapGestureRecognizer.swift in Sources */,
 				AC0DA81E1C8FCE09007B6723 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

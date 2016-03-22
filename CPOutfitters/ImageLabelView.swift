@@ -20,10 +20,10 @@ enum ImageLabelViewImageSide: Int {
     
     var view: UIView!
     
-    var imageSide = ImageLabelViewImageSide.Left {
+    var imageSideLeft = true /*ImageLabelViewImageSide.Left*/ {
         didSet {
-            if (imageSide == .Left) != (stackView.arrangedSubviews.indexOf(imageView) == 0) {
-                if imageSide == .Left {
+            if (imageSideLeft/* == .Left*/) != (stackView.arrangedSubviews.indexOf(imageView) == 0) {
+                if imageSideLeft /*== .Left*/ {
                     stackView.removeArrangedSubview(labelView)
                     stackView.addArrangedSubview(labelView)
                 }
