@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import Parse
 
 let cellHeight: CGFloat = 100.0
+let kAddArticleSegueIdentifier = "addArticle"
+let kEditArticleSegueIdentifier = "editArticle"
 
 class WardrobeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -23,6 +26,11 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
         // Do any additional setup after loading the view.
         self.tableView.dataSource = self
         self.tableView.delegate = self
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBarHidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,6 +49,15 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = ImageLabelView(frame: CGRectZero)
         
+        // Add gradient
+        view.backgroundColor = UIColor.whiteColor()
+        let gradientLayer = view.gradientLayer
+        gradientLayer.colors = [UIColor(white: 1.0, alpha: 1.0).CGColor, UIColor(white: 0.85, alpha: 1.0).CGColor]
+        gradientLayer.locations = [0.5]
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 0)
+
+        
         // Customize per Section
         view.imageSideLeft = false
         view.labelView.text = types[section]
@@ -55,7 +72,7 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
         
         
         // Add expand/collapse gesture recognizer
-        let tapGesture = CPTapGestureRecognizer(target: self, action: "toggleSection:")
+        var tapGesture = CPTapGestureRecognizer(target: self, action: "toggleSection:")
         tapGesture.section = section
         view.addGestureRecognizer(tapGesture)
         
@@ -71,25 +88,23 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
         view.addConstraint(NSLayoutConstraint(item: view, attribute: .CenterX, relatedBy: .Equal, toItem: expandButton, attribute: .CenterX, multiplier: 1, constant: 0))
         view.addConstraint(NSLayoutConstraint(item: expandButton, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1.0, constant: 0))
         
+        // Add add Icon
         
-        // Add gradient
-        view.backgroundColor = UIColor.whiteColor()
-        let gradientLayer = view.gradientLayer
-        gradientLayer.colors = [UIColor(white: 1.0, alpha: 1.0).CGColor, UIColor(white: 0.85, alpha: 1.0).CGColor]
-        gradientLayer.locations = [0.5]
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-        gradientLayer.endPoint = CGPoint(x: 1, y: 0)
+        let addButton = UIButton(type: .ContactAdd)
+        addButton.translatesAutoresizingMaskIntoConstraints = false
+        addButton.tintColor = UIColor.whiteColor()
+        addButton.layer.backgroundColor = UIColor(red: 0.0999, green: 0.7602, blue: 0.0144, alpha: 1.0).CGColor
+        addButton.layer.cornerRadius = 12
         
-//        view.layer.addSublayer(gradientLayer)
-//        view.layer.insertSublayer(gradientLayer, atIndex: 0)
+        view.addSubview(addButton)
+        view.addConstraint(NSLayoutConstraint(item: view, attribute: .Right, relatedBy: .Equal, toItem: addButton, attribute: .Right, multiplier: 1.0, constant: 8))
+        view.addConstraint(NSLayoutConstraint(item: addButton, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1.0, constant: 8))
+        
+        tapGesture = CPTapGestureRecognizer(target: self, action: "addArticle:")
+        tapGesture.section = section
+        addButton.addGestureRecognizer(tapGesture)
 
         return view
-    }
-    
-    func toggleSection(sender: CPTapGestureRecognizer) {
-        let section = sender.section
-        expanded[section] = !expanded[section]
-        tableView.reloadSections(NSIndexSet(index: section), withRowAnimation: .Automatic)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -105,18 +120,49 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
         return cell
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    func toggleSection(sender: CPTapGestureRecognizer) {
+        let section = sender.section
+        expanded[section] = !expanded[section]
+        tableView.reloadSections(NSIndexSet(index: section), withRowAnimation: .Automatic)
+    }
+
+    func addArticle(sender: CPTapGestureRecognizer) {
+        self.performSegueWithIdentifier(kAddArticleSegueIdentifier, sender: sender)
+    }
+    
     func angleForArrow(expanded: Bool) -> CGFloat {
         return CGFloat(expanded ? M_PI / 2.0 : M_PI * 1.5 )
     }
     
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        var article: Article?
+        
+        if segue.identifier == kAddArticleSegueIdentifier {
+            let gesture = sender as! CPTapGestureRecognizer
+            article = Article()
+            switch (gesture.section) {
+            case 0: article!.type = "top"
+            case 1: article!.type = "bottom"
+            default: article!.type = "footwear"
+            }
+            
+            article!.owner = PFUser.currentUser()
+        }
+        else {  // Edit segue
+            let cell = sender as! WardrobeTypeCell
+            article = cell.article
+            self.navigationController?.navigationBarHidden = false
+        }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
 
 }

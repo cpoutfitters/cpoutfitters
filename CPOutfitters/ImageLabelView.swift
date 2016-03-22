@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ParseUI
 
 enum ImageLabelViewImageSide: Int {
     case Left, Right
@@ -14,7 +15,7 @@ enum ImageLabelViewImageSide: Int {
 
 @IBDesignable class ImageLabelView: UIView {
     
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var imageView: PFImageView!
     @IBOutlet weak var labelView: UILabel!
     @IBOutlet weak var stackView: UIStackView!
 

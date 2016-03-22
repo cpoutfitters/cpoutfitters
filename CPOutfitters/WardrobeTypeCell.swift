@@ -7,21 +7,22 @@
 //
 
 import UIKit
+import ParseUI
 
 class WardrobeTypeCell: UITableViewCell {
 
     @IBOutlet weak var containerView: ImageLabelView!
     
+    var article: Article! {
+        didSet {
+            containerView.imageView.file = article.image
+            containerView.imageView.loadInBackground()
+        }
+    }
+    
     var type: String! {
         didSet {
             containerView.labelView.text = type
-            
-            switch(type) {
-                case "Tops": fallthrough
-                case "Bottoms": fallthrough
-                case "Shoes": fallthrough
-            default: break
-            }
         }
     }
     
