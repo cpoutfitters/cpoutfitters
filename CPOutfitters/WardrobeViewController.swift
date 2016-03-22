@@ -19,6 +19,7 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
     
     var types = ["Tops", "Bottoms", "Footwear"]
     var expanded = [true, true, true]
+    var articles: [[Article]] = [[],[],[]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,11 +29,6 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
         self.tableView.delegate = self
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.navigationBarHidden = true
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -108,14 +104,13 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return typeListing[types[section]]!.count
-        return expanded[section] ? 2 : 0
+        return expanded[section] ? articles[section].count : 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("WardrobeTypeCell", forIndexPath: indexPath) as! WardrobeTypeCell
 
-        cell.type = "Shirt"
+        cell.article = articles[indexPath.section][indexPath.row]
         
         return cell
     }
@@ -159,7 +154,6 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
         else {  // Edit segue
             let cell = sender as! WardrobeTypeCell
             article = cell.article
-            self.navigationController?.navigationBarHidden = false
         }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.

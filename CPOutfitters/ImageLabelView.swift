@@ -22,16 +22,18 @@ enum ImageLabelViewImageSide: Int {
     var gradientLayer: CAGradientLayer!
     var view: UIView!
     
-    var imageSideLeft = true /*ImageLabelViewImageSide.Left*/ {
+    var imageSideLeft = true {
         didSet {
             if (imageSideLeft/* == .Left*/) != (stackView.arrangedSubviews.indexOf(imageView) == 0) {
-                if imageSideLeft /*== .Left*/ {
+                if imageSideLeft {
                     stackView.removeArrangedSubview(labelView)
                     stackView.addArrangedSubview(labelView)
+                    labelView.textAlignment = .Left
                 }
                 else {
                     stackView.removeArrangedSubview(imageView)
                     stackView.addArrangedSubview(imageView)
+                    labelView.textAlignment = .Right
                 }
             }
         }

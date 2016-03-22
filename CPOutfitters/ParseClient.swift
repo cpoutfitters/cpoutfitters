@@ -30,7 +30,7 @@ class ParseClient: NSObject {
 
         let article = PFObject(className: "Article")
 
-        article["user_id"] = articleObject.userId
+        article["owner"] = articleObject.owner
         article["type"] = articleObject.type
         article["short"] = articleObject.short
         article["primary_color"] = articleObject.primaryColor
@@ -74,20 +74,20 @@ class ParseClient: NSObject {
     //Search with conjuctions across category, color and type
     func searchArticlesWithParams(params: NSDictionary, completion:() ->()) {
         
-        let searchValue: String?
-        searchValue = params["search"]
-        searchValue?.characters.split {$0 == " "}.map(String.init)
-        
-        let predicate = NSPredicate(format: " AND ")
-        let query = PFQuery(className: "Article", predicate: predicate)
-        query.whereKey("Search Key", containsString: searchString)
-        query.whereKey("Search Key", containsString: searchString)
-
-        query.whereKey("Search Key", containsString: searchString)
-
-        query.orderByDescending("timestamp")
-        query.limit = 20
-        query.findObjectsInBackgroundWithBlock(completion)
+//        let searchValue: String?
+//        searchValue = params["search"]
+//        searchValue?.characters.split {$0 == " "}.map(String.init)
+//        
+//        let predicate = NSPredicate(format: " AND ")
+//        let query = PFQuery(className: "Article", predicate: predicate)
+//        query.whereKey("Search Key", containsString: searchString)
+//        query.whereKey("Search Key", containsString: searchString)
+//
+//        query.whereKey("Search Key", containsString: searchString)
+//
+//        query.orderByDescending("timestamp")
+//        query.limit = 20
+//        query.findObjectsInBackgroundWithBlock(completion)
     }
 
     func searchArticlesWithCompletion(searchString: String, completion:([PFObject]?, NSError?) -> ()) {

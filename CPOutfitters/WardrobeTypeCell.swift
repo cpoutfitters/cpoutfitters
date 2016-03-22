@@ -15,17 +15,12 @@ class WardrobeTypeCell: UITableViewCell {
     
     var article: Article! {
         didSet {
-            containerView.imageView.file = article.image
+            containerView.imageView.file = article.mediaImage
             containerView.imageView.loadInBackground()
+            containerView.labelView.text = "Never worn"
         }
     }
-    
-    var type: String! {
-        didSet {
-            containerView.labelView.text = type
-        }
-    }
-    
+        
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

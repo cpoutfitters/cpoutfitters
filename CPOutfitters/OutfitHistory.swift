@@ -14,7 +14,7 @@ class OutfitHistory: PFObject {
     var userId: String?
     var date: NSDate?
     var outfit: Outfit?
-    var sharedWith: [User]?
+    var sharedWith: [PFUser]?
     
     override init() {
         super.init()
@@ -26,6 +26,6 @@ class OutfitHistory: PFObject {
         self.userId = object["user_id"] as? String
         self.date = object["date"] as? NSDate
         self.outfit = object["outfit"] as? Outfit
-        self.sharedWith = object["shared_with"] as? [User]
+        self.sharedWith = object["shared_with"] as? [PFUser]
     }
 }

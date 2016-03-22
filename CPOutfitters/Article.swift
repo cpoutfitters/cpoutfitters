@@ -11,7 +11,7 @@ import Parse
 
 class Article: PFObject, PFSubclassing {
     
-    var userId: String?
+    var owner: PFUser!
     var type: String?
     var short: Bool?
     var primaryColor: String?
@@ -43,7 +43,7 @@ class Article: PFObject, PFSubclassing {
     init(object: PFObject) {
         super.init()
         
-        self.userId = object["user_id"] as? String
+        self.owner = object["owner"] as! PFUser
         self.type = object["type"] as? String
         self.short = object["short"] as? Bool
         self.primaryColor = object["primary_color"] as? String
