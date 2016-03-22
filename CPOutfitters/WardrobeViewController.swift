@@ -8,6 +8,8 @@
 
 import UIKit
 
+let cellHeight: CGFloat = 100.0
+
 class WardrobeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
@@ -33,19 +35,32 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 100
+        return cellHeight
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = ImageLabelView(frame: CGRectZero)//(origin: CGPointZero, size: CGSize(width: tableView.bounds.width, height: 100)))
+        let view = ImageLabelView(frame: CGRectZero)
         
+        // Customize per Section
         view.imageSideLeft = false
         view.labelView.text = types[section]
+        var imageName: String
+
+        switch (section) {
+        case 0: imageName = "tops"
+        case 1: imageName = "bottoms"
+        default: imageName = "footwear"
+        }
+        view.imageView.image = UIImage(named: imageName)
         
+        
+        // Add expand/collapse gesture recognizer
         let tapGesture = CPTapGestureRecognizer(target: self, action: "toggleSection:")
         tapGesture.section = section
         view.addGestureRecognizer(tapGesture)
         
+        
+        // Add Expand Icon
         let expandButton = UIImageView(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
         expandButton.translatesAutoresizingMaskIntoConstraints = false
         expandButton.image = UIImage(named: "arrow")
@@ -54,7 +69,19 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
         
         view.addSubview(expandButton)
         view.addConstraint(NSLayoutConstraint(item: view, attribute: .CenterX, relatedBy: .Equal, toItem: expandButton, attribute: .CenterX, multiplier: 1, constant: 0))
-        view.addConstraint(NSLayoutConstraint(item: view, attribute: .Bottom, relatedBy: .Equal, toItem: expandButton, attribute: .Bottom, multiplier: 1.0, constant: 0))
+        view.addConstraint(NSLayoutConstraint(item: expandButton, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1.0, constant: 0))
+        
+        
+        // Add gradient
+        view.backgroundColor = UIColor.whiteColor()
+        let gradientLayer = view.gradientLayer
+        gradientLayer.colors = [UIColor(white: 1.0, alpha: 1.0).CGColor, UIColor(white: 0.85, alpha: 1.0).CGColor]
+        gradientLayer.locations = [0.5]
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 0)
+        
+//        view.layer.addSublayer(gradientLayer)
+//        view.layer.insertSublayer(gradientLayer, atIndex: 0)
 
         return view
     }

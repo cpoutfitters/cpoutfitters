@@ -17,7 +17,8 @@ enum ImageLabelViewImageSide: Int {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var labelView: UILabel!
     @IBOutlet weak var stackView: UIStackView!
-    
+
+    var gradientLayer: CAGradientLayer!
     var view: UIView!
     
     var imageSideLeft = true /*ImageLabelViewImageSide.Left*/ {
@@ -49,6 +50,9 @@ enum ImageLabelViewImageSide: Int {
         view = loadViewFromNib()
         view.frame = bounds
         view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
+
+        gradientLayer = CAGradientLayer()
+        layer.addSublayer(gradientLayer)
         
         addSubview(view)
     }
@@ -59,5 +63,10 @@ enum ImageLabelViewImageSide: Int {
         let view = nib.instantiateWithOwner(self, options: nil)[0] as! UIView
         
         return view
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        gradientLayer.frame = self.layer.bounds
     }
 }

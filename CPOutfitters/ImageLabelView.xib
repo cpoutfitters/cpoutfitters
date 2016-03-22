@@ -19,7 +19,7 @@
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jsx-3n-7wN">
                     <rect key="frame" x="0.0" y="0.0" width="340" height="197"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EaL-Rj-5nu">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EaL-Rj-5nu">
                             <rect key="frame" x="0.0" y="0.0" width="170" height="197"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tops" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mk4-58-Arz">
@@ -36,7 +36,6 @@
                     </constraints>
                 </stackView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="jsx-3n-7wN" secondAttribute="trailing" id="D5A-zO-hWk"/>
                 <constraint firstItem="jsx-3n-7wN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="e5N-c0-uJ9"/>
