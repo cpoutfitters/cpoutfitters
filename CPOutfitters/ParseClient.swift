@@ -71,9 +71,12 @@ class ParseClient: NSObject {
         searchValue = params["search"] as? String
         let searchTerms = searchValue?.characters.split {$0 == " "}.map(String.init)
         
-        /*(key:color_group ^ value:blue) v (key:attire ^ value:blue) v (key:article ^ value: blue) v
+        /*
+         Logic
+         (key:color_group ^ value:blue) v (key:attire ^ value:blue) v (key:article ^ value: blue) v
          (key:color_group ^ value:casual) v (key:attire ^ value:casual) v (key:article ^ value: casual) v
-         (key:color_group ^ value:shirt) v (key:attire ^ value:shirt) v (key:article ^ value: shirt)*/
+         (key:color_group ^ value:shirt) v (key:attire ^ value:shirt) v (key:article ^ value: shirt)
+        */
         
         let predicate = NSPredicate(format: "color_group == \(searchTerms![0]) OR occasion == \(searchTerms![0]) OR type == \(searchTerms![0]) OR color_group == \(searchTerms![1]) OR occasion == \(searchTerms![1]) OR type == \(searchTerms![1]) OR color_group == \(searchTerms![2]) OR occasion == \(searchTerms![2]) OR type == \(searchTerms![2])")
         let query = PFQuery(className: "Article", predicate: predicate)
