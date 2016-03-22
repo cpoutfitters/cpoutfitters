@@ -11,7 +11,7 @@ import Parse
 
 class Message: PFObject {
     
-    var author: User?
+    var author: PFUser?
     var date: NSDate?
     var contents: String?
     
@@ -35,7 +35,7 @@ class Message: PFObject {
     init(object: PFObject) {
         super.init()
         
-        self.author = object["author"] as? User
+        self.author = object["author"] as? PFUser
         self.date = object["date"] as? NSDate
         self.contents = object["contents"] as? String
     }

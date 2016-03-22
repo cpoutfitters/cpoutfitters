@@ -24,7 +24,6 @@
 		AC0DA8201C8FD73B007B6723 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0DA81F1C8FD73B007B6723 /* LoginViewController.swift */; };
 		AC6D20E01C993BC900033FB6 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6D20DF1C993BC900033FB6 /* Message.swift */; };
 		AC9712871C97A4C100FB10EA /* CPOutfittersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9712861C97A4C100FB10EA /* CPOutfittersTests.swift */; };
-		AC9F6EE41C93CECE00D6B9DE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9F6EE31C93CECE00D6B9DE /* User.swift */; };
 		AC9F6EE61C93D23C00D6B9DE /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9F6EE51C93D23C00D6B9DE /* Feedback.swift */; };
 		AC9F6EE81C93D3A600D6B9DE /* OutfitHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9F6EE71C93D3A600D6B9DE /* OutfitHistory.swift */; };
 		AC9F6EEA1C93D43300D6B9DE /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9F6EE91C93D43300D6B9DE /* Event.swift */; };
@@ -67,7 +66,6 @@
 		AC9712841C97A4C100FB10EA /* CPOutfittersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CPOutfittersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC9712861C97A4C100FB10EA /* CPOutfittersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPOutfittersTests.swift; sourceTree = "<group>"; };
 		AC9712881C97A4C100FB10EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AC9F6EE31C93CECE00D6B9DE /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AC9F6EE51C93D23C00D6B9DE /* Feedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
 		AC9F6EE71C93D3A600D6B9DE /* OutfitHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutfitHistory.swift; sourceTree = "<group>"; };
 		AC9F6EE91C93D43300D6B9DE /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -219,7 +217,6 @@
 			children = (
 				ACC8432C1C8E782900C2F81E /* Article.swift */,
 				AC0DA81B1C8FC62E007B6723 /* Outfit.swift */,
-				AC9F6EE31C93CECE00D6B9DE /* User.swift */,
 				AC9F6EE51C93D23C00D6B9DE /* Feedback.swift */,
 				AC9F6EE71C93D3A600D6B9DE /* OutfitHistory.swift */,
 				AC9F6EE91C93D43300D6B9DE /* Event.swift */,
@@ -436,7 +433,6 @@
 				AC9F6EEC1C93F13500D6B9DE /* ParseClient.swift in Sources */,
 				AC9F6EE61C93D23C00D6B9DE /* Feedback.swift in Sources */,
 				AC0DA81C1C8FC62E007B6723 /* Outfit.swift in Sources */,
-				AC9F6EE41C93CECE00D6B9DE /* User.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
 				AC6D20E01C993BC900033FB6 /* Message.swift in Sources */,
 				AC0DA8201C8FD73B007B6723 /* LoginViewController.swift in Sources */,

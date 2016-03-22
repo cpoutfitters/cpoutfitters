@@ -5,6 +5,13 @@
 //  Created by Aditya Purandare on 12/03/16.
 //  Copyright © 2016 SnazzyLLama. All rights reserved.
 //
+/*
+ Params of User Class:
+ var friends: [User]?
+ var profileImage: PFFile?
+ var bio: String?
+ var sharedWith: [User]?
+ */
 
 import UIKit
 import Parse
@@ -14,10 +21,10 @@ class ParseClient: NSObject {
     static let sharedInstance = ParseClient()
 
     func fetchArticles(params: NSDictionary, completion:([Article]?, NSError?) -> ()) {
+        
         let query = PFQuery(className: "Article")
-
         //And of predicates
-        query.whereKey("user_id", equalTo: "aditya.p1993@hotmail.com")
+        query.whereKey("owner", equalTo: PFUser.currentUser()!)
         query.limit = 40
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
@@ -26,22 +33,8 @@ class ParseClient: NSObject {
         }
     }
 
-    func saveArticle(articleObject: Article, completion:(success: Bool?, error: NSError?) -> ()) {
-
-        let article = PFObject(className: "Article")
-
-        article["user_id"] = articleObject.userId
-        article["type"] = articleObject.type
-        article["short"] = articleObject.short
-        article["primary_color"] = articleObject.primaryColor
-        article["primary_color_categories"] = articleObject.primaryColorCategories
-        article["occasion"] = articleObject.occasion
-        article["favorite"] = articleObject.favorite
-        article["shared_with"] = articleObject.sharedWith
-        article["media_image"] = Article.getPFFileFromImage(UIImage(named: "event"))
-        article["last_worn"] = articleObject.lastWorn
-        article["use_count"] = articleObject.useCount
-
+    func saveArticle(article: Article, completion:(success: Bool?, error: NSError?) -> ()) {
+        
         article.saveInBackgroundWithBlock {
             (success: Bool?, error: NSError?) -> Void in
             if (success == true ) {
@@ -72,18 +65,18 @@ class ParseClient: NSObject {
     }
     
     //Search with conjuctions across category, color and type
-    func searchArticlesWithParams(params: NSDictionary, completion:() ->()) {
+    func searchArticlesWithParams(params: NSDictionary, completion:([PFObject]?, NSError?) ->()) {
         
         let searchValue: String?
-        searchValue = params["search"]
-        searchValue?.characters.split {$0 == " "}.map(String.init)
+        searchValue = params["search"] as? String
+        let searchTerms = searchValue?.characters.split {$0 == " "}.map(String.init)
         
-        let predicate = NSPredicate(format: " AND ")
+        /*(key:color_group ^ value:blue) v (key:attire ^ value:blue) v (key:article ^ value: blue) v
+         (key:color_group ^ value:casual) v (key:attire ^ value:casual) v (key:article ^ value: casual) v
+         (key:color_group ^ value:shirt) v (key:attire ^ value:shirt) v (key:article ^ value: shirt)*/
+        
+        let predicate = NSPredicate(format: "color_group == \(searchTerms![0]) OR occasion == \(searchTerms![0]) OR type == \(searchTerms![0]) OR color_group == \(searchTerms![1]) OR occasion == \(searchTerms![1]) OR type == \(searchTerms![1]) OR color_group == \(searchTerms![2]) OR occasion == \(searchTerms![2]) OR type == \(searchTerms![2])")
         let query = PFQuery(className: "Article", predicate: predicate)
-        query.whereKey("Search Key", containsString: searchString)
-        query.whereKey("Search Key", containsString: searchString)
-
-        query.whereKey("Search Key", containsString: searchString)
 
         query.orderByDescending("timestamp")
         query.limit = 20

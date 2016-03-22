@@ -26,7 +26,7 @@ class CPOutfittersTests: XCTestCase {
         user.sharedWith = nil
         
         // Mockup for Article class object
-        article.userId = PFUser.currentUser()?.email
+        article.owner = user
         article.type = "shirt"
         article.short = true
         article.primaryColor = "blue"
@@ -44,34 +44,59 @@ class CPOutfittersTests: XCTestCase {
         super.tearDown()
     }
     
-    func testArticles_QueryToLoad_ArticleFetch() {
+    func testArticles() {
+        saveArticle()
+        queryArticleFetch()
+        
+    }
+    
+    func queryArticleFetch() {
         /*
         Test article to fetch from Parse server, compare the values and delete it.
         */
         let query = PFQuery(className: "Article")
-        query.whereKey("user_id", equalTo: article.userId!)
-        query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) in
-            let articles = Article.articlesWithArray(objects!)
-            for element in articles {
-                XCTAssertEqual(element.type, "shirt", "Article fetch failure")
-            }
+        query.fromLocalDatastore()
+        query.whereKey("owner", equalTo: article.owner)
+        let objects = try! query.findObjects()
+        XCTAssert(objects.count > 0, "Objects not found matching owner")
+        let articles = Article.articlesWithArray(objects)
+        XCTAssert(articles.count > 0, "Articles not retrieved")
+        for element in articles {
+            XCTAssertEqual(element.type, "shirt", "Article fetch failure")
         }
+
+//        query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) in
+//            let articles = Article.articlesWithArray(objects!)
+//            for element in articles {
+//                XCTAssertEqual(element.type, "shirt", "Article fetch failure")
+//            }
+//        }
     }
     
-    func testArticle_SaveToServer_ArticleStored() {
+    func saveArticle() {
         /*
          Test article creation and saving it in local data store.
          */
+//        let semaphore = dispatch_semaphore_create(0)
+        
         ParseClient.sharedInstance.saveArticle(self.article, completion: { (success, error) in
             if (success == true) {
                 XCTAssertTrue(success!, "Article save failure")
             } else {
+                XCTFail("Failed to save article")
                 print(error?.localizedDescription)
             }
+//            dispatch_semaphore_signal(semaphore)
         })
+        
+//        let timeoutTime = dispatch_time_t(DISPATCH_TIME_FOREVER)
+//        if (dispatch_semaphore_wait(semaphore, timeoutTime) > 0) {
+//            XCTFail("Timed out")
+//        }
+//
     }
     
-    func testParseClient_DeletionOfArticle_ArticleRemoved() {
+    func testParseClientDeletionOfArticleArticleRemoved() {
        
         ParseClient.sharedInstance.deleteArticle(self.article) { (success, error) in
             if (success == true) {
