@@ -1,22 +1,22 @@
 //
-//  Outfit.swift
+//  Feedback.swift
 //  CPOutfitters
 //
-//  Created by Aditya Purandare on 08/03/16.
+//  Created by Aditya Purandare on 11/03/16.
 //  Copyright © 2016 SnazzyLLama. All rights reserved.
 //
 
 import UIKit
 import Parse
 
-class Outfit: PFObject, PFSubclassing {
-    
+class Feedback: PFObject, PFSubclassing {
+
     var userId: String?
-    var name: String?
-    var components: [Article]?
-    var favorite: Bool?
-    var lastWorn: NSDate?
-    var useCount: Int = 0
+    var outfit: Outfit?
+    var requestors: [User]?
+    var createdDate: NSDate?
+    var lastModified: NSDate?
+    var comments: [Message]?
     
     override class func initialize() {
         struct Static {
@@ -28,7 +28,7 @@ class Outfit: PFObject, PFSubclassing {
     }
     
     static func parseClassName() -> String {
-        return "Outfit"
+        return "Feedback"
     }
     
     override init() {
@@ -39,11 +39,10 @@ class Outfit: PFObject, PFSubclassing {
         super.init()
         
         self.userId = object["user_id"] as? String
-        self.name = object["name"] as? String
-        self.components = object["articles"] as? [Article]
-        self.favorite = object["favorite"] as? Bool
-        self.lastWorn = object["last_worn"] as? NSDate
-        self.useCount = (object["use_count"] as? Int) ?? 0
+        self.outfit = object["outfit"] as? Outfit
+        self.requestors = object["requestors"] as? [User]
+        self.createdDate = object.createdAt!
+        self.lastModified = object.updatedAt!
+        self.comments = object["comments"] as? [Message]
     }
-
 }

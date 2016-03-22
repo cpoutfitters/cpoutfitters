@@ -13,10 +13,19 @@ class HomeViewController: UIViewController, PFLogInViewControllerDelegate, PFSig
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
+        ParseClient.sharedInstance.fetchArticles(["key": "value"], completion: {(articles, error) -> () in
+            for article in articles! {
+                print(article.type)
+            }
+        })
+
     }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+        
         
         let current_user = PFUser.currentUser()?.username
         if (current_user == nil) {
