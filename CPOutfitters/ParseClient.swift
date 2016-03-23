@@ -25,11 +25,16 @@ class ParseClient: NSObject {
         let query = PFQuery(className: "Article")
         //And of predicates
         query.whereKey("owner", equalTo: PFUser.currentUser()!)
+        //query.whereKey("user_id", equalTo: "hr9PAFNpcg")
         query.limit = 40
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
-            let articleArray = Article.articlesWithArray(objects!)
-            completion(articleArray, nil)
+            if objects != nil {
+                let articleArray = Article.articlesWithArray(objects!)
+                completion(articleArray, nil)
+            } else {
+                print(error?.localizedDescription)
+            }
         }
     }
 
