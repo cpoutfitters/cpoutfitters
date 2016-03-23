@@ -9,6 +9,7 @@ pod 'Parse'
 pod 'ParseUI'
 pod 'ChameleonFramework/Swift'
 
+link_with 'CPOutfitters', 'CPOutfittersTests'
 end
 
 
