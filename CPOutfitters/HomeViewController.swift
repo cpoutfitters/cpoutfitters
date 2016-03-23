@@ -44,6 +44,13 @@ class HomeViewController: UIViewController, PFLogInViewControllerDelegate, PFSig
                 print("Sample type loaded: \(article.type)")
             }
         })
+        
+        ParseClient.sharedInstance.searchArticlesWithParams(["search":"blue casual shirt"]) { (articles: [Article]?, error: NSError?) in
+            print("Searched articles: \(articles?.count)")
+            for article in articles! {
+                print("Sample type loaded: \(article.type)")
+            }
+        }
 
     }
     
