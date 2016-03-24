@@ -9,7 +9,13 @@
 import UIKit
 import ChameleonFramework
 
-class CameraViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+protocol ArticleDelegate {
+    func editCanceled()
+    
+    func articleSaved(success:Bool, error:NSError?)
+}
+
+class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var longOrShortSegmentedControl: UISegmentedControl!
     @IBOutlet weak var pictureImageView: UIImageView!

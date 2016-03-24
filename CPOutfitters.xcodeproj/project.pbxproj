@@ -24,7 +24,7 @@
 		81BA81791A49E0DB00E65899 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA81781A49E0DB00E65899 /* AudioToolbox.framework */; };
 		81BA817B1A49E0E500E65899 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817A1A49E0E500E65899 /* SystemConfiguration.framework */; };
 		81BA817F1A49E0F000E65899 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */; };
-		A420435F1C90BB820034D406 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A420435E1C90BB820034D406 /* CameraViewController.swift */; };
+		A420435F1C90BB820034D406 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A420435E1C90BB820034D406 /* ArticleViewController.swift */; };
 		AC0DA81C1C8FC62E007B6723 /* Outfit.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0DA81B1C8FC62E007B6723 /* Outfit.swift */; };
 		AC0DA81E1C8FCE09007B6723 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0DA81D1C8FCE09007B6723 /* HomeViewController.swift */; };
 		AC0DA8201C8FD73B007B6723 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0DA81F1C8FD73B007B6723 /* LoginViewController.swift */; };
@@ -70,7 +70,7 @@
 		81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		81BA81801A49E10C00E65899 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		983C4A4F0E6B5C2D88C559FD /* Pods-CPOutfitters.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CPOutfitters.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CPOutfitters/Pods-CPOutfitters.debug.xcconfig"; sourceTree = "<group>"; };
-		A420435E1C90BB820034D406 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		A420435E1C90BB820034D406 /* ArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
 		AC0DA81B1C8FC62E007B6723 /* Outfit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Outfit.swift; sourceTree = "<group>"; };
 		AC0DA81D1C8FCE09007B6723 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		AC0DA81F1C8FD73B007B6723 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -224,7 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				AC0DA81D1C8FCE09007B6723 /* HomeViewController.swift */,
-				A420435E1C90BB820034D406 /* CameraViewController.swift */,
+				A420435E1C90BB820034D406 /* ArticleViewController.swift */,
 				AC0DA81F1C8FD73B007B6723 /* LoginViewController.swift */,
 			);
 			name = "View Controllers";
@@ -447,7 +447,7 @@
 			files = (
 				ACC8432D1C8E782900C2F81E /* Article.swift in Sources */,
 				AC9F6EEA1C93D43300D6B9DE /* Event.swift in Sources */,
-				A420435F1C90BB820034D406 /* CameraViewController.swift in Sources */,
+				A420435F1C90BB820034D406 /* ArticleViewController.swift in Sources */,
 				AC9F6EE81C93D3A600D6B9DE /* OutfitHistory.swift in Sources */,
 				AC9F6EEC1C93F13500D6B9DE /* ParseClient.swift in Sources */,
 				07E1C7BB1CA3666800924566 /* UIImage+Categories.swift in Sources */,
