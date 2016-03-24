@@ -25,6 +25,8 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
     var libraryHasBeenViewed: Bool!
     var vc: UIImagePickerController!
     
+    var article: Article!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

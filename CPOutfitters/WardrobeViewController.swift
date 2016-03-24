@@ -155,8 +155,11 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
             let cell = sender as! WardrobeTypeCell
             article = cell.article
         }
+        
         // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if let articleController = segue.destinationViewController as? ArticleViewController {
+            articleController.article = article
+        }
     }
 
 }
