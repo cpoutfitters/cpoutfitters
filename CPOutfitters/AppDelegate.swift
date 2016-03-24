@@ -24,14 +24,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   //--------------------------------------
   
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
-    // Enable storing and querying data from Local Datastore.
-    // Remove this line if you don't want to use Local Datastore features or want to use cachePolicy.
-    Parse.enableLocalDatastore()
     
     // ****************************************************************************
     // Uncomment and fill in with your Parse credentials:
     Parse.initializeWithConfiguration(ParseClientConfiguration(block: { (configuration) -> Void in
+      configuration.localDatastoreEnabled = true
       configuration.applicationId = "cpoutfitters"
       configuration.clientKey = "client"
       configuration.server = "https://warm-meadow-13666.herokuapp.com/parse"

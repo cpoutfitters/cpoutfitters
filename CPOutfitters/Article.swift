@@ -18,7 +18,7 @@ class Article: PFObject, PFSubclassing {
     var primaryColorCategories: [String]?
     var occasion: [String]?
     var favorite: Bool?
-    var sharedWith: [String]?
+    var sharedWith: [PFUser]?
     var mediaImage: PFFile?
     var lastWorn: NSDate?
     var useCount: Int = 0
@@ -50,7 +50,7 @@ class Article: PFObject, PFSubclassing {
         self.primaryColorCategories = object["primary_color_categories"] as? [String]
         self.occasion = object["occasion"] as? [String]
         self.favorite = object["favorite"] as? Bool
-        self.sharedWith = object["shared_with"] as? [String]
+        self.sharedWith = object["shared_with"] as? [PFUser]
         self.mediaImage = object["image"] as? PFFile
         self.lastWorn = object["last_worn"] as? NSDate
         self.useCount = (object["use_count"] as? Int) ?? 0

@@ -11,7 +11,7 @@ import Parse
 
 class Event: PFObject {
     
-    var host: String?
+    var host: PFUser?
     var details: String?
     var date: NSDate?
     var title: String?
@@ -40,7 +40,7 @@ class Event: PFObject {
     init(object: PFObject) {
         super.init()
         
-        self.host = object["host"] as? String
+        self.host = object["host"] as? PFUser
         self.details = object["details"] as? String
         self.date = object["date"] as? NSDate
         self.title = object["title"] as? String

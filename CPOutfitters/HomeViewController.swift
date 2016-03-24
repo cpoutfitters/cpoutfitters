@@ -14,11 +14,43 @@ class HomeViewController: UIViewController, PFLogInViewControllerDelegate, PFSig
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let article = Article()
+        
+        // Mockup for Article class object
+        article["owner"] = PFUser.currentUser()!
+        article["type"] = "shirt"
+        article["short"] = true
+        article["primary_color"] = "blue"
+        article["primary_color_categories"] = ["blue", "green"]
+        article["occasion"] = ["casual"]
+        article["favorite"] = false
+        article["shared_with"] = [PFUser.currentUser()!, PFUser.currentUser()!]
+        article["media_image"] = Article.getPFFileFromImage(UIImage(named: "event"))
+        article["last_worn"] = NSDate()
+        article["use_count"] = 1
+        
+        ParseClient.sharedInstance.saveArticle(article) { (success, error) in
+            if success == true {
+                print("Article Saved")
+            } else {
+                print(error?.localizedDescription)
+            }
+        }
+        
+        print("Home view controller")
         ParseClient.sharedInstance.fetchArticles(["key": "value"], completion: {(articles, error) -> () in
+            print("Fetching articles: \(articles?.count)")
             for article in articles! {
-                print(article.type)
+                print("Sample type loaded: \(article.type)")
             }
         })
+        
+        ParseClient.sharedInstance.searchArticlesWithParams(["search":"blue casual shirt"]) { (articles: [Article]?, error: NSError?) in
+            print("Searched articles: \(articles?.count)")
+            for article in articles! {
+                print("Sample type loaded: \(article.type)")
+            }
+        }
 
     }
     

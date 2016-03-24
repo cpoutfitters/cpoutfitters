@@ -14,27 +14,21 @@ import Parse
 class CPOutfittersTests: XCTestCase {
     
     let article = Article()
-    let user = User()
+    var articles: [Article]?
     
     override func setUp() {
         super.setUp()
         
-        // Mockup for User class object
-        user.friends = nil
-        user.profileImage = nil
-        user.bio = "Hello"
-        user.sharedWith = nil
-        
         // Mockup for Article class object
-        article.userId = PFUser.currentUser()?.email
+        article.owner = PFUser.currentUser()!
         article.type = "shirt"
         article.short = true
         article.primaryColor = "blue"
         article.primaryColorCategories = ["blue", "green"]
         article.occasion = ["casual"]
         article.favorite = false
-        article.sharedWith = ["aditya.p1993@hotmail.com"]
-//        article.mediaImage = UIImage(named: "event")
+        article.sharedWith = nil
+        article.mediaImage = Article.getPFFileFromImage(UIImage(named: "event"))
         article.lastWorn = NSDate()
         article.useCount = 1
     }
@@ -44,34 +38,62 @@ class CPOutfittersTests: XCTestCase {
         super.tearDown()
     }
     
-    func testArticles_QueryToLoad_ArticleFetch() {
+    func testArticles() {
+        saveArticle()
+        queryArticleFetch()
+        deleteArticle()
+    }
+    
+    func queryArticleFetch() {
         /*
         Test article to fetch from Parse server, compare the values and delete it.
         */
-        let query = PFQuery(className: "Article")
-        query.whereKey("user_id", equalTo: article.userId!)
-        query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) in
-            let articles = Article.articlesWithArray(objects!)
-            for element in articles {
-                XCTAssertEqual(element.type, "shirt", "Article fetch failure")
+        //        let query = PFQuery(className: "Article")
+        //        query.fromLocalDatastore()
+        //        query.whereKey("owner", equalTo: PFUser.currentUser()!)
+        //        let objects = try! query.findObjects()
+        //        XCTAssert(objects.count > 0, "Objects not found matching owner")
+        //        let articles = Article.articlesWithArray(objects)
+        //        XCTAssert(articles.count > 0, "Articles not retrieved")
+        //        for element in articles {
+        //            XCTAssertEqual(element.type, "shirt", "Article fetch failure")
+        //        }
+        //        query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) in
+        //            let articles = Article.articlesWithArray(objects!)
+        //            for element in articles {
+        //                XCTAssertEqual(element.type, "shirt", "Article fetch failure")
+        //            }
+        //        }
+        
+        ParseClient.sharedInstance.fetchArticles(["key":"value"], completion: { (articles: [Article]?, error: NSError?) in
+            self.articles = articles
+            print("I am fetching articles")
+            if articles != nil {
+                XCTAssert(articles!.count > 0, "Objects not found matching owner")
+            } else {
+                XCTFail("Error in fetching failure")
             }
-        }
+        })
+        XCTAssert(self.articles!.count > 0, "Objects not found matching owner")
+
     }
     
-    func testArticle_SaveToServer_ArticleStored() {
+    func saveArticle() {
         /*
          Test article creation and saving it in local data store.
          */
+        
         ParseClient.sharedInstance.saveArticle(self.article, completion: { (success, error) in
             if (success == true) {
                 XCTAssertTrue(success!, "Article save failure")
             } else {
+                XCTFail("Failed to save article")
                 print(error?.localizedDescription)
             }
         })
     }
     
-    func testParseClient_DeletionOfArticle_ArticleRemoved() {
+    func deleteArticle() {
        
         ParseClient.sharedInstance.deleteArticle(self.article) { (success, error) in
             if (success == true) {
@@ -81,7 +103,5 @@ class CPOutfittersTests: XCTestCase {
             }
         }
     }
-    func testArticleCreationDeletion() {
     
-    }
 }
