@@ -12,7 +12,6 @@ import Parse
 
 protocol ArticleDelegate {
     func editCanceled()
-    
     func articleSaved(success:Bool, error:NSError?)
 }
 
@@ -32,6 +31,8 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var formalButton: UIButton!
     @IBOutlet weak var blkTieButton: UIButton!
     
+    var delegate: ArticleDelegate?
+    
     var libraryHasBeenViewed: Bool!
     var vc: UIImagePickerController!
     var occassionDictionary: [String:Bool] = ["Casual": false, "Work": false, "Date": false, "Social": false, "Formal": false, "Blk Tie": false]
@@ -41,22 +42,9 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
     var article: Article! {
         didSet {
             /* set the occasion buttons bgcolor by iterating through the button dictionary */
-            if let attires = article.occasion {
-                for attire in attires {
-                    if occassionDictionary[attire]! {
-                        buttonDictionary[attire]!.backgroundColor = bgColorSelected
-                    } else {
-                        buttonDictionary[attire]!.backgroundColor = bgColorUnselected
-                    }
-                }
-            } else {
-                for (_,button) in buttonDictionary {
-                    button.backgroundColor = bgColorUnselected
-                }
-            }
+            
             
             //pictureImageView.image = article.image as! UIImage
-            article.mediaImage = Article.getPFFileFromImage(pictureImageView.image)
         }
     }
     
@@ -66,10 +54,11 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
     }
     
-    var article: Article!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onGetAverageColorFromPicture(_:)))
+//        pictureImageView.addGestureRecognizer(tapGesture)
         
         // Do any additional setup after loading the view.
         libraryHasBeenViewed = false
@@ -77,8 +66,24 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
         vc.delegate = self
         vc.allowsEditing = true
         
-        //article = Article()
         buttonDictionary = ["Casual": casualButton, "Work": workButton, "Date": dateButton, "Social": socialButton, "Formal": formalButton, "Blk Tie": blkTieButton]
+        
+        if let attires = article.occasion {
+            for attire in attires {
+                if occassionDictionary[attire]! {
+                    buttonDictionary[attire]!.backgroundColor = bgColorSelected
+                } else {
+                    buttonDictionary[attire]!.backgroundColor = bgColorUnselected
+                }
+            }
+        } else {
+            for (_,button) in buttonDictionary {
+                button.backgroundColor = bgColorUnselected
+            }
+        }
+        
+        article.mediaImage = Article.getPFFileFromImage(pictureImageView.image)
+
     }
     
     func imagePickerController(picker: UIImagePickerController,
@@ -97,6 +102,18 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func onSave() {
+        ParseClient.sharedInstance.saveArticle(article) { (success, error) in
+            if success {
+                self.delegate?.articleSaved(true, error: nil)
+            }
+            else {
+                // notify user
+                self.delegate?.articleSaved(false, error: error)
+            }
+        }
     }
     
     @IBAction func onAnOccasionButton(sender: AnyObject) {
@@ -139,7 +156,7 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
             let imageClip = CGImageCreateWithImageInRect(newImage.CGImage, clip)
             
             
-            let viewAverageColor = true        // change this to view the image vs the average color
+            let viewAverageColor = false        // change this to view the image vs the average color
             
             if viewAverageColor {
                 let averageColor = UIColor(averageColorFromImage: UIImage(CGImage: imageClip!))

@@ -38,7 +38,7 @@ class ParseClient: NSObject {
         }
     }
 
-    func saveArticle(article: Article, completion:(success: Bool?, error: NSError?) -> ()) {
+    func saveArticle(article: Article, completion:(success: Bool, error: NSError?) -> ()) {
         
         article.saveInBackgroundWithBlock {
             (success: Bool?, error: NSError?) -> Void in
