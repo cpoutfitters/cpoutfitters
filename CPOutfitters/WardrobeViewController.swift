@@ -13,13 +13,16 @@ let cellHeight: CGFloat = 100.0
 let kAddArticleSegueIdentifier = "addArticle"
 let kEditArticleSegueIdentifier = "editArticle"
 
-class WardrobeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class WardrobeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
 
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchSegmentedControl: UISegmentedControl!
     
     var types = ["Tops", "Bottoms", "Footwear"]
     var expanded = [true, true, true]
     var articles: [[Article]] = [[],[],[]]
+    var filteredArticles: [[Article]] = [[], [], []]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +30,33 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
         // Do any additional setup after loading the view.
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        self.searchBar.delegate = self
+        
+        ParseClient.sharedInstance.fetchArticles(["type":"top"]) { (articles, error) in
+            if let articles = articles {
+                self.articles[0] = articles
+                self.filteredArticles[0] = articles
+                self.tableView.reloadData()
+            }
+        }
+        ParseClient.sharedInstance.fetchArticles(["type":"bottom"]) { (articles, error) in
+            if let articles = articles {
+                self.articles[1] = articles
+                self.filteredArticles[1] = articles
+                self.tableView.reloadData()
+            }
+        }
+        ParseClient.sharedInstance.fetchArticles(["type":"footwear"]) { (articles, error) in
+            if let articles = articles {
+                self.articles[2] = articles
+                self.filteredArticles[2] = articles
+                self.tableView.reloadData()
+            }
+        }
+        
+        
+
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -104,13 +134,13 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return expanded[section] ? articles[section].count : 0
+        return expanded[section] ? filteredArticles[section].count : 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("WardrobeTypeCell", forIndexPath: indexPath) as! WardrobeTypeCell
 
-        cell.article = articles[indexPath.section][indexPath.row]
+        cell.article = filteredArticles[indexPath.section][indexPath.row]
         
         return cell
     }
@@ -131,6 +161,38 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func angleForArrow(expanded: Bool) -> CGFloat {
         return CGFloat(expanded ? M_PI / 2.0 : M_PI * 1.5 )
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        
+        var searchOptions = ["primary_color", "occasion", "type"]
+        let searchOption = searchOptions[searchSegmentedControl.selectedSegmentIndex]
+        
+        searchBar.resignFirstResponder()
+        ParseClient.sharedInstance.fetchArticles([searchOption: searchBar.text!.lowercaseString], completion: { (articleObjects: [Article]?, error: NSError?) in
+            if let articleObjects = articleObjects {
+                print("Successfully searched articles: \(articleObjects.count)")
+                self.filteredArticles = articleObjects
+                
+                self.tableView.reloadData()
+                
+            } else {
+                let errorString = error!.userInfo["error"] as? NSString
+                print("Error message: \(errorString)")
+            }
+            
+        })
+    }
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        self.searchBar.showsCancelButton = true
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+        self.tableView.reloadData()
     }
     
     // MARK: - Navigation
