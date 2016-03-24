@@ -11,10 +11,11 @@ An app that stores your wardrobe and suggests outfits to help you dress better.
 ## User stories
 
 The following **required** functionality is completed:
+- [X] Users can create an account and logs in automatically.
 - [ ] Users can upload and browse their clothes (metadata could include color, event type, hot/warm/cool/cold usage, collar, sleeve length, etc.)
 - [ ] App suggests what to wear based on coordination: color, warm/cold & formality
 - [ ] User can search clothing by keyword (color, category, etc.) 
-- [ ] Users can categorize their clothes by wardrobe (same clothes can be in different groupings)
+- [X] Users can categorize their clothes by wardrobe (same clothes can be in different groupings)
 - [ ] App suggestion based on shared outfit (for coordination)
 - [ ] User can share their wardrobe/outfits with friends
 
@@ -34,3 +35,9 @@ The following **optional** features are implemented:
 Schema: 
 
 ![Alt text](/Schema.png?raw=true "Schema")
+
+##Gif Week 1:##
+<img src='http://i.imgur.com/1Y4hyyn.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+GIF created with [LiceCap](http://www.cockos.com/licecap/).
+
