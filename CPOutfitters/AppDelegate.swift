@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // PFFacebookUtils.initializeFacebook()
     // ****************************************************************************
     
-    PFUser.enableAutomaticUser()
+//    PFUser.enableAutomaticUser()
     
     let defaultACL = PFACL();
     
@@ -49,26 +49,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     PFACL.setDefaultACL(defaultACL, withAccessForCurrentUser: true)
     
-    if application.applicationState != UIApplicationState.Background {
-      // Track an app open here if we launch with a push, unless
-      // "content_available" was used to trigger a background push (introduced in iOS 7).
-      // In that case, we skip tracking here to avoid double counting the app-open.
-      
-      let preBackgroundPush = !application.respondsToSelector("backgroundRefreshStatus")
-      let oldPushHandlerOnly = !self.respondsToSelector("application:didReceiveRemoteNotification:fetchCompletionHandler:")
-      var noPushPayload = false;
-      if let options = launchOptions {
-        noPushPayload = options[UIApplicationLaunchOptionsRemoteNotificationKey] != nil;
-      }
-      if (preBackgroundPush || oldPushHandlerOnly || noPushPayload) {
-        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
-      }
-    }
+//    if application.applicationState != UIApplicationState.Background {
+//      // Track an app open here if we launch with a push, unless
+//      // "content_available" was used to trigger a background push (introduced in iOS 7).
+//      // In that case, we skip tracking here to avoid double counting the app-open.
+//      
+//      let preBackgroundPush = !application.respondsToSelector("backgroundRefreshStatus")
+//      let oldPushHandlerOnly = !self.respondsToSelector("application:didReceiveRemoteNotification:fetchCompletionHandler:")
+//      var noPushPayload = false;
+//      if let options = launchOptions {
+//        noPushPayload = options[UIApplicationLaunchOptionsRemoteNotificationKey] != nil;
+//      }
+//      if (preBackgroundPush || oldPushHandlerOnly || noPushPayload) {
+//        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+//      }
+//    }
+//    
+//    let types: UIUserNotificationType = [.Alert, .Badge, .Sound]
+//    let settings = UIUserNotificationSettings(forTypes: types, categories: nil)
+//    application.registerUserNotificationSettings(settings)
+//    application.registerForRemoteNotifications()
     
-    let types: UIUserNotificationType = [.Alert, .Badge, .Sound]
-    let settings = UIUserNotificationSettings(forTypes: types, categories: nil)
-    application.registerUserNotificationSettings(settings)
-    application.registerForRemoteNotifications()
+    if (PFUser.currentUser() != nil) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let tbController = storyboard.instantiateViewControllerWithIdentifier("TabBarController")
+        window?.rootViewController = tbController
+    }
     
     return true
   }
@@ -91,20 +97,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
   }
   
-  func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
-    if error.code == 3010 {
-      print("Push notifications are not supported in the iOS Simulator.\n")
-    } else {
-      print("application:didFailToRegisterForRemoteNotificationsWithError: %@\n", error)
-    }
-  }
-  
-  func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-    PFPush.handlePush(userInfo)
-    if application.applicationState == UIApplicationState.Inactive {
-      PFAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
-    }
-  }
+//  func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+//    if error.code == 3010 {
+//      print("Push notifications are not supported in the iOS Simulator.\n")
+//    } else {
+//      print("application:didFailToRegisterForRemoteNotificationsWithError: %@\n", error)
+//    }
+//  }
+//  
+//  func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+//    PFPush.handlePush(userInfo)
+//    if application.applicationState == UIApplicationState.Inactive {
+//      PFAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
+//    }
+//  }
   
   ///////////////////////////////////////////////////////////
   // Uncomment this method if you want to use Push Notifications with Background App Refresh

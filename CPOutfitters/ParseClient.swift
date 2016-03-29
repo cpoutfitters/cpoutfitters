@@ -38,18 +38,25 @@ class ParseClient: NSObject {
         }
     }
 
-    func saveArticle(article: Article, completion:(success: Bool?, error: NSError?) -> ()) {
-        
-        article.saveInBackgroundWithBlock {
-            (success: Bool?, error: NSError?) -> Void in
-            if (success == true ) {
-                print("An article stored")
-                completion(success: true, error: nil)
+    func saveArticle(article: Article, completion:(success: Bool, error: NSError?) -> ()) {
+        article.mediaImage.saveInBackgroundWithBlock { (success, error: NSError?) in
+            if success {
+                article.saveInBackgroundWithBlock {
+                    (success: Bool?, error: NSError?) -> Void in
+                    if (success == true ) {
+                        print("An article stored")
+                        completion(success: true, error: nil)
+                    } else {
+                        print(error?.localizedDescription)
+                        completion(success: false, error: error)
+                    }
+                }
             } else {
                 print(error?.localizedDescription)
                 completion(success: false, error: error)
             }
         }
+        
     }
 
     func fetchOutfitsWithCompletion(completion completion:([PFObject]?, NSError?) -> ()) {
@@ -59,14 +66,8 @@ class ParseClient: NSObject {
     }
 
     // Function for deletion of article from server
-    func deleteArticle(article: Article, completion:(success: Bool?, error: NSError?) -> ()) {
-        article.deleteInBackgroundWithBlock({ (success: Bool?, error: NSError?) -> Void in
-            if ((success) != nil) {
-                completion(success: true, error: nil)
-            } else {
-                completion(success: false, error: error)
-            }
-        })
+    func deleteArticle(article: Article, completion:(success: Bool, error: NSError?) -> ()) {
+        article.deleteInBackgroundWithBlock(completion)
     }
     
     //Search with conjuctions across category, color and type

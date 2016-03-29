@@ -13,7 +13,7 @@ let cellHeight: CGFloat = 100.0
 let kAddArticleSegueIdentifier = "addArticle"
 let kEditArticleSegueIdentifier = "editArticle"
 
-class WardrobeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class WardrobeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ArticleDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -159,7 +159,18 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
         // Get the new view controller using segue.destinationViewController.
         if let articleController = segue.destinationViewController as? ArticleViewController {
             articleController.article = article
+            articleController.delegate = self
         }
     }
-
+    
+    func articleSaved(success: Bool, error: NSError?) {
+        if success {
+            // reload table view
+            // dismiss editor
+        }
+    }
+    
+    func articleDeleted(article: Article) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 }
