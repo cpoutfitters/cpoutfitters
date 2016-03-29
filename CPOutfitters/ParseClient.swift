@@ -66,14 +66,8 @@ class ParseClient: NSObject {
     }
 
     // Function for deletion of article from server
-    func deleteArticle(article: Article, completion:(success: Bool?, error: NSError?) -> ()) {
-        article.deleteInBackgroundWithBlock({ (success: Bool?, error: NSError?) -> Void in
-            if ((success) != nil) {
-                completion(success: true, error: nil)
-            } else {
-                completion(success: false, error: error)
-            }
-        })
+    func deleteArticle(article: Article, completion:(success: Bool, error: NSError?) -> ()) {
+        article.deleteInBackgroundWithBlock(completion)
     }
     
     //Search with conjuctions across category, color and type

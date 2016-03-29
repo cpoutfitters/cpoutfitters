@@ -169,4 +169,8 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
             // dismiss editor
         }
     }
+    
+    func articleDeleted(article: Article) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 }

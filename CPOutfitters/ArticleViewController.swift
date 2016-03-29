@@ -13,6 +13,7 @@ import UIColor_Hex
 
 protocol ArticleDelegate {
     func articleSaved(success:Bool, error:NSError?)
+    func articleDeleted(article: Article)
 }
 
 let bgColorUnselected = UIColor(hue: 200/360, saturation: 0.40, brightness: 1.0, alpha: 1.0)
@@ -170,6 +171,13 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
     }
     
+    @IBAction func onDelete(sender: AnyObject) {
+        ParseClient.sharedInstance.deleteArticle(article) { (success, error) in
+            if success {
+                self.delegate?.articleDeleted(self.article)
+            }
+        }
+    }
     
     /*
      // MARK: - Navigation

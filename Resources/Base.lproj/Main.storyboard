@@ -314,6 +314,9 @@
                                                 <state key="normal" title="Delete">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="onDelete:" destination="tKI-sC-J5L" eventType="touchUpInside" id="oIP-Lt-OJV"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
