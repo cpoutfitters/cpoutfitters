@@ -11,11 +11,11 @@ An app that stores your wardrobe and suggests outfits to help you dress better.
 ## User stories
 
 The following **required** functionality is completed:
-- [X] Users can create an account and logs in automatically.
+- [x] Users can create an account and logs in automatically.
 - [ ] Users can upload and browse their clothes (metadata could include color, event type, hot/warm/cool/cold usage, collar, sleeve length, etc.)
 - [ ] App suggests what to wear based on coordination: color, warm/cold & formality
-- [ ] User can search clothing by keyword (color, category, etc.) 
-- [X] Users can categorize their clothes by wardrobe (same clothes can be in different groupings)
+- [x] User can search clothing by keyword (color, category, etc.) 
+- [x] Users can categorize their clothes by wardrobe (same clothes can be in different groupings)
 - [ ] App suggestion based on shared outfit (for coordination)
 - [ ] User can share their wardrobe/outfits with friends
 
