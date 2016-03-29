@@ -104,6 +104,9 @@
                                 <state key="normal" title="Save/Select">
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="onSave" destination="tKI-sC-J5L" eventType="touchUpInside" id="myy-a7-iAa"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dZD-RB-vwe">
                                 <rect key="frame" x="20" y="78" width="280" height="470"/>
@@ -319,6 +322,9 @@
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="onCancel:" destination="tKI-sC-J5L" eventType="touchUpInside" id="CHe-AW-VwO"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -343,7 +349,6 @@
                         <outlet property="longOrShortSegmentedControl" destination="5mD-cS-M5C" id="Vwi-I2-pI2"/>
                         <outlet property="pictureImageView" destination="I4y-bW-xlo" id="RfP-7f-gix"/>
                         <outlet property="socialButton" destination="3LR-RH-qq5" id="VOJ-0Z-Qta"/>
-                        <outlet property="tapGesture" destination="M19-Kc-XpA" id="V1H-IQ-xkX"/>
                         <outlet property="workButton" destination="8wd-Ab-KLM" id="vOv-jh-V2Q"/>
                     </connections>
                 </viewController>

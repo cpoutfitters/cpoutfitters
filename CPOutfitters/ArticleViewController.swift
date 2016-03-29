@@ -11,7 +11,6 @@ import ChameleonFramework
 import Parse
 
 protocol ArticleDelegate {
-    func editCanceled()
     func articleSaved(success:Bool, error:NSError?)
 }
 
@@ -41,10 +40,7 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     var article: Article! {
         didSet {
-            /* set the occasion buttons bgcolor by iterating through the button dictionary */
             
-            
-            //pictureImageView.image = article.image as! UIImage
         }
     }
     
@@ -68,8 +64,9 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         buttonDictionary = ["Casual": casualButton, "Work": workButton, "Date": dateButton, "Social": socialButton, "Formal": formalButton, "Blk Tie": blkTieButton]
         
-        if let attires = article.occasion {
-            for attire in attires {
+        /* set the occasion buttons bgcolor by iterating through the button dictionary */
+        if article.occasion.count > 0 {
+            for attire in article.occasion {
                 if occassionDictionary[attire]! {
                     buttonDictionary[attire]!.backgroundColor = bgColorSelected
                 } else {
@@ -104,7 +101,7 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
         // Dispose of any resources that can be recreated.
     }
     
-    func onSave() {
+    @IBAction func onSave() {
         ParseClient.sharedInstance.saveArticle(article) { (success, error) in
             if success {
                 self.delegate?.articleSaved(true, error: nil)
@@ -116,20 +113,27 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
     }
     
+    @IBAction func onCancel(sender: AnyObject) {
+        self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     @IBAction func onAnOccasionButton(sender: AnyObject) {
         let selected = sender as! UIButton
         print(selected.currentTitle)
         print(occassionDictionary[selected.currentTitle!])
-        occassionDictionary[selected.currentTitle!]! = !occassionDictionary[selected.currentTitle!]!
-        if occassionDictionary[selected.currentTitle!]! {
+        let selectedTitle = selected.currentTitle!
+        let occassionSet = occassionDictionary[selectedTitle]!
+        
+        occassionDictionary[selectedTitle]! = !occassionSet
+        if !occassionSet {
             selected.backgroundColor = bgColorSelected
             selected.tintColor = bgColorUnselected
-            article.occasion?.append(selected.currentTitle!)
+            article.occasion.append(selectedTitle)
         } else {
             selected.backgroundColor = bgColorUnselected
             selected.tintColor = bgColorSelected
-            if let index = article.occasion?.indexOf(selected.currentTitle!) {
-                article.occasion?.removeAtIndex(index)
+            if let index = article.occasion.indexOf(selectedTitle) {
+                article.occasion.removeAtIndex(index)
             }
         }
     }
@@ -156,7 +160,7 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
             let imageClip = CGImageCreateWithImageInRect(newImage.CGImage, clip)
             
             
-            let viewAverageColor = false        // change this to view the image vs the average color
+            let viewAverageColor = true        // change this to view the image vs the average color
             
             if viewAverageColor {
                 let averageColor = UIColor(averageColorFromImage: UIImage(CGImage: imageClip!))

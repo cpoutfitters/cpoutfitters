@@ -169,9 +169,4 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
             // dismiss editor
         }
     }
-    
-    func editCanceled() {
-        // dismiss editor
-    }
-
 }
