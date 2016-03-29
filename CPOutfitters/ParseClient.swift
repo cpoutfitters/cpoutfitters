@@ -39,17 +39,24 @@ class ParseClient: NSObject {
     }
 
     func saveArticle(article: Article, completion:(success: Bool, error: NSError?) -> ()) {
-        
-        article.saveInBackgroundWithBlock {
-            (success: Bool?, error: NSError?) -> Void in
-            if (success == true ) {
-                print("An article stored")
-                completion(success: true, error: nil)
+        article.mediaImage.saveInBackgroundWithBlock { (success, error: NSError?) in
+            if success {
+                article.saveInBackgroundWithBlock {
+                    (success: Bool?, error: NSError?) -> Void in
+                    if (success == true ) {
+                        print("An article stored")
+                        completion(success: true, error: nil)
+                    } else {
+                        print(error?.localizedDescription)
+                        completion(success: false, error: error)
+                    }
+                }
             } else {
                 print(error?.localizedDescription)
                 completion(success: false, error: error)
             }
         }
+        
     }
 
     func fetchOutfitsWithCompletion(completion completion:([PFObject]?, NSError?) -> ()) {

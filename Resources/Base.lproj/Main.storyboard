@@ -154,6 +154,9 @@
                                                                     <segment title="Short"/>
                                                                     <segment title="Long"/>
                                                                 </segments>
+                                                                <connections>
+                                                                    <action selector="onSegmentedControllerChange:" destination="tKI-sC-J5L" eventType="valueChanged" id="Fok-dk-8AK"/>
+                                                                </connections>
                                                             </segmentedControl>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4z0-9m-DLA">
                                                                 <rect key="frame" x="0.0" y="48" width="112" height="76"/>
@@ -295,6 +298,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XQH-RB-C5H">
                                                 <rect key="frame" x="0.0" y="284" width="280" height="30"/>
                                                 <state key="normal" title="[Favorite]"/>
+                                                <connections>
+                                                    <action selector="onFavorite:" destination="tKI-sC-J5L" eventType="touchUpInside" id="VC0-JK-ME9"/>
+                                                </connections>
                                             </button>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Notes" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Npa-UO-yGv">
                                                 <rect key="frame" x="0.0" y="314" width="280" height="126"/>

@@ -8,6 +8,7 @@ target 'CPOutfitters' do
 pod 'Parse'
 pod 'ParseUI'
 pod 'ChameleonFramework/Swift'
+pod 'UIColor+Hex'
 
 link_with 'CPOutfitters', 'CPOutfittersTests'
 end
