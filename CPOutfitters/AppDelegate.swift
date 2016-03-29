@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       configuration.localDatastoreEnabled = true
       configuration.applicationId = "cpoutfitters"
       configuration.clientKey = "client"
-      configuration.server = "https://warm-meadow-13666.herokuapp.com/parse"
+      configuration.server = "https://cpoutfitters-server.herokuapp.com/parse"
     }))
     //
     // If you are using Facebook, uncomment and add your FacebookAppID to your bundle's plist as

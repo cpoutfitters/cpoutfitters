@@ -149,7 +149,7 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
             default: article!.type = "footwear"
             }
             
-            article!.owner = PFUser.currentUser()
+            article!.owner = PFUser.currentUser()!
         }
         else {  // Edit segue
             let cell = sender as! WardrobeTypeCell
