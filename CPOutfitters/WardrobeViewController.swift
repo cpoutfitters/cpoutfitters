@@ -13,6 +13,10 @@ let cellHeight: CGFloat = 100.0
 let kAddArticleSegueIdentifier = "addArticle"
 let kEditArticleSegueIdentifier = "editArticle"
 
+let primaryColorKey = "primaryColorCategories"
+let occasionKey = "occasion"
+let typeKey = "type"
+
 class WardrobeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
 
     @IBOutlet weak var searchBar: UISearchBar!
@@ -165,14 +169,41 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         
-        var searchOptions = ["primary_color", "occasion", "type"]
+        var searchOptions = [primaryColorKey, occasionKey, typeKey]
         let searchOption = searchOptions[searchSegmentedControl.selectedSegmentIndex]
         
         searchBar.resignFirstResponder()
-        ParseClient.sharedInstance.fetchArticles([searchOption: searchBar.text!.lowercaseString], completion: { (articleObjects: [Article]?, error: NSError?) in
+        
+        ParseClient.sharedInstance.fetchArticles([searchOption: searchBar.text!.lowercaseString, typeKey: "top"], completion: { (articleObjects: [Article]?, error: NSError?) in
             if let articleObjects = articleObjects {
                 print("Successfully searched articles: \(articleObjects.count)")
-                self.filteredArticles = articleObjects
+                self.filteredArticles[0] = articleObjects
+                
+                self.tableView.reloadData()
+                
+            } else {
+                let errorString = error!.userInfo["error"] as? NSString
+                print("Error message: \(errorString)")
+            }
+            
+        })
+        ParseClient.sharedInstance.fetchArticles([searchOption: searchBar.text!.lowercaseString, typeKey: "bottom"], completion: { (articleObjects: [Article]?, error: NSError?) in
+            if let articleObjects = articleObjects {
+                print("Successfully searched articles: \(articleObjects.count)")
+                self.filteredArticles[0] = articleObjects
+                
+                self.tableView.reloadData()
+                
+            } else {
+                let errorString = error!.userInfo["error"] as? NSString
+                print("Error message: \(errorString)")
+            }
+            
+        })
+        ParseClient.sharedInstance.fetchArticles([searchOption: searchBar.text!.lowercaseString, typeKey: "footwear"], completion: { (articleObjects: [Article]?, error: NSError?) in
+            if let articleObjects = articleObjects {
+                print("Successfully searched articles: \(articleObjects.count)")
+                self.filteredArticles[0] = articleObjects
                 
                 self.tableView.reloadData()
                 

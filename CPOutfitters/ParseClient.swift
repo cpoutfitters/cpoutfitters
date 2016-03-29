@@ -25,16 +25,15 @@ class ParseClient: NSObject {
         let query = PFQuery(className: "Article")
         
         for (key, value) in params {
-            query.whereKey(key as! String, containsString: value as! String)
+            query.whereKey(key as! String, containsString: value as? String)
         }
         
         query.whereKey("owner", equalTo: PFUser.currentUser()!)
         query.limit = 40
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
-            if objects != nil {
-                let articleArray = Article.articlesWithArray(objects!)
-                completion(articleArray, nil)
+            if let articles = objects as? [Article] {
+                completion(articles, nil)
             } else {
                 print(error?.localizedDescription)
             }
@@ -42,12 +41,18 @@ class ParseClient: NSObject {
     }
 
     func saveArticle(article: Article, completion:(success: Bool?, error: NSError?) -> ()) {
-        
-        article.saveInBackgroundWithBlock {
-            (success: Bool?, error: NSError?) -> Void in
-            if (success == true ) {
-                print("An article stored")
-                completion(success: true, error: nil)
+        article.mediaImage.saveInBackgroundWithBlock { (success, error: NSError?) in
+            if success {
+                article.saveInBackgroundWithBlock {
+                    (success: Bool?, error: NSError?) -> Void in
+                    if (success == true ) {
+                        print("An article stored")
+                        completion(success: true, error: nil)
+                    } else {
+                        print(error?.localizedDescription)
+                        completion(success: false, error: error)
+                    }
+                }
             } else {
                 print(error?.localizedDescription)
                 completion(success: false, error: error)
