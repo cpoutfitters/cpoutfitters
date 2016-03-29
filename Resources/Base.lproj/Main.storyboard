@@ -38,52 +38,80 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sLT-EV-6AM">
-                                <rect key="frame" x="0.0" y="20" width="320" height="499"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="WardrobeTypeCell" rowHeight="100" id="cbg-rf-wmf" customClass="WardrobeTypeCell" customModule="CPOutfitters" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="100"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cbg-rf-wmf" id="Wji-Fl-taT">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D5i-B6-12I" customClass="ImageLabelView" customModule="CPOutfitters" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
-                                                </view>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="D5i-B6-12I" firstAttribute="leading" secondItem="Wji-Fl-taT" secondAttribute="leading" id="ByX-lA-SW8"/>
-                                                <constraint firstItem="D5i-B6-12I" firstAttribute="top" secondItem="Wji-Fl-taT" secondAttribute="top" id="Jw9-1Y-kqm"/>
-                                                <constraint firstAttribute="bottom" secondItem="D5i-B6-12I" secondAttribute="bottom" id="dUb-DA-Lzw"/>
-                                                <constraint firstAttribute="trailing" secondItem="D5i-B6-12I" secondAttribute="trailing" id="lQw-fu-ODI"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="containerView" destination="D5i-B6-12I" id="0rn-xd-mk5"/>
-                                            <segue destination="tKI-sC-J5L" kind="modal" identifier="editArticle" id="NlG-4k-sNj"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BQj-Z6-Vk1">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <subviews>
+                                    <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="ruw-hJ-WHG">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </searchBar>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="RtP-1b-gNy">
+                                        <rect key="frame" x="0.0" y="44" width="320" height="29"/>
+                                        <segments>
+                                            <segment title="Tops"/>
+                                            <segment title="Bottoms"/>
+                                            <segment title="Footwear"/>
+                                        </segments>
+                                    </segmentedControl>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sLT-EV-6AM">
+                                        <rect key="frame" x="0.0" y="72" width="320" height="476"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="WardrobeTypeCell" rowHeight="100" id="cbg-rf-wmf" customClass="WardrobeTypeCell" customModule="CPOutfitters" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="320" height="100"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cbg-rf-wmf" id="Wji-Fl-taT">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D5i-B6-12I" customClass="ImageLabelView" customModule="CPOutfitters" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
+                                                        </view>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="D5i-B6-12I" firstAttribute="leading" secondItem="Wji-Fl-taT" secondAttribute="leading" id="ByX-lA-SW8"/>
+                                                        <constraint firstItem="D5i-B6-12I" firstAttribute="top" secondItem="Wji-Fl-taT" secondAttribute="top" id="Jw9-1Y-kqm"/>
+                                                        <constraint firstAttribute="bottom" secondItem="D5i-B6-12I" secondAttribute="bottom" id="dUb-DA-Lzw"/>
+                                                        <constraint firstAttribute="trailing" secondItem="D5i-B6-12I" secondAttribute="trailing" id="lQw-fu-ODI"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="containerView" destination="D5i-B6-12I" id="0rn-xd-mk5"/>
+                                                    <segue destination="tKI-sC-J5L" kind="modal" identifier="editArticle" id="NlG-4k-sNj"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="sLT-EV-6AM" firstAttribute="leading" secondItem="wIG-Cu-nGz" secondAttribute="leading" id="1FV-xP-4PG"/>
-                            <constraint firstAttribute="trailing" secondItem="sLT-EV-6AM" secondAttribute="trailing" id="GGv-dq-e8g"/>
-                            <constraint firstItem="sLT-EV-6AM" firstAttribute="top" secondItem="WQ8-9e-5aF" secondAttribute="bottom" id="cM3-CO-pIN"/>
-                            <constraint firstItem="xh6-IA-JyT" firstAttribute="top" secondItem="sLT-EV-6AM" secondAttribute="bottom" id="nsH-E5-wcF"/>
+                            <constraint firstAttribute="trailing" secondItem="BQj-Z6-Vk1" secondAttribute="trailing" id="Cge-kN-zrQ"/>
+                            <constraint firstItem="BQj-Z6-Vk1" firstAttribute="top" secondItem="WQ8-9e-5aF" secondAttribute="bottom" id="cCF-A9-wbo"/>
+                            <constraint firstAttribute="bottom" secondItem="BQj-Z6-Vk1" secondAttribute="bottom" id="eXd-Pq-1Ed"/>
+                            <constraint firstItem="BQj-Z6-Vk1" firstAttribute="leading" secondItem="wIG-Cu-nGz" secondAttribute="leading" id="qVB-EP-tPr"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="vOZ-gj-MA5"/>
                     <navigationItem key="navigationItem" id="eOx-wb-aFi"/>
                     <connections>
+                        <outlet property="searchBar" destination="ruw-hJ-WHG" id="RvT-7g-alP"/>
+                        <outlet property="searchDisplayController" destination="8vT-em-ceI" id="nh6-PI-MdN"/>
+                        <outlet property="searchSegmentedControl" destination="RtP-1b-gNy" id="dol-V7-C44"/>
                         <outlet property="tableView" destination="sLT-EV-6AM" id="23i-vh-PZj"/>
                         <segue destination="tKI-sC-J5L" kind="modal" identifier="addArticle" id="mIw-8z-3Nz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ksE-fL-Zu6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="8vT-em-ceI">
+                    <connections>
+                        <outlet property="delegate" destination="0Qb-uL-hcT" id="caE-hi-17N"/>
+                        <outlet property="searchContentsController" destination="0Qb-uL-hcT" id="e28-sk-qnN"/>
+                        <outlet property="searchResultsDataSource" destination="0Qb-uL-hcT" id="Ls5-1M-pE5"/>
+                        <outlet property="searchResultsDelegate" destination="0Qb-uL-hcT" id="TXd-s6-DKd"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1759" y="204"/>
         </scene>
