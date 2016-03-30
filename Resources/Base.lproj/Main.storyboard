@@ -61,11 +61,11 @@
                                                 <rect key="frame" x="0.0" y="28" width="320" height="100"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cbg-rf-wmf" id="Wji-Fl-taT">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D5i-B6-12I" customClass="ImageLabelView" customModule="CPOutfitters" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
+                                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D5i-B6-12I" customClass="ImageLabelView" customModule="CPOutfitters" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                                                         </view>
                                                     </subviews>
                                                     <constraints>
@@ -154,7 +154,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="-40" translatesAutoresizingMaskIntoConstraints="NO" id="G73-yn-GbK">
                                                         <rect key="frame" x="0.0" y="0.0" width="136" height="269"/>
                                                         <subviews>
-                                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I4y-bW-xlo">
+                                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I4y-bW-xlo" customClass="PFImageView">
                                                                 <rect key="frame" x="0.0" y="0.0" width="136" height="265"/>
                                                                 <gestureRecognizers/>
                                                                 <constraints>
@@ -177,7 +177,7 @@
                                                         <rect key="frame" x="144" y="0.0" width="136" height="269"/>
                                                         <subviews>
                                                             <segmentedControl opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5mD-cS-M5C">
-                                                                <rect key="frame" x="0.0" y="0.0" width="97" height="29"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="136" height="29"/>
                                                                 <segments>
                                                                     <segment title="Short"/>
                                                                     <segment title="Long"/>
@@ -314,6 +314,7 @@
                                                         </subviews>
                                                         <constraints>
                                                             <constraint firstAttribute="trailing" secondItem="1TX-Kh-mYC" secondAttribute="trailing" id="0tJ-Ab-2fh"/>
+                                                            <constraint firstAttribute="trailing" secondItem="5mD-cS-M5C" secondAttribute="trailing" id="Uwx-s5-B1H"/>
                                                             <constraint firstItem="1TX-Kh-mYC" firstAttribute="leading" secondItem="hMK-o6-g1n" secondAttribute="leading" id="jl5-0q-cAr"/>
                                                         </constraints>
                                                     </stackView>
@@ -384,7 +385,7 @@
                         <outlet property="dateButton" destination="ppQ-Oj-HD7" id="reB-YP-2oJ"/>
                         <outlet property="formalButton" destination="xh1-5Y-b7t" id="sin-Xa-LD7"/>
                         <outlet property="longOrShortSegmentedControl" destination="5mD-cS-M5C" id="Vwi-I2-pI2"/>
-                        <outlet property="pictureImageView" destination="I4y-bW-xlo" id="RfP-7f-gix"/>
+                        <outlet property="pictureImageView" destination="I4y-bW-xlo" id="fec-eT-U4m"/>
                         <outlet property="socialButton" destination="3LR-RH-qq5" id="VOJ-0Z-Qta"/>
                         <outlet property="workButton" destination="8wd-Ab-KLM" id="vOv-jh-V2Q"/>
                     </connections>
