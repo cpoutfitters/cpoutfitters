@@ -9,6 +9,7 @@
 import UIKit
 import ChameleonFramework
 import Parse
+import ParseUI
 import UIColor_Hex
 
 protocol ArticleDelegate {
@@ -22,8 +23,8 @@ let bgColorSelected = UIColor(hue: 200/360, saturation: 1.0, brightness: 1.0, al
 class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var longOrShortSegmentedControl: UISegmentedControl!
-    @IBOutlet weak var pictureImageView: UIImageView!
     
+    @IBOutlet weak var pictureImageView: PFImageView!
     @IBOutlet weak var averageColorImageView: UIImageView!
     @IBOutlet weak var casualButton: UIButton!
     @IBOutlet weak var workButton: UIButton!
@@ -69,6 +70,15 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
                 button.backgroundColor = bgColorUnselected
             }
         }
+        
+        pictureImageView.file = article.mediaImage
+        if article.short {
+            longOrShortSegmentedControl.selectedSegmentIndex = 0
+        } else {
+            longOrShortSegmentedControl.selectedSegmentIndex = 1
+        }
+        
+        averageColorImageView.backgroundColor = UIColor(CSS: article.primaryColor)
     }
     
     func imagePickerController(picker: UIImagePickerController,
@@ -95,6 +105,7 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
         ParseClient.sharedInstance.saveArticle(article) { (success, error) in
             if success {
                 self.delegate?.articleSaved(true, error: nil)
+                self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
             }
             else {
                 // notify user
