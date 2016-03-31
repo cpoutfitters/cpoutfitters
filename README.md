@@ -12,7 +12,7 @@ An app that stores your wardrobe and suggests outfits to help you dress better.
 
 The following **required** functionality is completed:
 - [x] Users can create an account and logs in automatically.
-- [ ] Users can upload and browse their clothes (metadata could include color, event type, hot/warm/cool/cold usage, collar, sleeve length, etc.)
+- [x] Users can upload and browse their clothes (metadata could include color, event type, hot/warm/cool/cold usage, collar, sleeve length, etc.)
 - [ ] App suggests what to wear based on coordination: color, warm/cold & formality
 - [x] User can search clothing by keyword (color, category, etc.) 
 - [x] Users can categorize their clothes by wardrobe (same clothes can be in different groupings)
@@ -36,8 +36,13 @@ Schema:
 
 ![Alt text](/Schema.png?raw=true "Schema")
 
-##Gif Week 1:##
-<img src='http://i.imgur.com/1Y4hyyn.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+##GIF Week 1:
+<img src='http://i.imgur.com/1Y4hyyn.gif' title='Week 1 Video Walkthrough' width='' alt='Week 1 Video Walkthrough' />
+
+GIF created with [LiceCap](http://www.cockos.com/licecap/).
+
+##GIF Week 2:
+<img src='http://i.imgur.com/Dg2OBXE.gif' title='Week 2Video Walkthrough' width='' alt='Week 2Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
