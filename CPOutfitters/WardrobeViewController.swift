@@ -241,6 +241,9 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
             }
             
             article!.owner = PFUser.currentUser()!
+            
+            // HACK
+            article?.primaryColorCategories.appendContentsOf(["blue","green"])
         }
         else {  // Edit segue
             newArticleFlag = false
