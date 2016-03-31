@@ -35,10 +35,6 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.searchBar.delegate = self
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
         
         ParseClient.sharedInstance.fetchArticles(["type":"top"]) { (articles, error) in
             if let articles = articles {
