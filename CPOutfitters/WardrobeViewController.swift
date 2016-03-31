@@ -259,25 +259,31 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func articleSaved(article: Article) {
+        let articleType = article.type
+        var saveInSection = -1
+        if articleType == "top" {
+            saveInSection = 0
+        } else if articleType == "bottom" {
+            saveInSection = 1
+        } else if articleType == "footwear" {
+            saveInSection = 2
+        }
+        
         if newArticleFlag {
-            let articleType = article.type
-            var saveInSection = -1
-            if articleType == "top" {
-                saveInSection = 0
-            } else if articleType == "bottom" {
-                saveInSection = 1
-            } else if articleType == "footwear" {
-                saveInSection = 2
-            }
-            
             let indexPath = NSIndexPath(forRow: 0, inSection: saveInSection)
             articles[saveInSection].insert(article, atIndex: 0)
-            filteredArticles = articles
             tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-            // reload table view
-            self.tableView.reloadData()
             // dismiss editor
+        } else {
+            //Update at same index
+            //Update in articles list
+            let articleIndex = try! articles[saveInSection].indexOf(article)
+            print(articleIndex)
+//            articles[saveInSection]
         }
+        filteredArticles = articles
+        self.tableView.reloadData()
+
     }
     
     func articleDeleted(article: Article) {
