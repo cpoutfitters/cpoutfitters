@@ -13,7 +13,7 @@ import ParseUI
 import UIColor_Hex
 
 protocol ArticleDelegate {
-    func articleSaved(success:Bool, error:NSError?)
+    func articleSaved(article: Article)
     func articleDeleted(article: Article)
 }
 
@@ -104,12 +104,12 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBAction func onSave() {
         ParseClient.sharedInstance.saveArticle(article) { (success, error) in
             if success {
-                self.delegate?.articleSaved(true, error: nil)
+                self.delegate?.articleSaved(self.article)
                 self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
             }
             else {
                 // notify user
-                self.delegate?.articleSaved(false, error: error)
+                self.delegate?.articleSaved(self.article)
             }
         }
     }

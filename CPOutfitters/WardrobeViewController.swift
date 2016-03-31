@@ -27,6 +27,7 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
     var expanded = [true, true, true]
     var articles: [[Article]] = [[],[],[]]
     var filteredArticles: [[Article]] = [[], [], []]
+    var newArticleFlag = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -230,6 +231,7 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
         var article: Article?
         
         if segue.identifier == kAddArticleSegueIdentifier {
+            newArticleFlag = true
             let gesture = sender as! CPTapGestureRecognizer
             article = Article()
             switch (gesture.section) {
@@ -241,6 +243,7 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
             article!.owner = PFUser.currentUser()!
         }
         else {  // Edit segue
+            newArticleFlag = false
             let cell = sender as! WardrobeTypeCell
             article = cell.article
         }
@@ -252,9 +255,24 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
-    func articleSaved(success: Bool, error: NSError?) {
-        if success {
+    func articleSaved(article: Article) {
+        if newArticleFlag {
+            let articleType = article.type
+            var saveInSection = -1
+            if articleType == "top" {
+                saveInSection = 0
+            } else if articleType == "bottom" {
+                saveInSection = 1
+            } else if articleType == "footwear" {
+                saveInSection = 2
+            }
+            
+            let indexPath = NSIndexPath(forRow: 0, inSection: saveInSection)
+            articles[saveInSection].insert(article, atIndex: 0)
+            filteredArticles = articles
+            tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
             // reload table view
+            self.tableView.reloadData()
             // dismiss editor
         }
     }
