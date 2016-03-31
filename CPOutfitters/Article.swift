@@ -20,6 +20,7 @@ class Article: PFObject, PFSubclassing {
     @NSManaged var favorite: Bool
     @NSManaged var sharedWith: [PFUser]
     @NSManaged var mediaImage: PFFile
+    @NSManaged var swatchImage: PFFile
     @NSManaged var lastWorn: NSDate
     @NSManaged var useCount: Int
     

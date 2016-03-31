@@ -118,6 +118,9 @@
 			children = (
 				07E1C7BA1CA3666800924566 /* UIImage+Categories.swift */,
 				07DC9BF21C922D750009AD2E /* WardrobeViewController.swift */,
+				AC0DA81D1C8FCE09007B6723 /* HomeViewController.swift */,
+				A420435E1C90BB820034D406 /* ArticleViewController.swift */,
+				AC0DA81F1C8FD73B007B6723 /* LoginViewController.swift */,
 				07DC9BF41C922E9A0009AD2E /* WardrobeTypeCell.swift */,
 				070A26351C94DB33001ACF48 /* ImageLabelView.swift */,
 				070A26371C94DB4A001ACF48 /* ImageLabelView.xib */,
@@ -168,7 +171,6 @@
 		81BA81471A49DA1800E65899 /* CPOutfitters */ = {
 			isa = PBXGroup;
 			children = (
-				AC9F6EE21C93CA4400D6B9DE /* View Controllers */,
 				AC9F6EE11C93C79300D6B9DE /* API Client */,
 				07E35B511C8FE8480078B338 /* UI */,
 				ACC8432B1C8E776E00C2F81E /* Models */,
@@ -218,16 +220,6 @@
 				AC9F6EEB1C93F13500D6B9DE /* ParseClient.swift */,
 			);
 			name = "API Client";
-			sourceTree = "<group>";
-		};
-		AC9F6EE21C93CA4400D6B9DE /* View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				AC0DA81D1C8FCE09007B6723 /* HomeViewController.swift */,
-				A420435E1C90BB820034D406 /* ArticleViewController.swift */,
-				AC0DA81F1C8FD73B007B6723 /* LoginViewController.swift */,
-			);
-			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 		ACC8432B1C8E776E00C2F81E /* Models */ = {
