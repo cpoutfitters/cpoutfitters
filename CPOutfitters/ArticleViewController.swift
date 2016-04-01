@@ -147,7 +147,7 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
             vc.sourceType = .Camera
             self.presentViewController(vc, animated: true, completion: nil)
         } else {
-            print("camera unavailable so we are using the photo library")
+            print("ArticleViewController: Camera unavailable so we are using the photo library")
             vc.sourceType = .PhotoLibrary
             self.presentViewController(vc, animated: true, completion: nil)
         }
@@ -155,7 +155,7 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     @IBAction func onGetAverageColorFromPicture(sender: UITapGestureRecognizer) {
         let location = sender.locationInView(pictureImageView)
-        print("Tapped your picture at location: \(location)")
+        print("ArticleViewController: Tapped your picture at location: \(location)")
         
         let newSize = CGSize(width: 50, height: 50)
         if let image = pictureImageView.image {
@@ -168,7 +168,7 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
             article.swatchImage = Article.getPFFileFromImage(UIImage(CGImage: imageClip!))!
             let averageColor = UIColor(averageColorFromImage: UIImage(CGImage: imageClip!))
             article.primaryColor = averageColor.hexString()
-            print("The color saved is \(article.primaryColor)")
+            print("ArticleViewController: The color saved is \(article.primaryColor)")
             
         }
     }
