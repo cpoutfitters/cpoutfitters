@@ -279,7 +279,9 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
             let indexPath = NSIndexPath(forRow: 0, inSection: saveInSection)
             articles[saveInSection].insert(article, atIndex: 0)
             print("WardrobeViewController: New article added to tableview")
+            
             tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            self.tableView.reloadData()
             // dismiss editor
         } else {
             //Update at same index
@@ -288,12 +290,25 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
             let indexPath = NSIndexPath(forRow: articleIndex!, inSection: saveInSection)
             print("WardrobeViewController: Article at index \(articleIndex) updated")
             articles[saveInSection][articleIndex!] = article
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-            tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         }
         filteredArticles = articles
         self.tableView.reloadData()
 
+    }
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        }
+        else if editingStyle == .Insert {
+            self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        }
+    }
+    
+    // Override to support conditional editing of the table view.
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        // Return false if you do not want the specified item to be editable.
+        return true
     }
     
     func articleDeleted(article: Article) {
@@ -313,7 +328,6 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
         let indexPath = NSIndexPath(forRow: articleIndex!, inSection: saveInSection)
         print("WardrobeViewController: Article at index \(articleIndex) deleted")
         tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-
         self.tableView.reloadData()
         dismissViewControllerAnimated(true, completion: nil)
     }
