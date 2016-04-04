@@ -35,6 +35,9 @@
 		AC9F6EEA1C93D43300D6B9DE /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9F6EE91C93D43300D6B9DE /* Event.swift */; };
 		AC9F6EEC1C93F13500D6B9DE /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9F6EEB1C93F13500D6B9DE /* ParseClient.swift */; };
 		ACC8432D1C8E782900C2F81E /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC8432C1C8E782900C2F81E /* Article.swift */; };
+		ACF437DC1CB22B44002024A3 /* OutfitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF437DB1CB22B44002024A3 /* OutfitsViewController.swift */; };
+		ACF437DE1CB22B59002024A3 /* OutfitSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF437DD1CB22B59002024A3 /* OutfitSelectionViewController.swift */; };
+		ACF437E01CB22DB4002024A3 /* OutfitsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF437DF1CB22DB4002024A3 /* OutfitsCell.swift */; };
 		F4D20039C3D8F838868CFD1E /* Pods_CPOutfitters.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBC4224AA07ABDF4B24E0BB8 /* Pods_CPOutfitters.framework */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +86,9 @@
 		AC9F6EE91C93D43300D6B9DE /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		AC9F6EEB1C93F13500D6B9DE /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
 		ACC8432C1C8E782900C2F81E /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		ACF437DB1CB22B44002024A3 /* OutfitsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutfitsViewController.swift; sourceTree = "<group>"; };
+		ACF437DD1CB22B59002024A3 /* OutfitSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutfitSelectionViewController.swift; sourceTree = "<group>"; };
+		ACF437DF1CB22DB4002024A3 /* OutfitsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutfitsCell.swift; sourceTree = "<group>"; };
 		CBC4224AA07ABDF4B24E0BB8 /* Pods_CPOutfitters.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CPOutfitters.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D83F539CA6BFA79F2B59D1B1 /* Pods-CPOutfitters.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CPOutfitters.release.xcconfig"; path = "Pods/Target Support Files/Pods-CPOutfitters/Pods-CPOutfitters.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,6 +131,9 @@
 				070A26351C94DB33001ACF48 /* ImageLabelView.swift */,
 				070A26371C94DB4A001ACF48 /* ImageLabelView.xib */,
 				07236A141CA0CB18004715D6 /* CPTapGestureRecognizer.swift */,
+				ACF437DB1CB22B44002024A3 /* OutfitsViewController.swift */,
+				ACF437DD1CB22B59002024A3 /* OutfitSelectionViewController.swift */,
+				ACF437DF1CB22DB4002024A3 /* OutfitsCell.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -438,9 +447,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACF437DE1CB22B59002024A3 /* OutfitSelectionViewController.swift in Sources */,
 				ACC8432D1C8E782900C2F81E /* Article.swift in Sources */,
 				AC9F6EEA1C93D43300D6B9DE /* Event.swift in Sources */,
 				A420435F1C90BB820034D406 /* ArticleViewController.swift in Sources */,
+				ACF437DC1CB22B44002024A3 /* OutfitsViewController.swift in Sources */,
 				AC9F6EE81C93D3A600D6B9DE /* OutfitHistory.swift in Sources */,
 				AC9F6EEC1C93F13500D6B9DE /* ParseClient.swift in Sources */,
 				07E1C7BB1CA3666800924566 /* UIImage+Categories.swift in Sources */,
@@ -451,6 +462,7 @@
 				07DC9BF31C922D750009AD2E /* WardrobeViewController.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
 				AC6D20E01C993BC900033FB6 /* Message.swift in Sources */,
+				ACF437E01CB22DB4002024A3 /* OutfitsCell.swift in Sources */,
 				AC0DA8201C8FD73B007B6723 /* LoginViewController.swift in Sources */,
 				07236A151CA0CB18004715D6 /* CPTapGestureRecognizer.swift in Sources */,
 				AC0DA81E1C8FCE09007B6723 /* HomeViewController.swift in Sources */,
