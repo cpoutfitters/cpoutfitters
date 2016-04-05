@@ -290,7 +290,7 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
         } else {
             //Update at same index
             //Update in articles list
-            let articleIndex = try! articles[saveInSection].indexOf(article)
+            let articleIndex = articles[saveInSection].indexOf(article)
             let indexPath = NSIndexPath(forRow: articleIndex!, inSection: saveInSection)
             print("WardrobeViewController: Article at index \(articleIndex) updated")
             articles[saveInSection][articleIndex!] = article
@@ -312,7 +312,7 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
             saveInSection = 2
         }
         
-        let articleIndex = try! articles[saveInSection].indexOf(article)
+        let articleIndex = articles[saveInSection].indexOf(article)
         let indexPath = NSIndexPath(forRow: articleIndex!, inSection: saveInSection)
         print("WardrobeViewController: Article at index \(articleIndex) deleted")
         
