@@ -78,7 +78,7 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
             longOrShortSegmentedControl.selectedSegmentIndex = 1
         }
         
-        averageColorImageView.backgroundColor = UIColor(CSS: article.primaryColor)
+        averageColorImageView.backgroundColor = article.primaryColor
     }
     
     func imagePickerController(picker: UIImagePickerController,
@@ -167,7 +167,7 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
             
             article.swatchImage = Article.getPFFileFromImage(UIImage(CGImage: imageClip!))!
             let averageColor = UIColor(averageColorFromImage: UIImage(CGImage: imageClip!))
-            article.primaryColor = averageColor.hexString()
+            article.primaryColor = averageColor
             print("ArticleViewController: The color saved is \(article.primaryColor)")
             
         }

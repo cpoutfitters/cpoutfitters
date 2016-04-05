@@ -14,7 +14,9 @@ class Article: PFObject, PFSubclassing {
     @NSManaged var owner: PFUser
     @NSManaged var type: String
     @NSManaged var short: Bool
-    @NSManaged var primaryColor: String
+    @NSManaged var primaryHue: CGFloat
+    @NSManaged var primarySat: CGFloat
+    @NSManaged var primaryVal: CGFloat
     @NSManaged var primaryColorCategories: [String]
     @NSManaged var occasion: [String]
     @NSManaged var favorite: Bool
@@ -23,6 +25,14 @@ class Article: PFObject, PFSubclassing {
     @NSManaged var swatchImage: PFFile
     @NSManaged var lastWorn: NSDate
     @NSManaged var useCount: Int
+    
+    var primaryColor: UIColor { get {
+            return UIColor(hue: primaryHue, saturation: primarySat, brightness: primaryVal, alpha: 1.0)
+        }
+        set (newColor) {
+            newColor.getHue(&primaryHue, saturation: &primarySat, brightness: &primaryVal, alpha: nil)
+        }
+    }
     
     override class func initialize() {
         struct Static {
@@ -35,15 +45,6 @@ class Article: PFObject, PFSubclassing {
     
     static func parseClassName() -> String {
         return "Article"
-    }
-    
-    
-    class func articlesWithArray(array: [PFObject]) -> [Article] {
-        var articles = [Article]()
-        for element in array {
-//            articles.append(Article(object: element))
-        }
-        return articles
     }
     
     class func getPFFileFromImage(image: UIImage?) -> PFFile? {
