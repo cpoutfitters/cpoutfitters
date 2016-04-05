@@ -700,6 +700,12 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="jfn-Al-o58"/>
+                    <connections>
+                        <outlet property="bottomImageView" destination="J9w-zq-l3a" id="ZBT-7N-FzH"/>
+                        <outlet property="footwearImageView" destination="yi3-Tx-xbz" id="dgb-nd-Cfw"/>
+                        <outlet property="outerWearImageView" destination="sOW-TK-yN9" id="G7h-Iy-58g"/>
+                        <outlet property="topImageView" destination="HxT-Ra-jFi" id="3eX-Zf-gxB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vge-V9-RiM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

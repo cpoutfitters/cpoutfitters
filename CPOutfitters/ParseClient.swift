@@ -61,12 +61,12 @@ class ParseClient: NSObject {
         
     }
 
-    func fetchOutfitsWithCompletion(completion completion:([PFObject]?, NSError?) -> ()) {
+    func fetchOutfit(completion completion:([PFObject]?, NSError?) -> ()) {
         let query = PFQuery(className: "Outfit")
         query.limit = 40
         query.findObjectsInBackgroundWithBlock(completion)
     }
-
+    
     // Function for deletion of article from server
     func deleteArticle(article: Article, completion:(success: Bool, error: NSError?) -> ()) {
         article.deleteInBackgroundWithBlock(completion)
