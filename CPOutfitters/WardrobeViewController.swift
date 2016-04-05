@@ -171,45 +171,49 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
         
         searchBar.resignFirstResponder()
         
-        ParseClient.sharedInstance.fetchArticles([searchOption: searchBar.text!.lowercaseString, typeKey: "top"], completion: { (articleObjects: [Article]?, error: NSError?) in
-            if let articleObjects = articleObjects {
-                print("Successfully searched articles: \(articleObjects.count)")
-                self.filteredArticles[0] = articleObjects
+        if searchBar.text! == "" {
+            filteredArticles = articles
+        } else {
+            ParseClient.sharedInstance.fetchArticles([searchOption: searchBar.text!.lowercaseString, typeKey: "top"], completion: { (articleObjects: [Article]?, error: NSError?) in
+                if let articleObjects = articleObjects {
+                    print("Successfully searched articles: \(articleObjects.count)")
+                    self.filteredArticles[0] = articleObjects
+                    
+                    self.tableView.reloadData()
+                    
+                } else {
+                    let errorString = error!.userInfo["error"] as? NSString
+                    print("Error message: \(errorString)")
+                }
                 
-                self.tableView.reloadData()
+            })
+            ParseClient.sharedInstance.fetchArticles([searchOption: searchBar.text!.lowercaseString, typeKey: "bottom"], completion: { (articleObjects: [Article]?, error: NSError?) in
+                if let articleObjects = articleObjects {
+                    print("Successfully searched articles: \(articleObjects.count)")
+                    self.filteredArticles[0] = articleObjects
+                    
+                    self.tableView.reloadData()
+                    
+                } else {
+                    let errorString = error!.userInfo["error"] as? NSString
+                    print("Error message: \(errorString)")
+                }
                 
-            } else {
-                let errorString = error!.userInfo["error"] as? NSString
-                print("Error message: \(errorString)")
-            }
-            
-        })
-        ParseClient.sharedInstance.fetchArticles([searchOption: searchBar.text!.lowercaseString, typeKey: "bottom"], completion: { (articleObjects: [Article]?, error: NSError?) in
-            if let articleObjects = articleObjects {
-                print("Successfully searched articles: \(articleObjects.count)")
-                self.filteredArticles[0] = articleObjects
+            })
+            ParseClient.sharedInstance.fetchArticles([searchOption: searchBar.text!.lowercaseString, typeKey: "footwear"], completion: { (articleObjects: [Article]?, error: NSError?) in
+                if let articleObjects = articleObjects {
+                    print("Successfully searched articles: \(articleObjects.count)")
+                    self.filteredArticles[0] = articleObjects
+                    
+                    self.tableView.reloadData()
+                    
+                } else {
+                    let errorString = error!.userInfo["error"] as? NSString
+                    print("Error message: \(errorString)")
+                }
                 
-                self.tableView.reloadData()
-                
-            } else {
-                let errorString = error!.userInfo["error"] as? NSString
-                print("Error message: \(errorString)")
-            }
-            
-        })
-        ParseClient.sharedInstance.fetchArticles([searchOption: searchBar.text!.lowercaseString, typeKey: "footwear"], completion: { (articleObjects: [Article]?, error: NSError?) in
-            if let articleObjects = articleObjects {
-                print("Successfully searched articles: \(articleObjects.count)")
-                self.filteredArticles[0] = articleObjects
-                
-                self.tableView.reloadData()
-                
-            } else {
-                let errorString = error!.userInfo["error"] as? NSString
-                print("Error message: \(errorString)")
-            }
-            
-        })
+            })
+        }
     }
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
@@ -259,28 +263,66 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func articleSaved(article: Article) {
+        
+        let articleType = article.type
+        var saveInSection = -1
+        
+        if articleType == "top" {
+            saveInSection = 0
+        } else if articleType == "bottom" {
+            saveInSection = 1
+        } else if articleType == "footwear" {
+            saveInSection = 2
+        }
+        
         if newArticleFlag {
-            let articleType = article.type
-            var saveInSection = -1
-            if articleType == "top" {
-                saveInSection = 0
-            } else if articleType == "bottom" {
-                saveInSection = 1
-            } else if articleType == "footwear" {
-                saveInSection = 2
-            }
-            
             let indexPath = NSIndexPath(forRow: 0, inSection: saveInSection)
             articles[saveInSection].insert(article, atIndex: 0)
-            filteredArticles = articles
+            // Option 1: Insert regardless of filter
+            // Option 2: Insert if passes filter
+            filteredArticles[saveInSection].insert(article, atIndex: 0)
+            print("WardrobeViewController: New article added to tableview")
+            
+            tableView.beginUpdates()
             tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-            // reload table view
-            self.tableView.reloadData()
+            tableView.endUpdates()
             // dismiss editor
+        } else {
+            //Update at same index
+            //Update in articles list
+            let articleIndex = try! articles[saveInSection].indexOf(article)
+            let indexPath = NSIndexPath(forRow: articleIndex!, inSection: saveInSection)
+            print("WardrobeViewController: Article at index \(articleIndex) updated")
+            articles[saveInSection][articleIndex!] = article
+            tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         }
+
     }
     
     func articleDeleted(article: Article) {
+        
+        let articleType = article.type
+        var saveInSection = -1
+        
+        if articleType == "top" {
+            saveInSection = 0
+        } else if articleType == "bottom" {
+            saveInSection = 1
+        } else if articleType == "footwear" {
+            saveInSection = 2
+        }
+        
+        let articleIndex = try! articles[saveInSection].indexOf(article)
+        let indexPath = NSIndexPath(forRow: articleIndex!, inSection: saveInSection)
+        print("WardrobeViewController: Article at index \(articleIndex) deleted")
+        
+        articles[saveInSection].removeAtIndex(articleIndex!)
+        filteredArticles[saveInSection].removeAtIndex(articleIndex!)
+        
+        tableView.beginUpdates()
+        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        tableView.endUpdates()
+
         dismissViewControllerAnimated(true, completion: nil)
     }
 }

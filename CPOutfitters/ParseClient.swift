@@ -35,7 +35,7 @@ class ParseClient: NSObject {
             if let articles = objects as? [Article] {
                 completion(articles, nil)
             } else {
-                print(error?.localizedDescription)
+                print("Parse Client: \(error?.localizedDescription)")
             }
         }
     }
@@ -46,15 +46,15 @@ class ParseClient: NSObject {
                 article.saveInBackgroundWithBlock {
                     (success: Bool?, error: NSError?) -> Void in
                     if (success == true ) {
-                        print("An article stored")
+                        print("Parse Client: An article stored")
                         completion(success: true, error: nil)
                     } else {
-                        print(error?.localizedDescription)
+                        print("Parse Client: \(error?.localizedDescription)")
                         completion(success: false, error: error)
                     }
                 }
             } else {
-                print(error?.localizedDescription)
+                print("Parse Client: \(error?.localizedDescription)")
                 completion(success: false, error: error)
             }
         }

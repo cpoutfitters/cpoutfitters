@@ -89,8 +89,11 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
         // Do something with the images (based on your use case)
         pictureImageView.image = editedImage
         
-        article.mediaImage = Article.getPFFileFromImage(editedImage)!
-        
+        let newSize = CGSize(width: 1000, height: 750)
+        if let image = pictureImageView.image {
+            let resizedImage = resizeImage(image, newSize: newSize)
+            article.mediaImage = Article.getPFFileFromImage(resizedImage)!
+        }
         
         // Dismiss UIImagePickerController to go back to your original view controller
         dismissViewControllerAnimated(true, completion: nil)
@@ -144,7 +147,7 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
             vc.sourceType = .Camera
             self.presentViewController(vc, animated: true, completion: nil)
         } else {
-            print("camera unavailable so we are using the photo library")
+            print("ArticleViewController: Camera unavailable so we are using the photo library")
             vc.sourceType = .PhotoLibrary
             self.presentViewController(vc, animated: true, completion: nil)
         }
@@ -152,7 +155,7 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     @IBAction func onGetAverageColorFromPicture(sender: UITapGestureRecognizer) {
         let location = sender.locationInView(pictureImageView)
-        print("Tapped your picture at location: \(location)")
+        print("ArticleViewController: Tapped your picture at location: \(location)")
         
         let newSize = CGSize(width: 50, height: 50)
         if let image = pictureImageView.image {
@@ -162,9 +165,10 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
             
             averageColorImageView.image = UIImage(CGImage: imageClip!)
             
+            article.swatchImage = Article.getPFFileFromImage(UIImage(CGImage: imageClip!))!
             let averageColor = UIColor(averageColorFromImage: UIImage(CGImage: imageClip!))
             article.primaryColor = averageColor.hexString()
-            print("The color saved is \(article.primaryColor)")
+            print("ArticleViewController: The color saved is \(article.primaryColor)")
             
         }
     }
@@ -188,6 +192,18 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
                 self.delegate?.articleDeleted(self.article)
             }
         }
+    }
+    
+    func resizeImage(image: UIImage, newSize: CGSize) -> UIImage {
+        let resizeImageView = UIImageView(frame: CGRectMake(0, 0, newSize.width, newSize.height))
+        resizeImageView.contentMode = UIViewContentMode.ScaleAspectFill
+        resizeImageView.image = image
+        
+        UIGraphicsBeginImageContext(resizeImageView.frame.size)
+        resizeImageView.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage
     }
     
     /*
