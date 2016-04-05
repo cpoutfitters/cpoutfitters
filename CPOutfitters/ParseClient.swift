@@ -67,6 +67,13 @@ class ParseClient: NSObject {
         query.findObjectsInBackgroundWithBlock(completion)
     }
     
+    func getRecommendedOutfit(params: NSDictionary, completion:(Outfit?, NSError?) -> ()) {
+
+        PFCloud.callFunctionInBackground("outfits/recommend", withParameters: params as [NSObject : AnyObject]) { (outfit: AnyObject?, error: NSError?) in
+                completion(outfit as? Outfit,error)
+        }
+    }
+    
     // Function for deletion of article from server
     func deleteArticle(article: Article, completion:(success: Bool, error: NSError?) -> ()) {
         article.deleteInBackgroundWithBlock(completion)

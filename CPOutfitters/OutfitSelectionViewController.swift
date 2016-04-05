@@ -7,14 +7,14 @@
 //
 
 import UIKit
+import Parse
 
 class OutfitSelectionViewController: UIViewController {
-    
-    @IBOutlet weak var outerWearImageView: UIImageView!
-    @IBOutlet weak var topImageView: UIImageView!
-    @IBOutlet weak var bottomImageView: UIImageView!
-    @IBOutlet weak var footwearImageView: UIImageView!
 
+    @IBOutlet weak var topButton: UIButton!
+    @IBOutlet weak var bottomButton: UIButton!
+    @IBOutlet weak var footwearButton: UIButton!
+    
     var attire: String = ""
     var articles: [[Article]] = []
     
@@ -43,6 +43,26 @@ class OutfitSelectionViewController: UIViewController {
         print(attire)
     }
 
+    @IBAction func onRecommendMe(sender: AnyObject) {
+        
+        let owner = PFUser.currentUser()!
+        
+        print("OutfitSelectionViewController: onRecommend Button click")
+        
+        ParseClient.sharedInstance.getRecommendedOutfit(["occasion": attire]) { (outfit:Outfit?, error:NSError?) in
+            if let outfit = outfit {
+                let topImage = outfit.components[0].mediaImage as PFFile
+                topImage.getDataInBackgroundWithBlock({ (imageData:NSData?, error: NSError?) in
+                    if let imageData = imageData {
+                        let image = UIImage(data: imageData)
+                        self.topButton.setImage(image, forState: .Normal)
+                    }
+                })
+            } else {
+                print("OutfitSelectionViewController: \(error?.localizedDescription)")
+            }
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
