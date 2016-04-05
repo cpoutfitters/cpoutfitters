@@ -20,17 +20,19 @@ class Article: PFObject, PFSubclassing {
     @NSManaged var primaryColorCategories: [String]
     @NSManaged var occasion: [String]
     @NSManaged var favorite: Bool
-    @NSManaged var sharedWith: [PFUser]
     @NSManaged var mediaImage: PFFile
     @NSManaged var swatchImage: PFFile
     @NSManaged var lastWorn: NSDate
     @NSManaged var useCount: Int
     
     var primaryColor: UIColor { get {
-            return UIColor(hue: primaryHue, saturation: primarySat, brightness: primaryVal, alpha: 1.0)
+        let hue = primaryHue * 360
+            return UIColor(hue: hue, saturation: primarySat, brightness: primaryVal, alpha: 1.0)
         }
         set (newColor) {
-            newColor.getHue(&primaryHue, saturation: &primarySat, brightness: &primaryVal, alpha: nil)
+            var hue: CGFloat = 0
+            newColor.getHue(&hue, saturation: &primarySat, brightness: &primaryVal, alpha: nil)
+            primaryHue = hue / 360
         }
     }
     
