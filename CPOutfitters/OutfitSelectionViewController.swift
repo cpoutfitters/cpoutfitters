@@ -8,6 +8,9 @@
 
 import UIKit
 import Parse
+let kselectTopSegueIdentifier = "selectTop"
+let kselectBottomSegueIdentifier = "selectBottom"
+let kselectFootwearSegueIdentifier = "selectFootwear"
 
 class OutfitSelectionViewController: UIViewController {
 
@@ -16,7 +19,7 @@ class OutfitSelectionViewController: UIViewController {
     @IBOutlet weak var footwearButton: UIButton!
     
     var attire: String = ""
-    var articles: [[Article]] = []
+    var articles: [[Article]] = [[],[],[]]
     
     var outfit: Outfit! {
         didSet {
@@ -40,7 +43,22 @@ class OutfitSelectionViewController: UIViewController {
                 print("Error message: \(errorString)")
             }
         }
-        print(attire)
+        ParseClient.sharedInstance.fetchArticles(["type":"bottom", "attire":attire]) { (articleObjects:[Article]?, error: NSError?) in
+            if let articleObjects = articleObjects {
+                self.articles[1] = articleObjects
+            } else {
+                let errorString = error!.userInfo["error"] as? NSString
+                print("Error message: \(errorString)")
+            }
+        }
+        ParseClient.sharedInstance.fetchArticles(["type":"footwear", "attire":attire]) { (articleObjects:[Article]?, error: NSError?) in
+            if let articleObjects = articleObjects {
+                self.articles[2] = articleObjects
+            } else {
+                let errorString = error!.userInfo["error"] as? NSString
+                print("Error message: \(errorString)")
+            }
+        }
     }
 
     @IBAction func onRecommendMe(sender: AnyObject) {
@@ -67,7 +85,18 @@ class OutfitSelectionViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == kselectTopSegueIdentifier {
+            let selectTopViewController = segue.destinationViewController as! ArticleSelectionViewController
+            selectTopViewController.articles = articles[0]
+        } else if segue.identifier == kselectBottomSegueIdentifier {
+            let selectBottomViewController = segue.destinationViewController as! ArticleSelectionViewController
+            selectBottomViewController.articles = articles[1]
+        } else if segue.identifier == kselectFootwearSegueIdentifier {
+            let selectFootwearViewController = segue.destinationViewController as! ArticleSelectionViewController
+            selectFootwearViewController.articles = articles[2]
+        }
+    }
 
     /*
     // MARK: - Navigation

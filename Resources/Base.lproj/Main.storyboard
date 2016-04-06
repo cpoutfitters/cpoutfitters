@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10102" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10080"/>
+        <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
     </dependencies>
     <scenes>
         <!--Home View Controller-->
@@ -540,14 +541,29 @@
                                             <constraint firstAttribute="width" constant="130" id="mhc-nX-py8"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="onTopSelection:" destination="SbO-Z5-F6I" eventType="touchUpInside" id="RyD-ma-7js"/>
+                                            <segue destination="Bjn-GP-Kmz" kind="modal" identifier="selectTop" id="VJf-WN-LZm">
+                                                <segue key="commit" inheritsFrom="parent" id="WAN-m8-kSI"/>
+                                                <segue key="preview" inheritsFrom="commit" id="LgG-eZ-Lz8"/>
+                                            </segue>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xx3-vM-DP8">
                                         <rect key="frame" x="0.0" y="130" width="130" height="130"/>
                                         <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="onBottomSelection:" destination="SbO-Z5-F6I" eventType="touchUpInside" id="KPc-kL-fnb"/>
+                                            <segue destination="Bjn-GP-Kmz" kind="modal" identifier="selectBottom" id="pc8-3E-OHi"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tnz-QK-21W">
                                         <rect key="frame" x="0.0" y="260" width="130" height="130"/>
                                         <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="onFootwearSelection:" destination="SbO-Z5-F6I" eventType="touchUpInside" id="b7R-2J-Xkk"/>
+                                            <segue destination="Bjn-GP-Kmz" kind="modal" identifier="selectFootwear" id="Kk3-rp-J3V"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -605,13 +621,73 @@
                     <navigationItem key="navigationItem" id="jfn-Al-o58"/>
                     <connections>
                         <outlet property="bottomButton" destination="xx3-vM-DP8" id="HU5-hW-wQX"/>
-                        <outlet property="footwearButton" destination="tnz-QK-21W" id="uJf-LT-7TE"/>
+                        <outlet property="footwearButton" destination="tnz-QK-21W" id="D0m-w4-ntU"/>
                         <outlet property="topButton" destination="RpF-ld-Kop" id="UEL-mQ-giu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vge-V9-RiM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2203" y="-453"/>
+        </scene>
+        <!--Article Selection View Controller-->
+        <scene sceneID="SJz-Ho-Plv">
+            <objects>
+                <viewController id="Bjn-GP-Kmz" customClass="ArticleSelectionViewController" customModule="CPOutfitters" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iua-2G-I5g"/>
+                        <viewControllerLayoutGuide type="bottom" id="2eI-ti-YwF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gi0-n8-vCC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="t22-kt-Mce">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="B2K-eE-p5X">
+                                    <size key="itemSize" width="101" height="104"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ArticleSelectCell" id="vfI-4V-RsG" customClass="ArticleSelectCell" customModule="CPOutfitters" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="101" height="104"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="101" height="104"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pzu-zL-I00">
+                                                    <rect key="frame" x="0.0" y="0.0" width="101" height="104"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <outlet property="articleImageView" destination="pzu-zL-I00" id="Clv-b9-25L"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jrx-0W-NUt">
+                                <rect key="frame" x="9" y="26" width="48" height="30"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="0.95686274510000002" green="0.26274509800000001" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onCancel:" destination="Bjn-GP-Kmz" eventType="touchUpInside" id="DLN-QX-dGW"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="articleCollectionView" destination="t22-kt-Mce" id="yxK-yW-B5J"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xnr-Qz-wGO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2615" y="-453"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="qGc-R6-xGT">
@@ -638,6 +714,7 @@
         <image name="sunny" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="VJf-WN-LZm"/>
         <segue reference="mIw-8z-3Nz"/>
     </inferredMetricsTieBreakers>
 </document>
