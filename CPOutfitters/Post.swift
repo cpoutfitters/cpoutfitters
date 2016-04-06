@@ -10,7 +10,6 @@ import UIKit
 import Parse
 
 class Post: NSObject {
-    
     class func postUserImage(image: UIImage?, withCaption caption: NSString?, withCompletion completion: PFBooleanResultBlock?) {
         let post = PFObject(className: "Post")
         post["image"] = Article.getPFFileFromImage(image)
