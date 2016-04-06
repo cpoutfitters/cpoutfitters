@@ -26,6 +26,8 @@
 		81BA817F1A49E0F000E65899 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */; };
 		A416C9C51CB5718A00A84AE2 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A416C9C41CB5718A00A84AE2 /* PostViewController.swift */; };
 		A416C9C71CB57A5900A84AE2 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A416C9C61CB57A5900A84AE2 /* Post.swift */; };
+		A416C9CD1CB5988D00A84AE2 /* SocialTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A416C9CC1CB5988D00A84AE2 /* SocialTypeCell.swift */; };
+		A416C9CF1CB5996A00A84AE2 /* SocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A416C9CE1CB5996A00A84AE2 /* SocialViewController.swift */; };
 		A420435F1C90BB820034D406 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A420435E1C90BB820034D406 /* ArticleViewController.swift */; };
 		AC0DA81C1C8FC62E007B6723 /* Outfit.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0DA81B1C8FC62E007B6723 /* Outfit.swift */; };
 		AC0DA81E1C8FCE09007B6723 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0DA81D1C8FCE09007B6723 /* HomeViewController.swift */; };
@@ -74,6 +76,8 @@
 		983C4A4F0E6B5C2D88C559FD /* Pods-CPOutfitters.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CPOutfitters.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CPOutfitters/Pods-CPOutfitters.debug.xcconfig"; sourceTree = "<group>"; };
 		A416C9C41CB5718A00A84AE2 /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		A416C9C61CB57A5900A84AE2 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		A416C9CC1CB5988D00A84AE2 /* SocialTypeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialTypeCell.swift; sourceTree = "<group>"; };
+		A416C9CE1CB5996A00A84AE2 /* SocialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialViewController.swift; sourceTree = "<group>"; };
 		A420435E1C90BB820034D406 /* ArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
 		AC0DA81B1C8FC62E007B6723 /* Outfit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Outfit.swift; sourceTree = "<group>"; };
 		AC0DA81D1C8FCE09007B6723 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +124,7 @@
 		07E35B511C8FE8480078B338 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				A416C9CC1CB5988D00A84AE2 /* SocialTypeCell.swift */,
 				07E1C7BA1CA3666800924566 /* UIImage+Categories.swift */,
 				07DC9BF21C922D750009AD2E /* WardrobeViewController.swift */,
 				AC0DA81D1C8FCE09007B6723 /* HomeViewController.swift */,
@@ -130,6 +135,7 @@
 				070A26371C94DB4A001ACF48 /* ImageLabelView.xib */,
 				07236A141CA0CB18004715D6 /* CPTapGestureRecognizer.swift */,
 				A416C9C41CB5718A00A84AE2 /* PostViewController.swift */,
+				A416C9CE1CB5996A00A84AE2 /* SocialViewController.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -444,6 +450,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A416C9CD1CB5988D00A84AE2 /* SocialTypeCell.swift in Sources */,
 				ACC8432D1C8E782900C2F81E /* Article.swift in Sources */,
 				AC9F6EEA1C93D43300D6B9DE /* Event.swift in Sources */,
 				A420435F1C90BB820034D406 /* ArticleViewController.swift in Sources */,
@@ -458,6 +465,7 @@
 				07DC9BF31C922D750009AD2E /* WardrobeViewController.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
 				AC6D20E01C993BC900033FB6 /* Message.swift in Sources */,
+				A416C9CF1CB5996A00A84AE2 /* SocialViewController.swift in Sources */,
 				AC0DA8201C8FD73B007B6723 /* LoginViewController.swift in Sources */,
 				A416C9C71CB57A5900A84AE2 /* Post.swift in Sources */,
 				07236A151CA0CB18004715D6 /* CPTapGestureRecognizer.swift in Sources */,
