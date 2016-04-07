@@ -72,9 +72,44 @@ class ParseClient: NSObject {
     }
     
     func getRecommendedOutfit(params: NSDictionary, completion:(Outfit?, NSError?) -> ()) {
-
-        PFCloud.callFunctionInBackground("recommend", withParameters: params as [NSObject : AnyObject]) { (outfit: AnyObject?, error: NSError?) in
-            completion(outfit as? Outfit,error)
+        var outfitObject = Outfit()
+        outfitObject.owner = PFUser.currentUser()!
+        var topComponentID = ""
+        var bottomComponentID = ""
+        var footwearComponentID = ""
+        PFCloud.callFunctionInBackground("recommend", withParameters: params as [NSObject : AnyObject]?) { (components: AnyObject?, error: NSError?) in
+            if let components = components {
+                topComponentID = components["topComponent"] as String
+                bottomComponentID = components["bottomComponent"] as String
+                footwearComponentID = components["footwearComponent"] as String
+                //completion(outfit as? Outfit,error)
+            }
+        }
+        ParseClient.sharedInstance.fetchArticles(["objectId":topComponentID]) { (articles:[Article]?, error: NSError?) in
+            if let article = articles[0] {
+                outfitObject.topComponent = article
+            } else {
+                print(error?.localizedDescription)
+            }
+        }
+        ParseClient.sharedInstance.fetchArticles(["objectId":bottomComponentID]) { (articles:[Article]?, error: NSError?) in
+            if let article = articles[0] {
+                outfitObject.bottomComponent = article
+            } else {
+                print(error?.localizedDescription)
+            }
+        }
+        ParseClient.sharedInstance.fetchArticles(["objectId":footwearComponentID]) { (articles:[Article]?, error: NSError?) in
+            if let article = articles[0] {
+                outfitObject.footwearComponent = article
+            } else {
+                print(error?.localizedDescription)
+            }
+        }
+        if (outfitObject.topComponent != nil) && (outfitObject.bottomComponent != nil) && (outfitObject.footwearComponent != nil) {
+            completion(outfitObject, nil)
+        } else {
+            completion(nil, error)
         }
     }
     
