@@ -73,7 +73,7 @@ class ParseClient: NSObject {
     
     func getRecommendedOutfit(params: NSDictionary, completion:(Outfit?, NSError?) -> ()) {
 
-        PFCloud.callFunctionInBackground("outfits/recommend", withParameters: params as [NSObject : AnyObject]) { (outfit: AnyObject?, error: NSError?) in
+        PFCloud.callFunctionInBackground("recommend", withParameters: params as [NSObject : AnyObject]) { (outfit: AnyObject?, error: NSError?) in
                 completion(outfit as? Outfit,error)
         }
     }
