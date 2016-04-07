@@ -69,7 +69,7 @@ class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
         
         ParseClient.sharedInstance.getRecommendedOutfit(["occasion": attire]) { (outfit:Outfit?, error:NSError?) in
             if let outfit = outfit {
-                let topImage = outfit.components[0].mediaImage as PFFile
+                let topImage = outfit.topComponent.mediaImage as PFFile
                 topImage.getDataInBackgroundWithBlock({ (imageData:NSData?, error: NSError?) in
                     if let imageData = imageData {
                         let image = UIImage(data: imageData)
@@ -115,11 +115,10 @@ class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
                 var button: UIButton
                 switch(articleType)
                 {
-                case "top": button = self.topButton; articleIndex = 0
-                case "bottom": button = self.bottomButton; articleIndex = 1
-                default: button = self.footwearButton; articleIndex = 2
+                case "top": button = self.topButton; self.outfit.topComponent = article
+                case "bottom": button = self.bottomButton; self.outfit.bottomComponent = article
+                default: button = self.footwearButton; self.outfit.footwearComponent = article
                 }
-                self.outfit.components[articleIndex] = article
                 button.setTitle("", forState: .Normal)
                 button.setBackgroundImage(articleImage, forState: .Normal)
 

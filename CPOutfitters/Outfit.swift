@@ -12,7 +12,9 @@ import Parse
 class Outfit: PFObject, PFSubclassing {
     
     @NSManaged var owner: PFUser!
-    @NSManaged var components: [Article]!
+    @NSManaged var topComponent: Article
+    @NSManaged var bottomComponent: Article
+    @NSManaged var footwearComponent: Article
     @NSManaged var favorite: Bool
     @NSManaged var lastWorn: NSDate?
     @NSManaged var useCount: Int
@@ -29,19 +31,4 @@ class Outfit: PFObject, PFSubclassing {
     static func parseClassName() -> String {
         return "Outfit"
     }
-    
-    override init() {
-        super.init()
-    }
-    
-    init(object: PFObject) {
-        super.init()
-        
-        self.owner = object["owner"] as? PFUser
-        self.components = object["articles"] as! [Article]
-        self.favorite = object["favorite"] as! Bool
-        self.lastWorn = object["last_worn"] as? NSDate
-        self.useCount = object["use_count"] as! Int
-    }
-
 }

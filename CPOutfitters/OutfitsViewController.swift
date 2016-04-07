@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class OutfitsViewController: UITableViewController {
     
@@ -50,13 +51,15 @@ class OutfitsViewController: UITableViewController {
     */
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
+        var outfit = Outfit()
+        outfit.owner = PFUser.currentUser()!
         let indexPath = tableView.indexPathForCell(sender as! UITableViewCell)
         let attire = categories[indexPath!.row]
         
         if segue.identifier == "outfitSelect" {
             let outfitSelectionViewController = segue.destinationViewController as! OutfitSelectionViewController
             outfitSelectionViewController.attire = attire
+            outfitSelectionViewController.outfit = outfit
         }
     }
 
