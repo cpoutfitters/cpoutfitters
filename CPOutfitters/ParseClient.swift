@@ -61,7 +61,7 @@ class ParseClient: NSObject {
         
     }
 
-    func fetchOutfit(completion completion:([PFObject]?, NSError?) -> ()) {
+    func fetchOutfit(completion:([PFObject]?, NSError?) -> ()) {
         let query = PFQuery(className: "Outfit")
         query.limit = 40
         query.findObjectsInBackgroundWithBlock(completion)
