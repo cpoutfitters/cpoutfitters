@@ -13,7 +13,9 @@ import ParseUI
 class PostViewController: UIViewController {
     
     
-    @IBOutlet weak var postImageView: UIImageView!
+    @IBOutlet weak var footwearImageView: UIImageView!
+    @IBOutlet weak var bottomImageView: UIImageView!
+    @IBOutlet weak var topImageView: UIImageView!
     @IBOutlet weak var postCaptionTextField: UITextField!
 
     var article: Article!
@@ -23,7 +25,11 @@ class PostViewController: UIViewController {
         
         article.mediaImage.getDataInBackgroundWithBlock { (picture: NSData?, error: NSError?) in
             if error == nil {
-                self.postImageView.image = UIImage(data: picture!)
+                self.topImageView.image = UIImage(data: picture!)
+                
+                /* hack: Needs to retrive an outfit so the other views will be different */
+                self.bottomImageView.image = UIImage(data: picture!)
+                self.footwearImageView.image = UIImage(data: picture!)
             }
         }
         // Do any additional setup after loading the view.
@@ -35,7 +41,7 @@ class PostViewController: UIViewController {
     }
     
     @IBAction func onPostImage(sender: AnyObject) {
-        Post.postUserImage(postImageView.image, withCaption: postCaptionTextField.text) { (success: Bool, error: NSError?) in
+        Post.postUserImage(topImageView.image, withCaption: postCaptionTextField.text) { (success: Bool, error: NSError?) in
             if success {
                 print("posted")
                 self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)

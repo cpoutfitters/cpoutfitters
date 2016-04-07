@@ -256,35 +256,34 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
             }
             postViewController.article = article
         }
-        else {
         
-        
-        if segue.identifier == kAddArticleSegueIdentifier {
-            newArticleFlag = true
-            let gesture = sender as! CPTapGestureRecognizer
-            article = Article()
-            switch (gesture.section) {
-            case 0: article!.type = "top"
-            case 1: article!.type = "bottom"
-            default: article!.type = "footwear"
+        if destinationViewController is ArticleViewController {
+            if segue.identifier == kAddArticleSegueIdentifier {
+                newArticleFlag = true
+                let gesture = sender as! CPTapGestureRecognizer
+                article = Article()
+                switch (gesture.section) {
+                case 0: article!.type = "top"
+                case 1: article!.type = "bottom"
+                default: article!.type = "footwear"
+                }
+                
+                article!.owner = PFUser.currentUser()!
+                
+                // HACK
+                article?.primaryColorCategories.appendContentsOf(["blue","green"])
+            }
+            else {  // Edit segue
+                newArticleFlag = false
+                let cell = sender as! WardrobeTypeCell
+                article = cell.article
             }
             
-            article!.owner = PFUser.currentUser()!
-            
-            // HACK
-            article?.primaryColorCategories.appendContentsOf(["blue","green"])
-        }
-        else {  // Edit segue
-            newArticleFlag = false
-            let cell = sender as! WardrobeTypeCell
-            article = cell.article
-        }
-        
-        // Get the new view controller using segue.destinationViewController.
-        if let articleController = segue.destinationViewController as? ArticleViewController {
-            articleController.article = article
-            articleController.delegate = self
-        }
+            // Get the new view controller using segue.destinationViewController.
+            if let articleController = segue.destinationViewController as? ArticleViewController {
+                articleController.article = article
+                articleController.delegate = self
+            }
         }
     }
     

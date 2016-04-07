@@ -22,7 +22,11 @@ class SocialViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 400
         getPosts()
-        //print(tableView.rowHeight)
+        
+        // Initialize a UIRefreshControl
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(getPosts), forControlEvents: UIControlEvents.ValueChanged)
+        tableView.insertSubview(refreshControl, atIndex: 0)
     }
     
     func getPosts() {
