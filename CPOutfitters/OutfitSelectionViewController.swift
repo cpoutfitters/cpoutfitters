@@ -18,6 +18,7 @@ class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
     @IBOutlet weak var topButton: UIButton!
     @IBOutlet weak var bottomButton: UIButton!
     @IBOutlet weak var footwearButton: UIButton!
+    @IBOutlet weak var favoriteButton: UIButton!
     
     var attire: String = ""
     var articles: [[Article]] = [[],[],[]]
@@ -25,11 +26,7 @@ class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
     var isBottomSelected: Bool = false
     var isFootwearSelected: Bool = false
     
-    var outfit: Outfit! {
-        didSet {
-            outfit.owner = PFUser.currentUser()!
-        }
-    }
+    var outfit: Outfit!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +61,7 @@ class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
             }
         }
         saveButton.enabled = false
+        loadOutfit()
     }
 
     @IBAction func onRecommendMe(sender: AnyObject) {
@@ -72,24 +70,55 @@ class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
         
         print("OutfitSelectionViewController: onRecommend Button click")
         
-        ParseClient.sharedInstance.getRecommendedOutfit(["occasion": attire]) { (outfit:Outfit?, error:NSError?) in
-            if let outfit = outfit {
-                let topImage = outfit.topComponent.mediaImage as PFFile
-                topImage.getDataInBackgroundWithBlock({ (imageData:NSData?, error: NSError?) in
-                    if let imageData = imageData {
-                        let image = UIImage(data: imageData)
-                        self.topButton.setImage(image, forState: .Normal)
-                    }
-                })
+        ParseClient.sharedInstance.getRecommendedOutfit(["occasion": attire]) { (outfit: AnyObject?, error:NSError?) in
+            if let outfit = outfit{
+                print(outfit.self)
+                self.loadOutfit()
             } else {
                 print("OutfitSelectionViewController: \(error?.localizedDescription)")
             }
         }
     }
+    
+    func loadOutfit() {
+        if let topImage = outfit.topComponent.mediaImage as? PFFile {
+            topImage.getDataInBackgroundWithBlock({ (imageData:NSData?, error: NSError?) in
+                if let imageData = imageData {
+                    let image = UIImage(data: imageData)
+                    self.topButton.setBackgroundImage(image, forState: .Normal)
+                }
+            })
+        }
+        if let bottomImage = outfit.bottomComponent.mediaImage as? PFFile {
+            bottomImage.getDataInBackgroundWithBlock({ (imageData:NSData?, error: NSError?) in
+                if let imageData = imageData {
+                    let image = UIImage(data: imageData)
+                    self.bottomButton.setBackgroundImage(image, forState: .Normal)
+                }
+            })
+        }
+        if let footwearImage = outfit.footwearComponent.mediaImage as? PFFile {
+            footwearImage.getDataInBackgroundWithBlock({ (imageData:NSData?, error: NSError?) in
+                if let imageData = imageData {
+                    let image = UIImage(data: imageData)
+                    self.footwearButton.setImage(image, forState: .Normal)
+                }
+            })
+        }
+        if let favorite = outfit.favorite as? Bool {
+            if favorite == true {
+                favoriteButton.selected = true
+            } else {
+                favoriteButton.selected = false
+            }
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         var articleArray: [Article] = []
@@ -134,6 +163,7 @@ class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
             }
         })
     }
+    
     @IBAction func onSave(sender: AnyObject) {
         ParseClient.sharedInstance.saveOutfit(outfit) { (success, error) in
             if success {
