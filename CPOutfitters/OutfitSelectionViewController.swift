@@ -14,12 +14,16 @@ let kselectFootwearSegueIdentifier = "selectFootwear"
 
 class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
 
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var topButton: UIButton!
     @IBOutlet weak var bottomButton: UIButton!
     @IBOutlet weak var footwearButton: UIButton!
     
     var attire: String = ""
     var articles: [[Article]] = [[],[],[]]
+    var isTopSelected: Bool = false
+    var isBottomSelected: Bool = false
+    var isFootwearSelected: Bool = false
     
     var outfit: Outfit! {
         didSet {
@@ -59,6 +63,7 @@ class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
                 print("Error message: \(errorString)")
             }
         }
+        saveButton.enabled = false
     }
 
     @IBAction func onRecommendMe(sender: AnyObject) {
@@ -106,6 +111,7 @@ class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
     func articleSelected(article: Article) {
         //Add component to outfit
         let image = article.mediaImage
+        
         image.getDataInBackgroundWithBlock({ (imageData:NSData?, error: NSError?) in
             if let imageData = imageData {
                 let articleImage = UIImage(data: imageData)
@@ -115,15 +121,27 @@ class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
                 var button: UIButton
                 switch(articleType)
                 {
-                case "top": button = self.topButton; self.outfit.topComponent = article
-                case "bottom": button = self.bottomButton; self.outfit.bottomComponent = article
-                default: button = self.footwearButton; self.outfit.footwearComponent = article
+                case "top": button = self.topButton; self.outfit.topComponent = article; self.isTopSelected = true
+                case "bottom": button = self.bottomButton; self.outfit.bottomComponent = article; self.isBottomSelected = true
+                default: button = self.footwearButton; self.outfit.footwearComponent = article; self.isFootwearSelected = true
                 }
                 button.setTitle("", forState: .Normal)
                 button.setBackgroundImage(articleImage, forState: .Normal)
-
+                
+                if self.isTopSelected && self.isBottomSelected && self.isFootwearSelected {
+                    self.saveButton.enabled = true
+                }
             }
         })
+    }
+    @IBAction func onSave(sender: AnyObject) {
+        ParseClient.sharedInstance.saveOutfit(outfit) { (success, error) in
+            if success {
+                print("outfit saved")
+            } else {
+                print(error?.localizedDescription)
+            }
+        }
     }
     
     /*
