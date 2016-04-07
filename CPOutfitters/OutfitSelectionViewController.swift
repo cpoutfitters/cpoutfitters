@@ -107,9 +107,9 @@ class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
         }
         if let favorite = outfit.favorite as? Bool {
             if favorite == true {
-                favoriteButton.selected = true
+                self.favoriteButton.selected = true
             } else {
-                favoriteButton.selected = false
+                self.favoriteButton.selected = false
             }
         }
     }
