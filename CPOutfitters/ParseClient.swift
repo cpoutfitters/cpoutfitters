@@ -61,12 +61,19 @@ class ParseClient: NSObject {
         
     }
 
-    func fetchOutfitsWithCompletion(completion completion:([PFObject]?, NSError?) -> ()) {
+    func fetchOutfit(completion:([PFObject]?, NSError?) -> ()) {
         let query = PFQuery(className: "Outfit")
         query.limit = 40
         query.findObjectsInBackgroundWithBlock(completion)
     }
+    
+    func getRecommendedOutfit(params: NSDictionary, completion:(Outfit?, NSError?) -> ()) {
 
+        PFCloud.callFunctionInBackground("recommend", withParameters: params as [NSObject : AnyObject]) { (outfit: AnyObject?, error: NSError?) in
+                completion(outfit as? Outfit,error)
+        }
+    }
+    
     // Function for deletion of article from server
     func deleteArticle(article: Article, completion:(success: Bool, error: NSError?) -> ()) {
         article.deleteInBackgroundWithBlock(completion)
