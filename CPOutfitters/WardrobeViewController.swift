@@ -12,6 +12,7 @@ import Parse
 let cellHeight: CGFloat = 100.0
 let kAddArticleSegueIdentifier = "addArticle"
 let kEditArticleSegueIdentifier = "editArticle"
+let kPostArticleSegueIdentifier = "sendPost"
 
 let primaryColorKey = "primaryColorCategories"
 let occasionKey = "occasion"
@@ -143,6 +144,9 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
 
         cell.article = filteredArticles[indexPath.section][indexPath.row]
         
+        let gesture = UILongPressGestureRecognizer(target: self, action: #selector(sendPost))
+        cell.containerView.addGestureRecognizer(gesture)
+        
         return cell
     }
     
@@ -155,6 +159,12 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
         expanded[section] = !expanded[section]
         tableView.reloadSections(NSIndexSet(index: section), withRowAnimation: .Automatic)
     }
+    
+    func sendPost(sender: UILongPressGestureRecognizer) {
+        if sender.state == .Began {
+            self.performSegueWithIdentifier(kPostArticleSegueIdentifier, sender: sender)
+        }
+    }
 
     func addArticle(sender: CPTapGestureRecognizer) {
         self.performSegueWithIdentifier(kAddArticleSegueIdentifier, sender: sender)
@@ -163,6 +173,8 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
     func angleForArrow(expanded: Bool) -> CGFloat {
         return CGFloat(expanded ? M_PI / 2.0 : M_PI * 1.5 )
     }
+    
+    // MARK: - SearchBar
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         
@@ -231,34 +243,47 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
         var article: Article?
+        let destinationViewController = segue.destinationViewController
         
-        if segue.identifier == kAddArticleSegueIdentifier {
-            newArticleFlag = true
-            let gesture = sender as! CPTapGestureRecognizer
-            article = Article()
-            switch (gesture.section) {
-            case 0: article!.type = "top"
-            case 1: article!.type = "bottom"
-            default: article!.type = "footwear"
+        if destinationViewController is PostViewController {
+            let postViewController = destinationViewController as! PostViewController
+            let gesture = sender as! UILongPressGestureRecognizer
+            let point = gesture.locationInView(self.tableView)
+            if let indexPath = self.tableView.indexPathForRowAtPoint(point) {
+                let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! WardrobeTypeCell
+                article = cell.article
+            }
+            postViewController.article = article
+        }
+        
+        if destinationViewController is ArticleViewController {
+            if segue.identifier == kAddArticleSegueIdentifier {
+                newArticleFlag = true
+                let gesture = sender as! CPTapGestureRecognizer
+                article = Article()
+                switch (gesture.section) {
+                case 0: article!.type = "top"
+                case 1: article!.type = "bottom"
+                default: article!.type = "footwear"
+                }
+                
+                article!.owner = PFUser.currentUser()!
+                
+                // HACK
+                article?.primaryColorCategories.appendContentsOf(["blue","green"])
+            }
+            else {  // Edit segue
+                newArticleFlag = false
+                let cell = sender as! WardrobeTypeCell
+                article = cell.article
             }
             
-            article!.owner = PFUser.currentUser()!
-            
-            // HACK
-            article?.primaryColorCategories.appendContentsOf(["blue","green"])
-        }
-        else {  // Edit segue
-            newArticleFlag = false
-            let cell = sender as! WardrobeTypeCell
-            article = cell.article
-        }
-        
-        // Get the new view controller using segue.destinationViewController.
-        if let articleController = segue.destinationViewController as? ArticleViewController {
-            articleController.article = article
-            articleController.delegate = self
+            // Get the new view controller using segue.destinationViewController.
+            if let articleController = segue.destinationViewController as? ArticleViewController {
+                articleController.article = article
+                articleController.delegate = self
+            }
         }
     }
     
