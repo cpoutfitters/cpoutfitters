@@ -66,6 +66,10 @@ class ParseClient: NSObject {
         query.limit = 40
         query.findObjectsInBackgroundWithBlock(completion)
     }
+
+    func saveOutfit(outfit: Outfit, completion:(success: Bool, error: NSError?) -> ()) {
+        outfit.saveInBackgroundWithBlock(completion)
+    }
     
     func getRecommendedOutfit(params: NSDictionary, completion:(Outfit?, NSError?) -> ()) {
 

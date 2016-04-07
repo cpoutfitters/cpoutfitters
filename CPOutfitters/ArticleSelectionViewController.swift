@@ -9,11 +9,17 @@
 import UIKit
 import Parse
 
+protocol ArticleSelectDelegate {
+    func articleSelected(article: Article)
+}
+
 class ArticleSelectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var articleCollectionView: UICollectionView!
+    
     var articles: [Article]?
-
+    var delegate: ArticleSelectDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,11 +37,26 @@ class ArticleSelectionViewController: UIViewController, UICollectionViewDelegate
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ArticleSelectCell", forIndexPath: indexPath) as! ArticleSelectCell
+        let cell = articleCollectionView.dequeueReusableCellWithReuseIdentifier("ArticleSelectCell", forIndexPath: indexPath) as! ArticleSelectCell
         
         cell.article = articles![indexPath.row]
         
+        let articleTapAction = CPTapGestureRecognizer(target: self, action: "articleTap:")
+        articleTapAction.section = indexPath.row
+        cell.articleImageView.userInteractionEnabled = true
+        cell.addGestureRecognizer(articleTapAction)
+        
         return cell
+    }
+    
+    func articleTap(sender: CPTapGestureRecognizer) {
+        if sender.state != .Ended {
+            return
+        }
+        if let index = sender.section {
+            self.delegate?.articleSelected(articles![index])
+            self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,7 +68,6 @@ class ArticleSelectionViewController: UIViewController, UICollectionViewDelegate
         self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
-
     /*
     // MARK: - Navigation
 

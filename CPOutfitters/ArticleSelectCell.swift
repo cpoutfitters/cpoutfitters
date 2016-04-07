@@ -14,17 +14,14 @@ class ArticleSelectCell: UICollectionViewCell {
     
     var article: Article! {
         didSet{
-        
-        let articleImageFile = article.mediaImage
-    
-        articleImageFile.getDataInBackgroundWithBlock {
-            (imageData: NSData?, error: NSError?) -> Void in
-            if error == nil {
+            let articleImageFile = article.mediaImage
+            
+            articleImageFile.getDataInBackgroundWithBlock {
+                (imageData: NSData?, error: NSError?) -> Void in
                 if let imageData = imageData {
                     self.articleImageView.image = UIImage(data:imageData)
                 }
             }
-        }
         }
     }
 }

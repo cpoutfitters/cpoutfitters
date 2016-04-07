@@ -12,7 +12,7 @@ let kselectTopSegueIdentifier = "selectTop"
 let kselectBottomSegueIdentifier = "selectBottom"
 let kselectFootwearSegueIdentifier = "selectFootwear"
 
-class OutfitSelectionViewController: UIViewController {
+class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
 
     @IBOutlet weak var topButton: UIButton!
     @IBOutlet weak var bottomButton: UIButton!
@@ -23,7 +23,7 @@ class OutfitSelectionViewController: UIViewController {
     
     var outfit: Outfit! {
         didSet {
-        
+            outfit.owner = PFUser.currentUser()!
         }
     }
     
@@ -35,7 +35,7 @@ class OutfitSelectionViewController: UIViewController {
          API Call for getting an outfit
          ParseClient.sharedInstance.suggestOutfit(["attire":attire]) 
          */
-        ParseClient.sharedInstance.fetchArticles(["type":"top", "attire":attire]) { (articleObjects:[Article]?, error: NSError?) in
+        ParseClient.sharedInstance.fetchArticles(["type":"top", "occasion":attire]) { (articleObjects:[Article]?, error: NSError?) in
             if let articleObjects = articleObjects {
                 self.articles[0] = articleObjects
             } else {
@@ -43,7 +43,7 @@ class OutfitSelectionViewController: UIViewController {
                 print("Error message: \(errorString)")
             }
         }
-        ParseClient.sharedInstance.fetchArticles(["type":"bottom", "attire":attire]) { (articleObjects:[Article]?, error: NSError?) in
+        ParseClient.sharedInstance.fetchArticles(["type":"bottom", "occasion":attire]) { (articleObjects:[Article]?, error: NSError?) in
             if let articleObjects = articleObjects {
                 self.articles[1] = articleObjects
             } else {
@@ -51,7 +51,7 @@ class OutfitSelectionViewController: UIViewController {
                 print("Error message: \(errorString)")
             }
         }
-        ParseClient.sharedInstance.fetchArticles(["type":"footwear", "attire":attire]) { (articleObjects:[Article]?, error: NSError?) in
+        ParseClient.sharedInstance.fetchArticles(["type":"footwear", "occasion":attire]) { (articleObjects:[Article]?, error: NSError?) in
             if let articleObjects = articleObjects {
                 self.articles[2] = articleObjects
             } else {
@@ -86,18 +86,47 @@ class OutfitSelectionViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == kselectTopSegueIdentifier {
-            let selectTopViewController = segue.destinationViewController as! ArticleSelectionViewController
-            selectTopViewController.articles = articles[0]
-        } else if segue.identifier == kselectBottomSegueIdentifier {
-            let selectBottomViewController = segue.destinationViewController as! ArticleSelectionViewController
-            selectBottomViewController.articles = articles[1]
-        } else if segue.identifier == kselectFootwearSegueIdentifier {
-            let selectFootwearViewController = segue.destinationViewController as! ArticleSelectionViewController
-            selectFootwearViewController.articles = articles[2]
+        
+        var articleArray: [Article] = []
+        
+        if let articleSelectionViewController = segue.destinationViewController as? ArticleSelectionViewController {
+            if segue.identifier == kselectTopSegueIdentifier {
+                 articleArray = articles[0]
+            } else if segue.identifier == kselectBottomSegueIdentifier {
+                articleArray = articles[1]
+            } else if segue.identifier == kselectFootwearSegueIdentifier {
+                articleArray = articles[2]
+            }
+            articleSelectionViewController.articles = articleArray
+            articleSelectionViewController.delegate = self
         }
+        
     }
+    
+    func articleSelected(article: Article) {
+        //Add component to outfit
+        let image = article.mediaImage
+        image.getDataInBackgroundWithBlock({ (imageData:NSData?, error: NSError?) in
+            if let imageData = imageData {
+                let articleImage = UIImage(data: imageData)
+                //Get type of article 
+                let articleType = article.type
+                var articleIndex = -1
+                var button: UIButton
+                switch(articleType)
+                {
+                case "top": button = self.topButton; articleIndex = 0
+                case "bottom": button = self.bottomButton; articleIndex = 1
+                default: button = self.footwearButton; articleIndex = 2
+                }
+                self.outfit.components[articleIndex] = article
+                button.setTitle("", forState: .Normal)
+                button.setBackgroundImage(articleImage, forState: .Normal)
 
+            }
+        })
+    }
+    
     /*
     // MARK: - Navigation
 
