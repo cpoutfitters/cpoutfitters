@@ -13,11 +13,11 @@ An app that stores your wardrobe and suggests outfits to help you dress better.
 The following **required** functionality is completed:
 - [x] Users can create an account and logs in automatically.
 - [x] Users can upload and browse their clothes (metadata could include color, event type, hot/warm/cool/cold usage, collar, sleeve length, etc.)
-- [ ] App suggests what to wear based on coordination: color, warm/cold & formality
-- [x] User can search clothing by keyword (color, category, etc.) 
+- [x] App suggests what to wear based on coordination: color, warm/cold & formality
+- [x] User can search clothing by keyword (color, category, etc.)
 - [x] Users can categorize their clothes by wardrobe (same clothes can be in different groupings)
-- [ ] App suggestion based on shared outfit (for coordination)
-- [ ] User can share their wardrobe/outfits with friends
+- [x] App suggestion based on shared outfit (for coordination)
+- [x] User can share their wardrobe/outfits with friends
 
 The following **optional** features are implemented:
 - [ ] App connects with Facebook for event data to schedule outfits
@@ -32,17 +32,17 @@ The following **optional** features are implemented:
 
 ![Alt text](/wireframes.png?raw=true "Wireframe")
 
-Schema: 
+Schema:
 
 ![Alt text](/Schema.png?raw=true "Schema")
 
 ##GIF Week 1:
 <img src='http://i.imgur.com/1Y4hyyn.gif' title='Week 1 Video Walkthrough' width='' alt='Week 1 Video Walkthrough' />
 
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
-
 ##GIF Week 2:
 <img src='http://i.imgur.com/Dg2OBXE.gif' title='Week 2Video Walkthrough' width='' alt='Week 2Video Walkthrough' />
 
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
+##GIF Week 3:
+<img src='./CPOutfitters-Sprint-Week-3.gif' title='Week 2Video Walkthrough' width='' alt='Week 2Video Walkthrough' />
 
+GIF created with [LiceCap](http://www.cockos.com/licecap/).
