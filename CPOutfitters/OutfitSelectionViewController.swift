@@ -166,6 +166,7 @@ class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
     @IBAction func onSave(sender: AnyObject) {
         ParseClient.sharedInstance.saveOutfit(outfit) { (success, error) in
             if success {
+                self.dismissViewControllerAnimated(true, completion: nil)
                 print("outfit saved")
             } else {
                 print(error?.localizedDescription)
