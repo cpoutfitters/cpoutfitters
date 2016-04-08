@@ -144,7 +144,7 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
 
         cell.article = filteredArticles[indexPath.section][indexPath.row]
         
-        let gesture = UILongPressGestureRecognizer(target: self, action: "sendPost")
+        let gesture = UILongPressGestureRecognizer(target: self, action: "sendPost:")
         cell.containerView.addGestureRecognizer(gesture)
         
         return cell
