@@ -717,7 +717,11 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jzx-39-Zcn">
                                 <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                                 <items>
-                                    <barButtonItem systemItem="cancel" id="fDs-do-CuX"/>
+                                    <barButtonItem systemItem="cancel" id="fDs-do-CuX">
+                                        <connections>
+                                            <action selector="onCancel:" destination="SbO-Z5-F6I" id="v5r-Y2-uOr"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem systemItem="flexibleSpace" id="qhT-D7-ZsL">
                                         <color key="tintColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     </barButtonItem>

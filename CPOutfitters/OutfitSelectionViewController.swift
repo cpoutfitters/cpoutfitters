@@ -159,6 +159,10 @@ class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
         })
     }
     
+    @IBAction func onCancel(sender: AnyObject) {
+        self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     @IBAction func onSave(sender: AnyObject) {
         ParseClient.sharedInstance.saveOutfit(outfit) { (success, error) in
             if success {
