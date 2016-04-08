@@ -18,18 +18,37 @@ class PostViewController: UIViewController {
     @IBOutlet weak var topImageView: UIImageView!
     @IBOutlet weak var postCaptionTextField: UITextField!
 
-    var article: Article!
+    var article: Article?
+    var outfit: Outfit?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        article.mediaImage.getDataInBackgroundWithBlock { (picture: NSData?, error: NSError?) in
-            if error == nil {
-                self.topImageView.image = UIImage(data: picture!)
-                
-                /* hack: Needs to retrive an outfit so the other views will be different */
-                self.bottomImageView.image = UIImage(data: picture!)
-                self.footwearImageView.image = UIImage(data: picture!)
+        if let outfit = outfit {
+            outfit.topComponent?.mediaImage.getDataInBackgroundWithBlock({ (topImage: NSData?, error: NSError?) in
+                if error == nil {
+                    self.topImageView.image = UIImage(data: topImage!)
+                }
+            })
+            outfit.bottomComponent?.mediaImage.getDataInBackgroundWithBlock({ (bottomImage: NSData?, error: NSError?) in
+                if error == nil {
+                    self.bottomImageView.image = UIImage(data: bottomImage!)
+                }
+            })
+            outfit.footwearComponent?.mediaImage.getDataInBackgroundWithBlock({ (footwearImage: NSData?, error: NSError?) in
+                if error == nil {
+                    self.footwearImageView.image = UIImage(data: footwearImage!)
+                }
+            })
+        } else {
+            article?.mediaImage.getDataInBackgroundWithBlock { (picture: NSData?, error: NSError?) in
+                if error == nil {
+                    self.topImageView.image = UIImage(data: picture!)
+                    
+                    /* hack: Needs to retrive an outfit so the other views will be different */
+                    self.bottomImageView.image = UIImage(data: picture!)
+                    self.footwearImageView.image = UIImage(data: picture!)
+                }
             }
         }
         // Do any additional setup after loading the view.

@@ -21,7 +21,7 @@ class SocialTypeCell: UITableViewCell {
             self.authorLabel.text = author?["username"] as? String
             self.captionLabel.text = post["caption"] as? String
             
-            let imageFile = post["image"] as! PFFile
+            let imageFile = post["topImage"] as! PFFile
             imageFile.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) in
                 if error == nil {
                     if let imageData = imageData {

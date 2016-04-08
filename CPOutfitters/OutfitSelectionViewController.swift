@@ -15,6 +15,7 @@ let kselectFootwearSegueIdentifier = "selectFootwear"
 class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
 
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var topButton: UIButton!
     @IBOutlet weak var bottomButton: UIButton!
     @IBOutlet weak var footwearButton: UIButton!
@@ -61,6 +62,7 @@ class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
             }
         }
         saveButton.enabled = false
+        shareButton.enabled = false
         loadOutfit()
     }
 
@@ -114,24 +116,6 @@ class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        var articleArray: [Article] = []
-        
-        if let articleSelectionViewController = segue.destinationViewController as? ArticleSelectionViewController {
-            if segue.identifier == kselectTopSegueIdentifier {
-                 articleArray = articles[0]
-            } else if segue.identifier == kselectBottomSegueIdentifier {
-                articleArray = articles[1]
-            } else if segue.identifier == kselectFootwearSegueIdentifier {
-                articleArray = articles[2]
-            }
-            articleSelectionViewController.articles = articleArray
-            articleSelectionViewController.delegate = self
-        }
-        
-    }
-    
     func articleSelected(article: Article) {
         //Add component to outfit
         let image = article.mediaImage
@@ -154,6 +138,7 @@ class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
                 
                 if self.isTopSelected && self.isBottomSelected && self.isFootwearSelected {
                     self.saveButton.enabled = true
+                    self.shareButton.enabled = true
                 }
             }
         })
@@ -174,14 +159,35 @@ class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
         }
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        let destinationViewController = segue.destinationViewController
+        let segueIdentifier = segue.identifier
+        
+        if destinationViewController is ArticleSelectionViewController {
+            let articleSelectionViewController = destinationViewController as! ArticleSelectionViewController
+            var articleArray: [Article] = []
+            switch segueIdentifier {
+            case kselectTopSegueIdentifier?:      articleArray = articles[0]
+            case kselectBottomSegueIdentifier?:   articleArray = articles[1]
+            case kselectFootwearSegueIdentifier?: articleArray = articles[2]
+            default: print("Error. Invalid segueIdentifier in OutfitSelectionViewController")
+            }
+            articleSelectionViewController.articles = articleArray
+            articleSelectionViewController.delegate = self
+        }
+        
+        if destinationViewController is PostViewController {
+            let postViewController = destinationViewController as! PostViewController
+            postViewController.outfit = outfit
+        }
     }
-    */
+    
 
 }

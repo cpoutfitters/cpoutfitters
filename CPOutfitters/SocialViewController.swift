@@ -14,6 +14,8 @@ class SocialViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var tableView: UITableView!
     var posts: [PFObject]!
     
+    let refreshControl = UIRefreshControl()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,7 +26,6 @@ class SocialViewController: UIViewController, UITableViewDelegate, UITableViewDa
         getPosts()
         
         // Initialize a UIRefreshControl
-        let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "getPosts", forControlEvents: UIControlEvents.ValueChanged)
         tableView.insertSubview(refreshControl, atIndex: 0)
     }
@@ -39,6 +40,7 @@ class SocialViewController: UIViewController, UITableViewDelegate, UITableViewDa
             if let posts = posts {
                 self.posts = posts
                 self.tableView.reloadData()
+                self.refreshControl.endRefreshing()
             } else {
                 print(error?.localizedDescription)
             }
