@@ -41,7 +41,7 @@ class ParseClient: NSObject {
     }
     
     func getArticle(articleId: String, completion:(Article?, NSError?) -> ()) {
-        let article = Article(withoutDataWithObjectId: articleId)
+        let article = Article(className: articleId)
         article.fetchInBackgroundWithBlock { (result, error) -> Void in
             completion(result as? Article, error)
         }
@@ -81,38 +81,39 @@ class ParseClient: NSObject {
     func getRecommendedOutfit(params: NSDictionary, completion:(Outfit?, NSError?) -> ()) {
         PFCloud.callFunctionInBackground("recommend", withParameters: params as [NSObject : AnyObject]?) { (compString: AnyObject?, error: NSError?) in
             if let compString = compString as? NSString, data = compString.dataUsingEncoding(NSUTF8StringEncoding) {
-                let components = try! NSJSONSerialization.JSONObjectWithData(data, options: [])
-                let topComponentID = components["topComponent"] as! String
-                let bottomComponentID = components["bottomComponent"] as! String
-                let footwearComponentID = components["footwearComponent"] as! String
-                
-                self.getArticle(topComponentID, completion: { (top, error) -> () in
-                    if let top = top {
-                        self.getArticle(bottomComponentID, completion: { (bottom, error) -> () in
-                            if let bottom = bottom {
-                                self.getArticle(footwearComponentID, completion: { (footwear, error) -> () in
-                                    if let footwear = footwear {
-                                        let outfitObject = Outfit()
-                                        outfitObject.owner = PFUser.currentUser()!
-                                        outfitObject.topComponent = top
-                                        outfitObject.bottomComponent = bottom
-                                        outfitObject.footwearComponent = footwear
-                                        completion(outfitObject, nil)
-                                    }
-                                    else {
-                                        completion(nil,error)
-                                    }
-                                })
-                            }
-                            else {
-                                completion(nil,error)
-                            }
-                        })
-                    }
-                    else {
-                        completion(nil,error)
-                    }
-                })
+                if let components = try! NSJSONSerialization.JSONObjectWithData(data, options: []) as? NSDictionary {
+                    let topComponentID = components["topComponent"] as! String
+                    let bottomComponentID = components["bottomComponent"] as! String
+                    let footwearComponentID = components["footwearComponent"] as! String
+                    
+                    self.getArticle(topComponentID, completion: { (top, error) -> () in
+                        if let top = top {
+                            self.getArticle(bottomComponentID, completion: { (bottom, error) -> () in
+                                if let bottom = bottom {
+                                    self.getArticle(footwearComponentID, completion: { (footwear, error) -> () in
+                                        if let footwear = footwear {
+                                            let outfitObject = Outfit()
+                                            outfitObject.owner = PFUser.currentUser()!
+                                            outfitObject.topComponent = top
+                                            outfitObject.bottomComponent = bottom
+                                            outfitObject.footwearComponent = footwear
+                                            completion(outfitObject, nil)
+                                        }
+                                        else {
+                                            completion(nil,error)
+                                        }
+                                    })
+                                }
+                                else {
+                                    completion(nil,error)
+                                }
+                            })
+                        }
+                        else {
+                            completion(nil,error)
+                        }
+                    })
+                }
             }
         }
     }
