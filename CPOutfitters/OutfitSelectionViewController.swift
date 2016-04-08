@@ -102,7 +102,7 @@ class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
             footwearImage.getDataInBackgroundWithBlock({ (imageData:NSData?, error: NSError?) in
                 if let imageData = imageData {
                     let image = UIImage(data: imageData)
-                    self.footwearButton.setImage(image, forState: .Normal)
+                    self.footwearButton.setBackgroundImage(image, forState: .Normal)
                 }
             })
         }
