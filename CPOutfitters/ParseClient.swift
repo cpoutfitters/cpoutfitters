@@ -6,20 +6,20 @@
 //  Copyright © 2016 SnazzyLLama. All rights reserved.
 //
 /*
- Params of User Class:
- var friends: [User]?
- var profileImage: PFFile?
- var bio: String?
- var sharedWith: [User]?
- */
+Params of User Class:
+var friends: [User]?
+var profileImage: PFFile?
+var bio: String?
+var sharedWith: [User]?
+*/
 
 import UIKit
 import Parse
 
 class ParseClient: NSObject {
-
+    
     static let sharedInstance = ParseClient()
-
+    
     func fetchArticles(params: NSDictionary, completion:([Article]?, NSError?) -> ()) {
         
         let query = PFQuery(className: "Article")
@@ -39,7 +39,14 @@ class ParseClient: NSObject {
             }
         }
     }
-
+    
+    func getArticle(articleId: String, completion:(Article?, NSError?) -> ()) {
+        let article = Article(withoutDataWithObjectId: articleId)
+        article.fetchInBackgroundWithBlock { (result, error) -> Void in
+            completion(result as? Article, error)
+        }
+    }
+    
     func saveArticle(article: Article, completion:(success: Bool, error: NSError?) -> ()) {
         article.mediaImage.saveInBackgroundWithBlock { (success, error: NSError?) in
             if success {
@@ -60,56 +67,53 @@ class ParseClient: NSObject {
         }
         
     }
-
+    
     func fetchOutfit(completion:([PFObject]?, NSError?) -> ()) {
         let query = PFQuery(className: "Outfit")
         query.limit = 40
         query.findObjectsInBackgroundWithBlock(completion)
     }
-
+    
     func saveOutfit(outfit: Outfit, completion:(success: Bool, error: NSError?) -> ()) {
         outfit.saveInBackgroundWithBlock(completion)
     }
     
     func getRecommendedOutfit(params: NSDictionary, completion:(Outfit?, NSError?) -> ()) {
-        var outfitObject = Outfit()
-        outfitObject.owner = PFUser.currentUser()!
-        var topComponentID = ""
-        var bottomComponentID = ""
-        var footwearComponentID = ""
-        PFCloud.callFunctionInBackground("recommend", withParameters: params as [NSObject : AnyObject]?) { (components: AnyObject?, error: NSError?) in
-            if let components = components {
-                topComponentID = components["topComponent"] as String
-                bottomComponentID = components["bottomComponent"] as String
-                footwearComponentID = components["footwearComponent"] as String
-                //completion(outfit as? Outfit,error)
+        PFCloud.callFunctionInBackground("recommend", withParameters: params as [NSObject : AnyObject]?) { (compString: AnyObject?, error: NSError?) in
+            if let compString = compString as? NSString, data = compString.dataUsingEncoding(NSUTF8StringEncoding) {
+                let components = try! NSJSONSerialization.JSONObjectWithData(data, options: [])
+                let topComponentID = components["topComponent"] as! String
+                let bottomComponentID = components["bottomComponent"] as! String
+                let footwearComponentID = components["footwearComponent"] as! String
+                
+                self.getArticle(topComponentID, completion: { (top, error) -> () in
+                    if let top = top {
+                        self.getArticle(bottomComponentID, completion: { (bottom, error) -> () in
+                            if let bottom = bottom {
+                                self.getArticle(footwearComponentID, completion: { (footwear, error) -> () in
+                                    if let footwear = footwear {
+                                        let outfitObject = Outfit()
+                                        outfitObject.owner = PFUser.currentUser()!
+                                        outfitObject.topComponent = top
+                                        outfitObject.bottomComponent = bottom
+                                        outfitObject.footwearComponent = footwear
+                                        completion(outfitObject, nil)
+                                    }
+                                    else {
+                                        completion(nil,error)
+                                    }
+                                })
+                            }
+                            else {
+                                completion(nil,error)
+                            }
+                        })
+                    }
+                    else {
+                        completion(nil,error)
+                    }
+                })
             }
-        }
-        ParseClient.sharedInstance.fetchArticles(["objectId":topComponentID]) { (articles:[Article]?, error: NSError?) in
-            if let article = articles[0] {
-                outfitObject.topComponent = article
-            } else {
-                print(error?.localizedDescription)
-            }
-        }
-        ParseClient.sharedInstance.fetchArticles(["objectId":bottomComponentID]) { (articles:[Article]?, error: NSError?) in
-            if let article = articles[0] {
-                outfitObject.bottomComponent = article
-            } else {
-                print(error?.localizedDescription)
-            }
-        }
-        ParseClient.sharedInstance.fetchArticles(["objectId":footwearComponentID]) { (articles:[Article]?, error: NSError?) in
-            if let article = articles[0] {
-                outfitObject.footwearComponent = article
-            } else {
-                print(error?.localizedDescription)
-            }
-        }
-        if (outfitObject.topComponent != nil) && (outfitObject.bottomComponent != nil) && (outfitObject.footwearComponent != nil) {
-            completion(outfitObject, nil)
-        } else {
-            completion(nil, error)
         }
     }
     

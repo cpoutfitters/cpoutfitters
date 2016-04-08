@@ -70,8 +70,9 @@ class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
         
         print("OutfitSelectionViewController: onRecommend Button click")
         
-        ParseClient.sharedInstance.getRecommendedOutfit(["occasion": attire]) { (outfit: AnyObject?, error:NSError?) in
+        ParseClient.sharedInstance.getRecommendedOutfit(["occasion": attire]) { (outfit: Outfit?, error:NSError?) in
             if let outfit = outfit{
+                self.outfit = outfit
                 print(outfit.self)
                 self.loadOutfit()
             } else {
@@ -81,7 +82,7 @@ class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
     }
     
     func loadOutfit() {
-        if let topImage = outfit.topComponent.mediaImage as? PFFile {
+        if let topImage = outfit.topComponent?.mediaImage {
             topImage.getDataInBackgroundWithBlock({ (imageData:NSData?, error: NSError?) in
                 if let imageData = imageData {
                     let image = UIImage(data: imageData)
@@ -89,7 +90,7 @@ class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
                 }
             })
         }
-        if let bottomImage = outfit.bottomComponent.mediaImage as? PFFile {
+        if let bottomImage = outfit.bottomComponent?.mediaImage {
             bottomImage.getDataInBackgroundWithBlock({ (imageData:NSData?, error: NSError?) in
                 if let imageData = imageData {
                     let image = UIImage(data: imageData)
@@ -97,7 +98,7 @@ class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
                 }
             })
         }
-        if let footwearImage = outfit.footwearComponent.mediaImage as? PFFile {
+        if let footwearImage = outfit.footwearComponent?.mediaImage {
             footwearImage.getDataInBackgroundWithBlock({ (imageData:NSData?, error: NSError?) in
                 if let imageData = imageData {
                     let image = UIImage(data: imageData)
@@ -105,13 +106,7 @@ class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
                 }
             })
         }
-        if let favorite = outfit.favorite as? Bool {
-            if favorite == true {
-                self.favoriteButton.selected = true
-            } else {
-                self.favoriteButton.selected = false
-            }
-        }
+        self.favoriteButton.selected = outfit.favorite
     }
     
     override func didReceiveMemoryWarning() {

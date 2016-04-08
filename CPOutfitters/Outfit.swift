@@ -12,9 +12,9 @@ import Parse
 class Outfit: PFObject, PFSubclassing {
     
     @NSManaged var owner: PFUser!
-    @NSManaged var topComponent: Article
-    @NSManaged var bottomComponent: Article
-    @NSManaged var footwearComponent: Article
+    @NSManaged var topComponent: Article?
+    @NSManaged var bottomComponent: Article?
+    @NSManaged var footwearComponent: Article?
     @NSManaged var favorite: Bool
     @NSManaged var lastWorn: NSDate?
     @NSManaged var useCount: Int
