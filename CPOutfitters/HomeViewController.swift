@@ -61,7 +61,8 @@ class HomeViewController: UIViewController, PFLogInViewControllerDelegate, PFSig
         
         let current_user = PFUser.currentUser()?.username
         if (current_user == nil) {
-            let loginViewController = PFLogInViewController()
+            //let loginViewController = PFLogInViewController()
+            let loginViewController = LoginViewController()
             loginViewController.delegate = self
             loginViewController.signUpController?.delegate = self
             loginViewController.emailAsUsername = true

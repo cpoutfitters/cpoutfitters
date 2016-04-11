@@ -21,11 +21,12 @@ class SocialTypeCell: UITableViewCell {
             self.authorLabel.text = author?["username"] as? String
             self.captionLabel.text = post["caption"] as? String
             
-            let imageFile = post["image"] as! PFFile
-            imageFile.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) in
-                if error == nil {
-                    if let imageData = imageData {
-                        self.pictureImageView.image = UIImage(data: imageData)
+            if let imageFile = post["image"] as? PFFile {
+                imageFile.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) in
+                    if error == nil {
+                        if let imageData = imageData {
+                            self.pictureImageView.image = UIImage(data: imageData)
+                        }
                     }
                 }
             }

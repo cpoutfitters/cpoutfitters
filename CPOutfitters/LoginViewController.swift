@@ -15,6 +15,19 @@ class LoginViewController: PFLogInViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let logo = UILabel()
+        logo.text = "CPOutfitters"
+        logo.textColor = UIColor.whiteColor()
+        logo.font = UIFont(name: "Helvetica", size: 40)
+//        logo.shadowColor = UIColor.lightGrayColor()
+        logo.shadowColor = UIColor.blackColor()
+        logo.shadowOffset = CGSizeMake(2, 2)
+        logInView?.logo = logo
+        
+        logInView!.logo!.sizeToFit()
+        let logoFrame = logInView!.logo!.frame
+        logInView!.logo!.frame = CGRectMake(logoFrame.origin.x, logInView!.usernameField!.frame.origin.y - logoFrame.height - 16, logInView!.frame.width, logoFrame.height)
                 
         backgroundImageView = UIImageView(image: UIImage(named: "LoginBackground"))
         backgroundImageView.contentMode = UIViewContentMode.ScaleAspectFill
