@@ -22,7 +22,7 @@ class Post: NSObject {
     class func postUserImage(topImage: UIImage?, bottomImage: UIImage?, footwearImage: UIImage?, withCaption caption: NSString?, withCompletion completion: PFBooleanResultBlock?) {
         let post = PFObject(className: "Post")
         post["topImage"] = Article.getPFFileFromImage(topImage)
-        post["middleImage"] = Article.getPFFileFromImage(bottomImage)
+        post["bottomImage"] = Article.getPFFileFromImage(bottomImage)
         post["footwearImage"] = Article.getPFFileFromImage(footwearImage)
         post["author"] = PFUser.currentUser()
         post["caption"] = caption
