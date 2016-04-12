@@ -16,6 +16,9 @@ class LoginViewController: PFLogInViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        emailAsUsername = true
+        fields = [.UsernameAndPassword,  .LogInButton, .PasswordForgotten, .SignUpButton, .Facebook, .Twitter]
+        
         let logo = UILabel()
         logo.text = "CPOutfitters"
         logo.textColor = UIColor.whiteColor()
