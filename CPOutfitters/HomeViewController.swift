@@ -65,6 +65,7 @@ class HomeViewController: UIViewController, PFLogInViewControllerDelegate, PFSig
             loginViewController.delegate = self
             loginViewController.signUpController?.delegate = self
             loginViewController.emailAsUsername = true
+            loginViewController.signUpController?.emailAsUsername = true
             self.presentViewController(loginViewController, animated: true, completion: nil)
         } else {
             print("User \(current_user) has logged in!")
