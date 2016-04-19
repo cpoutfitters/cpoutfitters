@@ -16,6 +16,10 @@ class SocialTypeCell: UITableViewCell {
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var imageContainerView: UIView!
     
+    @IBOutlet weak var bottomSwatchWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bottomSwatchHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topSwatchHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topSwatchWidthConstraint: NSLayoutConstraint!
     var topImageView: UIImageView!
     var bottomImageView: UIImageView!
     var footwearImageView: UIImageView!
@@ -26,6 +30,8 @@ class SocialTypeCell: UITableViewCell {
             let author = post["author"] as? PFUser
             self.authorLabel.text = author?["username"] as? String
             self.captionLabel.text = post["caption"] as? String
+            
+            // TODO set swatch color as swatch background color
             
 //            let imageFile = post["topImage"] as! PFFile
 //            imageFile.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) in

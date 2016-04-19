@@ -66,7 +66,12 @@ class SocialViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("FriendsPosts", forIndexPath: indexPath) as! SocialTypeCell
 
+        cell.topSwatchWidthConstraint.constant = tableView.bounds.width * 0.75
+        cell.topSwatchHeightConstraint.constant = tableView.bounds.width * 0.75
+//        cell.bottomSwatchWidthConstraint
+//        cell.bottomSwatchHeightConstraint
         cell.post = posts[indexPath.row]
+        
 
         return cell
     }
