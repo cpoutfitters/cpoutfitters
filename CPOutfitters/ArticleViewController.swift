@@ -22,6 +22,8 @@ let bgColorSelected = UIColor(hue: 200/360, saturation: 1.0, brightness: 1.0, al
 
 class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var longOrShortSegmentedControl: UISegmentedControl!
     
     @IBOutlet weak var pictureImageView: PFImageView!
@@ -48,6 +50,13 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        cancelButton.layer.cornerRadius = 4
+        let color = UIColor(white: 1.0, alpha: 0.3).CGColor
+        cancelButton.layer.backgroundColor = color
+        
+        saveButton.layer.cornerRadius = 4
+        saveButton.layer.backgroundColor = color
         
         libraryHasBeenViewed = false
         vc = UIImagePickerController()

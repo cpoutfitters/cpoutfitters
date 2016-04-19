@@ -77,6 +77,10 @@ class HomeViewController: UIViewController, PFLogInViewControllerDelegate, PFSig
     }
     func signUpViewController(signUpController: PFSignUpViewController, didSignUpUser user: PFUser) {
         self.dismissViewControllerAnimated(true, completion: nil)
+        performSegueWithIdentifier("login", sender: self)
+    }
+    func signUpViewController(signUpController: PFSignUpViewController, didFailToSignUpWithError error: NSError?) {
+        
     }
 
     override func didReceiveMemoryWarning() {
