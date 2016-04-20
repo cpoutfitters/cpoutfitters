@@ -53,15 +53,8 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        cancelButton.layer.cornerRadius = 4
-        let color = UIColor(white: 1.0, alpha: 0.3).CGColor
-        cancelButton.layer.backgroundColor = color
-        
-        saveButton.layer.cornerRadius = 4
-        saveButton.layer.backgroundColor = color
-        
-        cameraButton.layer.backgroundColor = UIColor(white: 0.3, alpha: 0.8).CGColor
+                
+        cameraButton.layer.backgroundColor = UIColor(white: 0.0751, alpha: 0.8).CGColor
         cameraButton.layer.cornerRadius = 22
         
         
@@ -89,6 +82,7 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         pictureImageView.file = article.mediaImage
         controlsView.hidden =  pictureImageView.file == nil
+        saveButton.hidden = controlsView.hidden
         deleteButton.hidden = article.objectId == nil
         
         if !article.short {
@@ -108,6 +102,7 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
         // Do something with the images (based on your use case)
         pictureImageView.image = editedImage
         controlsView.hidden = false
+        saveButton.hidden = false
         
         let newSize = CGSize(width: 1000, height: 750)
         if let image = pictureImageView.image {
