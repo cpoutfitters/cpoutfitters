@@ -17,8 +17,8 @@ protocol ArticleDelegate {
     func articleDeleted(article: Article)
 }
 
-let bgColorUnselected = UIColor(hue: 200/360, saturation: 0.40, brightness: 1.0, alpha: 1.0)
-let bgColorSelected = UIColor(hue: 200/360, saturation: 1.0, brightness: 1.0, alpha: 1.0)
+let bgColorUnselected = UIColor(hue: 212/360, saturation: 0.45, brightness: 0.98, alpha: 1.0)
+let bgColorSelected = UIColor(hue: 212/360, saturation: 0.93, brightness: 0.98, alpha: 1.0)
 
 class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -26,6 +26,8 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var longOrShortSegmentedControl: UISegmentedControl!
     
+    @IBOutlet weak var controlsView: UIView!
+    @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var pictureImageView: PFImageView!
     @IBOutlet weak var averageColorImageView: UIImageView!
     @IBOutlet weak var casualButton: UIButton!
@@ -34,6 +36,7 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var socialButton: UIButton!
     @IBOutlet weak var formalButton: UIButton!
     @IBOutlet weak var blkTieButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
     
     var delegate: ArticleDelegate?
     
@@ -50,13 +53,10 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+                
+        cameraButton.layer.backgroundColor = UIColor(white: 0.0751, alpha: 0.8).CGColor
+        cameraButton.layer.cornerRadius = 22
         
-        cancelButton.layer.cornerRadius = 4
-        let color = UIColor(white: 1.0, alpha: 0.3).CGColor
-        cancelButton.layer.backgroundColor = color
-        
-        saveButton.layer.cornerRadius = 4
-        saveButton.layer.backgroundColor = color
         
         libraryHasBeenViewed = false
         vc = UIImagePickerController()
@@ -81,10 +81,14 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
         
         pictureImageView.file = article.mediaImage
-        if article.short {
-            longOrShortSegmentedControl.selectedSegmentIndex = 0
-        } else {
+        controlsView.hidden =  pictureImageView.file == nil
+        saveButton.hidden = controlsView.hidden
+        deleteButton.hidden = article.objectId == nil
+        
+        if !article.short {
             longOrShortSegmentedControl.selectedSegmentIndex = 1
+        } else {
+            longOrShortSegmentedControl.selectedSegmentIndex = 0
         }
         
         averageColorImageView.backgroundColor = article.primaryColor
@@ -97,6 +101,8 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         // Do something with the images (based on your use case)
         pictureImageView.image = editedImage
+        controlsView.hidden = false
+        saveButton.hidden = false
         
         let newSize = CGSize(width: 1000, height: 750)
         if let image = pictureImageView.image {
@@ -166,7 +172,7 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
         let location = sender.locationInView(pictureImageView)
         print("ArticleViewController: Tapped your picture at location: \(location)")
         
-        let newSize = CGSize(width: 50, height: 50)
+        let newSize = CGSize(width: 72, height: 72)
         if let image = pictureImageView.image {
             let newImage = image.resize(pictureImageView.frame.size)
             let clip = CGRectMake(location.x - (newSize.width/2), location.y - (newSize.height/2), newSize.width, newSize.height)
@@ -176,9 +182,7 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
             
             article.swatchImage = Article.getPFFileFromImage(UIImage(CGImage: imageClip!))!
             let averageColor = UIColor(averageColorFromImage: UIImage(CGImage: imageClip!))
-            article.primaryColor = averageColor
-            print("ArticleViewController: The color saved is \(article.primaryColor)")
-            
+            article.primaryColor = averageColor            
         }
     }
     
