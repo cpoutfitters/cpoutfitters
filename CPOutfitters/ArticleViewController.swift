@@ -172,7 +172,7 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
         let location = sender.locationInView(pictureImageView)
         print("ArticleViewController: Tapped your picture at location: \(location)")
         
-        let newSize = CGSize(width: 50, height: 50)
+        let newSize = CGSize(width: 72, height: 72)
         if let image = pictureImageView.image {
             let newImage = image.resize(pictureImageView.frame.size)
             let clip = CGRectMake(location.x - (newSize.width/2), location.y - (newSize.height/2), newSize.width, newSize.height)
@@ -182,9 +182,7 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
             
             article.swatchImage = Article.getPFFileFromImage(UIImage(CGImage: imageClip!))!
             let averageColor = UIColor(averageColorFromImage: UIImage(CGImage: imageClip!))
-            article.primaryColor = averageColor
-            print("ArticleViewController: The color saved is \(article.primaryColor)")
-            
+            article.primaryColor = averageColor            
         }
     }
     
