@@ -19,6 +19,9 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
+        
         if (PFUser.currentUser() == nil) {
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Login") as! UIViewController
@@ -65,11 +68,12 @@ class LoginViewController: UIViewController {
             })
         }
     }
-
-    @IBAction func onForgotPassword(sender: AnyObject) {
-        
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
     }
-    /*
+
+       /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
