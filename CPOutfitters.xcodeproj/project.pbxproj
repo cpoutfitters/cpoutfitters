@@ -39,6 +39,8 @@
 		AC9F6EE81C93D3A600D6B9DE /* OutfitHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9F6EE71C93D3A600D6B9DE /* OutfitHistory.swift */; };
 		AC9F6EEA1C93D43300D6B9DE /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9F6EE91C93D43300D6B9DE /* Event.swift */; };
 		AC9F6EEC1C93F13500D6B9DE /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9F6EEB1C93F13500D6B9DE /* ParseClient.swift */; };
+		ACA4607E1CC7387400287405 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA4607D1CC7387400287405 /* ProfileViewController.swift */; };
+		ACA460801CC7429600287405 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA4607F1CC7429600287405 /* SignupViewController.swift */; };
 		ACC8432D1C8E782900C2F81E /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC8432C1C8E782900C2F81E /* Article.swift */; };
 		ACF437DC1CB22B44002024A3 /* OutfitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF437DB1CB22B44002024A3 /* OutfitsViewController.swift */; };
 		ACF437DE1CB22B59002024A3 /* OutfitSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF437DD1CB22B59002024A3 /* OutfitSelectionViewController.swift */; };
@@ -95,6 +97,8 @@
 		AC9F6EE71C93D3A600D6B9DE /* OutfitHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutfitHistory.swift; sourceTree = "<group>"; };
 		AC9F6EE91C93D43300D6B9DE /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		AC9F6EEB1C93F13500D6B9DE /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
+		ACA4607D1CC7387400287405 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		ACA4607F1CC7429600287405 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		ACC8432C1C8E782900C2F81E /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		ACF437DB1CB22B44002024A3 /* OutfitsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutfitsViewController.swift; sourceTree = "<group>"; };
 		ACF437DD1CB22B59002024A3 /* OutfitSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutfitSelectionViewController.swift; sourceTree = "<group>"; };
@@ -148,6 +152,8 @@
 				AC4598851CB59D0600D9D15C /* ArticleSelectCell.swift */,
 				A416C9C41CB5718A00A84AE2 /* PostViewController.swift */,
 				A416C9CE1CB5996A00A84AE2 /* SocialViewController.swift */,
+				ACA4607D1CC7387400287405 /* ProfileViewController.swift */,
+				ACA4607F1CC7429600287405 /* SignupViewController.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -484,6 +490,8 @@
 				ACF437E01CB22DB4002024A3 /* OutfitsCell.swift in Sources */,
 				A416C9CF1CB5996A00A84AE2 /* SocialViewController.swift in Sources */,
 				AC0DA8201C8FD73B007B6723 /* LoginViewController.swift in Sources */,
+				ACA460801CC7429600287405 /* SignupViewController.swift in Sources */,
+				ACA4607E1CC7387400287405 /* ProfileViewController.swift in Sources */,
 				A416C9C71CB57A5900A84AE2 /* Post.swift in Sources */,
 				07236A151CA0CB18004715D6 /* CPTapGestureRecognizer.swift in Sources */,
 			);

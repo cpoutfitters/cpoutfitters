@@ -9,47 +9,65 @@
 import UIKit
 import ParseUI
 
-class LoginViewController: PFLogInViewController {
+class LoginViewController: UIViewController {
 
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
     var backgroundImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        emailAsUsername = true
-        fields = [.UsernameAndPassword,  .LogInButton, .PasswordForgotten, .SignUpButton, .Facebook, .Twitter]
-        
-        let logo = UILabel()
-        logo.text = "CPOutfitters"
-        logo.textColor = UIColor.whiteColor()
-        logo.font = UIFont(name: "Helvetica", size: 40)
-//        logo.shadowColor = UIColor.lightGrayColor()
-        logo.shadowColor = UIColor.blackColor()
-        logo.shadowOffset = CGSizeMake(2, 2)
-        logInView?.logo = logo
-        
-        logInView!.logo!.sizeToFit()
-        let logoFrame = logInView!.logo!.frame
-        logInView!.logo!.frame = CGRectMake(logoFrame.origin.x, logInView!.usernameField!.frame.origin.y - logoFrame.height - 16, logInView!.frame.width, logoFrame.height)
-                
-        backgroundImageView = UIImageView(image: UIImage(named: "LoginBackground"))
-        backgroundImageView.contentMode = UIViewContentMode.ScaleAspectFill
-        self.logInView!.insertSubview(backgroundImageView, atIndex: 0)
+        if (PFUser.currentUser() == nil) {
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Login") as! UIViewController
+//                self.presentViewController(viewController, animated: true, completion: nil)
+            })
+        }
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+    override func viewWillAppear(animated: Bool) {
         
-        backgroundImageView.frame = CGRectMake(0, 0, self.logInView!.frame.width, self.logInView!.frame.height)
     }
-    
-    //override func
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func onLogin(sender: AnyObject) {
+        
+        let email = emailTextField.text
+        let password = passwordTextField.text
+        
+        if (email!.characters.count < 5) {
+            var alert = UIAlertView(title: "Invalid", message: "Please enter a valid email address", delegate: self, cancelButtonTitle: "OK")
+            alert.show()
+        } else if (password!.characters.count < 8) {
+            var alert = UIAlertView(title: "Invalid", message: "Password must be greater than 8 characters", delegate: self, cancelButtonTitle: "OK")
+            alert.show()
+        } else {
+            // Run a spinner to show a task in progress
+            var spinner: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0, 0, 150, 150)) as UIActivityIndicatorView
+            spinner.startAnimating()
+            
+            // Send a request to login
+            PFUser.logInWithUsernameInBackground(email!, password: password!, block: { (user, error) -> Void in
+                
+                // Stop the spinner
+                spinner.stopAnimating()
+                
+                if ((user) != nil) {
+                    var alert = UIAlertView(title: "Success", message: "Logged In", delegate: self, cancelButtonTitle: "OK")
+                    alert.show()
+                    self.performSegueWithIdentifier("login", sender: self)
+                } else {
+                    var alert = UIAlertView(title: "Error", message: "\(error)", delegate: self, cancelButtonTitle: "OK")
+                    alert.show()
+                }
+            })
+        }
+    }
 
     /*
     // MARK: - Navigation
