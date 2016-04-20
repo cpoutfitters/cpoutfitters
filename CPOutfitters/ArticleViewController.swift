@@ -26,6 +26,7 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var longOrShortSegmentedControl: UISegmentedControl!
     
+    @IBOutlet weak var controlsView: UIView!
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var pictureImageView: PFImageView!
     @IBOutlet weak var averageColorImageView: UIImageView!
@@ -35,6 +36,7 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var socialButton: UIButton!
     @IBOutlet weak var formalButton: UIButton!
     @IBOutlet weak var blkTieButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
     
     var delegate: ArticleDelegate?
     
@@ -86,10 +88,13 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
         
         pictureImageView.file = article.mediaImage
-        if article.short {
-            longOrShortSegmentedControl.selectedSegmentIndex = 0
-        } else {
+        controlsView.hidden =  pictureImageView.file == nil
+        deleteButton.hidden = article.objectId == nil
+        
+        if !article.short {
             longOrShortSegmentedControl.selectedSegmentIndex = 1
+        } else {
+            longOrShortSegmentedControl.selectedSegmentIndex = 0
         }
         
         averageColorImageView.backgroundColor = article.primaryColor
@@ -102,6 +107,7 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         // Do something with the images (based on your use case)
         pictureImageView.image = editedImage
+        controlsView.hidden = false
         
         let newSize = CGSize(width: 1000, height: 750)
         if let image = pictureImageView.image {
