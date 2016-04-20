@@ -26,6 +26,7 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var longOrShortSegmentedControl: UISegmentedControl!
     
+    @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var pictureImageView: PFImageView!
     @IBOutlet weak var averageColorImageView: UIImageView!
     @IBOutlet weak var casualButton: UIButton!
@@ -57,6 +58,10 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         saveButton.layer.cornerRadius = 4
         saveButton.layer.backgroundColor = color
+        
+        cameraButton.layer.backgroundColor = UIColor(white: 0.3, alpha: 0.8).CGColor
+        cameraButton.layer.cornerRadius = 22
+        
         
         libraryHasBeenViewed = false
         vc = UIImagePickerController()
