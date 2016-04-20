@@ -66,6 +66,9 @@ class LoginViewController: UIViewController {
         }
     }
 
+    @IBAction func onForgotPassword(sender: AnyObject) {
+        
+    }
     /*
     // MARK: - Navigation
 
