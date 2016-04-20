@@ -127,7 +127,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="waD-3w-qYF" kind="unwind" unwindAction="unwindToLogInScreen:" id="zgr-ZV-W4B"/>
+                                    <action selector="onCancel:" destination="cHe-o2-y6L" eventType="touchUpInside" id="MrT-6J-wFA"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -139,7 +139,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CZD-09-adR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="waD-3w-qYF" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="737" y="886"/>
         </scene>

@@ -41,29 +41,26 @@ class LoginViewController: UIViewController {
         let password = passwordTextField.text
         
         if (email!.characters.count < 5) {
-            var alert = UIAlertView(title: "Invalid", message: "Please enter a valid email address", delegate: self, cancelButtonTitle: "OK")
-            alert.show()
+            let alert = UIAlertController(title: "Invalid", message: "Please enter a valid email address", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: .Default, handler: nil))
         } else if (password!.characters.count < 8) {
-            var alert = UIAlertView(title: "Invalid", message: "Password must be greater than 8 characters", delegate: self, cancelButtonTitle: "OK")
-            alert.show()
+            let alert = UIAlertController(title: "Invalid", message: "Password must be greater than 8 characters", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: .Default, handler: nil))
         } else {
             // Run a spinner to show a task in progress
-            var spinner: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0, 0, 150, 150)) as UIActivityIndicatorView
+            let spinner: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0, 0, 150, 150)) as UIActivityIndicatorView
             spinner.startAnimating()
             
             // Send a request to login
-            PFUser.logInWithUsernameInBackground(email!, password: password!, block: { (user, error) -> Void in
+            PFUser.logInWithUsernameInBackground(email!, password: password!, block: { (user: PFUser?, error: NSError?) -> Void in
                 
                 // Stop the spinner
                 spinner.stopAnimating()
-                
-                if ((user) != nil) {
-                    var alert = UIAlertView(title: "Success", message: "Logged In", delegate: self, cancelButtonTitle: "OK")
-                    alert.show()
-                    self.performSegueWithIdentifier("login", sender: self)
+                if let error = error {
+                    let alert = UIAlertController(title: "Login error", message: "Invalid username/password combination", preferredStyle: .Alert)
+                    alert.addAction(UIAlertAction(title: "Okay", style: .Default, handler: nil))
                 } else {
-                    var alert = UIAlertView(title: "Error", message: "\(error)", delegate: self, cancelButtonTitle: "OK")
-                    alert.show()
+                    self.performSegueWithIdentifier("login", sender: self)
                 }
             })
         }

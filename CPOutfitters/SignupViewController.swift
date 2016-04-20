@@ -42,17 +42,13 @@ class SignupViewController: UIViewController {
             newUser.password = password
             
             // Sign up the user asynchronously
-            newUser.signUpInBackgroundWithBlock({ (succeed, error) -> Void in
+            newUser.signUpInBackgroundWithBlock({ (succeed, error: NSError?) -> Void in
                 
                 // Stop the spinner
                 spinner.stopAnimating()
-                if ((error) != nil) {
-                    let alert = UIAlertView(title: "Error", message: "\(error)", delegate: self, cancelButtonTitle: "OK")
-                    alert.show()
-                    
+                if let error = error {
+                    print(error.localizedDescription)
                 } else {
-                    let alert = UIAlertView(title: "Success", message: "Signed Up", delegate: self, cancelButtonTitle: "OK")
-                    alert.show()
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("TabBarController") as! UITabBarController
                         self.presentViewController(viewController, animated: true, completion: nil)
@@ -62,9 +58,10 @@ class SignupViewController: UIViewController {
         }
     }
     
-    @IBAction func unwindToLogInScreen(segue:UIStoryboardSegue) {
+    @IBAction func onCancel(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
