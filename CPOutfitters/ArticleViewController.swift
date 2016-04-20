@@ -17,8 +17,8 @@ protocol ArticleDelegate {
     func articleDeleted(article: Article)
 }
 
-let bgColorUnselected = UIColor(hue: 200/360, saturation: 0.40, brightness: 1.0, alpha: 1.0)
-let bgColorSelected = UIColor(hue: 200/360, saturation: 1.0, brightness: 1.0, alpha: 1.0)
+let bgColorUnselected = UIColor(hue: 212/360, saturation: 0.45, brightness: 0.98, alpha: 1.0)
+let bgColorSelected = UIColor(hue: 212/360, saturation: 0.93, brightness: 0.98, alpha: 1.0)
 
 class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
