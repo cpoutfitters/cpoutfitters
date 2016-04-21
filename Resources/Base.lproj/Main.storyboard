@@ -140,14 +140,6 @@
                                     <action selector="onLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ila-cK-Zaf"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bfy-fW-d3h">
-                                <rect key="frame" x="95" y="340" width="130" height="32"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <state key="normal" title="Forgot password?"/>
-                                <connections>
-                                    <segue destination="2tX-Nv-OEn" kind="modal" id="Ulf-Kh-xvH"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDG-bY-cip">
                                 <rect key="frame" x="20" y="451" width="280" height="45"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -178,10 +170,8 @@
                             <constraint firstItem="tKf-iM-p63" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3B2-h3-vTO"/>
                             <constraint firstItem="tKf-iM-p63" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="40" id="4Ql-eA-yVz"/>
                             <constraint firstItem="2Xs-X6-C9N" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="6Bf-Lc-eBS"/>
-                            <constraint firstItem="Bfy-fW-d3h" firstAttribute="top" secondItem="2Xs-X6-C9N" secondAttribute="bottom" constant="10" id="7n9-GW-aKq"/>
                             <constraint firstItem="uNO-eM-3GR" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Bwq-67-Vpb"/>
                             <constraint firstItem="5y6-1r-DkR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Cgf-ks-Hfe"/>
-                            <constraint firstItem="Bfy-fW-d3h" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DSZ-05-Fed"/>
                             <constraint firstAttribute="trailing" secondItem="2Xs-X6-C9N" secondAttribute="trailing" id="EAD-hp-Thp"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="uNO-eM-3GR" secondAttribute="bottom" id="EHj-g5-Ail"/>
                             <constraint firstItem="uNO-eM-3GR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="YOF-Za-uT1"/>
@@ -199,7 +189,6 @@
                     <connections>
                         <outlet property="emailTextField" destination="Y1O-vb-zKj" id="s3R-3M-iZt"/>
                         <outlet property="passwordTextField" destination="5y6-1r-DkR" id="4X0-dE-B7E"/>
-                        <segue destination="Juz-z5-fgq" kind="modal" identifier="login" id="uAS-X9-tK4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

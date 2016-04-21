@@ -28,8 +28,7 @@ class ProfileViewController: UIViewController {
                 print(error.localizedDescription)
             } else {
                 print("User logged out")
-                let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Login") as! UIViewController
-                self.presentViewController(viewController, animated: true, completion: nil)
+                NSNotificationCenter.defaultCenter().postNotificationName(userDidLogoutNotification, object: nil)
             }
         }
     }

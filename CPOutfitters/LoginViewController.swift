@@ -22,12 +22,12 @@ class LoginViewController: UIViewController {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
         
-        if (PFUser.currentUser() == nil) {
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Login") as! UIViewController
-//                self.presentViewController(viewController, animated: true, completion: nil)
-            })
-        }
+//        if (PFUser.currentUser() == nil) {
+//            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Login") as! UIViewController
+////                self.presentViewController(viewController, animated: true, completion: nil)
+//            })
+//        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -46,9 +46,11 @@ class LoginViewController: UIViewController {
         if (email!.characters.count < 5) {
             let alert = UIAlertController(title: "Invalid", message: "Please enter a valid email address", preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "Okay", style: .Default, handler: nil))
+            presentViewController(alert, animated: true, completion: nil)
         } else if (password!.characters.count < 8) {
             let alert = UIAlertController(title: "Invalid", message: "Password must be greater than 8 characters", preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "Okay", style: .Default, handler: nil))
+            presentViewController(alert, animated: true, completion: nil)
         } else {
             // Run a spinner to show a task in progress
             let spinner: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0, 0, 150, 150)) as UIActivityIndicatorView
@@ -63,7 +65,7 @@ class LoginViewController: UIViewController {
                     let alert = UIAlertController(title: "Login error", message: "Invalid username/password combination", preferredStyle: .Alert)
                     alert.addAction(UIAlertAction(title: "Okay", style: .Default, handler: nil))
                 } else {
-                    self.performSegueWithIdentifier("login", sender: self)
+                    NSNotificationCenter.defaultCenter().postNotificationName(userDidLoginNotification, object: nil)
                 }
             })
         }

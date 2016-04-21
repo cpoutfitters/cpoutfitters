@@ -28,11 +28,13 @@ class SignupViewController: UIViewController {
         let finalEmail = email!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
         // Validate the text fields
         if (email!.characters.count < 5) {
-            let alert = UIAlertController(title: "Invalid", message: "Please enter a valid email address", preferredStyle: .Alert)
+            let alert = UIAlertController(title: "Email Invalid", message: "Please enter a valid email address", preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "Okay", style: .Default, handler: nil))
+            presentViewController(alert, animated: true, completion: nil)
         } else if (password!.characters.count < 8) {
-            let alert = UIAlertController(title: "Invalid", message: "Password must be greater than 8 characters", preferredStyle: .Alert)
+            let alert = UIAlertController(title: "Password short", message: "Password must be greater than 8 characters", preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "Okay", style: .Default, handler: nil))
+            presentViewController(alert, animated: true, completion: nil)
         } else {
             // Run a spinner to show a task in progress
             let spinner: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0, 0, 150, 150)) as UIActivityIndicatorView
@@ -40,6 +42,7 @@ class SignupViewController: UIViewController {
             
             let newUser = PFUser()
             
+            newUser.username = finalEmail
             newUser.email = finalEmail
             newUser.password = password
             
@@ -51,10 +54,7 @@ class SignupViewController: UIViewController {
                 if let error = error {
                     print(error.localizedDescription)
                 } else {
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("TabBarController") as! UITabBarController
-                        self.presentViewController(viewController, animated: true, completion: nil)
-                    })
+                    NSNotificationCenter.defaultCenter().postNotificationName(userDidLoginNotification, object: nil)
                 }
             })
         }

@@ -14,11 +14,15 @@ import Parse
 // If you want to use any of the UI components, uncomment this line
 // import ParseUI
 
+let userDidLogoutNotification = "userDidLogoutNotification"
+let userDidLoginNotification = "userDidLoginNotification"
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
   
-  var window: UIWindow?
-  
+    var window: UIWindow?
+    var storyboard = UIStoryboard(name: "Main", bundle: nil)
+    
   //--------------------------------------
   // MARK: - UIApplicationDelegate
   //--------------------------------------
@@ -70,15 +74,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //    application.registerUserNotificationSettings(settings)
 //    application.registerForRemoteNotifications()
     
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDidLogout", name: userDidLogoutNotification, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDidLogin", name: userDidLoginNotification, object: nil)
+    
     if (PFUser.currentUser() != nil) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let tbController = storyboard.instantiateViewControllerWithIdentifier("TabBarController")
-        window?.rootViewController = tbController
+        userDidLogin()
     }
     
     return true
   }
+    
   
+    func userDidLogin(){
+        let tbController = storyboard.instantiateViewControllerWithIdentifier("TabBarController")
+        window?.rootViewController = tbController
+    }
+    func userDidLogout(){
+        let loginController = storyboard.instantiateViewControllerWithIdentifier("Login")
+        window?.rootViewController = loginController
+    }
+    
   //--------------------------------------
   // MARK: Push Notifications
   //--------------------------------------
