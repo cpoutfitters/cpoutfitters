@@ -80,10 +80,11 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
             }
         }
         
+        let newImage = pictureImageView.file == nil
         pictureImageView.file = article.mediaImage
-        controlsView.hidden =  pictureImageView.file == nil
-        saveButton.hidden = controlsView.hidden
-        deleteButton.hidden = article.objectId == nil
+        controlsView.hidden = newImage
+        saveButton.hidden = newImage
+        deleteButton.hidden = newImage
         
         if !article.short {
             longOrShortSegmentedControl.selectedSegmentIndex = 1
@@ -138,8 +139,6 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     @IBAction func onAnOccasionButton(sender: AnyObject) {
         let selected = sender as! UIButton
-        print(selected.currentTitle)
-        print(occasionDictionary[selected.currentTitle!])
         let selectedTitle = selected.currentTitle!
         let occassionSet = occasionDictionary[selectedTitle]!
         
