@@ -10,10 +10,8 @@ import UIKit
 
 class OutfitsCell: UITableViewCell {
 
-    @IBOutlet weak var categoryLabel: UILabel!
-    @IBOutlet weak var categoryImage: UIImageView!
-    @IBOutlet weak var inverseCategoryImage: UIImageView!
-    @IBOutlet weak var inverseCategoryLabel: UILabel!
+    
+    @IBOutlet weak var categoryCell: ImageLabelView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
