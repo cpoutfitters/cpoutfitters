@@ -11,6 +11,10 @@
 		070A26381C94DB4A001ACF48 /* ImageLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 070A26371C94DB4A001ACF48 /* ImageLabelView.xib */; };
 		07236A151CA0CB18004715D6 /* CPTapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07236A141CA0CB18004715D6 /* CPTapGestureRecognizer.swift */; };
 		07237DEA1C6D93300057FFF4 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07237DE91C6D93300057FFF4 /* Launch Screen.storyboard */; };
+		07C9F8D31CC85AF80081A89D /* OutfitTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07C9F8D21CC85AF80081A89D /* OutfitTab.storyboard */; };
+		07C9F8D51CC85BC30081A89D /* WardrobeTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07C9F8D41CC85BC30081A89D /* WardrobeTab.storyboard */; };
+		07C9F8D71CC85C190081A89D /* SocialTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07C9F8D61CC85C190081A89D /* SocialTab.storyboard */; };
+		07C9F8D91CC85CBD0081A89D /* ProfileTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07C9F8D81CC85CBD0081A89D /* ProfileTab.storyboard */; };
 		07DC9BF31C922D750009AD2E /* WardrobeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DC9BF21C922D750009AD2E /* WardrobeViewController.swift */; };
 		07DC9BF51C922E9A0009AD2E /* WardrobeTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DC9BF41C922E9A0009AD2E /* WardrobeTypeCell.swift */; };
 		07E1C7BB1CA3666800924566 /* UIImage+Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E1C7BA1CA3666800924566 /* UIImage+Categories.swift */; };
@@ -64,6 +68,10 @@
 		070A26371C94DB4A001ACF48 /* ImageLabelView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageLabelView.xib; sourceTree = "<group>"; };
 		07236A141CA0CB18004715D6 /* CPTapGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPTapGestureRecognizer.swift; sourceTree = "<group>"; };
 		07237DE91C6D93300057FFF4 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		07C9F8D21CC85AF80081A89D /* OutfitTab.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OutfitTab.storyboard; sourceTree = "<group>"; };
+		07C9F8D41CC85BC30081A89D /* WardrobeTab.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WardrobeTab.storyboard; sourceTree = "<group>"; };
+		07C9F8D61CC85C190081A89D /* SocialTab.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SocialTab.storyboard; sourceTree = "<group>"; };
+		07C9F8D81CC85CBD0081A89D /* ProfileTab.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfileTab.storyboard; sourceTree = "<group>"; };
 		07DC9BF21C922D750009AD2E /* WardrobeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WardrobeViewController.swift; sourceTree = "<group>"; };
 		07DC9BF41C922E9A0009AD2E /* WardrobeTypeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WardrobeTypeCell.swift; sourceTree = "<group>"; };
 		07E1C7BA1CA3666800924566 /* UIImage+Categories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Categories.swift"; sourceTree = "<group>"; };
@@ -135,26 +143,62 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		07E35B511C8FE8480078B338 /* UI */ = {
+		07C9F8DA1CC85D3E0081A89D /* Outfit */ = {
+			isa = PBXGroup;
+			children = (
+				AC4598851CB59D0600D9D15C /* ArticleSelectCell.swift */,
+				ACF437DB1CB22B44002024A3 /* OutfitsViewController.swift */,
+				ACF437DD1CB22B59002024A3 /* OutfitSelectionViewController.swift */,
+				AC4598831CB59A3400D9D15C /* ArticleSelectionViewController.swift */,
+				ACF437DF1CB22DB4002024A3 /* OutfitsCell.swift */,
+				07C9F8D21CC85AF80081A89D /* OutfitTab.storyboard */,
+			);
+			name = Outfit;
+			sourceTree = "<group>";
+		};
+		07C9F8DB1CC85D670081A89D /* Wardrobe */ = {
+			isa = PBXGroup;
+			children = (
+				A420435E1C90BB820034D406 /* ArticleViewController.swift */,
+				07DC9BF21C922D750009AD2E /* WardrobeViewController.swift */,
+				07DC9BF41C922E9A0009AD2E /* WardrobeTypeCell.swift */,
+				07C9F8D41CC85BC30081A89D /* WardrobeTab.storyboard */,
+			);
+			name = Wardrobe;
+			sourceTree = "<group>";
+		};
+		07C9F8DC1CC85D9E0081A89D /* Social */ = {
 			isa = PBXGroup;
 			children = (
 				A416C9CC1CB5988D00A84AE2 /* SocialTypeCell.swift */,
+				A416C9CE1CB5996A00A84AE2 /* SocialViewController.swift */,
+				07C9F8D61CC85C190081A89D /* SocialTab.storyboard */,
+				A416C9C41CB5718A00A84AE2 /* PostViewController.swift */,
+			);
+			name = Social;
+			sourceTree = "<group>";
+		};
+		07C9F8DD1CC85DD80081A89D /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				07C9F8D81CC85CBD0081A89D /* ProfileTab.storyboard */,
+				ACA4607D1CC7387400287405 /* ProfileViewController.swift */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
+		07E35B511C8FE8480078B338 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				07C9F8DD1CC85DD80081A89D /* Profile */,
+				07C9F8DC1CC85D9E0081A89D /* Social */,
+				07C9F8DB1CC85D670081A89D /* Wardrobe */,
+				07C9F8DA1CC85D3E0081A89D /* Outfit */,
 				07E1C7BA1CA3666800924566 /* UIImage+Categories.swift */,
-				07DC9BF21C922D750009AD2E /* WardrobeViewController.swift */,
-				A420435E1C90BB820034D406 /* ArticleViewController.swift */,
 				AC0DA81F1C8FD73B007B6723 /* LoginViewController.swift */,
-				07DC9BF41C922E9A0009AD2E /* WardrobeTypeCell.swift */,
 				070A26351C94DB33001ACF48 /* ImageLabelView.swift */,
 				070A26371C94DB4A001ACF48 /* ImageLabelView.xib */,
 				07236A141CA0CB18004715D6 /* CPTapGestureRecognizer.swift */,
-				ACF437DB1CB22B44002024A3 /* OutfitsViewController.swift */,
-				ACF437DD1CB22B59002024A3 /* OutfitSelectionViewController.swift */,
-				ACF437DF1CB22DB4002024A3 /* OutfitsCell.swift */,
-				AC4598831CB59A3400D9D15C /* ArticleSelectionViewController.swift */,
-				AC4598851CB59D0600D9D15C /* ArticleSelectCell.swift */,
-				A416C9C41CB5718A00A84AE2 /* PostViewController.swift */,
-				A416C9CE1CB5996A00A84AE2 /* SocialViewController.swift */,
-				ACA4607D1CC7387400287405 /* ProfileViewController.swift */,
 				ACA4607F1CC7429600287405 /* SignupViewController.swift */,
 				ACA460811CC74D4300287405 /* ResetPasswordViewController.swift */,
 			);
@@ -360,6 +404,10 @@
 				070A26381C94DB4A001ACF48 /* ImageLabelView.xib in Resources */,
 				07237DEA1C6D93300057FFF4 /* Launch Screen.storyboard in Resources */,
 				814C3ACA1B69877600E307BB /* Main.storyboard in Resources */,
+				07C9F8D31CC85AF80081A89D /* OutfitTab.storyboard in Resources */,
+				07C9F8D91CC85CBD0081A89D /* ProfileTab.storyboard in Resources */,
+				07C9F8D51CC85BC30081A89D /* WardrobeTab.storyboard in Resources */,
+				07C9F8D71CC85C190081A89D /* SocialTab.storyboard in Resources */,
 				814C3ACB1B69877600E307BB /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
