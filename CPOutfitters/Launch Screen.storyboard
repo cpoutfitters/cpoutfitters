@@ -1,68 +1,48 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10102" systemVersion="15F18c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" initialViewController="01J-lp-oVM">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10080"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
             <objects>
-                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
-                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LoginBackground" translatesAutoresizingMaskIntoConstraints="NO" id="1Cj-m9-Qow">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                            </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fabriq" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="GJd-Yh-RWb">
-                                <rect key="frame" x="20" y="137" width="280" height="72"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="GJd-Yh-RWb" secondAttribute="height" multiplier="280:43" constant="-188.83720930232556" id="EaS-qQ-7fs"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Didot" family="Didot" pointSize="72"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <color key="shadowColor" red="0.66666666669999997" green="0.72156862749999995" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <size key="shadowOffset" width="2" height="2"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Developed by Aditya, Cory &amp; Eric" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F1y-vN-46a">
-                                <rect key="frame" x="33" y="497" width="254" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="254" id="4Sc-66-gAF"/>
-                                    <constraint firstAttribute="height" constant="30" id="FYB-E8-4hi"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="14"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                                <size key="shadowOffset" width="2" height="1"/>
-                            </label>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="1Cj-m9-Qow" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="A7z-xa-SGe"/>
-                            <constraint firstItem="GJd-Yh-RWb" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="IXR-vf-BeS"/>
-                            <constraint firstItem="1Cj-m9-Qow" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="Pzd-Fw-s8r"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="F1y-vN-46a" secondAttribute="bottom" constant="41" id="ReJ-uG-pIm"/>
-                            <constraint firstItem="F1y-vN-46a" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="RfI-Hf-LaG"/>
-                            <constraint firstAttribute="trailing" secondItem="1Cj-m9-Qow" secondAttribute="trailing" id="mIE-be-soE"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="1Cj-m9-Qow" secondAttribute="bottom" id="sn7-q2-xTl"/>
-                            <constraint firstItem="GJd-Yh-RWb" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="20" symbolic="YES" id="x7j-FC-K8j"/>
-                            <constraint firstItem="GJd-Yh-RWb" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="117" id="zKa-a3-Ori"/>
-                        </constraints>
-                    </view>
-                </viewController>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="m0i-nw-cRu">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" alpha="0.85000002384185791" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="LoginBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Caa-08-9zn">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <gestureRecognizers/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fabriq" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HaC-6Y-VbJ">
+                            <rect key="frame" x="64.5" y="60" width="192" height="74.5"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="HaC-6Y-VbJ" secondAttribute="height" multiplier="193:75" id="DXe-5B-9EE"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Didot" family="Didot" pointSize="60"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                            <size key="shadowOffset" width="2" height="2"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="Caa-08-9zn" firstAttribute="top" secondItem="m0i-nw-cRu" secondAttribute="top" id="1cr-bu-pO9"/>
+                        <constraint firstItem="HaC-6Y-VbJ" firstAttribute="top" secondItem="m0i-nw-cRu" secondAttribute="top" constant="60" id="LnS-Ye-MHo"/>
+                        <constraint firstItem="HaC-6Y-VbJ" firstAttribute="centerX" secondItem="m0i-nw-cRu" secondAttribute="centerX" id="Q4O-nR-lBd"/>
+                        <constraint firstItem="Caa-08-9zn" firstAttribute="leading" secondItem="m0i-nw-cRu" secondAttribute="leading" id="siQ-By-htG"/>
+                        <constraint firstAttribute="trailing" secondItem="Caa-08-9zn" secondAttribute="trailing" id="wCd-9q-Xtt"/>
+                    </constraints>
+                </view>
             </objects>
             <point key="canvasLocation" x="28" y="355"/>
         </scene>
     </scenes>
     <resources>
-        <image name="LoginBackground" width="4000" height="2667"/>
+        <image name="LoginBackground" width="3648" height="5472"/>
     </resources>
 </document>
