@@ -32,10 +32,20 @@ class OutfitsViewController: UITableViewController {
         return categories.count
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("AttireCell", forIndexPath: indexPath) as! OutfitsCell
+        let cell:OutfitsCell
+        if indexPath.row % 2 == 0 {
+            cell = tableView.dequeueReusableCellWithIdentifier("AttireCell", forIndexPath: indexPath) as! OutfitsCell
+            cell.categoryLabel.text = categories[indexPath.row]
+            cell.categoryImage.image = UIImage(named: categories[indexPath.row])
+        } else {
+            cell = tableView.dequeueReusableCellWithIdentifier("AttireCell2", forIndexPath: indexPath) as! OutfitsCell
+            cell.inverseCategoryLabel.text = categories[indexPath.row]
+            cell.inverseCategoryImage.image = UIImage(named: categories[indexPath.row])
+        }
         
         //print(categories[indexPath.row])
-        cell.categoryLabel.text = categories[indexPath.row] 
+        
+        
         
         return cell
     }

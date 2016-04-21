@@ -324,7 +324,7 @@
 				TargetAttributes = {
 					81BA81441A49DA1800E65899 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = AJ57J6JZHD;
+						DevelopmentTeam = DEMUTKQ546;
 					};
 					AC9712831C97A4C100FB10EA = {
 						CreatedOnToolsVersion = 7.3;
@@ -627,7 +627,7 @@
 				INFOPLIST_FILE = Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.snazzylama.CPOutfitters1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.snazzylama.CPOutfitters;
 				PRODUCT_NAME = CPOutfitters;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -649,7 +649,7 @@
 				INFOPLIST_FILE = Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.snazzylama.CPOutfitters1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.snazzylama.CPOutfitters;
 				PRODUCT_NAME = CPOutfitters;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
