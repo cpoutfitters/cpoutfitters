@@ -28,12 +28,10 @@ enum ImageLabelViewImageSide: Int {
                 if imageSideLeft {
                     stackView.removeArrangedSubview(labelView)
                     stackView.addArrangedSubview(labelView)
-                    labelView.textAlignment = .Left
                 }
                 else {
                     stackView.removeArrangedSubview(imageView)
                     stackView.addArrangedSubview(imageView)
-                    labelView.textAlignment = .Right
                 }
             }
         }
