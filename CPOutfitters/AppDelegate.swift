@@ -89,6 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tbController = storyboard.instantiateViewControllerWithIdentifier("TabBarController")
         window?.rootViewController = tbController
     }
+    
     func userDidLogout(){
         let loginController = storyboard.instantiateViewControllerWithIdentifier("Login")
         window?.rootViewController = loginController

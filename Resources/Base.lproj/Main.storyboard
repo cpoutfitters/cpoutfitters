@@ -127,8 +127,9 @@
                                 <rect key="frame" x="0.0" y="286" width="320" height="45"/>
                                 <color key="backgroundColor" red="0.1803921568627451" green="0.80000000000000004" blue="0.44313725490196076" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="2Xs-X6-C9N" secondAttribute="height" multiplier="64:9" id="jPp-GC-CQU"/>
+                                    <constraint firstAttribute="height" constant="45" id="KSQ-4F-aCM"/>
                                 </constraints>
+                                <size key="titleShadowOffset" width="2.2250738585072014e-308" height="0.0"/>
                                 <state key="normal" title="Log In">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>

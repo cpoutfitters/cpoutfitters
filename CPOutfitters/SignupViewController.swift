@@ -25,14 +25,14 @@ class SignupViewController: UIViewController {
         let email = emailTextField.text
         let password = passwordTextField.text
         
-        let finalEmail = email!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+        let finalEmail = email!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).lowercaseString
         // Validate the text fields
         if (email!.characters.count < 5) {
             let alert = UIAlertController(title: "Email Invalid", message: "Please enter a valid email address", preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "Okay", style: .Default, handler: nil))
             presentViewController(alert, animated: true, completion: nil)
         } else if (password!.characters.count < 8) {
-            let alert = UIAlertController(title: "Password short", message: "Password must be greater than 8 characters", preferredStyle: .Alert)
+            let alert = UIAlertController(title: "Password too short", message: "Password must be at least 8 characters", preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "Okay", style: .Default, handler: nil))
             presentViewController(alert, animated: true, completion: nil)
         } else {
@@ -46,13 +46,27 @@ class SignupViewController: UIViewController {
             newUser.email = finalEmail
             newUser.password = password
             
+            emailTextField.enabled = false
+            passwordTextField.enabled = false
+            
             // Sign up the user asynchronously
             newUser.signUpInBackgroundWithBlock({ (succeed, error: NSError?) -> Void in
                 
                 // Stop the spinner
                 spinner.stopAnimating()
+                self.emailTextField.enabled = true
+                self.passwordTextField.enabled = true
+                
                 if let error = error {
-                    print(error.localizedDescription)
+                    var message: String
+                    switch error.code {
+                    case 125: message = "Please enter a valid email"
+                    case 202, 203: message = "Email is already registered"
+                    default: message = "Unknown error occurred"
+                    }
+                    let alert = UIAlertController(title: "Signup error", message: message, preferredStyle: .Alert)
+                    alert.addAction(UIAlertAction(title: "Okay", style: .Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
                 } else {
                     NSNotificationCenter.defaultCenter().postNotificationName(userDidLoginNotification, object: nil)
                 }

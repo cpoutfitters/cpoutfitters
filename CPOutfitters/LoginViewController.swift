@@ -55,15 +55,23 @@ class LoginViewController: UIViewController {
             // Run a spinner to show a task in progress
             let spinner: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0, 0, 150, 150)) as UIActivityIndicatorView
             spinner.startAnimating()
+            emailTextField.enabled = false
+            passwordTextField.enabled = false
             
             // Send a request to login
-            PFUser.logInWithUsernameInBackground(email!, password: password!, block: { (user: PFUser?, error: NSError?) -> Void in
+            PFUser.logInWithUsernameInBackground(email!.lowercaseString, password: password!, block: { (user: PFUser?, error: NSError?) -> Void in
                 
                 // Stop the spinner
                 spinner.stopAnimating()
+                
                 if let error = error {
                     let alert = UIAlertController(title: "Login error", message: "Invalid username/password combination", preferredStyle: .Alert)
                     alert.addAction(UIAlertAction(title: "Okay", style: .Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: { () -> Void in
+                        self.emailTextField.enabled = true
+                        self.passwordTextField.enabled = true
+                    })
+                    
                 } else {
                     NSNotificationCenter.defaultCenter().postNotificationName(userDidLoginNotification, object: nil)
                 }
