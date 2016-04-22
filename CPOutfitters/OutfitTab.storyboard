@@ -177,7 +177,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ROK-Qt-lhn">
-                                <rect key="frame" x="0.0" y="65" width="320" height="503"/>
+                                <rect key="frame" x="0.0" y="80" width="320" height="488"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hsy-8R-B0V">
                                     <size key="itemSize" width="101" height="104"/>
@@ -206,9 +206,13 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Lc-Ea-o5i">
-                                <rect key="frame" x="10" y="25" width="48" height="30"/>
-                                <state key="normal" title="Cancel">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Lc-Ea-o5i">
+                                <rect key="frame" x="20" y="28" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="OWw-XL-XSd"/>
+                                    <constraint firstAttribute="width" constant="44" id="dy2-JL-uMr"/>
+                                </constraints>
+                                <state key="normal" image="cancel">
                                     <color key="titleColor" red="0.95686274510000002" green="0.26274509800000001" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -218,11 +222,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="9Lc-Ea-o5i" firstAttribute="top" secondItem="hUB-qK-egg" secondAttribute="bottom" constant="5" id="BeM-iB-Xfq"/>
+                            <constraint firstItem="9Lc-Ea-o5i" firstAttribute="top" secondItem="hUB-qK-egg" secondAttribute="bottom" constant="8" id="BeM-iB-Xfq"/>
                             <constraint firstItem="A6R-Qs-ofu" firstAttribute="top" secondItem="ROK-Qt-lhn" secondAttribute="bottom" id="S9I-JW-1p5"/>
-                            <constraint firstItem="9Lc-Ea-o5i" firstAttribute="leading" secondItem="FLI-XG-tfN" secondAttribute="leading" constant="10" id="YOL-VC-zNc"/>
+                            <constraint firstItem="9Lc-Ea-o5i" firstAttribute="leading" secondItem="FLI-XG-tfN" secondAttribute="leading" constant="20" id="YOL-VC-zNc"/>
                             <constraint firstAttribute="trailing" secondItem="ROK-Qt-lhn" secondAttribute="trailing" id="beb-HO-VJu"/>
-                            <constraint firstItem="ROK-Qt-lhn" firstAttribute="top" secondItem="9Lc-Ea-o5i" secondAttribute="bottom" constant="10" id="h3m-XR-Ye1"/>
+                            <constraint firstItem="ROK-Qt-lhn" firstAttribute="top" secondItem="9Lc-Ea-o5i" secondAttribute="bottom" constant="8" id="h3m-XR-Ye1"/>
                             <constraint firstItem="ROK-Qt-lhn" firstAttribute="leading" secondItem="FLI-XG-tfN" secondAttribute="leading" id="k6q-Ge-K2F"/>
                         </constraints>
                     </view>
