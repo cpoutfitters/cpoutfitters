@@ -1,15 +1,14 @@
 //
-//  ProfileViewController.swift
+//  EditProfileViewController.swift
 //  CPOutfitters
 //
-//  Created by Aditya Purandare on 19/04/16.
+//  Created by Aditya Purandare on 22/04/16.
 //  Copyright © 2016 SnazzyLLama. All rights reserved.
 //
 
 import UIKit
-import Parse
 
-class ProfileViewController: UIViewController {
+class EditProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,21 +21,6 @@ class ProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func onEdit(sender: AnyObject) {
-        performSegueWithIdentifier("editScreen", sender: self)
-    }
-    
-    
-    @IBAction func onLogout(sender: AnyObject) {
-        PFUser.logOutInBackgroundWithBlock { (error:NSError?) in
-            if let error = error {
-                print(error.localizedDescription)
-            } else {
-                print("User logged out")
-                NSNotificationCenter.defaultCenter().postNotificationName(userDidLogoutNotification, object: nil)
-            }
-        }
-    }
 
     /*
     // MARK: - Navigation
