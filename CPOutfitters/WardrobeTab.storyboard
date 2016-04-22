@@ -8,7 +8,7 @@
         <!--Wardrobe-->
         <scene sceneID="P5K-CT-ntJ">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="PXX-Vj-Vag" userLabel="Wardrobe" customClass="WardrobeViewController" customModule="CPOutfitters" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="PXX-Vj-Vag" userLabel="Wardrobe" customClass="WardrobeViewController" customModule="Fabriq" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7oB-o1-516"/>
                         <viewControllerLayoutGuide type="bottom" id="x7h-ye-XfQ"/>
@@ -36,14 +36,14 @@
                                         <rect key="frame" x="0.0" y="72" width="320" height="476"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="WardrobeTypeCell" rowHeight="100" id="jHQ-96-fYz" customClass="WardrobeTypeCell" customModule="CPOutfitters" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="WardrobeTypeCell" rowHeight="100" id="jHQ-96-fYz" customClass="WardrobeTypeCell" customModule="Fabriq" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="320" height="100"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jHQ-96-fYz" id="bUg-ni-OHb">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GPQ-e6-7qS" customClass="ImageLabelView" customModule="CPOutfitters" customModuleProvider="target">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GPQ-e6-7qS" customClass="ImageLabelView" customModule="Fabriq" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                                                             <gestureRecognizers/>
                                                         </view>
@@ -99,7 +99,7 @@
         <!--Article View Controller-->
         <scene sceneID="sLG-S3-4US">
             <objects>
-                <viewController id="T0h-Wh-l9V" customClass="ArticleViewController" customModule="CPOutfitters" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="T0h-Wh-l9V" customClass="ArticleViewController" customModule="Fabriq" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ice-g8-Vdg"/>
                         <viewControllerLayoutGuide type="bottom" id="Hvk-Kq-KDX"/>
@@ -379,7 +379,7 @@
         <!--Post View Controller-->
         <scene sceneID="zj1-47-a0g">
             <objects>
-                <viewController id="8Ky-wj-GE0" customClass="PostViewController" customModule="CPOutfitters" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8Ky-wj-GE0" customClass="PostViewController" customModule="Fabriq" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8o1-Vx-BLL"/>
                         <viewControllerLayoutGuide type="bottom" id="WCa-Em-H9Q"/>

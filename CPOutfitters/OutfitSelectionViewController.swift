@@ -14,7 +14,7 @@ let kselectFootwearSegueIdentifier = "selectFootwear"
 
 class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
 
-    @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var topButton: UIButton!
     @IBOutlet weak var bottomButton: UIButton!
     @IBOutlet weak var footwearButton: UIButton!

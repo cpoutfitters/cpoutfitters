@@ -8,7 +8,7 @@
         <!--Social View Controller-->
         <scene sceneID="UGw-Rp-Euy">
             <objects>
-                <viewController id="dJm-UN-xIJ" userLabel="Social View Controller" customClass="SocialViewController" customModule="CPOutfitters" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="dJm-UN-xIJ" userLabel="Social View Controller" customClass="SocialViewController" customModule="Fabriq" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lgi-vD-Ls2"/>
                         <viewControllerLayoutGuide type="bottom" id="vv1-94-ZNk"/>
@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="491"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FriendsPosts" rowHeight="394" id="s2H-Ux-EDC" customClass="SocialTypeCell" customModule="CPOutfitters" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FriendsPosts" rowHeight="394" id="s2H-Ux-EDC" customClass="SocialTypeCell" customModule="Fabriq" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="394"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s2H-Ux-EDC" id="GN7-nl-VDF">
