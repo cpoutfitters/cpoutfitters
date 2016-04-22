@@ -1,27 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Bl5-1w-8zr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Bl5-1w-8zr">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
         <!--Outfits-->
         <scene sceneID="o6m-12-JUY">
             <objects>
-                <tableViewController id="Bl5-1w-8zr" customClass="OutfitsViewController" customModule="CPOutfitters" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Bl5-1w-8zr" customClass="OutfitsViewController" customModule="Fabriq" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" id="rWB-Lb-LtH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AttireCell" rowHeight="100" id="Ndc-ku-geI" customClass="OutfitsCell" customModule="CPOutfitters" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AttireCell" rowHeight="100" id="Ndc-ku-geI" customClass="OutfitsCell" customModule="Fabriq" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="320" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ndc-ku-geI" id="XUn-tQ-obs">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="99"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ojf-IO-8B9" customClass="ImageLabelView" customModule="CPOutfitters" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ojf-IO-8B9" customClass="ImageLabelView" customModule="Fabriq" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="-1" width="320" height="100"/>
                                             <gestureRecognizers/>
                                         </view>
@@ -48,7 +47,7 @@
         <!--Outfit Selection View Controller-->
         <scene sceneID="vl6-dp-O49">
             <objects>
-                <viewController id="wVj-90-4tb" customClass="OutfitSelectionViewController" customModule="CPOutfitters" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="wVj-90-4tb" customClass="OutfitSelectionViewController" customModule="Fabriq" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0za-DF-JyI"/>
                         <viewControllerLayoutGuide type="bottom" id="1D6-DA-bOH"/>
@@ -58,7 +57,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="HNV-XQ-8cC">
-                                <rect key="frame" x="95" y="124" width="130" height="390"/>
+                                <rect key="frame" x="95" y="85" width="130" height="390"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hjP-ur-5V0">
                                         <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
@@ -93,60 +92,62 @@
                                     <constraint firstItem="CbN-ZC-Cib" firstAttribute="height" secondItem="hjP-ur-5V0" secondAttribute="height" id="wvk-eL-4Sd"/>
                                 </constraints>
                             </stackView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kDt-Ug-3pc">
-                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                                <items>
-                                    <barButtonItem systemItem="cancel" id="pdB-uu-pwD">
-                                        <connections>
-                                            <action selector="onCancel:" destination="wVj-90-4tb" id="RRV-WB-fDO"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem systemItem="flexibleSpace" id="m2a-Lj-urA">
-                                        <color key="tintColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    </barButtonItem>
-                                    <barButtonItem systemItem="save" id="7GW-hB-86B">
-                                        <connections>
-                                            <action selector="onSave:" destination="wVj-90-4tb" id="kKD-Sv-qqs"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zFe-gF-pfK">
-                                <rect key="frame" x="69" y="79" width="183" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nyo-j5-kht">
+                                <rect key="frame" x="270" y="518" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="9i2-RB-Tu6"/>
+                                    <constraint firstAttribute="width" constant="30" id="zGB-OW-1TM"/>
+                                </constraints>
+                                <state key="normal" title="[Favorite]" image="heart"/>
+                                <state key="selected" image="heart-on"/>
+                            </button>
+                            <button opaque="NO" alpha="0.80000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OSD-ii-hsV">
+                                <rect key="frame" x="20" y="28" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="VBW-Qn-5s8"/>
+                                    <constraint firstAttribute="height" constant="44" id="qit-6j-cJm"/>
+                                </constraints>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="cancel"/>
+                                <connections>
+                                    <action selector="onCancel:" destination="wVj-90-4tb" eventType="touchUpInside" id="dnh-0G-cf8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zFe-gF-pfK">
+                                <rect key="frame" x="68" y="40" width="184" height="30"/>
                                 <state key="normal" title="Shake for suggestion"/>
                                 <connections>
                                     <action selector="onRecommendMe:" destination="wVj-90-4tb" eventType="touchUpInside" id="oi9-6t-xyI"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pQg-QQ-dxk">
-                                <rect key="frame" x="260" y="79" width="40" height="30"/>
-                                <state key="normal" title="Share"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nyo-j5-kht">
-                                <rect key="frame" x="11" y="71" width="40" height="40"/>
+                            <button opaque="NO" alpha="0.80000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NLQ-xr-TKB">
+                                <rect key="frame" x="256" y="28" width="44" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="9i2-RB-Tu6"/>
-                                    <constraint firstAttribute="width" constant="40" id="zGB-OW-1TM"/>
+                                    <constraint firstAttribute="width" constant="44" id="KdT-28-aVt"/>
+                                    <constraint firstAttribute="height" constant="44" id="jRB-GL-bX5"/>
                                 </constraints>
-                                <state key="normal" title="[Favorite]" image="heart"/>
-                                <state key="selected" image="heart-on"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="checkmark"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pQg-QQ-dxk">
+                                <rect key="frame" x="20" y="518" width="40" height="30"/>
+                                <state key="normal" title="Share"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="pQg-QQ-dxk" firstAttribute="leading" secondItem="0YC-LE-CQh" secondAttribute="leading" constant="20" id="7C7-Hi-J15"/>
                             <constraint firstItem="HNV-XQ-8cC" firstAttribute="top" secondItem="zFe-gF-pfK" secondAttribute="bottom" constant="15" id="91E-t3-fAR"/>
-                            <constraint firstItem="zFe-gF-pfK" firstAttribute="top" secondItem="kDt-Ug-3pc" secondAttribute="bottom" constant="15" id="BYk-cT-dCq"/>
-                            <constraint firstItem="pQg-QQ-dxk" firstAttribute="top" secondItem="kDt-Ug-3pc" secondAttribute="bottom" constant="15" id="LXr-9J-MzK"/>
-                            <constraint firstItem="kDt-Ug-3pc" firstAttribute="leading" secondItem="0YC-LE-CQh" secondAttribute="leading" id="Rzo-bM-qt6"/>
-                            <constraint firstItem="pQg-QQ-dxk" firstAttribute="leading" secondItem="zFe-gF-pfK" secondAttribute="trailing" constant="8" id="WpE-S5-ho5"/>
+                            <constraint firstItem="zFe-gF-pfK" firstAttribute="top" secondItem="0za-DF-JyI" secondAttribute="bottom" constant="20" id="CTO-zF-PMK"/>
+                            <constraint firstItem="NLQ-xr-TKB" firstAttribute="top" secondItem="0za-DF-JyI" secondAttribute="bottom" constant="8" id="Emg-ZU-5re"/>
+                            <constraint firstItem="OSD-ii-hsV" firstAttribute="top" secondItem="0za-DF-JyI" secondAttribute="bottom" constant="8" id="Gjt-Xr-blQ"/>
+                            <constraint firstItem="1D6-DA-bOH" firstAttribute="top" secondItem="nyo-j5-kht" secondAttribute="bottom" constant="20" id="M9Q-7W-hkw"/>
+                            <constraint firstItem="OSD-ii-hsV" firstAttribute="leading" secondItem="0YC-LE-CQh" secondAttribute="leading" constant="20" id="P7R-En-G9Y"/>
                             <constraint firstItem="zFe-gF-pfK" firstAttribute="centerX" secondItem="0YC-LE-CQh" secondAttribute="centerX" priority="999" id="X5W-5d-S0O"/>
-                            <constraint firstAttribute="trailing" secondItem="pQg-QQ-dxk" secondAttribute="trailing" constant="20" id="Y5e-OT-k53"/>
-                            <constraint firstItem="kDt-Ug-3pc" firstAttribute="top" secondItem="0za-DF-JyI" secondAttribute="bottom" id="c7K-IN-cj4"/>
                             <constraint firstItem="HNV-XQ-8cC" firstAttribute="centerX" secondItem="0YC-LE-CQh" secondAttribute="centerX" id="lmA-Fy-456"/>
-                            <constraint firstItem="nyo-j5-kht" firstAttribute="leading" secondItem="0YC-LE-CQh" secondAttribute="leadingMargin" constant="-5" id="nJk-4X-Y6A"/>
-                            <constraint firstAttribute="trailing" secondItem="kDt-Ug-3pc" secondAttribute="trailing" id="pAR-9D-LAb"/>
-                            <constraint firstItem="1D6-DA-bOH" firstAttribute="top" secondItem="nyo-j5-kht" secondAttribute="bottom" constant="457" id="pPr-HS-PRK"/>
-                            <constraint firstItem="nyo-j5-kht" firstAttribute="top" secondItem="kDt-Ug-3pc" secondAttribute="bottom" constant="7" id="r42-sP-yxk"/>
+                            <constraint firstAttribute="trailing" secondItem="nyo-j5-kht" secondAttribute="trailing" constant="20" id="ns9-69-e60"/>
+                            <constraint firstItem="1D6-DA-bOH" firstAttribute="top" secondItem="pQg-QQ-dxk" secondAttribute="bottom" constant="20" id="owJ-Lk-Zvl"/>
+                            <constraint firstAttribute="trailing" secondItem="NLQ-xr-TKB" secondAttribute="trailing" constant="20" id="u09-an-92N"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
@@ -155,18 +156,18 @@
                         <outlet property="bottomButton" destination="CbN-ZC-Cib" id="oWf-Pa-0Tu"/>
                         <outlet property="favoriteButton" destination="nyo-j5-kht" id="DJh-Hm-756"/>
                         <outlet property="footwearButton" destination="hsV-L2-5bT" id="K95-Rm-fqE"/>
-                        <outlet property="saveButton" destination="7GW-hB-86B" id="eEm-rX-HAz"/>
+                        <outlet property="saveButton" destination="NLQ-xr-TKB" id="xRS-2a-jrO"/>
                         <outlet property="topButton" destination="hjP-ur-5V0" id="EJv-sW-xAy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bYQ-RS-kns" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1174.9333333333334" y="-428.83999999999997"/>
+            <point key="canvasLocation" x="1174" y="-429"/>
         </scene>
         <!--Article Selection View Controller-->
         <scene sceneID="YW3-7Z-zHT">
             <objects>
-                <viewController id="oA3-rY-Kjc" customClass="ArticleSelectionViewController" customModule="CPOutfitters" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="oA3-rY-Kjc" customClass="ArticleSelectionViewController" customModule="Fabriq" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hUB-qK-egg"/>
                         <viewControllerLayoutGuide type="bottom" id="A6R-Qs-ofu"/>
@@ -185,7 +186,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ArticleSelectCell" id="76d-DZ-Tlk" customClass="ArticleSelectCell" customModule="CPOutfitters" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ArticleSelectCell" id="76d-DZ-Tlk" customClass="ArticleSelectCell" customModule="Fabriq" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -235,6 +236,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="cancel" width="24" height="24"/>
+        <image name="checkmark" width="24" height="24"/>
         <image name="heart" width="100" height="100"/>
         <image name="heart-on" width="100" height="100"/>
     </resources>
