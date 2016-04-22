@@ -65,21 +65,21 @@
                                             <constraint firstAttribute="width" constant="130" id="hxi-hm-i61"/>
                                             <constraint firstAttribute="height" constant="130" id="oaB-65-O2W"/>
                                         </constraints>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" title="Tops"/>
                                         <connections>
                                             <segue destination="oA3-rY-Kjc" kind="modal" identifier="selectTop" id="hIM-Yd-Zfq"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CbN-ZC-Cib">
                                         <rect key="frame" x="0.0" y="130" width="130" height="130"/>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" title="Bottoms"/>
                                         <connections>
                                             <segue destination="oA3-rY-Kjc" kind="modal" identifier="selectBottom" id="EjY-lL-M8j"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hsV-L2-5bT">
                                         <rect key="frame" x="0.0" y="260" width="130" height="130"/>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" title="Shoes"/>
                                         <connections>
                                             <segue destination="oA3-rY-Kjc" kind="modal" identifier="selectFootwear" id="iEZ-Zy-eXg"/>
                                         </connections>
