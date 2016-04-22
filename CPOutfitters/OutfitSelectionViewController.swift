@@ -32,6 +32,11 @@ class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        // Attach shake gesture
+
+        
+        
         /*
          API Call for getting an outfit
          ParseClient.sharedInstance.suggestOutfit(["attire":attire]) 
@@ -63,10 +68,12 @@ class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
         saveButton.enabled = false
         loadOutfit()
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        becomeFirstResponder()
+    }
 
     @IBAction func onRecommendMe(sender: AnyObject) {
-        
-        let owner = PFUser.currentUser()!
         
         print("OutfitSelectionViewController: onRecommend Button click")
         
@@ -173,6 +180,17 @@ class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
             }
         }
     }
+    
+    override func canBecomeFirstResponder() -> Bool {
+        return true
+    }
+    
+    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
+        if motion == .MotionShake {
+            onRecommendMe(self)
+        }
+    }
+    
     
     /*
     // MARK: - Navigation

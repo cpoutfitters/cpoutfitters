@@ -7,7 +7,7 @@
         <!--Profile-->
         <scene sceneID="6xG-TY-6p9">
             <objects>
-                <viewController id="jxJ-d9-H3m" customClass="ProfileViewController" customModule="CPOutfitters" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="jxJ-d9-H3m" customClass="ProfileViewController" customModule="Fabriq" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cIy-Hv-aXX"/>
                         <viewControllerLayoutGuide type="bottom" id="4eH-CP-jg9"/>
