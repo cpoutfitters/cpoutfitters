@@ -353,7 +353,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LoginBackground" width="3648" height="5472"/>
+        <image name="LoginBackground" width="800" height="1200"/>
         <image name="cancel" width="24" height="24"/>
     </resources>
 </document>
