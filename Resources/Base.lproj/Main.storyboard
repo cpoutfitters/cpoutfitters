@@ -209,7 +209,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email address" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tmh-UQ-EDl">
-                                <rect key="frame" x="0.0" y="174.5" width="320" height="45"/>
+                                <rect key="frame" x="0.0" y="174" width="320" height="45"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="2ow-Nd-bwS"/>
@@ -218,7 +218,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ghm-R4-mq8">
-                                <rect key="frame" x="0.0" y="220.5" width="320" height="45"/>
+                                <rect key="frame" x="0.0" y="220" width="320" height="45"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="02I-pF-GH1"/>
@@ -227,7 +227,7 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mSs-dY-Pi3">
-                                <rect key="frame" x="0.0" y="285.5" width="320" height="45"/>
+                                <rect key="frame" x="0.0" y="285" width="320" height="45"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="hyg-a9-eyB"/>
@@ -241,7 +241,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PTQ-Sw-2Mb">
-                                <rect key="frame" x="270" y="28" width="30" height="30"/>
+                                <rect key="frame" x="20" y="28" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="5V3-TR-XQz"/>
                                     <constraint firstAttribute="width" constant="30" id="tJE-MI-kpi"/>
@@ -268,7 +268,6 @@
                             <constraint firstItem="Tmh-UQ-EDl" firstAttribute="leading" secondItem="rDO-Zl-KNc" secondAttribute="leading" id="7rH-K2-tx2"/>
                             <constraint firstItem="QWA-Na-RR5" firstAttribute="leading" secondItem="rDO-Zl-KNc" secondAttribute="leading" id="8ce-ao-28o"/>
                             <constraint firstItem="Tmh-UQ-EDl" firstAttribute="top" secondItem="wbQ-YH-tad" secondAttribute="bottom" constant="40" id="MXi-h5-WqU"/>
-                            <constraint firstAttribute="trailing" secondItem="PTQ-Sw-2Mb" secondAttribute="trailing" constant="20" id="TxL-40-dug"/>
                             <constraint firstItem="wbQ-YH-tad" firstAttribute="top" secondItem="e4W-rz-7aN" secondAttribute="bottom" constant="40" id="UvT-s9-9dY"/>
                             <constraint firstItem="ghm-R4-mq8" firstAttribute="top" secondItem="Tmh-UQ-EDl" secondAttribute="bottom" constant="1" id="Wnw-8j-gCv"/>
                             <constraint firstAttribute="trailing" secondItem="ghm-R4-mq8" secondAttribute="trailing" id="enF-tu-msZ"/>
@@ -280,6 +279,7 @@
                             <constraint firstItem="PTQ-Sw-2Mb" firstAttribute="top" secondItem="e4W-rz-7aN" secondAttribute="bottom" constant="8" id="p5N-rD-fX1"/>
                             <constraint firstAttribute="trailing" secondItem="Tmh-UQ-EDl" secondAttribute="trailing" id="r7l-Nd-Ofu"/>
                             <constraint firstItem="wbQ-YH-tad" firstAttribute="centerX" secondItem="rDO-Zl-KNc" secondAttribute="centerX" id="tOv-0f-g0Z"/>
+                            <constraint firstItem="PTQ-Sw-2Mb" firstAttribute="leading" secondItem="rDO-Zl-KNc" secondAttribute="leading" constant="20" id="vTf-hK-VxJ"/>
                         </constraints>
                     </view>
                     <connections>
