@@ -108,7 +108,7 @@
                                 <gestureRecognizers/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fabriq" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tKf-iM-p63">
-                                <rect key="frame" x="71.5" y="60" width="178" height="74.5"/>
+                                <rect key="frame" x="71" y="60" width="178" height="74.5"/>
                                 <fontDescription key="fontDescription" name="Didot" family="Didot" pointSize="60"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -138,10 +138,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDG-bY-cip">
-                                <rect key="frame" x="20" y="451" width="280" height="45"/>
+                                <rect key="frame" x="0.0" y="451" width="320" height="45"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="280" id="Qlf-hY-GUo"/>
                                     <constraint firstAttribute="height" constant="45" id="n0v-ae-hJD"/>
                                 </constraints>
                                 <state key="normal" title="Sign up">
@@ -173,7 +172,9 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="uNO-eM-3GR" secondAttribute="bottom" id="Ipl-BH-pZ8"/>
                             <constraint firstItem="uNO-eM-3GR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="YOF-Za-uT1"/>
                             <constraint firstItem="Y1O-vb-zKj" firstAttribute="top" secondItem="tKf-iM-p63" secondAttribute="bottom" constant="40" id="a48-ah-7KE"/>
+                            <constraint firstAttribute="trailing" secondItem="VDG-bY-cip" secondAttribute="trailing" id="c1b-9b-SFw"/>
                             <constraint firstItem="5y6-1r-DkR" firstAttribute="top" secondItem="Y1O-vb-zKj" secondAttribute="bottom" constant="1" id="gS8-dP-va7"/>
+                            <constraint firstItem="VDG-bY-cip" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="hrK-Ft-tQS"/>
                             <constraint firstAttribute="trailing" secondItem="uNO-eM-3GR" secondAttribute="trailing" id="ik9-CO-EOa"/>
                             <constraint firstAttribute="trailing" secondItem="5y6-1r-DkR" secondAttribute="trailing" id="nf1-VH-nU1"/>
                             <constraint firstAttribute="trailing" secondItem="Y1O-vb-zKj" secondAttribute="trailing" id="rIA-52-NlY"/>
