@@ -78,44 +78,44 @@ class ParseClient: NSObject {
         outfit.saveInBackgroundWithBlock(completion)
     }
     
-    func getRecommendedOutfit(params: NSDictionary, completion:(Outfit?, NSError?) -> ()) {
-        PFCloud.callFunctionInBackground("recommend", withParameters: params as [NSObject : AnyObject]?) { (compString: AnyObject?, error: NSError?) in
-            if let compString = compString as? NSString, data = compString.dataUsingEncoding(NSUTF8StringEncoding) {
-                if let components = try! NSJSONSerialization.JSONObjectWithData(data, options: []) as? NSDictionary {
-                    let topComponentID = components["topComponent"] as! String
-                    let bottomComponentID = components["bottomComponent"] as! String
-                    let footwearComponentID = components["footwearComponent"] as! String
-                    
-                    self.getArticle(topComponentID, completion: { (top, error) -> () in
-                        if let top = top {
-                            self.getArticle(bottomComponentID, completion: { (bottom, error) -> () in
-                                if let bottom = bottom {
-                                    self.getArticle(footwearComponentID, completion: { (footwear, error) -> () in
-                                        if let footwear = footwear {
-                                            let outfitObject = Outfit()
-                                            outfitObject.owner = PFUser.currentUser()!
-                                            outfitObject.topComponent = top
-                                            outfitObject.bottomComponent = bottom
-                                            outfitObject.footwearComponent = footwear
-                                            completion(outfitObject, nil)
-                                        }
-                                        else {
-                                            completion(nil,error)
-                                        }
-                                    })
-                                }
-                                else {
-                                    completion(nil,error)
-                                }
-                            })
-                        }
-                        else {
-                            completion(nil,error)
-                        }
-                    })
-                }
-            }
+    func getRecommendedOutfit(params: NSDictionary, completion:(String, Article?, NSError?) -> ()) {
+        
+        // Retrieve top
+        var query = PFQuery(className: "Article")
+        query.whereKey("type", equalTo: "top")
+        query.whereKey("owner", equalTo: PFUser.currentUser()!)
+        for (key, value) in params {
+            query.whereKey(key as! String, equalTo: value)
         }
+        query.limit = 1
+        query.findObjectsInBackgroundWithBlock { (articles, error) -> Void in
+            completion("top", articles?.first as? Article, error)
+        }
+        
+        // retrieve bottom
+        query = PFQuery(className: "Article")
+        query.whereKey("type", equalTo: "bottom")
+        query.whereKey("owner", equalTo: PFUser.currentUser()!)
+        for (key, value) in params {
+            query.whereKey(key as! String, equalTo: value)
+        }
+        query.limit = 1
+        query.findObjectsInBackgroundWithBlock { (articles, error) -> Void in
+            completion("bottom", articles?.first as? Article, error)
+        }
+        
+        // retrieve footwear
+        query = PFQuery(className: "Article")
+        query.whereKey("type", equalTo: "footwear")
+        query.whereKey("owner", equalTo: PFUser.currentUser()!)
+        for (key, value) in params {
+            query.whereKey(key as! String, equalTo: value)
+        }
+        query.limit = 1
+        query.findObjectsInBackgroundWithBlock { (articles, error) -> Void in
+            completion("footwear", articles?.first as? Article, error)
+        }
+        
     }
     
     // Function for deletion of article from server

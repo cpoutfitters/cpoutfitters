@@ -65,23 +65,39 @@ class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
     }
 
     @IBAction func onRecommendMe(sender: AnyObject) {
-        
-        let owner = PFUser.currentUser()!
-        
+                
         print("OutfitSelectionViewController: onRecommend Button click")
         
-        ParseClient.sharedInstance.getRecommendedOutfit(["occasion": attire]) { (outfit: Outfit?, error:NSError?) in
-            if let outfit = outfit{
-                self.outfit = outfit
-                print(outfit.self)
-                self.loadOutfit()
+        ParseClient.sharedInstance.getRecommendedOutfit(["occasion": attire]) { (type: String, article: Article?, error:NSError?) in
+            if let error = error {
+                print("OutfitSelectionViewController: \(error.localizedDescription)")
+            }
+            else if let article = article {
+                switch (type) {
+                case "top":
+                    self.outfit.topComponent = article
+                    self.loadTop()
+                case "bottom":
+                    self.outfit.bottomComponent = article
+                    self.loadBottom()
+                default:
+                    self.outfit.footwearComponent = article
+                    self.loadFootwear()
+                }
             } else {
-                print("OutfitSelectionViewController: \(error?.localizedDescription)")
+                print("No \(type)s available for criteria")
             }
         }
     }
     
     func loadOutfit() {
+        loadTop()
+        loadBottom()
+        loadFootwear()
+        self.favoriteButton.selected = false
+    }
+    
+    func loadTop() {
         if let topImage = outfit.topComponent?.mediaImage {
             topImage.getDataInBackgroundWithBlock({ (imageData:NSData?, error: NSError?) in
                 if let imageData = imageData {
@@ -90,6 +106,9 @@ class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
                 }
             })
         }
+    }
+    
+    func loadBottom() {
         if let bottomImage = outfit.bottomComponent?.mediaImage {
             bottomImage.getDataInBackgroundWithBlock({ (imageData:NSData?, error: NSError?) in
                 if let imageData = imageData {
@@ -98,6 +117,9 @@ class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
                 }
             })
         }
+    }
+    
+    func loadFootwear() {
         if let footwearImage = outfit.footwearComponent?.mediaImage {
             footwearImage.getDataInBackgroundWithBlock({ (imageData:NSData?, error: NSError?) in
                 if let imageData = imageData {
@@ -106,7 +128,6 @@ class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
                 }
             })
         }
-        self.favoriteButton.selected = outfit.favorite
     }
     
     override func didReceiveMemoryWarning() {
