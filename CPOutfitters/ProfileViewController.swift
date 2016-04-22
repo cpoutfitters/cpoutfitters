@@ -11,10 +11,19 @@ import Parse
 
 class ProfileViewController: UIViewController {
 
+    @IBOutlet weak var userhandleLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var userProfileImageView: UIImageView!
+    @IBOutlet weak var bioLabel: UILabel!
+    @IBOutlet weak var articleCount: UILabel!
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        ParseClient.sharedInstance.getUser(["":""]) { (user:PFUser?, error:NSError?) in
+            print(user)
+        }
     }
 
     override func didReceiveMemoryWarning() {

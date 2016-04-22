@@ -123,4 +123,20 @@ class ParseClient: NSObject {
         article.deleteInBackgroundWithBlock(completion)
     }
     
+    func getUser(params: NSDictionary, completion:(PFUser?, NSError?) -> ()) {
+        let query = PFQuery(className: "_User")
+        let username = PFUser.currentUser()?.username
+        query.whereKey("username", equalTo: username!)
+        query.limit = 1
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            if let objects = objects as? [PFUser] {
+                let user = objects[0]
+                completion(user, nil)
+            } else {
+                print(error?.localizedDescription)
+            }
+        }
+    }
+    
 }
