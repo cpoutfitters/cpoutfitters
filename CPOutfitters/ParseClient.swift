@@ -39,6 +39,19 @@ class ParseClient: NSObject {
             }
         }
     }
+    func countArticles(params: NSDictionary, completion:(Int32?, NSError?) -> ()) {
+        let query = PFQuery(className:"Article")
+        query.whereKey("owner", equalTo: PFUser.currentUser()!)
+        query.countObjectsInBackgroundWithBlock {
+            (count: Int32, error: NSError?) -> Void in
+            if error == nil {
+                completion(count, nil)
+            } else {
+                print(error?.localizedDescription)
+            }
+        }
+
+    }
     
     func getArticle(articleId: String, completion:(Article?, NSError?) -> ()) {
         let article = Article(className: articleId)
