@@ -128,6 +128,9 @@
                                 </constraints>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <state key="normal" image="checkmark"/>
+                                <connections>
+                                    <action selector="onSave:" destination="wVj-90-4tb" eventType="touchUpInside" id="cJi-4W-YaN"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pQg-QQ-dxk">
                                 <rect key="frame" x="20" y="518" width="40" height="30"/>
