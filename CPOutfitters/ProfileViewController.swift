@@ -21,13 +21,16 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        ParseClient.sharedInstance.getUser(["owner": PFUser.currentUser()!]) { (user:PFUser?, error:NSError?) in
+        ParseClient.sharedInstance.getUser(["owner": PFUser.currentUser()!]) { (user: PFUser?, error:NSError?) in
             print(user)
             let userName = user?.username!.characters.split("@").map(String.init)
             self.userhandleLabel.text = userName![0]
+            self.bioLabel.text = user!["bio"] as! String
+            self.nameLabel.text = user!["fullname"] as! String
         }
         ParseClient.sharedInstance.countArticles(["owner": PFUser.currentUser()!]) { (count:Int32?, error:NSError?) in
             let countFabrics = "\(count!) Fabriqs"
+            print(countFabrics)
             self.articleCount.text = countFabrics
         }
     }
