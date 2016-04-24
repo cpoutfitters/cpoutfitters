@@ -295,7 +295,7 @@
         <scene sceneID="yxO-8k-pyd">
             <objects>
                 <viewControllerPlaceholder storyboardName="OutfitTab" id="UxC-XG-Ch6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Outfit" id="J9c-pP-Nof"/>
+                    <tabBarItem key="tabBarItem" title="Outfit" image="outfit" id="J9c-pP-Nof"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="efF-oz-fkJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -305,7 +305,7 @@
         <scene sceneID="IBp-fA-js3">
             <objects>
                 <viewControllerPlaceholder storyboardName="WardrobeTab" id="1xh-bb-dvQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Wardrobe" id="fYY-Y8-SUC"/>
+                    <tabBarItem key="tabBarItem" title="Wardrobe" image="closet" id="fYY-Y8-SUC"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aux-Xc-BET" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -315,7 +315,7 @@
         <scene sceneID="9MD-l0-Zqq">
             <objects>
                 <viewControllerPlaceholder storyboardName="SocialTab" id="SJM-3O-f1c" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Social" id="HP4-jG-BIz"/>
+                    <tabBarItem key="tabBarItem" title="Social" image="social-1" id="HP4-jG-BIz"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3pA-lG-MnJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -325,7 +325,7 @@
         <scene sceneID="UFd-ed-kWr">
             <objects>
                 <viewControllerPlaceholder storyboardName="ProfileTab" id="9Hl-NI-cfp" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="CaV-rj-SJq"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile" id="CaV-rj-SJq"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dCd-L1-nUK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -355,5 +355,9 @@
     <resources>
         <image name="LoginBackground" width="800" height="1200"/>
         <image name="cancel" width="24" height="24"/>
+        <image name="closet" width="25" height="25"/>
+        <image name="outfit" width="25" height="25"/>
+        <image name="profile" width="25" height="25"/>
+        <image name="social-1" width="25" height="25"/>
     </resources>
 </document>

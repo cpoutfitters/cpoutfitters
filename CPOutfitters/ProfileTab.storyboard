@@ -29,11 +29,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" id="Cug-xX-8tE"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile" id="Cug-xX-8tE"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gnc-Ex-MUL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="905.06666666666661" y="711.89333333333332"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="profile" width="25" height="25"/>
+    </resources>
 </document>

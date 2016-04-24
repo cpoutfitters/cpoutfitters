@@ -26,6 +26,7 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var longOrShortSegmentedControl: UISegmentedControl!
     
+    @IBOutlet weak var swatchInstructionLabel: UILabel!
     @IBOutlet weak var controlsView: UIView!
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var pictureImageView: PFImageView!
@@ -37,6 +38,8 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var formalButton: UIButton!
     @IBOutlet weak var blkTieButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
+    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var delegate: ArticleDelegate?
     
@@ -56,7 +59,6 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
                 
         cameraButton.layer.backgroundColor = UIColor(white: 0.0751, alpha: 0.8).CGColor
         cameraButton.layer.cornerRadius = 22
-        
         
         libraryHasBeenViewed = false
         vc = UIImagePickerController()
@@ -83,14 +85,11 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
         let newImage = pictureImageView.file == nil
         pictureImageView.file = article.mediaImage
         controlsView.hidden = newImage
-        saveButton.hidden = newImage
         deleteButton.hidden = newImage
+        saveButton.hidden = newImage || article.primaryHue != 0
+        swatchInstructionLabel.hidden = !newImage
         
-        if !article.short {
-            longOrShortSegmentedControl.selectedSegmentIndex = 1
-        } else {
-            longOrShortSegmentedControl.selectedSegmentIndex = 0
-        }
+        longOrShortSegmentedControl.selectedSegmentIndex = article.short ? 0 : 1
         
         averageColorImageView.backgroundColor = article.primaryColor
     }
@@ -103,7 +102,7 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
         // Do something with the images (based on your use case)
         pictureImageView.image = editedImage
         controlsView.hidden = false
-        saveButton.hidden = false
+        saveButton.hidden = article.primaryHue == 0
         
         let newSize = CGSize(width: 1000, height: 750)
         if let image = pictureImageView.image {
@@ -121,7 +120,17 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     @IBAction func onSave() {
+        activityIndicator.startAnimating()
+        saveButton.enabled = false
+        cancelButton.enabled = false
+        deleteButton.enabled = false
+        
         ParseClient.sharedInstance.saveArticle(article) { (success, error) in
+            self.activityIndicator.stopAnimating()
+            self.saveButton.enabled = true
+            self.cancelButton.enabled = true
+            self.deleteButton.enabled = true
+            
             if success {
                 self.delegate?.articleSaved(self.article)
                 self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
@@ -181,13 +190,15 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
             
             article.swatchImage = Article.getPFFileFromImage(UIImage(CGImage: imageClip!))!
             let averageColor = UIColor(averageColorFromImage: UIImage(CGImage: imageClip!))
-            article.primaryColor = averageColor            
+            article.primaryColor = averageColor
+            saveButton.hidden = false
+            swatchInstructionLabel.hidden = true
         }
     }
     
     @IBAction func onSegmentedControllerChange(sender: AnyObject) {
         let segmentedController = sender as! UISegmentedControl
-        article.short = (segmentedController.titleForSegmentAtIndex(segmentedController.selectedSegmentIndex) == "Short")
+        article.short = segmentedController.selectedSegmentIndex == 0
     }
     
     @IBAction func onFavorite(sender: AnyObject) {

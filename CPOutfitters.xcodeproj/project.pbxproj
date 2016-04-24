@@ -18,6 +18,7 @@
 		07DC9BF31C922D750009AD2E /* WardrobeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DC9BF21C922D750009AD2E /* WardrobeViewController.swift */; };
 		07DC9BF51C922E9A0009AD2E /* WardrobeTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DC9BF41C922E9A0009AD2E /* WardrobeTypeCell.swift */; };
 		07E1C7BB1CA3666800924566 /* UIImage+Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E1C7BA1CA3666800924566 /* UIImage+Categories.swift */; };
+		07F958B61CCC6484000DE222 /* WardrobeTypeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F958B51CCC6484000DE222 /* WardrobeTypeHeaderView.swift */; };
 		2812C75B04373082475B86B1 /* Pods_CPOutfitters.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBC4224AA07ABDF4B24E0BB8 /* Pods_CPOutfitters.framework */; };
 		814C3ACA1B69877600E307BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 814C3AC61B69877600E307BB /* Main.storyboard */; };
 		814C3ACB1B69877600E307BB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 814C3AC81B69877600E307BB /* Images.xcassets */; };
@@ -74,6 +75,7 @@
 		07DC9BF21C922D750009AD2E /* WardrobeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WardrobeViewController.swift; sourceTree = "<group>"; };
 		07DC9BF41C922E9A0009AD2E /* WardrobeTypeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WardrobeTypeCell.swift; sourceTree = "<group>"; };
 		07E1C7BA1CA3666800924566 /* UIImage+Categories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Categories.swift"; sourceTree = "<group>"; };
+		07F958B51CCC6484000DE222 /* WardrobeTypeHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WardrobeTypeHeaderView.swift; sourceTree = "<group>"; };
 		814C3AC71B69877600E307BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		814C3AC81B69877600E307BB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		814C3AC91B69877600E307BB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				07DC9BF21C922D750009AD2E /* WardrobeViewController.swift */,
 				07DC9BF41C922E9A0009AD2E /* WardrobeTypeCell.swift */,
 				07C9F8D41CC85BC30081A89D /* WardrobeTab.storyboard */,
+				07F958B51CCC6484000DE222 /* WardrobeTypeHeaderView.swift */,
 			);
 			name = Wardrobe;
 			sourceTree = "<group>";
@@ -525,6 +528,7 @@
 				AC4598861CB59D0600D9D15C /* ArticleSelectCell.swift in Sources */,
 				ACF437DC1CB22B44002024A3 /* OutfitsViewController.swift in Sources */,
 				A416C9C51CB5718A00A84AE2 /* PostViewController.swift in Sources */,
+				07F958B61CCC6484000DE222 /* WardrobeTypeHeaderView.swift in Sources */,
 				AC9F6EE81C93D3A600D6B9DE /* OutfitHistory.swift in Sources */,
 				AC9F6EEC1C93F13500D6B9DE /* ParseClient.swift in Sources */,
 				07E1C7BB1CA3666800924566 /* UIImage+Categories.swift in Sources */,
