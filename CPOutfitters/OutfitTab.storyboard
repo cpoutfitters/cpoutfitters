@@ -38,6 +38,7 @@
                             <outlet property="delegate" destination="Bl5-1w-8zr" id="ZOB-MW-j1q"/>
                         </connections>
                     </tableView>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Outfits" id="77I-H4-207"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cS9-JC-OU5" userLabel="First Responder" sceneMemberID="firstResponder"/>
