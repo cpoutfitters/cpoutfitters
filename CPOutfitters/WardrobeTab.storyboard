@@ -93,7 +93,7 @@
                             <constraint firstAttribute="trailing" secondItem="auG-VH-BSo" secondAttribute="trailing" id="ZQO-T9-ngj"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Wardrobe" id="z9R-4o-IcI"/>
+                    <tabBarItem key="tabBarItem" title="Wardrobe" image="closet" id="z9R-4o-IcI"/>
                     <navigationItem key="navigationItem" id="tz7-Py-X7l"/>
                     <connections>
                         <outlet property="collectionView" destination="auG-VH-BSo" id="ZnX-Gb-c9c"/>
@@ -491,6 +491,7 @@
         <image name="arrow" width="24" height="24"/>
         <image name="cancel" width="24" height="24"/>
         <image name="checkmark" width="24" height="24"/>
+        <image name="closet" width="25" height="25"/>
         <image name="white-camera" width="44" height="44"/>
     </resources>
 </document>

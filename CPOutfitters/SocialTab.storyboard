@@ -73,7 +73,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Social" id="Obl-pi-0fW"/>
+                    <tabBarItem key="tabBarItem" title="Social" image="social-1" id="Obl-pi-0fW"/>
                     <connections>
                         <outlet property="tableView" destination="N7Q-9u-YBa" id="J4h-7N-fvQ"/>
                     </connections>
@@ -83,4 +83,7 @@
             <point key="canvasLocation" x="1669" y="516"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="social-1" width="25" height="25"/>
+    </resources>
 </document>
