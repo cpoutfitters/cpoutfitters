@@ -41,7 +41,12 @@ class ParseClient: NSObject {
     }
     func countArticles(params: NSDictionary, completion:(Int32?, NSError?) -> ()) {
         let query = PFQuery(className:"Article")
-        query.whereKey("owner", equalTo: PFUser.currentUser()!)
+        let obj = params
+        var userName: PFUser?
+        for (key, value) in obj {
+            userName = value as? PFUser
+        }
+        query.whereKey("owner", equalTo: userName!)
         query.countObjectsInBackgroundWithBlock {
             (count: Int32, error: NSError?) -> Void in
             if error == nil {
@@ -51,6 +56,19 @@ class ParseClient: NSObject {
             }
         }
 
+    }
+    
+    func loadProfileImageWithCompletion(params: NSDictionary, completion:([PFObject]?, NSError?) -> ()) {
+        let obj = params
+        var userName: String?
+        for (key, value) in obj {
+            userName = value as? String
+        }
+        print(userName!)
+        let query = PFQuery(className: "_User")
+        query.whereKey("username", equalTo: userName!)
+        query.limit = 20
+        query.findObjectsInBackgroundWithBlock(completion)
     }
     
     func getArticle(articleId: String, completion:(Article?, NSError?) -> ()) {
