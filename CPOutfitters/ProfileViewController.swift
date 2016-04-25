@@ -16,21 +16,12 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var userProfileImageView: UIImageView!
     @IBOutlet weak var bioLabel: UILabel!
     @IBOutlet weak var articleCount: UILabel!
-    @IBOutlet weak var collectionView: UICollectionView!
-    
-//    var articlesTop: [Article]?
-//    var articlesBottom: [Article]?
-//    var articlesFootwear: [Article]?
-    var articles: [[Article]] = [[],[],[]]
-
-    var combinedArticles: [Article]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
 
         ParseClient.sharedInstance.getUser(["owner": PFUser.currentUser()!]) { (user: PFUser?, error:NSError?) in
-            //print(user)
             let userName = user?.username!.characters.split("@").map(String.init)
             self.userhandleLabel.text = userName![0]
             self.bioLabel.text = user!["bio"] as! String
@@ -41,6 +32,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
                     (imageData: NSData?, error: NSError?) -> Void in
                     if let imageData = imageData {
                         self.userProfileImageView.image = UIImage(data:imageData)
+                        self.userProfileImageView.layer.cornerRadius = self.userProfileImageView.frame.size.width / 2
+                        self.userProfileImageView.clipsToBounds = true
                     }
                 }
             }
@@ -57,10 +50,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func onEdit(sender: AnyObject) {
-        //performSegueWithIdentifier("editScreen", sender: self)
-    }
-    
     @IBAction func onCamera(sender: AnyObject) {
         //Library picker being loaded
         let vc = UIImagePickerController()
@@ -73,10 +62,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     func imagePickerController(picker: UIImagePickerController,
          didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        // Get the image captured by the UIImagePickerController
         let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
         
-        // Do something with the images (based on your use case)
         userProfileImageView.image = editedImage
         
         let newSize = CGSize(width: 500, height: 500)
@@ -93,7 +80,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             user!.saveInBackground()
          }
         
-        // Dismiss UIImagePickerController to go back to your original view controller
         dismissViewControllerAnimated(true, completion: nil)
     }
 
