@@ -39,15 +39,18 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             }
         }
         ParseClient.sharedInstance.countArticles(["owner": PFUser.currentUser()!]) { (count:Int32?, error:NSError?) in
-            let countFabrics = "\(count!) Fabriqs"
-            print(countFabrics)
+            var countFabrics: String = "0 Fabriqs"
+            if count! == 1 {
+                countFabrics = "\(count!) Fabriq"
+            } else {
+                countFabrics = "\(count!) Fabriqs"
+            }
             self.articleCount.text = countFabrics
         }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func onCamera(sender: AnyObject) {
