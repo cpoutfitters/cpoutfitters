@@ -38,7 +38,6 @@
 		AC4598841CB59A3400D9D15C /* ArticleSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4598831CB59A3400D9D15C /* ArticleSelectionViewController.swift */; };
 		AC4598861CB59D0600D9D15C /* ArticleSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4598851CB59D0600D9D15C /* ArticleSelectCell.swift */; };
 		AC6D20E01C993BC900033FB6 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6D20DF1C993BC900033FB6 /* Message.swift */; };
-		AC72FD511CCAC2EF00EFFB27 /* FabricViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72FD501CCAC2EF00EFFB27 /* FabricViewCell.swift */; };
 		AC9712871C97A4C100FB10EA /* CPOutfittersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9712861C97A4C100FB10EA /* CPOutfittersTests.swift */; };
 		AC9F6EE61C93D23C00D6B9DE /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9F6EE51C93D23C00D6B9DE /* Feedback.swift */; };
 		AC9F6EE81C93D3A600D6B9DE /* OutfitHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9F6EE71C93D3A600D6B9DE /* OutfitHistory.swift */; };
@@ -99,7 +98,6 @@
 		AC4598831CB59A3400D9D15C /* ArticleSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleSelectionViewController.swift; sourceTree = "<group>"; };
 		AC4598851CB59D0600D9D15C /* ArticleSelectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleSelectCell.swift; sourceTree = "<group>"; };
 		AC6D20DF1C993BC900033FB6 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		AC72FD501CCAC2EF00EFFB27 /* FabricViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FabricViewCell.swift; sourceTree = "<group>"; };
 		AC9712841C97A4C100FB10EA /* CPOutfittersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CPOutfittersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC9712861C97A4C100FB10EA /* CPOutfittersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPOutfittersTests.swift; sourceTree = "<group>"; };
 		AC9712881C97A4C100FB10EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -183,7 +181,6 @@
 			children = (
 				07C9F8D81CC85CBD0081A89D /* ProfileTab.storyboard */,
 				ACA4607D1CC7387400287405 /* ProfileViewController.swift */,
-				AC72FD501CCAC2EF00EFFB27 /* FabricViewCell.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -540,7 +537,6 @@
 				AC6D20E01C993BC900033FB6 /* Message.swift in Sources */,
 				ACF437E01CB22DB4002024A3 /* OutfitsCell.swift in Sources */,
 				A416C9CF1CB5996A00A84AE2 /* SocialViewController.swift in Sources */,
-				AC72FD511CCAC2EF00EFFB27 /* FabricViewCell.swift in Sources */,
 				AC0DA8201C8FD73B007B6723 /* LoginViewController.swift in Sources */,
 				ACA460801CC7429600287405 /* SignupViewController.swift in Sources */,
 				ACA4607E1CC7387400287405 /* ProfileViewController.swift in Sources */,
