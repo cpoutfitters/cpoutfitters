@@ -64,7 +64,6 @@ class ParseClient: NSObject {
         for (key, value) in obj {
             userName = value as? String
         }
-        print(userName!)
         let query = PFQuery(className: "_User")
         query.whereKey("username", equalTo: userName!)
         query.limit = 20
@@ -169,5 +168,24 @@ class ParseClient: NSObject {
             }
         }
     }
-    
+    func logoutUser() {
+        PFUser.logOutInBackgroundWithBlock { (error:NSError?) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                print("User logged out")
+                NSNotificationCenter.defaultCenter().postNotificationName(userDidLogoutNotification, object: nil)
+            }
+        }
+    }
+    func updateInfo(params: NSDictionary, completion:(success: Bool, error: NSError?) -> ()) {
+        let obj = params
+        var userName: String?
+        for (key, value) in obj {
+            userName = value as? String
+        }
+        let query = PFQuery(className: "_User")
+        let username = PFUser.currentUser()?.username
+        query.whereKey("username", equalTo: username!)
+    }
 }

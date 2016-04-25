@@ -9,23 +9,38 @@
 import UIKit
 import Parse
 
-class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate {
 
     @IBOutlet weak var userhandleLabel: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var userProfileImageView: UIImageView!
-    @IBOutlet weak var bioLabel: UILabel!
     @IBOutlet weak var articleCount: UILabel!
+    @IBOutlet weak var bioTextView: UITextView!
+    @IBOutlet weak var fullnameTextField: UITextField!
+    
+    var bioText: String = ""
+    var nameText: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        bioTextView.userInteractionEnabled = true
+        fullnameTextField.userInteractionEnabled = true
+        
+        bioTextView.delegate = self
+        
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
+        
+        
         ParseClient.sharedInstance.getUser(["owner": PFUser.currentUser()!]) { (user: PFUser?, error:NSError?) in
             let userName = user?.username!.characters.split("@").map(String.init)
-            self.userhandleLabel.text = userName![0]
-            self.bioLabel.text = user!["bio"] as! String
-            self.nameLabel.text = user!["fullname"] as! String
+            self.userhandleLabel.text = "@\(userName![0])"
+            self.bioTextView.text = user!["bio"] as! String
+            self.fullnameTextField.text = user!["fullname"] as! String
+            self.bioText = user!["bio"] as! String
+            self.nameText = user!["fullname"] as! String
             if user!["profilePicture"] != nil {
                 let imageFile = user!["profilePicture"] as! PFFile
                 imageFile.getDataInBackgroundWithBlock {
@@ -47,7 +62,24 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             }
             self.articleCount.text = countFabrics
         }
+        if nameText != "" && bioText != "" {
+            
+        }
     }
+    
+//    func keyboardWillShow(notification: NSNotification) {
+//        
+//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+//            self.view.frame.origin.y -= keyboardSize.height
+//        }
+//        
+//    }
+//    
+//    func keyboardWillHide(notification: NSNotification) {
+//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+//            self.view.frame.origin.y += keyboardSize.height
+//        }
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -88,14 +120,16 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
 
     
     @IBAction func onLogout(sender: AnyObject) {
-        PFUser.logOutInBackgroundWithBlock { (error:NSError?) in
-            if let error = error {
-                print(error.localizedDescription)
-            } else {
-                print("User logged out")
-                NSNotificationCenter.defaultCenter().postNotificationName(userDidLogoutNotification, object: nil)
-            }
-        }
+        ParseClient.sharedInstance.logoutUser()
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    @IBAction func onEditingEnd(sender: AnyObject) {
+            let user = PFUser.currentUser()!
+            user["fullname"] = fullnameTextField.text
+            user.saveInBackground()
     }
     
     func resizeImage(image: UIImage, newSize: CGSize) -> UIImage {
@@ -108,6 +142,12 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return newImage
+    }
+    
+    func textViewDidChange(textView: UITextView) {
+        let user = PFUser.currentUser()!
+        user["bio"] = bioTextView.text
+        user.saveInBackground()
     }
 
 
