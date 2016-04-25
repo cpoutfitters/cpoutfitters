@@ -35,6 +35,15 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             self.userhandleLabel.text = userName![0]
             self.bioLabel.text = user!["bio"] as! String
             self.nameLabel.text = user!["fullname"] as! String
+            if user!["profilePicture"] != nil {
+                let imageFile = user!["profilePicture"] as! PFFile
+                imageFile.getDataInBackgroundWithBlock {
+                    (imageData: NSData?, error: NSError?) -> Void in
+                    if let imageData = imageData {
+                        self.userProfileImageView.image = UIImage(data:imageData)
+                    }
+                }
+            }
         }
         ParseClient.sharedInstance.countArticles(["owner": PFUser.currentUser()!]) { (count:Int32?, error:NSError?) in
             let countFabrics = "\(count!) Fabriqs"
