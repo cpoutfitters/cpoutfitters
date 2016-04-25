@@ -83,15 +83,6 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rQR-sH-2Qc">
-                                                <rect key="frame" x="13" y="312" width="287" height="70"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="70" id="cqP-rs-hbD"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            </textView>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Sara Torres" textAlignment="natural" minimumFontSize="21" translatesAutoresizingMaskIntoConstraints="NO" id="V5m-I6-7Pq">
                                                 <rect key="frame" x="20" y="138" width="115" height="26"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
@@ -106,6 +97,15 @@
                                                 <color key="textColor" red="0.53497218589999995" green="0.53497218589999995" blue="0.53497218589999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Enter you bio here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rQR-sH-2Qc">
+                                                <rect key="frame" x="15" y="312" width="285" height="70"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="70" id="cqP-rs-hbD"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
+                                            </textView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -131,7 +131,7 @@
                                             <constraint firstItem="xG6-u6-VpR" firstAttribute="top" secondItem="2Mr-AV-hSs" secondAttribute="bottom" constant="30" id="fK5-WK-wyN"/>
                                             <constraint firstAttribute="trailing" secondItem="rQR-sH-2Qc" secondAttribute="trailing" constant="20" id="hXT-49-jHs"/>
                                             <constraint firstItem="wrH-5J-2uS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iue-IC-9J3" secondAttribute="trailing" constant="1" id="iIT-kC-xMj"/>
-                                            <constraint firstItem="rQR-sH-2Qc" firstAttribute="leading" secondItem="f6R-Bd-Xrd" secondAttribute="leading" constant="13" id="kEr-5X-qdB"/>
+                                            <constraint firstItem="rQR-sH-2Qc" firstAttribute="leading" secondItem="f6R-Bd-Xrd" secondAttribute="leading" constant="15" id="kEr-5X-qdB"/>
                                             <constraint firstAttribute="trailing" secondItem="S3d-Hg-gnO" secondAttribute="trailing" constant="20" id="lbf-nQ-dIX"/>
                                             <constraint firstItem="2Mr-AV-hSs" firstAttribute="leading" secondItem="f6R-Bd-Xrd" secondAttribute="leading" constant="20" id="pah-nk-ebA"/>
                                             <constraint firstAttribute="trailing" secondItem="Wc7-4f-5qA" secondAttribute="trailing" constant="22" id="xvh-Mm-2RP"/>

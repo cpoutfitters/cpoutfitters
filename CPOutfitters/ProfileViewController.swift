@@ -37,9 +37,11 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         ParseClient.sharedInstance.getUser(["owner": PFUser.currentUser()!]) { (user: PFUser?, error:NSError?) in
             let userName = user?.username!.characters.split("@").map(String.init)
             self.userhandleLabel.text = "@\(userName![0])"
-            self.bioTextView.text = user!["bio"] as! String
+            if user!["bio"] != nil {
+                self.bioTextView.text = user!["bio"] as! String
+                self.bioText = user!["bio"] as! String
+            }
             self.fullnameTextField.text = user!["fullname"] as! String
-            self.bioText = user!["bio"] as! String
             self.nameText = user!["fullname"] as! String
             if user!["profilePicture"] != nil {
                 let imageFile = user!["profilePicture"] as! PFFile
@@ -127,9 +129,9 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         view.endEditing(true)
     }
     @IBAction func onEditingEnd(sender: AnyObject) {
-            let user = PFUser.currentUser()!
-            user["fullname"] = fullnameTextField.text
-            user.saveInBackground()
+        let user = PFUser.currentUser()!
+        user["fullname"] = fullnameTextField.text
+        user.saveInBackground()
     }
     
     func resizeImage(image: UIImage, newSize: CGSize) -> UIImage {

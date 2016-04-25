@@ -14,7 +14,6 @@ class SignupViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var fullnameTextField: UITextField!
-    @IBOutlet weak var bioTextField: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +25,6 @@ class SignupViewController: UIViewController {
     @IBAction func onSignup(sender: AnyObject) {
         let email = emailTextField.text
         let password = passwordTextField.text
-        let bio = bioTextField.text
         let fullname = fullnameTextField.text
         
         let finalEmail = email!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).lowercaseString
@@ -51,9 +49,6 @@ class SignupViewController: UIViewController {
             newUser.password = password
             if fullname != "" {
                 newUser["fullname"] = fullname
-            }
-            if bio != "" {
-                newUser["bio"] = bio
             }
             
             emailTextField.enabled = false
