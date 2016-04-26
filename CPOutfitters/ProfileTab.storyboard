@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="jxJ-d9-H3m">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10102" systemVersion="15F24b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="jxJ-d9-H3m">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10080"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -53,8 +53,8 @@
                                                     <action selector="onCamera:" destination="jxJ-d9-H3m" eventType="touchUpInside" id="Ks1-uI-gvr"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xXs-yg-2QU" userLabel="Exit">
-                                                <rect key="frame" x="54" y="448" width="214" height="35"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xXs-yg-2QU" userLabel="Exit">
+                                                <rect key="frame" x="53" y="448" width="214" height="35"/>
                                                 <color key="backgroundColor" red="0.95686274510000002" green="0.26274509800000001" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="xXs-yg-2QU" secondAttribute="height" multiplier="61:10" id="Z8H-kk-xLa"/>
@@ -100,6 +100,19 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cx9-Gv-k5z">
+                                                <rect key="frame" x="20" y="192" width="58" height="22"/>
+                                                <fontDescription key="fontDescription" name="Didot" family="Didot" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Jna-SS-rlR">
+                                                <rect key="frame" x="86" y="189" width="117" height="29"/>
+                                                <segments>
+                                                    <segment title="Male"/>
+                                                    <segment title="Female"/>
+                                                </segments>
+                                            </segmentedControl>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -107,6 +120,7 @@
                                             <constraint firstItem="xXs-yg-2QU" firstAttribute="centerX" secondItem="f6R-Bd-Xrd" secondAttribute="centerX" id="4pX-Fk-wii"/>
                                             <constraint firstAttribute="trailing" secondItem="wrH-5J-2uS" secondAttribute="trailing" constant="20" id="62O-xx-EBt"/>
                                             <constraint firstItem="Wc7-4f-5qA" firstAttribute="top" secondItem="wrH-5J-2uS" secondAttribute="bottom" id="8iZ-Nw-qUp"/>
+                                            <constraint firstItem="Jna-SS-rlR" firstAttribute="leading" secondItem="cx9-Gv-k5z" secondAttribute="trailing" constant="8" id="9gO-8X-2k0"/>
                                             <constraint firstItem="wrH-5J-2uS" firstAttribute="top" secondItem="TPK-gS-Xuz" secondAttribute="bottom" constant="26" id="CSn-3C-ruk"/>
                                             <constraint firstAttribute="bottom" secondItem="xXs-yg-2QU" secondAttribute="bottom" constant="85" id="CtB-Yx-hOM"/>
                                             <constraint firstItem="2Mr-AV-hSs" firstAttribute="top" secondItem="Wc7-4f-5qA" secondAttribute="bottom" constant="15" id="IMq-lM-WfQ"/>
@@ -120,12 +134,15 @@
                                             <constraint firstItem="2Mr-AV-hSs" firstAttribute="leading" secondItem="f6R-Bd-Xrd" secondAttribute="leading" constant="20" id="cQs-86-ihh"/>
                                             <constraint firstItem="V5m-I6-7Pq" firstAttribute="top" secondItem="iue-IC-9J3" secondAttribute="bottom" constant="15" id="f1F-Zs-i06"/>
                                             <constraint firstItem="xG6-u6-VpR" firstAttribute="top" secondItem="2Mr-AV-hSs" secondAttribute="bottom" constant="30" id="fK5-WK-wyN"/>
+                                            <constraint firstItem="Jna-SS-rlR" firstAttribute="centerY" secondItem="cx9-Gv-k5z" secondAttribute="centerY" id="flM-qX-Ml6"/>
                                             <constraint firstAttribute="trailing" secondItem="rQR-sH-2Qc" secondAttribute="trailing" constant="20" id="hXT-49-jHs"/>
                                             <constraint firstItem="TPK-gS-Xuz" firstAttribute="centerX" secondItem="f6R-Bd-Xrd" secondAttribute="centerX" id="hmT-Uy-n4Z"/>
                                             <constraint firstItem="wrH-5J-2uS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iue-IC-9J3" secondAttribute="trailing" constant="1" id="iIT-kC-xMj"/>
                                             <constraint firstItem="rQR-sH-2Qc" firstAttribute="leading" secondItem="f6R-Bd-Xrd" secondAttribute="leading" constant="15" id="kEr-5X-qdB"/>
                                             <constraint firstItem="2Mr-AV-hSs" firstAttribute="leading" secondItem="f6R-Bd-Xrd" secondAttribute="leading" constant="20" id="pah-nk-ebA"/>
+                                            <constraint firstItem="cx9-Gv-k5z" firstAttribute="top" secondItem="V5m-I6-7Pq" secondAttribute="bottom" constant="25" id="w0q-2T-P2c"/>
                                             <constraint firstAttribute="trailing" secondItem="Wc7-4f-5qA" secondAttribute="trailing" constant="22" id="xvh-Mm-2RP"/>
+                                            <constraint firstItem="cx9-Gv-k5z" firstAttribute="leading" secondItem="f6R-Bd-Xrd" secondAttribute="leading" constant="20" id="zYi-Wy-Mln"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -154,6 +171,7 @@
                         <outlet property="articleCount" destination="2Mr-AV-hSs" id="5o4-G6-hGU"/>
                         <outlet property="bioTextView" destination="rQR-sH-2Qc" id="ulr-lR-oQb"/>
                         <outlet property="fullnameTextField" destination="V5m-I6-7Pq" id="1Zc-av-BmM"/>
+                        <outlet property="genderControl" destination="Jna-SS-rlR" id="DNe-Ie-HM9"/>
                         <outlet property="userProfileImageView" destination="wrH-5J-2uS" id="MCc-ef-rZ9"/>
                         <outlet property="userhandleLabel" destination="iue-IC-9J3" id="zYb-i1-EiG"/>
                     </connections>
