@@ -157,7 +157,9 @@ class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
         
         var articleArray: [Article] = []
         
-        if let articleSelectionViewController = segue.destinationViewController as? ArticleSelectionViewController {
+        let destinationViewController = segue.destinationViewController
+        
+        if let articleSelectionViewController = destinationViewController as? ArticleSelectionViewController {
             if segue.identifier == kselectTopSegueIdentifier {
                  articleArray = articles[0]
             } else if segue.identifier == kselectBottomSegueIdentifier {
@@ -170,6 +172,10 @@ class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
         }
         else if let articleViewController = segue.destinationViewController as? ArticleViewController {
             
+        }
+        
+        if let postViewController = destinationViewController as? PostViewController {
+            postViewController.outfit = outfit
         }
         
     }

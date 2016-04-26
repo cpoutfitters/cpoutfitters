@@ -82,7 +82,7 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
             }
         }
         
-        let newImage = pictureImageView.file == nil
+        let newImage = article.objectId == nil
         pictureImageView.file = article.mediaImage
         controlsView.hidden = newImage
         deleteButton.hidden = newImage
