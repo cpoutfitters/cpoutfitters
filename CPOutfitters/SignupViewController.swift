@@ -21,6 +21,8 @@ class SignupViewController: UIViewController {
 
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
+        
+        genderControl.layer.cornerRadius = 4
     }
     
     @IBAction func onSignup(sender: AnyObject) {
