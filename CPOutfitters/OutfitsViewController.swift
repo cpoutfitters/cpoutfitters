@@ -9,14 +9,21 @@
 import UIKit
 import Parse
 
+let imageKey = "image"
+
 class OutfitsViewController: UITableViewController {
     
-    var categories = ["Casual", "Work" ,"Date", "Social", "Formal", "Black Tie"]
+    var genderFlag: String!
+    
+    var categories = [[occasionKey:"Casual",imageKey:"casual"],
+                      [occasionKey:"Work",imageKey:"work"],
+                      [occasionKey:"Date",imageKey:"date"],
+                      [occasionKey:"Social",imageKey:"social"],
+                      [occasionKey:"Formal",imageKey:"formal"],
+                      [occasionKey:"Black Tie",imageKey:"blacktie"]]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,6 +32,7 @@ class OutfitsViewController: UITableViewController {
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+//        PFUser.currentUser().
         return 1
     }
     
@@ -34,8 +42,9 @@ class OutfitsViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("AttireCell", forIndexPath: indexPath) as! OutfitsCell
-        cell.categoryCell.imageView.image = UIImage(named: categories[indexPath.row])
-        cell.categoryCell.labelView.text = categories[indexPath.row]
+        
+        cell.categoryCell.imageView.image = UIImage(named: categories[indexPath.row][imageKey]!)
+        cell.categoryCell.labelView.text = categories[indexPath.row][occasionKey]
         
         if indexPath.row % 2 == 0 {
             cell.backgroundColor = UIColor ( red: 0.8722, green: 0.8722, blue: 0.8722, alpha: 1.0 )
