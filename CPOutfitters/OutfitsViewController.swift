@@ -25,6 +25,12 @@ class OutfitsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        genderFlag = PFUser.currentUser()!["gender"] as? String == "Female" ? "f" : "m"
+        tableView.reloadData()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -32,8 +38,6 @@ class OutfitsViewController: UITableViewController {
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        genderFlag = PFUser.currentUser()!["gender"] as? String == "Female" ? "f" : "m"
-        
         return 1
     }
     
