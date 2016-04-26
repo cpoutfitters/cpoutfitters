@@ -13,9 +13,9 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
 
     @IBOutlet weak var userhandleLabel: UILabel!
     @IBOutlet weak var userProfileImageView: UIImageView!
-    @IBOutlet weak var articleCount: UILabel!
     @IBOutlet weak var bioTextView: UITextView!
     @IBOutlet weak var fullnameTextField: UITextField!
+    @IBOutlet weak var articleCount: UILabel!
     
     var bioText: String = ""
     var nameText: String = ""
@@ -41,8 +41,10 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
                 self.bioTextView.text = user!["bio"] as! String
                 self.bioText = user!["bio"] as! String
             }
-            self.fullnameTextField.text = user!["fullname"] as! String
-            self.nameText = user!["fullname"] as! String
+            if user!["fullname"] != nil {
+                self.fullnameTextField.text = user!["fullname"] as! String
+                self.nameText = user!["fullname"] as! String
+            }
             if user!["profilePicture"] != nil {
                 let imageFile = user!["profilePicture"] as! PFFile
                 imageFile.getDataInBackgroundWithBlock {
@@ -56,11 +58,11 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             }
         }
         ParseClient.sharedInstance.countArticles(["owner": PFUser.currentUser()!]) { (count:Int32?, error:NSError?) in
-            var countFabrics: String = "0 Fabriqs"
+            var countFabrics: String = "0 Fabriqs in your wardrobe"
             if count! == 1 {
-                countFabrics = "\(count!) Fabriq"
+                countFabrics = "\(count!) Fabriq in your wardrobe"
             } else {
-                countFabrics = "\(count!) Fabriqs"
+                countFabrics = "\(count!) Fabriqs in your wardrobe"
             }
             self.articleCount.text = countFabrics
         }
