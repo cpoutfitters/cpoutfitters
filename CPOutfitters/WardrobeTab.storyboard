@@ -48,6 +48,7 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="articleView" destination="pA6-Px-PsN" id="e9z-IV-qN2"/>
+                                            <segue destination="T0h-Wh-l9V" kind="modal" id="uVf-vV-IG3"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -136,6 +137,20 @@
                                     <outletCollection property="gestureRecognizers" destination="fcI-N0-JwE" appends="YES" id="Ljh-2a-JQe"/>
                                 </connections>
                             </imageView>
+                            <button opaque="NO" alpha="0.80000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ItM-pj-uqO">
+                                <rect key="frame" x="256" y="28" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="Igy-cN-84L"/>
+                                    <constraint firstAttribute="height" constant="44" id="dQM-Ly-rL3"/>
+                                </constraints>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="checkmark">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onSave" destination="T0h-Wh-l9V" eventType="touchUpInside" id="d3J-1G-xsY"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X1b-Li-6Q7">
                                 <rect key="frame" x="138" y="276" width="44" height="44"/>
                                 <constraints>
@@ -175,15 +190,15 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Df-Od-sI4">
                                 <rect key="frame" x="20" y="328" width="280" height="150"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="AXn-TP-fQV">
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="AXn-TP-fQV">
                                         <rect key="frame" x="0.0" y="0.0" width="154" height="28"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Length" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jKj-O0-6GF">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Length" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jKj-O0-6GF">
                                                 <rect key="frame" x="0.0" y="0.0" width="53" height="20"/>
                                                 <fontDescription key="fontDescription" name="Didot" family="Didot" pointSize="16"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nw9-xE-jLc">
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nw9-xE-jLc">
                                                 <rect key="frame" x="57" y="0.0" width="97" height="29"/>
                                                 <segments>
                                                     <segment title="Short"/>
@@ -236,7 +251,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="280" height="34"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2kg-ub-v9C">
-                                                        <rect key="frame" x="0.0" y="0.0" width="94" height="34"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="93" height="34"/>
                                                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <state key="normal" title="Work">
@@ -247,7 +262,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V3M-Bv-rPa">
-                                                        <rect key="frame" x="94" y="0.0" width="93" height="34"/>
+                                                        <rect key="frame" x="93" y="0.0" width="94" height="34"/>
                                                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <state key="normal" title="Casual">
@@ -258,7 +273,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VaT-sb-7Lg">
-                                                        <rect key="frame" x="187" y="0.0" width="94" height="34"/>
+                                                        <rect key="frame" x="187" y="0.0" width="93" height="34"/>
                                                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <state key="normal" title="Social">
@@ -277,7 +292,7 @@
                                                 <rect key="frame" x="0.0" y="34" width="280" height="34"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7LZ-8y-B0L">
-                                                        <rect key="frame" x="0.0" y="0.0" width="94" height="34"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="93" height="34"/>
                                                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <state key="normal" title="Blk Tie">
@@ -288,7 +303,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y0w-jg-Rw6">
-                                                        <rect key="frame" x="94" y="0.0" width="93" height="34"/>
+                                                        <rect key="frame" x="93" y="0.0" width="94" height="34"/>
                                                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <state key="normal" title="Date">
@@ -299,7 +314,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8cb-wg-cgo">
-                                                        <rect key="frame" x="187" y="0.0" width="94" height="34"/>
+                                                        <rect key="frame" x="187" y="0.0" width="93" height="34"/>
                                                         <color key="backgroundColor" red="0.47705167529999998" green="0.68998968599999999" blue="0.97915524239999996" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <state key="normal" title="Formal">
@@ -337,7 +352,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ItM-pj-uqO" secondAttribute="trailing" constant="20" id="GJv-vu-u03"/>
                             <constraint firstItem="0Df-Od-sI4" firstAttribute="top" secondItem="X1b-Li-6Q7" secondAttribute="bottom" constant="8" id="HPF-1H-hFS"/>
+                            <constraint firstItem="ItM-pj-uqO" firstAttribute="top" secondItem="Ice-g8-Vdg" secondAttribute="bottom" constant="8" id="L4d-C8-C8M"/>
                             <constraint firstItem="AsI-aK-Eqj" firstAttribute="top" secondItem="Ice-g8-Vdg" secondAttribute="bottom" constant="8" id="SZn-W6-19K"/>
                             <constraint firstAttribute="trailing" secondItem="o03-w7-GW8" secondAttribute="trailing" constant="20" id="SdW-K0-pcz"/>
                             <constraint firstItem="o03-w7-GW8" firstAttribute="leading" secondItem="4B8-WQ-CPx" secondAttribute="leading" constant="20" id="TrU-ug-P6t"/>
@@ -368,6 +385,7 @@
                         <outlet property="formalButton" destination="8cb-wg-cgo" id="Qrm-Tw-Onp"/>
                         <outlet property="longOrShortSegmentedControl" destination="nw9-xE-jLc" id="Gyi-Lk-7vo"/>
                         <outlet property="pictureImageView" destination="rJd-KA-Ulf" id="5l2-uU-rmr"/>
+                        <outlet property="saveButton" destination="ItM-pj-uqO" id="zmz-wL-uve"/>
                         <outlet property="socialButton" destination="VaT-sb-7Lg" id="x9w-SA-R4i"/>
                         <outlet property="swatchInstructionLabel" destination="fQ0-hR-iRS" id="jvx-hH-UDe"/>
                         <outlet property="workButton" destination="2kg-ub-v9C" id="WWT-ay-U5O"/>
@@ -473,7 +491,11 @@
     <resources>
         <image name="arrow" width="24" height="24"/>
         <image name="cancel" width="24" height="24"/>
+        <image name="checkmark" width="24" height="24"/>
         <image name="closet" width="25" height="25"/>
         <image name="white-camera" width="44" height="44"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="uVf-vV-IG3"/>
+    </inferredMetricsTieBreakers>
 </document>
