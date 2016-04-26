@@ -9,6 +9,7 @@
 import UIKit
 import Parse
 import ParseUI
+import ChameleonFramework
 
 class SocialTypeCell: UITableViewCell {
     @IBOutlet weak var captionLabel: UILabel!
@@ -21,13 +22,61 @@ class SocialTypeCell: UITableViewCell {
     
     @IBOutlet weak var topImageAverageColorView: UIView!
     @IBOutlet weak var bottomImageAverageColorView: UIView!
+    
+    
+    
     var post: PFObject! {
         didSet {
             let author = post["author"] as? PFUser
             self.authorLabel.text = author?["fullname"] as? String
             self.captionLabel.text = post["caption"] as? String
             
-            profileImageView.file = author?["profilePicture"] as? PFFile
+            //profileImageView.image = author?["profilePicture"] as? PFFile
+            
+            if let profileImageFile = author?["profilePicture"] as? PFFile {
+                profileImageFile.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) in
+                    if error == nil {
+                        if let imageData = imageData {
+                            self.profileImageView.image = UIImage(data: imageData)
+                        }
+                    }
+                })
+            }
+            
+            if let topImageFile = post["topImage"] as? PFFile {
+                topImageFile.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) in
+                    if error == nil {
+                        if let imageData = imageData {
+                            self.topImageView.image = UIImage(data: imageData)
+                            self.topImageAverageColorView.backgroundColor = UIColor(averageColorFromImage: self.topImageView.image)
+                        }
+                    }
+                })
+            }
+            
+            if let bottomImageFile = post?["bottomImage"] as? PFFile {
+                bottomImageFile.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) in
+                    if error == nil {
+                        if let imageData = imageData {
+                            self.bottomImageView.image = UIImage(data: imageData)
+                            self.bottomImageAverageColorView.backgroundColor = UIColor(averageColorFromImage: self.bottomImageView.image)
+                        }
+                    }
+                })
+            }
+            
+            if let footwearImageFile = post?["footwearImage"] as? PFFile {
+                footwearImageFile.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) in
+                    if error == nil {
+                        if let imageData = imageData {
+                            self.footwearImageView.image = UIImage(data: imageData)
+                        }
+                    }
+                })
+            }
+            
+            
+            //topImageView.image
             
             
             
