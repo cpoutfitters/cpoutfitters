@@ -19,6 +19,8 @@ class SocialTypeCell: UITableViewCell {
     @IBOutlet weak var footwearImageView: PFImageView!
     @IBOutlet weak var profileImageView: PFImageView!
     
+    @IBOutlet weak var topImageAverageColorView: UIView!
+    @IBOutlet weak var bottomImageAverageColorView: UIView!
     var post: PFObject! {
         didSet {
             let author = post["author"] as? PFUser
@@ -26,6 +28,8 @@ class SocialTypeCell: UITableViewCell {
             self.captionLabel.text = post["caption"] as? String
             
             profileImageView.file = author?["profilePicture"] as? PFFile
+            
+            
             
             //topImageView = post["topImage"] as? PFImageView
             

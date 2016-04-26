@@ -53,7 +53,14 @@ class PostViewController: UIViewController {
     
     @IBAction func onPostImage(sender: AnyObject) {
         // FIXME Send the image of the outfit
-        Post.postUserImage(topImageView.image, withCaption: postCaptionTextField.text) { (success: Bool, error: NSError?) in
+//        Post.postUserImage(topImageView.image, withCaption: postCaptionTextField.text) { (success: Bool, error: NSError?) in
+//            if success {
+//                print("posted")
+//                self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+//            }
+//        }
+        
+        Post.postOutfit(topImageView.image, bottomImage: bottomImageView.image, footwearImage: footwearImageView.image, withCaption: postCaptionTextField.text) { (success: Bool, error: NSError?) in
             if success {
                 print("posted")
                 self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)

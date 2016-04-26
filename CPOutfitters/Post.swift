@@ -18,4 +18,15 @@ class Post: NSObject {
         
         post.saveInBackgroundWithBlock(completion)
     }
+    
+    class func postOutfit(topImage: UIImage?, bottomImage: UIImage?, footwearImage: UIImage?, withCaption caption: NSString?, withCompletion completion: PFBooleanResultBlock?) {
+        let post = PFObject(className: "Post")
+        post["topImage"] = Article.getPFFileFromImage(topImage)
+        post["bottomImage"] = Article.getPFFileFromImage(bottomImage)
+        post["footwearImage"] = Article.getPFFileFromImage(footwearImage)
+        post["author"] = PFUser.currentUser()
+        post["caption"] = caption
+        
+        post.saveInBackgroundWithBlock(completion)
+    }
 }
