@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "socialcropped.png",
+      "filename" : "social-m.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "socialcropped-1.png",
+      "filename" : "social-m@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "socialcropped-2.png",
+      "filename" : "social-m@3x.png",
       "scale" : "3x"
     }
   ],
