@@ -14,6 +14,7 @@ class SignupViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var fullnameTextField: UITextField!
+    @IBOutlet weak var genderControl: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,8 @@ class SignupViewController: UIViewController {
         let email = emailTextField.text
         let password = passwordTextField.text
         let fullname = fullnameTextField.text
+        var genders = ["Male", "Female"]
+        let userGender = genders[genderControl.selectedSegmentIndex]
         
         let finalEmail = email!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).lowercaseString
         // Validate the text fields
@@ -47,6 +50,7 @@ class SignupViewController: UIViewController {
             newUser.username = finalEmail
             newUser.email = finalEmail
             newUser.password = password
+            newUser["gender"] = userGender
             if fullname != "" {
                 newUser["fullname"] = fullname
             }

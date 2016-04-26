@@ -16,9 +16,11 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var bioTextView: UITextView!
     @IBOutlet weak var fullnameTextField: UITextField!
     @IBOutlet weak var articleCount: UILabel!
+    @IBOutlet weak var genderControl: UISegmentedControl!
     
     var bioText: String = ""
     var nameText: String = ""
+    var genders = ["Male", "Female"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +46,10 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             if user!["fullname"] != nil {
                 self.fullnameTextField.text = user!["fullname"] as! String
                 self.nameText = user!["fullname"] as! String
+            }
+            if user!["gender"] != nil {
+                let gender = user!["gender"] as! String
+                self.genderControl.selectedSegmentIndex = self.genders.indexOf(gender)!
             }
             if user!["profilePicture"] != nil {
                 let imageFile = user!["profilePicture"] as! PFFile

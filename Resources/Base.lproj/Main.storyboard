@@ -269,6 +269,14 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="EzY-M6-huT">
+                                <rect key="frame" x="52" y="319" width="217" height="29"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <segments>
+                                    <segment title="Male"/>
+                                    <segment title="Female"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -297,6 +305,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="Tmh-UQ-EDl" id="nfk-30-rxq"/>
                         <outlet property="fullnameTextField" destination="QsB-cI-olQ" id="vWA-tI-3cd"/>
+                        <outlet property="genderControl" destination="EzY-M6-huT" id="6jg-1s-LKi"/>
                         <outlet property="passwordTextField" destination="ghm-R4-mq8" id="eNi-Yk-RZq"/>
                     </connections>
                 </viewController>
@@ -366,7 +375,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LoginBackground" width="3648" height="5472"/>
+        <image name="LoginBackground" width="800" height="1200"/>
         <image name="cancel" width="24" height="24"/>
         <image name="closet" width="25" height="25"/>
         <image name="outfit" width="25" height="25"/>
