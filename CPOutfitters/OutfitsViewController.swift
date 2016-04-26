@@ -38,10 +38,10 @@ class OutfitsViewController: UITableViewController {
         cell.categoryCell.labelView.text = categories[indexPath.row]
         
         if indexPath.row % 2 == 0 {
-            cell.backgroundColor = UIColor.lightGrayColor()
+            cell.backgroundColor = UIColor ( red: 0.8722, green: 0.8722, blue: 0.8722, alpha: 1.0 )
             cell.categoryCell.imageSideLeft = true
         } else {
-            cell.backgroundColor = UIColor.darkGrayColor()
+            cell.backgroundColor = UIColor ( red: 1.0, green: 0.9998, blue: 0.9998, alpha: 1.0 )
             cell.categoryCell.imageSideLeft = false
         }
         

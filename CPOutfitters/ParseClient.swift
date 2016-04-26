@@ -39,6 +39,36 @@ class ParseClient: NSObject {
             }
         }
     }
+    func countArticles(params: NSDictionary, completion:(Int32?, NSError?) -> ()) {
+        let query = PFQuery(className:"Article")
+        let obj = params
+        var userName: PFUser?
+        for (key, value) in obj {
+            userName = value as? PFUser
+        }
+        query.whereKey("owner", equalTo: userName!)
+        query.countObjectsInBackgroundWithBlock {
+            (count: Int32, error: NSError?) -> Void in
+            if error == nil {
+                completion(count, nil)
+            } else {
+                print(error?.localizedDescription)
+            }
+        }
+
+    }
+    
+    func loadProfileImageWithCompletion(params: NSDictionary, completion:([PFObject]?, NSError?) -> ()) {
+        let obj = params
+        var userName: String?
+        for (key, value) in obj {
+            userName = value as? String
+        }
+        let query = PFQuery(className: "_User")
+        query.whereKey("username", equalTo: userName!)
+        query.limit = 20
+        query.findObjectsInBackgroundWithBlock(completion)
+    }
     
     func getArticle(articleId: String, completion:(Article?, NSError?) -> ()) {
         let article = Article(className: articleId)
@@ -123,4 +153,39 @@ class ParseClient: NSObject {
         article.deleteInBackgroundWithBlock(completion)
     }
     
+    func getUser(params: NSDictionary, completion:(PFUser?, NSError?) -> ()) {
+        let query = PFQuery(className: "_User")
+        let username = PFUser.currentUser()?.username
+        query.whereKey("username", equalTo: username!)
+        query.limit = 1
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            if let objects = objects as? [PFUser] {
+                let user = objects[0]
+                completion(user, nil)
+            } else {
+                print(error?.localizedDescription)
+            }
+        }
+    }
+    func logoutUser() {
+        PFUser.logOutInBackgroundWithBlock { (error:NSError?) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                print("User logged out")
+                NSNotificationCenter.defaultCenter().postNotificationName(userDidLogoutNotification, object: nil)
+            }
+        }
+    }
+    func updateInfo(params: NSDictionary, completion:(success: Bool, error: NSError?) -> ()) {
+        let obj = params
+        var userName: String?
+        for (key, value) in obj {
+            userName = value as? String
+        }
+        let query = PFQuery(className: "_User")
+        let username = PFUser.currentUser()?.username
+        query.whereKey("username", equalTo: username!)
+    }
 }

@@ -9,15 +9,14 @@
 import UIKit
 import ParseUI
 
-class WardrobeTypeCell: UITableViewCell {
+class WardrobeTypeCell: UICollectionViewCell {
 
-    @IBOutlet weak var containerView: ImageLabelView!
+    @IBOutlet weak var articleView: PFImageView!
     
     var article: Article! {
         didSet {
-            containerView.imageView.file = article.mediaImage
-            containerView.imageView.loadInBackground()
-            containerView.labelView.text = "Never worn"
+            articleView.file = article.mediaImage
+            articleView.loadInBackground()
         }
     }
         
@@ -25,11 +24,4 @@ class WardrobeTypeCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }

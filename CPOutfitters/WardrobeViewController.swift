@@ -18,11 +18,9 @@ let primaryColorKey = "primaryColorCategories"
 let occasionKey = "occasion"
 let typeKey = "type"
 
-class WardrobeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, ArticleDelegate {
+class WardrobeViewController: UIViewController, UISearchBarDelegate, ArticleDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var searchSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     var types = ["Tops", "Bottoms", "Footwear"]
     var expanded = [true, true, true]
@@ -34,29 +32,27 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
-        self.searchBar.delegate = self
-        
+        collectionView.dataSource = self
+        collectionView.delegate = self
         ParseClient.sharedInstance.fetchArticles(["type":"top"]) { (articles, error) in
             if let articles = articles {
                 self.articles[0] = articles
                 self.filteredArticles[0] = articles
-                self.tableView.reloadData()
+                self.collectionView.reloadSections(NSIndexSet(index:0))
             }
         }
         ParseClient.sharedInstance.fetchArticles(["type":"bottom"]) { (articles, error) in
             if let articles = articles {
                 self.articles[1] = articles
                 self.filteredArticles[1] = articles
-                self.tableView.reloadData()
+                self.collectionView.reloadSections(NSIndexSet(index:1))
             }
         }
         ParseClient.sharedInstance.fetchArticles(["type":"footwear"]) { (articles, error) in
             if let articles = articles {
                 self.articles[2] = articles
                 self.filteredArticles[2] = articles
-                self.tableView.reloadData()
+                self.collectionView.reloadSections(NSIndexSet(index: 2))
             }
         }
     }
@@ -66,38 +62,24 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
         // Dispose of any resources that can be recreated.
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 3
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return cellHeight
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let width = collectionView.bounds.width
+        let count = articles[indexPath.section].count
+        let size = count > 3 ? width / 3 : width / 2
+        return CGSize(width: size, height: size)
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = ImageLabelView(frame: CGRectZero)
+    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        let view = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "WardrobeTypeHeader", forIndexPath: indexPath) as! WardrobeTypeHeaderView
         
-        // Add gradient
-        view.backgroundColor = UIColor.whiteColor()
-        let gradientLayer = view.gradientLayer
-        gradientLayer.colors = [UIColor(white: 1.0, alpha: 1.0).CGColor, UIColor(white: 0.85, alpha: 1.0).CGColor]
-        gradientLayer.locations = [0.5]
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-        gradientLayer.endPoint = CGPoint(x: 1, y: 0)
-
+        let section = indexPath.section
         
-        // Customize per Section
-        view.imageSideLeft = false
-        view.labelView.text = types[section]
-        var imageName: String
-
-        switch (section) {
-        case 0: imageName = "tops"
-        case 1: imageName = "bottoms"
-        default: imageName = "footwear"
-        }
-        view.imageView.image = UIImage(named: imageName)
-        
+        view.titleLabel.text = types[section]
         
         // Add expand/collapse gesture recognizer
         var tapGesture = CPTapGestureRecognizer(target: self, action: "toggleSection:")
@@ -106,46 +88,31 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
         
         
         // Add Expand Icon
-        let expandButton = UIImageView(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
-        expandButton.translatesAutoresizingMaskIntoConstraints = false
-        expandButton.image = UIImage(named: "arrow")
         let isExpanded = expanded[section]
-        expandButton.layer.transform = CATransform3DMakeRotation(angleForArrow(isExpanded), 0, 0, 1.0)
-        
-        view.addSubview(expandButton)
-        view.addConstraint(NSLayoutConstraint(item: view, attribute: .CenterX, relatedBy: .Equal, toItem: expandButton, attribute: .CenterX, multiplier: 1, constant: 0))
-        view.addConstraint(NSLayoutConstraint(item: expandButton, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1.0, constant: 0))
+        view.expandButton.layer.transform = CATransform3DMakeRotation(angleForArrow(isExpanded), 0, 0, 1.0)
         
         // Add add Icon
         
-        let addButton = UIButton(type: .ContactAdd)
-        addButton.translatesAutoresizingMaskIntoConstraints = false
-        addButton.tintColor = UIColor.whiteColor()
-        addButton.layer.backgroundColor = UIColor(red: 0.0999, green: 0.7602, blue: 0.0144, alpha: 1.0).CGColor
+        let addButton = view.addButton
         addButton.layer.cornerRadius = 12
-        
-        view.addSubview(addButton)
-        view.addConstraint(NSLayoutConstraint(item: view, attribute: .Right, relatedBy: .Equal, toItem: addButton, attribute: .Right, multiplier: 1.0, constant: 8))
-        view.addConstraint(NSLayoutConstraint(item: addButton, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1.0, constant: 8))
+        addButton.tintColor = UIColor.whiteColor()
+        addButton.layer.backgroundColor = UIColor(white: 0.3, alpha: 1.0).CGColor
         
         tapGesture = CPTapGestureRecognizer(target: self, action: "addArticle:")
         tapGesture.section = section
         addButton.addGestureRecognizer(tapGesture)
-
+        
         return view
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return expanded[section] ? filteredArticles[section].count : 0
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("WardrobeTypeCell", forIndexPath: indexPath) as! WardrobeTypeCell
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("WardrobeTypeCell", forIndexPath: indexPath) as! WardrobeTypeCell
 
         cell.article = filteredArticles[indexPath.section][indexPath.row]
-        
-        let gesture = UILongPressGestureRecognizer(target: self, action: "sendPost:")
-        cell.containerView.addGestureRecognizer(gesture)
         
         return cell
     }
@@ -157,7 +124,7 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
     func toggleSection(sender: CPTapGestureRecognizer) {
         let section = sender.section
         expanded[section] = !expanded[section]
-        tableView.reloadSections(NSIndexSet(index: section), withRowAnimation: .Automatic)
+        collectionView.reloadSections(NSIndexSet(index: section))
     }
     
     func sendPost(sender: UILongPressGestureRecognizer) {
@@ -176,7 +143,7 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
     
     // MARK: - SearchBar
     
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+/*    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         
         var searchOptions = [primaryColorKey, occasionKey, typeKey]
         let searchOption = searchOptions[searchSegmentedControl.selectedSegmentIndex]
@@ -239,23 +206,14 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
         self.tableView.reloadData()
     }
     
+    */
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         var article: Article?
         let destinationViewController = segue.destinationViewController
-        
-        if destinationViewController is PostViewController {
-            let postViewController = destinationViewController as! PostViewController
-            let gesture = sender as! UILongPressGestureRecognizer
-            let point = gesture.locationInView(self.tableView)
-            if let indexPath = self.tableView.indexPathForRowAtPoint(point) {
-                let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! WardrobeTypeCell
-                article = cell.article
-            }
-            postViewController.article = article
-        }
         
         if destinationViewController is ArticleViewController {
             if segue.identifier == kAddArticleSegueIdentifier {
@@ -308,9 +266,7 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
             filteredArticles[saveInSection].insert(article, atIndex: 0)
             print("WardrobeViewController: New article added to tableview")
             
-            tableView.beginUpdates()
-            tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-            tableView.endUpdates()
+            collectionView.insertItemsAtIndexPaths([indexPath])
             // dismiss editor
         } else {
             //Update at same index
@@ -319,11 +275,11 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
             let indexPath = NSIndexPath(forRow: articleIndex!, inSection: saveInSection)
             print("WardrobeViewController: Article at index \(articleIndex) updated")
             articles[saveInSection][articleIndex!] = article
-            tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            collectionView.reloadItemsAtIndexPaths([indexPath])
         }
 
     }
-    
+
     func articleDeleted(article: Article) {
         
         let articleType = article.type
@@ -344,9 +300,7 @@ class WardrobeViewController: UIViewController, UITableViewDataSource, UITableVi
         articles[saveInSection].removeAtIndex(articleIndex!)
         filteredArticles[saveInSection].removeAtIndex(articleIndex!)
         
-        tableView.beginUpdates()
-        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-        tableView.endUpdates()
+        collectionView.deleteItemsAtIndexPaths([indexPath])
 
         dismissViewControllerAnimated(true, completion: nil)
     }
