@@ -18,21 +18,32 @@ class PostViewController: UIViewController {
     @IBOutlet weak var topImageView: UIImageView!
     @IBOutlet weak var postCaptionTextField: UITextField!
 
-    var article: Article!
+    var outfit: Outfit!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+        /* hack: Needs to retrive an outfit so the other views will be different */
         
-        article.mediaImage.getDataInBackgroundWithBlock { (picture: NSData?, error: NSError?) in
+        outfit.topComponent!.mediaImage.getDataInBackgroundWithBlock { (picture: NSData?, error: NSError?) in
             if error == nil {
                 self.topImageView.image = UIImage(data: picture!)
-                
-                /* hack: Needs to retrive an outfit so the other views will be different */
+            }
+        }
+        
+        outfit.bottomComponent!.mediaImage.getDataInBackgroundWithBlock { (picture: NSData?, error: NSError?) in
+            if error == nil {
                 self.bottomImageView.image = UIImage(data: picture!)
+            }
+        }
+
+        outfit.footwearComponent!.mediaImage.getDataInBackgroundWithBlock { (picture: NSData?, error: NSError?) in
+            if error == nil {
                 self.footwearImageView.image = UIImage(data: picture!)
             }
         }
-        // Do any additional setup after loading the view.
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,7 +52,15 @@ class PostViewController: UIViewController {
     }
     
     @IBAction func onPostImage(sender: AnyObject) {
-        Post.postUserImage(topImageView.image, withCaption: postCaptionTextField.text) { (success: Bool, error: NSError?) in
+        // FIXME Send the image of the outfit
+//        Post.postUserImage(topImageView.image, withCaption: postCaptionTextField.text) { (success: Bool, error: NSError?) in
+//            if success {
+//                print("posted")
+//                self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+//            }
+//        }
+        
+        Post.postOutfit(topImageView.image, bottomImage: bottomImageView.image, footwearImage: footwearImageView.image, withCaption: postCaptionTextField.text) { (success: Bool, error: NSError?) in
             if success {
                 print("posted")
                 self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
