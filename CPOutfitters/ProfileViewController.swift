@@ -91,6 +91,12 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
 //        }
 //    }
 
+    @IBAction func onValueChanged(sender: AnyObject) {
+        let user = PFUser.currentUser()!
+        user["gender"] = genders[genderControl.selectedSegmentIndex]
+        user.saveInBackground()
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

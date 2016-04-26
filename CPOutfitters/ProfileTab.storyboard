@@ -112,6 +112,9 @@
                                                     <segment title="Male"/>
                                                     <segment title="Female"/>
                                                 </segments>
+                                                <connections>
+                                                    <action selector="onValueChanged:" destination="jxJ-d9-H3m" eventType="valueChanged" id="AiQ-V4-beO"/>
+                                                </connections>
                                             </segmentedControl>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
