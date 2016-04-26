@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Bl5-1w-8zr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Bl5-1w-8zr">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--Outfits-->
@@ -17,7 +17,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ndc-ku-geI" id="XUn-tQ-obs">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="99.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ojf-IO-8B9" customClass="ImageLabelView" customModule="Fabriq" customModuleProvider="target">
@@ -57,40 +57,79 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="HNV-XQ-8cC">
-                                <rect key="frame" x="95" y="85" width="130" height="390"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="HNV-XQ-8cC">
+                                <rect key="frame" x="58" y="85" width="205" height="390"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hjP-ur-5V0">
-                                        <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="130" id="hxi-hm-i61"/>
-                                            <constraint firstAttribute="height" constant="130" id="oaB-65-O2W"/>
-                                        </constraints>
-                                        <state key="normal" title="Tops"/>
-                                        <connections>
-                                            <segue destination="oA3-rY-Kjc" kind="modal" identifier="selectTop" id="hIM-Yd-Zfq"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CbN-ZC-Cib">
-                                        <rect key="frame" x="0.0" y="130" width="130" height="130"/>
-                                        <state key="normal" title="Bottoms"/>
-                                        <connections>
-                                            <segue destination="oA3-rY-Kjc" kind="modal" identifier="selectBottom" id="EjY-lL-M8j"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hsV-L2-5bT">
-                                        <rect key="frame" x="0.0" y="260" width="130" height="130"/>
-                                        <state key="normal" title="Shoes"/>
-                                        <connections>
-                                            <segue destination="oA3-rY-Kjc" kind="modal" identifier="selectFootwear" id="iEZ-Zy-eXg"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4RE-nd-CTQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="205" height="130"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJd-Ii-9TO">
+                                                <rect key="frame" x="0.0" y="0.0" width="75" height="130"/>
+                                                <fontDescription key="fontDescription" name="Didot" family="Didot" pointSize="18"/>
+                                                <state key="normal" title="Tops"/>
+                                                <connections>
+                                                    <segue destination="oA3-rY-Kjc" kind="modal" identifier="selectTop" id="bG5-yv-jvV"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hjP-ur-5V0">
+                                                <rect key="frame" x="75" y="0.0" width="130" height="130"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="130" id="hxi-hm-i61"/>
+                                                    <constraint firstAttribute="height" constant="130" id="oaB-65-O2W"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <state key="normal">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="raQ-dX-zRI">
+                                        <rect key="frame" x="0.0" y="130" width="205" height="130"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VmG-75-eGo">
+                                                <rect key="frame" x="0.0" y="0.0" width="75" height="130"/>
+                                                <fontDescription key="fontDescription" name="Didot" family="Didot" pointSize="18"/>
+                                                <state key="normal" title="Bottoms"/>
+                                                <connections>
+                                                    <segue destination="oA3-rY-Kjc" kind="modal" identifier="selectFootwear" id="agx-lx-2Im"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CbN-ZC-Cib">
+                                                <rect key="frame" x="75" y="0.0" width="130" height="130"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <state key="normal">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cwB-KV-I7w">
+                                        <rect key="frame" x="0.0" y="260" width="205" height="130"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxp-Yn-4OE">
+                                                <rect key="frame" x="0.0" y="0.0" width="75" height="130"/>
+                                                <fontDescription key="fontDescription" name="Didot" family="Didot" pointSize="18"/>
+                                                <state key="normal" title="Footwear"/>
+                                                <connections>
+                                                    <segue destination="oA3-rY-Kjc" kind="modal" identifier="selectBottom" id="Uh7-Jf-X3g"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hsV-L2-5bT">
+                                                <rect key="frame" x="75" y="0.0" width="130" height="130"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <state key="normal">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="hsV-L2-5bT" firstAttribute="height" secondItem="hjP-ur-5V0" secondAttribute="height" id="0O1-ig-oii"/>
-                                    <constraint firstItem="hsV-L2-5bT" firstAttribute="width" secondItem="hjP-ur-5V0" secondAttribute="width" id="L2A-5n-aGS"/>
-                                    <constraint firstItem="CbN-ZC-Cib" firstAttribute="width" secondItem="hjP-ur-5V0" secondAttribute="width" id="l4j-Lb-msA"/>
-                                    <constraint firstItem="CbN-ZC-Cib" firstAttribute="height" secondItem="hjP-ur-5V0" secondAttribute="height" id="wvk-eL-4Sd"/>
+                                    <constraint firstItem="hsV-L2-5bT" firstAttribute="height" secondItem="hjP-ur-5V0" secondAttribute="height" id="0Rr-41-gud"/>
+                                    <constraint firstItem="CbN-ZC-Cib" firstAttribute="height" secondItem="hjP-ur-5V0" secondAttribute="height" id="WKq-gz-219"/>
+                                    <constraint firstItem="hsV-L2-5bT" firstAttribute="width" secondItem="hjP-ur-5V0" secondAttribute="width" id="c2b-Mx-ts7"/>
+                                    <constraint firstItem="CbN-ZC-Cib" firstAttribute="width" secondItem="hjP-ur-5V0" secondAttribute="width" id="g48-6l-lCM"/>
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nyo-j5-kht">
@@ -114,8 +153,8 @@
                                     <action selector="onCancel:" destination="wVj-90-4tb" eventType="touchUpInside" id="dnh-0G-cf8"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zFe-gF-pfK">
-                                <rect key="frame" x="68" y="40" width="184" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zFe-gF-pfK">
+                                <rect key="frame" x="88" y="40" width="145" height="30"/>
                                 <state key="normal" title="Shake for suggestion"/>
                                 <connections>
                                     <action selector="onRecommendMe:" destination="wVj-90-4tb" eventType="touchUpInside" id="oi9-6t-xyI"/>
@@ -157,11 +196,11 @@
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="sXK-D8-fEu"/>
                     <connections>
-                        <outlet property="bottomButton" destination="CbN-ZC-Cib" id="oWf-Pa-0Tu"/>
+                        <outlet property="bottomButton" destination="CbN-ZC-Cib" id="TB7-6H-pft"/>
                         <outlet property="favoriteButton" destination="nyo-j5-kht" id="DJh-Hm-756"/>
-                        <outlet property="footwearButton" destination="hsV-L2-5bT" id="K95-Rm-fqE"/>
+                        <outlet property="footwearButton" destination="hsV-L2-5bT" id="kBv-cx-1IK"/>
                         <outlet property="saveButton" destination="NLQ-xr-TKB" id="xRS-2a-jrO"/>
-                        <outlet property="topButton" destination="hjP-ur-5V0" id="EJv-sW-xAy"/>
+                        <outlet property="topButton" destination="hjP-ur-5V0" id="e1p-nB-QIx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bYQ-RS-kns" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -251,6 +290,6 @@
         <image name="outfit" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="iEZ-Zy-eXg"/>
+        <segue reference="agx-lx-2Im"/>
     </inferredMetricsTieBreakers>
 </document>
