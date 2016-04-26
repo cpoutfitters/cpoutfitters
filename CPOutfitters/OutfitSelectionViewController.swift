@@ -8,9 +8,11 @@
 
 import UIKit
 import Parse
+
 let kselectTopSegueIdentifier = "selectTop"
 let kselectBottomSegueIdentifier = "selectBottom"
 let kselectFootwearSegueIdentifier = "selectFootwear"
+
 
 class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
 
@@ -77,18 +79,43 @@ class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
         
         print("OutfitSelectionViewController: onRecommend Button click")
         
-        ParseClient.sharedInstance.getRecommendedOutfit(["occasion": attire]) { (outfit: Outfit?, error:NSError?) in
-            if let outfit = outfit{
-                self.outfit = outfit
-                print(outfit.self)
-                self.loadOutfit()
-            } else {
-                print("OutfitSelectionViewController: \(error?.localizedDescription)")
+        ParseClient.sharedInstance.getRecommendedOutfit(["occasion": attire]) { (type: String, article: Article?, error:NSError?) in
+            if let error = error {
+                print("OutfitSelectionViewController: \(error.localizedDescription)")
+            }
+            else {
+                switch (type) {
+                case "top":
+                    self.outfit.topComponent = article
+                    if article == nil {
+                       self.topButton.setTitle("No tops found!", forState: .Normal)
+                    }
+                    self.loadTop()
+                case "bottom":
+                    self.outfit.bottomComponent = article
+                    if article == nil {
+                    self.bottomButton.setTitle("No bottoms found!", forState: .Normal)
+                    }
+                    self.loadBottom()
+                default:
+                    self.outfit.footwearComponent = article
+                    if article == nil {
+                        self.footwearButton.setTitle("No footwear found!", forState: .Normal)
+                    }
+                    self.loadFootwear()
+                }
             }
         }
     }
     
     func loadOutfit() {
+        loadTop()
+        loadBottom()
+        loadFootwear()
+        self.favoriteButton.selected = false
+    }
+    
+    func loadTop() {
         if let topImage = outfit.topComponent?.mediaImage {
             topImage.getDataInBackgroundWithBlock({ (imageData:NSData?, error: NSError?) in
                 if let imageData = imageData {
@@ -97,6 +124,9 @@ class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
                 }
             })
         }
+    }
+    
+    func loadBottom() {
         if let bottomImage = outfit.bottomComponent?.mediaImage {
             bottomImage.getDataInBackgroundWithBlock({ (imageData:NSData?, error: NSError?) in
                 if let imageData = imageData {
@@ -105,6 +135,9 @@ class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
                 }
             })
         }
+    }
+    
+    func loadFootwear() {
         if let footwearImage = outfit.footwearComponent?.mediaImage {
             footwearImage.getDataInBackgroundWithBlock({ (imageData:NSData?, error: NSError?) in
                 if let imageData = imageData {
@@ -113,7 +146,6 @@ class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
                 }
             })
         }
-        self.favoriteButton.selected = outfit.favorite
     }
     
     override func didReceiveMemoryWarning() {
@@ -137,6 +169,9 @@ class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
             }
             articleSelectionViewController.articles = articleArray
             articleSelectionViewController.delegate = self
+        }
+        else if let articleViewController = segue.destinationViewController as? ArticleViewController {
+            
         }
         
         if let postViewController = destinationViewController as? PostViewController {
