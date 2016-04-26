@@ -23,27 +23,20 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f6R-Bd-Xrd">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default-profile" translatesAutoresizingMaskIntoConstraints="NO" id="wrH-5J-2uS">
-                                                <rect key="frame" x="210" y="86" width="90" height="90"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="90" id="N69-Pu-adc"/>
-                                                    <constraint firstAttribute="height" constant="90" id="zDv-8M-7rv"/>
-                                                </constraints>
-                                            </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@saratorres" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iue-IC-9J3">
-                                                <rect key="frame" x="20" y="106" width="85" height="20"/>
+                                                <rect key="frame" x="20" y="90" width="85" height="20"/>
                                                 <fontDescription key="fontDescription" name="Didot" family="Didot" pointSize="16"/>
                                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Bio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xG6-u6-VpR">
-                                                <rect key="frame" x="20" y="289" width="25" height="20"/>
-                                                <fontDescription key="fontDescription" name="Didot-Bold" family="Didot" pointSize="16"/>
+                                                <rect key="frame" x="20" y="243" width="25" height="20"/>
+                                                <fontDescription key="fontDescription" name="Didot" family="Didot" pointSize="16"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wc7-4f-5qA">
-                                                <rect key="frame" x="210" y="176" width="88" height="44"/>
+                                                <rect key="frame" x="210" y="180" width="88" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="bsv-t1-K9A"/>
                                                     <constraint firstAttribute="width" constant="88" id="eNO-MZ-4FV"/>
@@ -67,22 +60,16 @@
                                                     <action selector="onLogout:" destination="jxJ-d9-H3m" eventType="touchUpInside" id="6KR-Jr-9AZ"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fabriqs in your wardrobe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Mr-AV-hSs">
-                                                <rect key="frame" x="20" y="235" width="280" height="24"/>
-                                                <fontDescription key="fontDescription" name="Didot-Bold" family="Didot" pointSize="19"/>
-                                                <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Sara Torres" textAlignment="natural" minimumFontSize="21" translatesAutoresizingMaskIntoConstraints="NO" id="V5m-I6-7Pq">
-                                                <rect key="frame" x="20" y="141" width="115" height="26"/>
+                                                <rect key="frame" x="20" y="125" width="115" height="26"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
                                                     <action selector="onEditingEnd:" destination="jxJ-d9-H3m" eventType="editingDidEnd" id="ODf-rC-nGm"/>
                                                 </connections>
                                             </textField>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" text="Enter you bio here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rQR-sH-2Qc">
-                                                <rect key="frame" x="15" y="316" width="285" height="70"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Enter you bio here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rQR-sH-2Qc">
+                                                <rect key="frame" x="25" y="271.5" width="270" height="70"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="70" id="cqP-rs-hbD"/>
@@ -90,24 +77,31 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
                                             </textView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Fabriq Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TPK-gS-Xuz">
-                                                <rect key="frame" x="73" y="35" width="174" height="25"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jf5-fd-Lnk">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Fabriq Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TPK-gS-Xuz">
+                                                        <rect key="frame" x="44" y="19" width="232" height="33"/>
+                                                        <fontDescription key="fontDescription" name="Didot-Bold" family="Didot" pointSize="26"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="174" id="C2Q-Qq-Sf9"/>
-                                                    <constraint firstAttribute="height" constant="25" id="RYR-SY-4VY"/>
+                                                    <constraint firstItem="TPK-gS-Xuz" firstAttribute="centerX" secondItem="jf5-fd-Lnk" secondAttribute="centerX" id="2SP-VY-J8v"/>
+                                                    <constraint firstAttribute="height" constant="70" id="97e-hw-ZJU"/>
+                                                    <constraint firstItem="TPK-gS-Xuz" firstAttribute="centerY" secondItem="jf5-fd-Lnk" secondAttribute="centerY" id="B0E-RX-yL5"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Didot" family="Didot" pointSize="20"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cx9-Gv-k5z">
-                                                <rect key="frame" x="20" y="192" width="58" height="22"/>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cx9-Gv-k5z">
+                                                <rect key="frame" x="20" y="201" width="58" height="22"/>
                                                 <fontDescription key="fontDescription" name="Didot" family="Didot" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Jna-SS-rlR">
-                                                <rect key="frame" x="86" y="189" width="117" height="29"/>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Jna-SS-rlR">
+                                                <rect key="frame" x="86" y="198" width="117" height="29"/>
                                                 <segments>
                                                     <segment title="Male"/>
                                                     <segment title="Female"/>
@@ -116,34 +110,48 @@
                                                     <action selector="onValueChanged:" destination="jxJ-d9-H3m" eventType="valueChanged" id="AiQ-V4-beO"/>
                                                 </connections>
                                             </segmentedControl>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fabriqs in your wardrobe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Mr-AV-hSs">
+                                                <rect key="frame" x="20" y="155" width="190" height="17.5"/>
+                                                <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="13"/>
+                                                <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default-profile" translatesAutoresizingMaskIntoConstraints="NO" id="wrH-5J-2uS">
+                                                <rect key="frame" x="210" y="90" width="90" height="90"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="90" id="N69-Pu-adc"/>
+                                                    <constraint firstAttribute="height" constant="90" id="zDv-8M-7rv"/>
+                                                </constraints>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="iue-IC-9J3" firstAttribute="top" secondItem="f6R-Bd-Xrd" secondAttribute="top" constant="106" id="3P8-5n-AEG"/>
+                                            <constraint firstItem="Wc7-4f-5qA" firstAttribute="leading" secondItem="2Mr-AV-hSs" secondAttribute="trailing" id="4e0-fU-hLQ"/>
                                             <constraint firstItem="xXs-yg-2QU" firstAttribute="centerX" secondItem="f6R-Bd-Xrd" secondAttribute="centerX" id="4pX-Fk-wii"/>
                                             <constraint firstAttribute="trailing" secondItem="wrH-5J-2uS" secondAttribute="trailing" constant="20" id="62O-xx-EBt"/>
                                             <constraint firstItem="Wc7-4f-5qA" firstAttribute="top" secondItem="wrH-5J-2uS" secondAttribute="bottom" id="8iZ-Nw-qUp"/>
                                             <constraint firstItem="Jna-SS-rlR" firstAttribute="leading" secondItem="cx9-Gv-k5z" secondAttribute="trailing" constant="8" id="9gO-8X-2k0"/>
-                                            <constraint firstItem="wrH-5J-2uS" firstAttribute="top" secondItem="TPK-gS-Xuz" secondAttribute="bottom" constant="26" id="CSn-3C-ruk"/>
                                             <constraint firstAttribute="bottom" secondItem="xXs-yg-2QU" secondAttribute="bottom" constant="85" id="CtB-Yx-hOM"/>
-                                            <constraint firstItem="2Mr-AV-hSs" firstAttribute="top" secondItem="Wc7-4f-5qA" secondAttribute="bottom" constant="15" id="IMq-lM-WfQ"/>
+                                            <constraint firstItem="jf5-fd-Lnk" firstAttribute="top" secondItem="f6R-Bd-Xrd" secondAttribute="top" id="G3X-Ea-zrX"/>
+                                            <constraint firstItem="jf5-fd-Lnk" firstAttribute="leading" secondItem="f6R-Bd-Xrd" secondAttribute="leading" id="GWI-Wf-VCd"/>
                                             <constraint firstItem="xG6-u6-VpR" firstAttribute="leading" secondItem="f6R-Bd-Xrd" secondAttribute="leading" constant="20" id="MY9-gO-pK2"/>
                                             <constraint firstItem="rQR-sH-2Qc" firstAttribute="top" secondItem="xG6-u6-VpR" secondAttribute="bottom" constant="7" id="PLI-2s-3QL"/>
+                                            <constraint firstItem="cx9-Gv-k5z" firstAttribute="top" secondItem="2Mr-AV-hSs" secondAttribute="bottom" constant="30" id="PND-7X-AwO"/>
                                             <constraint firstItem="V5m-I6-7Pq" firstAttribute="leading" secondItem="f6R-Bd-Xrd" secondAttribute="leading" constant="20" id="S3z-8W-TLc"/>
                                             <constraint firstItem="Wc7-4f-5qA" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="V5m-I6-7Pq" secondAttribute="trailing" constant="2" id="Stn-Cd-2I4"/>
                                             <constraint firstItem="iue-IC-9J3" firstAttribute="leading" secondItem="f6R-Bd-Xrd" secondAttribute="leading" constant="20" id="Wgg-jk-ogo"/>
-                                            <constraint firstAttribute="trailing" secondItem="2Mr-AV-hSs" secondAttribute="trailing" constant="20" id="Xy9-jf-HYc"/>
-                                            <constraint firstItem="TPK-gS-Xuz" firstAttribute="top" secondItem="f6R-Bd-Xrd" secondAttribute="top" constant="35" id="bu3-8l-mTD"/>
                                             <constraint firstItem="2Mr-AV-hSs" firstAttribute="leading" secondItem="f6R-Bd-Xrd" secondAttribute="leading" constant="20" id="cQs-86-ihh"/>
+                                            <constraint firstItem="wrH-5J-2uS" firstAttribute="top" secondItem="iue-IC-9J3" secondAttribute="top" id="doC-eL-PbO"/>
                                             <constraint firstItem="V5m-I6-7Pq" firstAttribute="top" secondItem="iue-IC-9J3" secondAttribute="bottom" constant="15" id="f1F-Zs-i06"/>
-                                            <constraint firstItem="xG6-u6-VpR" firstAttribute="top" secondItem="2Mr-AV-hSs" secondAttribute="bottom" constant="30" id="fK5-WK-wyN"/>
                                             <constraint firstItem="Jna-SS-rlR" firstAttribute="centerY" secondItem="cx9-Gv-k5z" secondAttribute="centerY" id="flM-qX-Ml6"/>
-                                            <constraint firstAttribute="trailing" secondItem="rQR-sH-2Qc" secondAttribute="trailing" constant="20" id="hXT-49-jHs"/>
-                                            <constraint firstItem="TPK-gS-Xuz" firstAttribute="centerX" secondItem="f6R-Bd-Xrd" secondAttribute="centerX" id="hmT-Uy-n4Z"/>
+                                            <constraint firstItem="2Mr-AV-hSs" firstAttribute="top" secondItem="V5m-I6-7Pq" secondAttribute="bottom" constant="4" id="g46-eD-A3N"/>
+                                            <constraint firstAttribute="trailing" secondItem="rQR-sH-2Qc" secondAttribute="trailing" constant="25" id="hXT-49-jHs"/>
                                             <constraint firstItem="wrH-5J-2uS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iue-IC-9J3" secondAttribute="trailing" constant="1" id="iIT-kC-xMj"/>
-                                            <constraint firstItem="rQR-sH-2Qc" firstAttribute="leading" secondItem="f6R-Bd-Xrd" secondAttribute="leading" constant="15" id="kEr-5X-qdB"/>
+                                            <constraint firstItem="xG6-u6-VpR" firstAttribute="top" secondItem="cx9-Gv-k5z" secondAttribute="bottom" constant="20" id="ihL-hK-Qhp"/>
+                                            <constraint firstAttribute="trailing" secondItem="jf5-fd-Lnk" secondAttribute="trailing" id="jO1-bn-7yv"/>
+                                            <constraint firstItem="rQR-sH-2Qc" firstAttribute="leading" secondItem="f6R-Bd-Xrd" secondAttribute="leading" constant="25" id="kEr-5X-qdB"/>
                                             <constraint firstItem="2Mr-AV-hSs" firstAttribute="leading" secondItem="f6R-Bd-Xrd" secondAttribute="leading" constant="20" id="pah-nk-ebA"/>
-                                            <constraint firstItem="cx9-Gv-k5z" firstAttribute="top" secondItem="V5m-I6-7Pq" secondAttribute="bottom" constant="25" id="w0q-2T-P2c"/>
+                                            <constraint firstItem="wrH-5J-2uS" firstAttribute="top" secondItem="jf5-fd-Lnk" secondAttribute="bottom" constant="20" id="uwi-Z9-lRT"/>
                                             <constraint firstAttribute="trailing" secondItem="Wc7-4f-5qA" secondAttribute="trailing" constant="22" id="xvh-Mm-2RP"/>
                                             <constraint firstItem="cx9-Gv-k5z" firstAttribute="leading" secondItem="f6R-Bd-Xrd" secondAttribute="leading" constant="20" id="zYi-Wy-Mln"/>
                                         </constraints>

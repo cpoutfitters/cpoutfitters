@@ -32,37 +32,36 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         
 //        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
 //        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ProfileViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
-        
-        ParseClient.sharedInstance.getUser(["owner": PFUser.currentUser()!]) { (user: PFUser?, error:NSError?) in
-            let userName = user?.username!.characters.split("@").map(String.init)
-            self.userhandleLabel.text = "@\(userName![0])"
-            if user!["bio"] != nil {
-                self.bioTextView.text = user!["bio"] as! String
-                self.bioText = user!["bio"] as! String
-            }
-            if user!["fullname"] != nil {
-                self.fullnameTextField.text = user!["fullname"] as! String
-                self.nameText = user!["fullname"] as! String
-            }
-            if user!["gender"] != nil {
-                let gender = user!["gender"] as! String
-                self.genderControl.selectedSegmentIndex = self.genders.indexOf(gender)!
-            }
-            if user!["profilePicture"] != nil {
-                let imageFile = user!["profilePicture"] as! PFFile
-                imageFile.getDataInBackgroundWithBlock {
-                    (imageData: NSData?, error: NSError?) -> Void in
-                    if let imageData = imageData {
-                        self.userProfileImageView.image = UIImage(data:imageData)
-                        self.userProfileImageView.layer.cornerRadius = self.userProfileImageView.frame.size.width / 2
-                        self.userProfileImageView.clipsToBounds = true
-                    }
+        let user = PFUser.currentUser()
+        let userName = user?.username!.characters.split("@").map(String.init)
+        self.userhandleLabel.text = "@\(userName![0])"
+        if user!["bio"] != nil {
+            self.bioTextView.text = user!["bio"] as! String
+            self.bioText = user!["bio"] as! String
+        }
+        if user!["fullname"] != nil {
+            self.fullnameTextField.text = user!["fullname"] as? String
+            self.nameText = user!["fullname"] as! String
+        }
+        if user!["gender"] != nil {
+            let gender = user!["gender"] as! String
+            self.genderControl.selectedSegmentIndex = self.genders.indexOf(gender)!
+        }
+        if user!["profilePicture"] != nil {
+            let imageFile = user!["profilePicture"] as! PFFile
+            imageFile.getDataInBackgroundWithBlock {
+                (imageData: NSData?, error: NSError?) -> Void in
+                if let imageData = imageData {
+                    self.userProfileImageView.image = UIImage(data:imageData)
+                    self.userProfileImageView.layer.cornerRadius = self.userProfileImageView.frame.size.width / 2
+                    self.userProfileImageView.clipsToBounds = true
                 }
             }
         }
+        
         ParseClient.sharedInstance.countArticles(["owner": PFUser.currentUser()!]) { (count:Int32?, error:NSError?) in
             var countFabrics: String = "0 Fabriqs in your wardrobe"
             if count! == 1 {
