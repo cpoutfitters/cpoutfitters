@@ -8,9 +8,11 @@
 
 import UIKit
 import Parse
+
 let kselectTopSegueIdentifier = "selectTop"
 let kselectBottomSegueIdentifier = "selectBottom"
 let kselectFootwearSegueIdentifier = "selectFootwear"
+
 
 class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
 
@@ -81,20 +83,27 @@ class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
             if let error = error {
                 print("OutfitSelectionViewController: \(error.localizedDescription)")
             }
-            else if let article = article {
+            else {
                 switch (type) {
                 case "top":
                     self.outfit.topComponent = article
+                    if article == nil {
+                       self.topButton.setTitle("No tops found!", forState: .Normal)
+                    }
                     self.loadTop()
                 case "bottom":
                     self.outfit.bottomComponent = article
+                    if article == nil {
+                    self.bottomButton.setTitle("No bottoms found!", forState: .Normal)
+                    }
                     self.loadBottom()
                 default:
                     self.outfit.footwearComponent = article
+                    if article == nil {
+                        self.footwearButton.setTitle("No footwear found!", forState: .Normal)
+                    }
                     self.loadFootwear()
                 }
-            } else {
-                print("No \(type)s available for criteria")
             }
         }
     }
@@ -158,6 +167,9 @@ class OutfitSelectionViewController: UIViewController, ArticleSelectDelegate {
             }
             articleSelectionViewController.articles = articleArray
             articleSelectionViewController.delegate = self
+        }
+        else if let articleViewController = segue.destinationViewController as? ArticleViewController {
+            
         }
         
     }
