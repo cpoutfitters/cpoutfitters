@@ -32,7 +32,8 @@ class OutfitsViewController: UITableViewController {
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        PFUser.currentUser().
+        genderFlag = PFUser.currentUser()!["gender"] as? String == "Female" ? "f" : "m"
+        
         return 1
     }
     
@@ -42,8 +43,8 @@ class OutfitsViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("AttireCell", forIndexPath: indexPath) as! OutfitsCell
-        
-        cell.categoryCell.imageView.image = UIImage(named: categories[indexPath.row][imageKey]!)
+        let imageName = "\(categories[indexPath.row][imageKey]!)-\(genderFlag)"
+        cell.categoryCell.imageView.image = UIImage(named: imageName)
         cell.categoryCell.labelView.text = categories[indexPath.row][occasionKey]
         
         if indexPath.row % 2 == 0 {
@@ -69,10 +70,10 @@ class OutfitsViewController: UITableViewController {
     */
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var outfit = Outfit()
+        let outfit = Outfit()
         outfit.owner = PFUser.currentUser()!
         let indexPath = tableView.indexPathForCell(sender as! UITableViewCell)
-        let attire = categories[indexPath!.row]
+        let attire = categories[indexPath!.row][occasionKey]!
         
         if segue.identifier == "outfitSelect" {
             let outfitSelectionViewController = segue.destinationViewController as! OutfitSelectionViewController
