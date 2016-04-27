@@ -26,23 +26,16 @@ The following **optional** features are implemented:
 - [ ] User can build an outfit around an article or articles of clothing
 - [ ] App suggestion based on forecasted weather (as opposed to user-entered preference)
 - [ ] User can accept/reject individual articles in suggestions, gets new recommendations
-- [ ] User can rate their clothes/outfits
+- [x] User can favorite their clothes/outfits
 
 ## Wireframe
 
 ![Alt text](/wireframes.png?raw=true "Wireframe")
 
-Schema:
+## Schema:
 
 ![Alt text](/Schema.png?raw=true "Schema")
 
-##GIF Week 1:
-<img src='http://i.imgur.com/1Y4hyyn.gif' title='Week 1 Video Walkthrough' width='' alt='Week 1 Video Walkthrough' />
-
-##GIF Week 2:
-<img src='http://i.imgur.com/Dg2OBXE.gif' title='Week 2Video Walkthrough' width='' alt='Week 2Video Walkthrough' />
-
-##GIF Week 3:
-<img src='./CPOutfitters-Sprint-Week-3.gif' title='Week 2Video Walkthrough' width='' alt='Week 2Video Walkthrough' />
+## App Walkthrough (Coming Soon)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
