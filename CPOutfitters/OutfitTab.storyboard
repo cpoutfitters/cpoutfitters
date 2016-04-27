@@ -311,6 +311,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="usn-Pj-6Jn" firstAttribute="top" secondItem="Oet-ae-g32" secondAttribute="bottom" constant="126" id="5Y5-Wy-uNW"/>
                             <constraint firstItem="OF0-t9-148" firstAttribute="top" secondItem="ysP-7Q-D64" secondAttribute="bottom" constant="106" id="Fx3-y1-uO7"/>
@@ -327,6 +328,9 @@
                             <constraint firstAttribute="trailing" secondItem="nUy-RW-TgZ" secondAttribute="trailing" constant="20" id="xct-by-7jk"/>
                             <constraint firstItem="I7K-vs-u81" firstAttribute="top" secondItem="nUy-RW-TgZ" secondAttribute="bottom" constant="20" id="zm4-ET-Doh"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="3JI-9d-Ze0" appends="YES" id="Lda-GD-3hs"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="bottomImageView" destination="OF0-t9-148" id="3O5-AU-OAk"/>
@@ -336,6 +340,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ANG-pL-xUV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="3JI-9d-Ze0"/>
             </objects>
             <point key="canvasLocation" x="1174" y="272"/>
         </scene>

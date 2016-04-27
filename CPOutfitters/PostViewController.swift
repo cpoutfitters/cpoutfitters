@@ -26,6 +26,9 @@ class PostViewController: UIViewController {
         // Do any additional setup after loading the view.
         /* hack: Needs to retrive an outfit so the other views will be different */
         
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
+        
         outfit.topComponent!.mediaImage.getDataInBackgroundWithBlock { (picture: NSData?, error: NSError?) in
             if error == nil {
                 self.topImageView.image = UIImage(data: picture!)
@@ -44,6 +47,10 @@ class PostViewController: UIViewController {
             }
         }
 
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
     }
 
     override func didReceiveMemoryWarning() {
