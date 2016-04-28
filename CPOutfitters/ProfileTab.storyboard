@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="jxJ-d9-H3m">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10102" systemVersion="15F24b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="jxJ-d9-H3m">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10080"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -69,10 +69,10 @@
                                                 </connections>
                                             </textField>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Enter you bio here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rQR-sH-2Qc">
-                                                <rect key="frame" x="25" y="271.5" width="270" height="70"/>
+                                                <rect key="frame" x="25" y="274" width="270" height="135"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="70" id="cqP-rs-hbD"/>
+                                                    <constraint firstAttribute="height" constant="135" id="cqP-rs-hbD"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
@@ -111,7 +111,7 @@
                                                 </connections>
                                             </segmentedControl>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fabriqs in your wardrobe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Mr-AV-hSs">
-                                                <rect key="frame" x="20" y="155" width="190" height="17.5"/>
+                                                <rect key="frame" x="20" y="155" width="190" height="18"/>
                                                 <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="13"/>
                                                 <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -135,7 +135,7 @@
                                             <constraint firstItem="jf5-fd-Lnk" firstAttribute="top" secondItem="f6R-Bd-Xrd" secondAttribute="top" id="G3X-Ea-zrX"/>
                                             <constraint firstItem="jf5-fd-Lnk" firstAttribute="leading" secondItem="f6R-Bd-Xrd" secondAttribute="leading" id="GWI-Wf-VCd"/>
                                             <constraint firstItem="xG6-u6-VpR" firstAttribute="leading" secondItem="f6R-Bd-Xrd" secondAttribute="leading" constant="20" id="MY9-gO-pK2"/>
-                                            <constraint firstItem="rQR-sH-2Qc" firstAttribute="top" secondItem="xG6-u6-VpR" secondAttribute="bottom" constant="7" id="PLI-2s-3QL"/>
+                                            <constraint firstItem="rQR-sH-2Qc" firstAttribute="top" secondItem="xG6-u6-VpR" secondAttribute="bottom" constant="9" id="PLI-2s-3QL"/>
                                             <constraint firstItem="cx9-Gv-k5z" firstAttribute="top" secondItem="2Mr-AV-hSs" secondAttribute="bottom" constant="30" id="PND-7X-AwO"/>
                                             <constraint firstItem="V5m-I6-7Pq" firstAttribute="leading" secondItem="f6R-Bd-Xrd" secondAttribute="leading" constant="20" id="S3z-8W-TLc"/>
                                             <constraint firstItem="Wc7-4f-5qA" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="V5m-I6-7Pq" secondAttribute="trailing" constant="2" id="Stn-Cd-2I4"/>
