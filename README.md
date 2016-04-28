@@ -36,6 +36,7 @@ The following **optional** features are implemented:
 
 ![Alt text](/Schema.png?raw=true "Schema")
 
-## App Walkthrough (Coming Soon)
+## App Walkthrough 
 
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
+[![Fabriq app video walkthrough](http://img.youtube.com/vi/l2m9RkQEioM/0.jpg)](http://www.youtube.com/watch?v=l2m9RkQEioM)
+
