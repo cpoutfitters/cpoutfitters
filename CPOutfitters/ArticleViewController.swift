@@ -68,19 +68,14 @@ class ArticleViewController: UIViewController, UIImagePickerControllerDelegate, 
         buttonDictionary = ["Casual": casualButton, "Work": workButton, "Date": dateButton, "Social": socialButton, "Formal": formalButton, "Blk Tie": blkTieButton]
         
         /* set the occasion buttons bgcolor by iterating through the button dictionary */
-        if article.occasion.count > 0 {
-            for attire in article.occasion {
-                if occasionDictionary[attire]! {
-                    buttonDictionary[attire]!.backgroundColor = bgColorSelected
-                } else {
-                    buttonDictionary[attire]!.backgroundColor = bgColorUnselected
-                }
-            }
-        } else {
-            for (_,button) in buttonDictionary {
+        for (occasion, button) in buttonDictionary {
+            if article.occasion.contains(occasion) {
+                button.backgroundColor = bgColorSelected
+            } else {
                 button.backgroundColor = bgColorUnselected
             }
         }
+    
         
         let newImage = article.objectId == nil
         pictureImageView.file = article.mediaImage
