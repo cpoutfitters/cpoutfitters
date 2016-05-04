@@ -28,15 +28,12 @@ The following **optional** features are implemented:
 - [ ] User can accept/reject individual articles in suggestions, gets new recommendations
 - [x] User can favorite their clothes/outfits
 
-## Wireframe
+## App Walkthrough 
 
-![Alt text](/wireframes.png?raw=true "Wireframe")
+[![Fabriq app video walkthrough](http://img.youtube.com/vi/l2m9RkQEioM/0.jpg)](http://www.youtube.com/watch?v=l2m9RkQEioM)
 
 ## Schema:
 
 ![Alt text](/Schema.png?raw=true "Schema")
 
-## App Walkthrough 
-
-[![Fabriq app video walkthrough](http://img.youtube.com/vi/l2m9RkQEioM/0.jpg)](http://www.youtube.com/watch?v=l2m9RkQEioM)
 
